@@ -1,0 +1,57 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="SecurityConnectionStr" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=GRNSDNOFFICE\SQLEXPRESS;Initial Catalog=RetrieveSecurity;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="ConnectionString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=GRNSDNOFFICE\SQLEXPRESS;Initial Catalog=TellersAssistant2008;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="ImageTransferMethod" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ctRS232</Value>
+    </Setting>
+    <Setting Name="ImageTransferDelayRS232" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">300</Value>
+    </Setting>
+    <Setting Name="ImageTransferDelayFTP" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
+    <Setting Name="ManualCheckName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ManualCheck200dpi.tif</Value>
+    </Setting>
+    <Setting Name="DefaultImageFolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CheckImages</Value>
+    </Setting>
+    <Setting Name="PortSettingPortName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">COM1</Value>
+    </Setting>
+    <Setting Name="PortSettingBaudRate" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">115200</Value>
+    </Setting>
+    <Setting Name="PortSettingParity" Type="System.String" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="PortSettingDataBits" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">8</Value>
+    </Setting>
+    <Setting Name="PortSettingStopBits" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ScannerIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.2.104</Value>
+    </Setting>
+    <Setting Name="InitializeScannerSettingsAtStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LogScannerCmds" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LoggingTurnedOn" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="MySettingsFilename" Type="System.String" Scope="User">
+      <Value Profile="(Default)">MyTellerAssistant.xml</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

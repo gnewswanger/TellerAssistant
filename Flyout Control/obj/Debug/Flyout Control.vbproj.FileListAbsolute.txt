@@ -1,0 +1,68 @@
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\ResolveAssemblyReference.cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.ImagePanelFlyout.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.Resources.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.TextPanelFlyout.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.vbproj.GenerateResource.Cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.ImagePanelFlyout.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.TextPanelFlyout.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\Flyout Control.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\mvcLibrary.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\bin\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.vbprojResolveAssemblyReference.cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.ImagePanelFlyout.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout_Control.TextPanelFlyout.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\Flyout Control\obj\Debug\Flyout Control.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\Flyout Control.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\Flyout Control.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\Flyout Control.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\mvcLibrary.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\mvcLibrary.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\mvcLibrary.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\bin\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.vbprojResolveAssemblyReference.cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout_Control.ImagePanelFlyout.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout_Control.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout_Control.TextPanelFlyout.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.pdb

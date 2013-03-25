@@ -1,0 +1,38 @@
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ResolveAssemblyReference.cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.ImageViewerPanel.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.Resources.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewer.vbproj.GenerateResource.Cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.ImageViewerPanel.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewer.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\bin\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.ImageViewerPanel.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewer.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\bin\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\bin\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\bin\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.ImageViewerPanel.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewer.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.pdb

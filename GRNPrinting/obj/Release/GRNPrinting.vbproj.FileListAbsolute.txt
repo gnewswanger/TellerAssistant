@@ -1,0 +1,42 @@
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\GRNPrinting.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\GRNPrinting.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\GRNPrinting.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\ResolveAssemblyReference.cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.Resources.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.vbproj.GenerateResource.Cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\GRNPrinting.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\GRNPrinting.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\bin\Release\GRNPrinting.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\bin\Release\GRNPrinting.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\bin\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.vbprojResolveAssemblyReference.cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\GRNPrinting\obj\Release\GRNPrinting.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\bin\Release\GRNPrinting.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\bin\Release\GRNPrinting.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\bin\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\bin\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\bin\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.GRNPreviewDialog.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.xml

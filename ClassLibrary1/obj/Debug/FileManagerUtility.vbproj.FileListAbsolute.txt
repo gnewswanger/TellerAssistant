@@ -1,0 +1,28 @@
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\bin\Debug\FileManagerUtility.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\bin\Debug\FileManagerUtility.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\bin\Debug\FileManagerUtility.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.FormFileManager.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\bin\Debug\FileManagerUtility.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\bin\Debug\FileManagerUtility.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\bin\Debug\FileManagerUtility.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.FormFileManager.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ClassLibrary1\obj\Debug\FileManagerUtility.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\bin\Debug\FileManagerUtility.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\bin\Debug\FileManagerUtility.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\bin\Debug\FileManagerUtility.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\obj\Debug\FileManagerUtility.FormFileManager.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\obj\Debug\FileManagerUtility.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\obj\Debug\FileManagerUtility.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\obj\Debug\FileManagerUtility.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\obj\Debug\FileManagerUtility.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\obj\Debug\FileManagerUtility.pdb

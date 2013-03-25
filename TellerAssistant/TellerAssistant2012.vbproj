@@ -1,0 +1,543 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{021BFAA9-EE70-4134-9A38-7B8D9012925E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>TellerAssistant2012.MainModule</StartupObject>
+    <RootNamespace>TellerAssistant2012</RootNamespace>
+    <AssemblyName>TellerAssistant2012</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionCompare>Binary</OptionCompare>
+    <OptionStrict>On</OptionStrict>
+    <OptionInfer>On</OptionInfer>
+    <TargetZone>Custom</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <ManifestCertificateThumbprint>A2B9153E078978910BA97A30DDA83C2CDA9D9DBE</ManifestCertificateThumbprint>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
+    <SignManifests>false</SignManifests>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationIcon>Resources\TellerAssistant Icon.ico</ApplicationIcon>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>GRNPublicPrivateKey.pfx</AssemblyOriginatorKeyFile>
+    <ExcludedPermissions>
+    </ExcludedPermissions>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>L:\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Background</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>14</ApplicationRevision>
+    <ApplicationVersion>2008.1.2.%2a</ApplicationVersion>
+    <UseApplicationTrust>true</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>TellerAssistant2012.xml</DocumentationFile>
+    <NoWarn>42353,42354,42355</NoWarn>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>None</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>TellerAssistant2012.xml</DocumentationFile>
+    <NoWarn>42353,42354,42355</NoWarn>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="CalculatorClasses" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="CustomUserControls\CheckListView.Designer.vb">
+      <DependentUpon>CheckListView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckListView.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerAddPanel.Designer.vb">
+      <DependentUpon>CheckViewerAddPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerAddPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerConfirmPanel.Designer.vb">
+      <DependentUpon>CheckViewerConfirmPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerConfirmPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerEditPanel.Designer.vb">
+      <DependentUpon>CheckViewerEditPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerEditPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerPanelBaseClass.Designer.vb">
+      <DependentUpon>CheckViewerPanelBaseClass.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerPanelBaseClass.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerReceiptInfoPanel.Designer.vb">
+      <DependentUpon>CheckViewerReceiptInfoPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerReceiptInfoPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerViewPanel.Designer.vb">
+      <DependentUpon>CheckViewerViewPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerViewPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerNavViewPanel.Designer.vb">
+      <DependentUpon>CheckViewerNavViewPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerNavViewPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DepositRegisterClasses\CashClass.vb" />
+    <Compile Include="DepositRegisterClasses\CheckRegisterQueueClass.vb" />
+    <Compile Include="DepositRegisterClasses\DepositBalanceClass.vb" />
+    <Compile Include="DepositRegisterClasses\DepositDetailClass.vb" />
+    <Compile Include="DepositRegisterClasses\DepositTicketClass.vb" />
+    <Compile Include="DepositRegisterClasses\CheckImageClass.vb" />
+    <Compile Include="DepositRegisterClasses\CheckRegisterClass.vb" />
+    <Compile Include="DepositRegisterClasses\DonorClass.vb" />
+    <Compile Include="DepositRegisterClasses\SearchCriteriaClass.vb" />
+    <Compile Include="EventClasses\AbstractEventArgs.vb" />
+    <Compile Include="EventClasses\BankAccountEventArgs.vb" />
+    <Compile Include="EventClasses\CashEventArgs.vb" />
+    <Compile Include="EventClasses\CheckDataEventArgs.vb" />
+    <Compile Include="EventClasses\CheckRegisterEventArgs.vb" />
+    <Compile Include="EventClasses\CheckSearchEventArgs.vb" />
+    <Compile Include="EventClasses\CheckStatusEventArgs.vb" />
+    <Compile Include="EventClasses\DepositEventArgs.vb" />
+    <Compile Include="EventClasses\DonorInfoEventArgs.vb" />
+    <Compile Include="Model\CheckSearchReport.vb" />
+    <Compile Include="Model\DepositReport.vb" />
+    <Compile Include="Presenter\CheckSearchPresenter.vb" />
+    <Compile Include="Presenter\DepositManagerPresenter.vb" />
+    <Compile Include="EventClasses\StatusEventsArgs.vb" />
+    <Compile Include="ScannerClasses\CheckScannerClassFTP.vb">
+    </Compile>
+    <Compile Include="ScannerClasses\CheckScannerClassRS232.vb">
+    </Compile>
+    <Compile Include="ScannerClasses\ICheckScanner.vb">
+    </Compile>
+    <Compile Include="DepositRegisterClasses\BankAccountClass.vb" />
+    <Compile Include="DepositRegisterClasses\ChecksClass.vb" />
+    <Compile Include="DataClasses\DataClass.vb">
+    </Compile>
+    <Compile Include="Enums\Enumerations.vb" />
+    <Compile Include="Model\DepositManagerModel.vb">
+    </Compile>
+    <Compile Include="ScannerClasses\MICRScannerSettings.vb" />
+    <Compile Include="Settings.vb" />
+    <Compile Include="CustomUserControls\CheckSearchPanel.Designer.vb">
+      <DependentUpon>CheckSearchPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\CheckSearchPanel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\DialogCheckDelete.Designer.vb">
+      <DependentUpon>DialogCheckDelete.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogCheckDelete.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DialogEditAppSettings.Designer.vb">
+      <DependentUpon>DialogEditAppSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\DialogEditAppSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormCheckSearch.Designer.vb">
+      <DependentUpon>FormCheckSearch.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormCheckSearch.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDonorInformation.Designer.vb">
+      <DependentUpon>FormDonorInformation.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormDonorInformation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormLogViewer.Designer.vb">
+      <DependentUpon>FormLogViewer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormLogViewer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMain2012.Designer.vb">
+      <DependentUpon>FormMain2012.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormMain2012.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormPrintPageSetup.Designer.vb">
+      <DependentUpon>FormPrintPageSetup.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormPrintPageSetup.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormPrintReceipt.Designer.vb">
+      <DependentUpon>FormPrintReceipt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormPrintReceipt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSelectBank.Designer.vb">
+      <DependentUpon>FormSelectBank.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSelectBank.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormSplash.Designer.vb">
+      <DependentUpon>FormSplash.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormSplash.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModuleMain.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="View\FormValidateChecknumber.Designer.vb">
+      <DependentUpon>FormValidateChecknumber.vb</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormValidateChecknumber.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\IViewDonorInformation.vb" />
+    <Compile Include="View\IViewFrmCheckSearch.vb" />
+    <Compile Include="View\IViewFrmMain.vb" />
+    <Compile Include="View\IViewChecksPanel.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CustomUserControls\CheckListView.resx">
+      <DependentUpon>CheckListView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUserControls\CheckSearchPanel.resx">
+      <DependentUpon>CheckSearchPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerAddPanel.resx">
+      <DependentUpon>CheckViewerAddPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerConfirmPanel.resx">
+      <DependentUpon>CheckViewerConfirmPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerEditPanel.resx">
+      <DependentUpon>CheckViewerEditPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerPanelBaseClass.resx">
+      <DependentUpon>CheckViewerPanelBaseClass.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerReceiptInfoPanel.resx">
+      <DependentUpon>CheckViewerReceiptInfoPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerViewPanel.resx">
+      <DependentUpon>CheckViewerViewPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerNavViewPanel.resx">
+      <DependentUpon>CheckViewerNavViewPanel.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogCheckDelete.resx">
+      <DependentUpon>DialogCheckDelete.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DialogEditAppSettings.resx">
+      <DependentUpon>DialogEditAppSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormCheckSearch.resx">
+      <DependentUpon>FormCheckSearch.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormDonorInformation.resx">
+      <DependentUpon>FormDonorInformation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormLogViewer.resx">
+      <DependentUpon>FormLogViewer.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormMain2012.resx">
+      <DependentUpon>FormMain2012.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormPrintPageSetup.resx">
+      <DependentUpon>FormPrintPageSetup.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormPrintReceipt.resx">
+      <DependentUpon>FormPrintReceipt.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSelectBank.resx">
+      <DependentUpon>FormSelectBank.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormSplash.resx">
+      <DependentUpon>FormSplash.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>PublicVbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormValidateChecknumber.resx">
+      <DependentUpon>FormValidateChecknumber.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Calculator2008\CalculatorClasses\CalculatorClasses.vbproj">
+      <Project>{1928E1A3-6F87-48DA-A66E-A8E52B729B80}</Project>
+      <Name>CalculatorClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\LayoutPanelClasses\LayoutPanelClasses\LayoutPanelClasses.vbproj">
+      <Project>{FA8A813B-D051-4852-B110-D36BA1AE3237}</Project>
+      <Name>LayoutPanelClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\mvcLibrary\mvcLibrary.vbproj">
+      <Project>{6C638236-3944-43D6-B30E-809147DFAE54}</Project>
+      <Name>mvcLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\SimpAccess\SimpAccess\SimpAccess.vbproj">
+      <Project>{2BB2ED04-BC3C-4263-8EBA-B04887DB1F0E}</Project>
+      <Name>SimpAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClassLibrary1\FileManagerUtility.vbproj">
+      <Project>{453C3F2F-A79B-4D49-9DC7-FF1CE9B3F476}</Project>
+      <Name>FileManagerUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Flyout Control\Flyout Control.vbproj">
+      <Project>{CD3B11C4-E603-4C51-96C4-222A8CDFFE1F}</Project>
+      <Name>Flyout Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GRNPrinting\GRNPrinting.vbproj">
+      <Project>{2C5E79FE-489F-428A-B947-B8CCF5FCA2F3}</Project>
+      <Name>GRNPrinting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageViewerPanel\ImageViewer.vbproj">
+      <Project>{046040BF-B973-4720-8551-6498DA79AB9A}</Project>
+      <Name>ImageViewer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="GRNPublicPrivateKey.pfx" />
+    <None Include="My Project\app.manifest" />
+    <None Include="Resources\update2_00.gif" />
+    <None Include="Deposit Slip.jpg" />
+    <None Include="..\..\..\..\MyTellerAssistant2008.xml">
+      <Link>bin\Debug\MyTellerAssistant2008.xml</Link>
+    </None>
+    <Content Include="FourTones.wav" />
+    <None Include="Resources\prospe_micrimage_mn.jpg" />
+    <None Include="Resources\FourTones.wav" />
+    <None Include="Resources\twotones.wav" />
+    <None Include="Resources\ManualCheck200dpi.tif" />
+    <None Include="Resources\TellerAssistant Icon.ico" />
+    <None Include="Resources\MICRImage2.png" />
+    <None Include="Resources\NOTIFY.wav" />
+    <None Include="Resources\AutoAlert.wav" />
+    <None Include="Resources\freesound    view sample    TwoToneDoorbell.wav.mp3" />
+    <None Include="Resources\DataContainer_MoveFirstHS.png" />
+    <None Include="Resources\DataContainer_MoveLastHS.png" />
+    <None Include="Resources\DataContainer_MovePreviousHS.png" />
+    <None Include="Resources\DataContainer_MoveNextHS.png" />
+    <None Include="Resources\Cancel Red_24.bmp" />
+    <None Include="Resources\PrintHS.png" />
+    <None Include="Resources\NewCardHS.png" />
+    <None Include="Resources\EditInformationHS.png" />
+    <None Include="Resources\CutHS.png" />
+    <None Include="Resources\searchFiles.bmp" />
+    <None Include="Resources\Database_Find.png" />
+    <None Include="Resources\Pictures_Zoom_24.png" />
+    <None Include="Resources\Folder_Doc_Search_16.png" />
+    <None Include="Resources\Bin_Document.png" />
+    <None Include="Resources\RepeatHS.png" />
+    <None Include="Resources\MoveToFolderHS.png" />
+    <None Include="Resources\RestartHS.png" />
+    <None Include="Resources\application_ok.png" />
+    <None Include="Resources\Edit_UndoHS.png" />
+    <None Include="Resources\NavForward.png" />
+    <None Include="Resources\Arrow01 Green_16.bmp" />
+    <None Include="Resources\PrintListRange.bmp" />
+    <None Include="Resources\Book_VSHelp.png" />
+    <None Include="Resources\Trash.png" />
+    <None Include="Resources\Bank_List.png" />
+    <None Include="Resources\Network ID.png" />
+    <None Include="Resources\MICRImageReset3.png" />
+    <None Include="Resources\MICRImageInitialize.png" />
+    <None Include="Resources\PrintHSReport.png" />
+    <None Include="Resources\Cable SH.png" />
+    <None Include="Resources\Cable SH1.png" />
+    <None Include="Resources\Check-OK.png" />
+    <Content Include="MyTellerAssistant2008.xml" />
+    <None Include="Resources\80 yellow flag.png" />
+    <Content Include="twotones.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.VisualBasic.PowerPacks.1.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft Visual Basic PowerPacks 1.2</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.VisualBasic.PowerPacks.Vs">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties StartDate="20090110" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

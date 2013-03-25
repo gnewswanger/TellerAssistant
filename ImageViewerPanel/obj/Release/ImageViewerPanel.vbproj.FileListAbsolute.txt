@@ -1,0 +1,4 @@
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.ImageViewerPanel.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.vbproj.GenerateResource.Cache

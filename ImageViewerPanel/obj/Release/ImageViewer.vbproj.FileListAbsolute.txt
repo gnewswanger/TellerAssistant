@@ -1,0 +1,32 @@
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Release\ImageViewerPanel.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Release\ImageViewerPanel.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Release\ImageViewerPanel.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ResolveAssemblyReference.cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.ImageViewerPanel.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.Resources.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewer.vbproj.GenerateResource.Cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Release\ImageViewerPanel.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\bin\Release\ImageViewerPanel.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.ImageViewerPanel.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewer.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\bin\Release\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\bin\Release\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.ImageViewerPanel.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewer.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant2008\ImageViewerPanel\obj\Release\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\bin\Release\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\bin\Release\ImageViewerPanel.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Release\ImageViewerPanel.ImageViewerPanel.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Release\ImageViewerPanel.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Release\ImageViewer.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Release\ImageViewerPanel.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Release\ImageViewerPanel.xml
