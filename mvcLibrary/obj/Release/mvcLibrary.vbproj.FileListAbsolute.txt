@@ -1,0 +1,43 @@
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\obj\Release\mvcLibrary.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\bin\Release\mvcLibrary.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\bin\Release\mvcLibrary.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\bin\Release\mvcLibrary.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\obj\Release\mvcLibrary.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\obj\Release\mvcLibrary.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\obj\Release\mvcLibrary.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\TellerAssistant2008\mvcLibrary\obj\Release\TellerAssistant2008.mvcLibrary.Resources.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\bin\Release\mvcLibrary.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\bin\Release\mvcLibrary.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\bin\Release\mvcLibrary.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\ResolveAssemblyReference.cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.Resources.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.vbproj.GenerateResource.Cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\bin\Release\mvcLibrary.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\bin\Release\mvcLibrary.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\bin\Release\mvcLibrary.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\mvcLibrary\obj\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\bin\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\bin\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\bin\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\obj\Release\mvcLibrary.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\obj\Release\mvcLibrary.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\obj\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\obj\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\obj\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\bin\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\bin\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\bin\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.Resources.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.pdb

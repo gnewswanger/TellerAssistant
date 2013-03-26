@@ -1,0 +1,45 @@
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\ResolveAssemblyReference.cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.CalculatorTextbox.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.KeypadClass.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.Resources.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.vbproj.GenerateResource.Cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.dll.config
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.CalculatorTextbox.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.KeypadClass.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.dll.config
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.CalculatorTextbox.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.KeypadClass.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.dll.config
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\bin\Debug\CalculatorClasses.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.CalculatorTextbox.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.KeypadClass.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.Resources.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.pdb

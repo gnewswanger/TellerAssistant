@@ -66,3 +66,20 @@ C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Cont
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.dll
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.xml
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\Flyout Control.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\Flyout Control.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\Flyout Control.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\mvcLibrary.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\mvcLibrary.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\mvcLibrary.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.vbprojResolveAssemblyReference.cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout_Control.ImagePanelFlyout.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout_Control.Resources.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout_Control.TextPanelFlyout.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.pdb

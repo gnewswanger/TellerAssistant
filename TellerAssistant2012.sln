@@ -5,7 +5,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TellerAssistant2012", "TellerAssistant\TellerAssistant2012.vbproj", "{021BFAA9-EE70-4134-9A38-7B8D9012925E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CalculatorClasses", "..\Calculator2008\CalculatorClasses\CalculatorClasses.vbproj", "{1928E1A3-6F87-48DA-A66E-A8E52B729B80}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CalculatorClasses", "Calculator2008\CalculatorClasses\CalculatorClasses.vbproj", "{1928E1A3-6F87-48DA-A66E-A8E52B729B80}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Flyout Control", "Flyout Control\Flyout Control.vbproj", "{CD3B11C4-E603-4C51-96C4-222A8CDFFE1F}"
 EndProject
@@ -13,13 +13,13 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GRNPrinting", "GRNPrinting\
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "ImageViewer", "ImageViewerPanel\ImageViewer.vbproj", "{046040BF-B973-4720-8551-6498DA79AB9A}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LayoutPanelClasses", "..\LayoutPanelClasses\LayoutPanelClasses\LayoutPanelClasses.vbproj", "{FA8A813B-D051-4852-B110-D36BA1AE3237}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "LayoutPanelClasses", "LayoutPanelClasses\LayoutPanelClasses\LayoutPanelClasses.vbproj", "{FA8A813B-D051-4852-B110-D36BA1AE3237}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "mvcLibrary", "..\mvcLibrary\mvcLibrary.vbproj", "{6C638236-3944-43D6-B30E-809147DFAE54}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "mvcLibrary", "mvcLibrary\mvcLibrary.vbproj", "{6C638236-3944-43D6-B30E-809147DFAE54}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SimpAccess", "..\SimpAccess\SimpAccess\SimpAccess.vbproj", "{2BB2ED04-BC3C-4263-8EBA-B04887DB1F0E}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SimpAccess", "SimpAccess\SimpAccess\SimpAccess.vbproj", "{2BB2ED04-BC3C-4263-8EBA-B04887DB1F0E}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FileManagerUtility", "ClassLibrary1\FileManagerUtility.vbproj", "{453C3F2F-A79B-4D49-9DC7-FF1CE9B3F476}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FileManagerUtility", "FileManagerUtility\FileManagerUtility.vbproj", "{453C3F2F-A79B-4D49-9DC7-FF1CE9B3F476}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

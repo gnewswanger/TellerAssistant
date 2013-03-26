@@ -36,3 +36,12 @@ C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewer
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.dll
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.xml
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\bin\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\bin\Debug\ImageViewerPanel.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\bin\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.ImageViewerPanel.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.Resources.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewer.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\ImageViewerPanel\obj\Debug\ImageViewerPanel.pdb

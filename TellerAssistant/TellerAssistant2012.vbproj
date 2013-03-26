@@ -382,40 +382,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Calculator2008\CalculatorClasses\CalculatorClasses.vbproj">
-      <Project>{1928E1A3-6F87-48DA-A66E-A8E52B729B80}</Project>
-      <Name>CalculatorClasses</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\LayoutPanelClasses\LayoutPanelClasses\LayoutPanelClasses.vbproj">
-      <Project>{FA8A813B-D051-4852-B110-D36BA1AE3237}</Project>
-      <Name>LayoutPanelClasses</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\mvcLibrary\mvcLibrary.vbproj">
-      <Project>{6C638236-3944-43D6-B30E-809147DFAE54}</Project>
-      <Name>mvcLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SimpAccess\SimpAccess\SimpAccess.vbproj">
-      <Project>{2BB2ED04-BC3C-4263-8EBA-B04887DB1F0E}</Project>
-      <Name>SimpAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary1\FileManagerUtility.vbproj">
-      <Project>{453C3F2F-A79B-4D49-9DC7-FF1CE9B3F476}</Project>
-      <Name>FileManagerUtility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Flyout Control\Flyout Control.vbproj">
-      <Project>{CD3B11C4-E603-4C51-96C4-222A8CDFFE1F}</Project>
-      <Name>Flyout Control</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GRNPrinting\GRNPrinting.vbproj">
-      <Project>{2C5E79FE-489F-428A-B947-B8CCF5FCA2F3}</Project>
-      <Name>GRNPrinting</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImageViewerPanel\ImageViewer.vbproj">
-      <Project>{046040BF-B973-4720-8551-6498DA79AB9A}</Project>
-      <Name>ImageViewer</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="ClassDiagram1.cd" />
     <None Include="GRNPublicPrivateKey.pfx" />
     <None Include="My Project\app.manifest" />
@@ -526,6 +492,40 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Calculator2008\CalculatorClasses\CalculatorClasses.vbproj">
+      <Project>{1928e1a3-6f87-48da-a66e-a8e52b729b80}</Project>
+      <Name>CalculatorClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FileManagerUtility\FileManagerUtility.vbproj">
+      <Project>{453c3f2f-a79b-4d49-9dc7-ff1ce9b3f476}</Project>
+      <Name>FileManagerUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Flyout Control\Flyout Control.vbproj">
+      <Project>{cd3b11c4-e603-4c51-96c4-222a8cdffe1f}</Project>
+      <Name>Flyout Control</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GRNPrinting\GRNPrinting.vbproj">
+      <Project>{2c5e79fe-489f-428a-b947-b8ccf5fca2f3}</Project>
+      <Name>GRNPrinting</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageViewerPanel\ImageViewer.vbproj">
+      <Project>{046040bf-b973-4720-8551-6498da79ab9a}</Project>
+      <Name>ImageViewer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LayoutPanelClasses\LayoutPanelClasses\LayoutPanelClasses.vbproj">
+      <Project>{fa8a813b-d051-4852-b110-d36ba1ae3237}</Project>
+      <Name>LayoutPanelClasses</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\mvcLibrary\mvcLibrary.vbproj">
+      <Project>{6c638236-3944-43d6-b30e-809147dfae54}</Project>
+      <Name>mvcLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SimpAccess\SimpAccess\SimpAccess.vbproj">
+      <Project>{2bb2ed04-bc3c-4263-8eba-b04887db1f0e}</Project>
+      <Name>SimpAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

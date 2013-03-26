@@ -1,0 +1,46 @@
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.pdb
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\ResolveAssemblyReference.cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.GraphicLayoutPanel.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.Resources.resources
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.vbproj.GenerateResource.Cache
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.dll
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.xml
+\\GRNSDNOFFICE\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.pdb
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.xml
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.GraphicLayoutPanel.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.Resources.resources
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.vbproj.GenerateResource.Cache
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.dll
+C:\Users\Galen Newswanger\Documents\Visual Studio 2008\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.vbprojResolveAssemblyReference.cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.GraphicLayoutPanel.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.Resources.resources
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.dll
+C:\Users\Galen\Documents\Visual Studio 2012\Projects\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\bin\Release\LayoutPanelClasses.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.vbprojResolveAssemblyReference.cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.GraphicLayoutPanel.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.Resources.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.xml

@@ -40,3 +40,14 @@ C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.vbproj.GenerateResource.Cache
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.dll
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\bin\Release\GRNPrinting.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\bin\Release\GRNPrinting.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\bin\Release\mvcLibrary.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\bin\Release\mvcLibrary.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\bin\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.vbprojResolveAssemblyReference.cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.Resources.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.GRNPreviewDialog.resources
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.vbproj.GenerateResource.Cache
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\GRNPrinting\obj\Release\GRNPrinting.xml

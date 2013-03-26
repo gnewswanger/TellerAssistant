@@ -136,13 +136,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\mvcLibrary\mvcLibrary.vbproj">
-      <Project>{6C638236-3944-43D6-B30E-809147DFAE54}</Project>
-      <Name>mvcLibrary</Name>
-    </ProjectReference>
+    <Folder Include="Presenter\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Presenter\" />
+    <ProjectReference Include="..\mvcLibrary\mvcLibrary.vbproj">
+      <Project>{6c638236-3944-43d6-b30e-809147dfae54}</Project>
+      <Name>mvcLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

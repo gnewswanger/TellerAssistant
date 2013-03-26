@@ -132,7 +132,7 @@
     <Service Include="{94E38DFF-614B-4CBD-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\mvcLibrary\mvcLibrary.vbproj">
+    <ProjectReference Include="..\mvcLibrary\mvcLibrary.vbproj">
       <Project>{6C638236-3944-43D6-B30E-809147DFAE54}</Project>
       <Name>mvcLibrary</Name>
     </ProjectReference>
