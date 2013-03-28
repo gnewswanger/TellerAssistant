@@ -92,7 +92,7 @@
             Me._checkDonor = value
         End Set
     End Property
-    Public Property Donor() As String
+    Public ReadOnly Property Donor() As String
         Get
             If Me._checkDonor Is Nothing Then
                 Return Nothing
@@ -100,14 +100,15 @@
                 Return Me._checkDonor.Donor
             End If
         End Get
-        Set(ByVal value As String)
-            If Me._checkDonor Is Nothing Then
-                Me._checkDonor = New DonorClass(value)
-            Else
-                Me._checkDonor.Donor = value
-            End If
-        End Set
+        'Set(ByVal value As String)
+        '    If Me._checkDonor Is Nothing Then
+        '        Me._checkDonor = New DonorClass(value)
+        '    Else
+        '        Me._checkDonor.Donor = value
+        '    End If
+        'End Set
     End Property
+    'TODO: Donor above should not create a new instance of donor class before checking for existing donor in database.
     Public Property DonorAddress() As String
         Get
             If Me._checkDonor Is Nothing Then

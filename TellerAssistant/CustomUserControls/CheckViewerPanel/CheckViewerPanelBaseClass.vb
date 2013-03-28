@@ -80,11 +80,14 @@ Public Class CheckViewerPanelBaseClass
     End Sub
 
     Protected Sub SetCurrentDonorInfo(ByVal donor As DonorClass)
-        Me.UpdatedCheck.Donor = donor.Donor
+        Me.UpdatedCheck.DonorInfo = New DonorClass(donor.Donor)
         Me.UpdatedCheck.DonorAddress = donor.Address
         Me.UpdatedCheck.DonorCity = donor.City
         Me.UpdatedCheck.DonorState = donor.State
         Me.UpdatedCheck.DonorZip = donor.Zip
+        Me.UpdatedCheck.DonorInfo.EnvelopeNo = donor.EnvelopeNo
+        Me.UpdatedCheck.DonorInfo.Bank = Me.OriginalCheck.RoutingNo
+        Me.UpdatedCheck.DonorInfo.Account = Me.OriginalCheck.DonorInfo.Account
     End Sub
 
     Protected Overridable Sub SetCheckPixImage()

@@ -426,7 +426,6 @@ Public Class DepositManagerModel
                 Case EventName.evnmScannedImageTransmitted
                     Dim strs() As String = Trim(CType(NewEvent, StatusEventArgs).micrText).Split(New [Char]() {"T"c, "A"c, "S"c, "."c})
                     Dim chk As New ChecksClass(_depTicket.DepositNumber, strs(1), strs(2), strs(3), Today)
-                    chk.Donor = ""
                     chk.ImageFile = CType(NewEvent, StatusEventArgs).micrText
                     chk.ImageFullPath = Me._depTicket.CheckImagePath
                     chk.ManualCheck = False

@@ -476,7 +476,7 @@ Public Class CheckSearchPanel
 
     Private Sub txtCheckDonor_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtCheckDonor.Leave
         If txtSearchCheckDonor.Modified Then
-            Me._updatedCheck.Donor = txtCheckDonor.Text
+            Me._updatedCheck.DonorInfo.Donor = txtCheckDonor.Text
         End If
     End Sub
 

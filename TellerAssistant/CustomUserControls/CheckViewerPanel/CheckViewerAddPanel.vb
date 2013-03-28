@@ -107,7 +107,7 @@
         If Me._manualCheckImage IsNot Nothing Then
             Me._manualCheckImage.DonorText = Me.comboDonor.Text
             Me.ImageViewerPanel1.Image = Me._manualCheckImage.CheckImage
-            Me.UpdatedCheck.Donor = Me.comboDonor.Text.Trim
+            Me.UpdatedCheck.DonorInfo.Donor = Me.comboDonor.Text.Trim
         End If
     End Sub
 
