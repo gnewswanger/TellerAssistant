@@ -425,11 +425,11 @@ Public Class DepositManagerModel
                     '==evnmScannedImageTransmitted==
                 Case EventName.evnmScannedImageTransmitted
                     Dim strs() As String = Trim(CType(NewEvent, StatusEventArgs).micrText).Split(New [Char]() {"T"c, "A"c, "S"c, "."c})
-                    Dim chk As New ChecksClass(_depTicket.DepositNumber, strs(1), strs(2), strs(3), Today)
+                    Dim chk As New ChecksClass(Me._depTicket.DepositNumber, strs(1), strs(2), strs(3), Me._depTicket.DepositDate)
                     chk.ImageFile = CType(NewEvent, StatusEventArgs).micrText
                     chk.ImageFullPath = Me._depTicket.CheckImagePath
                     chk.ManualCheck = False
-                    _db.SetChecksClass(New CheckDataEventArgs(EventName.evnmCheckSearchResult, chk, chk), False)
+                    Me._db.SetChecksClass(New CheckDataEventArgs(EventName.evnmCheckSearchResult, chk, chk), False)
                     If CType(NewEvent, StatusEventArgs).chkImage IsNot Nothing Then
                         Dim args As New CheckDataEventArgs(EventName.evnmScannedImageTransmitted, chk, chk, CType(NewEvent, StatusEventArgs).chkImage)
                         NotifyObservers(Me, args)
