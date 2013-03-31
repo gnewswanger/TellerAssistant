@@ -45,12 +45,10 @@ Public Class DepositManagerPresenter
     End Sub
 
     Public Sub SetDepositTicket(ByVal depDate As DateTime, ByVal depDesc As String, ByVal bank As BankAccountClass)
-        'Me._myModel.SetNewDepositTicket(depDate, depDesc, CType(View, IViewFrmMain).ScannerConnectionMode)
         Me._myModel.SetNewDepositTicket(depDate, depDesc, bank)
         CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
     End Sub
     Public Sub SetDepositTicket(ByVal depTicket As DepositTicketClass)
-        'Me._myModel.SetDepositTicket(depTicket, CType(View, IViewFrmMain).ScannerConnectionMode)
         Me._myModel.SetDepositTicket(depTicket)
         CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
     End Sub

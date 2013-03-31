@@ -262,4 +262,5 @@ Public Class CheckViewerNavViewPanel
         ' Add any initialization after the InitializeComponent() call.
         Me.txtCheckAmt.AdvanceOnEnterKey = False
     End Sub
+
 End Class

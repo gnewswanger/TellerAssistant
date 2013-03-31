@@ -119,18 +119,17 @@ Public Class DepositManagerModel
         Me._depTicket = Me._db.SetDepositTicket(ticket)
         Me._chkRegister = New TellerAssistant2012.CheckRegisterClass(Me)
         Me._db.AttachObserver(_chkRegister)
-        'Me.chkRegister.AttachObserver(Me)
         AttachScanner(CType([Enum].Parse(GetType(ConnectionType), My.Settings.ImageTransferMethod), ConnectionType))
         Me._chkRegister.CheckQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
         Me._chkRegister.CheckQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
         Me._chkRegister.CheckQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
-        Return _depTicket
+        Return Me._depTicket
     End Function
 
     Public Function GetChecksTotal() As Single
         Dim retVal As Single
-        If Not _depTicket Is Nothing Then
-            retVal = _db.GetChecksDepositTotal(_depTicket.DepositNumber, False)
+        If Not Me._depTicket Is Nothing Then
+            retVal = Me._db.GetChecksDepositTotal(Me._depTicket.DepositNumber, False)
         Else
             retVal = 0.0
         End If
@@ -139,8 +138,8 @@ Public Class DepositManagerModel
 
     Public Function GetCashTotal() As Single
         Dim retVal As Single
-        If Not _depTicket Is Nothing Then
-            retVal = _db.GetCashDepositTotal(_depTicket.DepositNumber, False) / 100
+        If Not Me._depTicket Is Nothing Then
+            retVal = Me._db.GetCashDepositTotal(Me._depTicket.DepositNumber, False) / 100
         Else
             retVal = 0.0
         End If
@@ -149,10 +148,10 @@ Public Class DepositManagerModel
 
     Public Function GetDepositBalances() As DepositBalanceClass
         Dim retClass As New DepositBalanceClass
-        If Not _depTicket Is Nothing Then
-            retClass.TotalCoins = _db.GetCoinDepositTotal(_depTicket.DepositNumber, False)
-            retClass.TotalCurrency = _db.GetCurrencyDepositTotal(_depTicket.DepositNumber, False)
-            retClass.TotalChecks = _db.GetChecksDepositTotal(_depTicket.DepositNumber, False)
+        If Not Me._depTicket Is Nothing Then
+            retClass.TotalCoins = Me._db.GetCoinDepositTotal(Me._depTicket.DepositNumber, False)
+            retClass.TotalCurrency = Me._db.GetCurrencyDepositTotal(Me._depTicket.DepositNumber, False)
+            retClass.TotalChecks = Me._db.GetChecksDepositTotal(Me._depTicket.DepositNumber, False)
         End If
         Return retClass
     End Function
@@ -162,37 +161,37 @@ Public Class DepositManagerModel
         Dim s As String = String.Empty
         Dim chtp As Type = GetType(CashType)
         For Each s In [Enum].GetNames(chtp)
-            If _db.CashDenomExists(_depTicket.DepositNumber, CType([Enum].Parse(chtp, s), CashType)) Then
-                retList.Add(_db.GetCashDenomClass(_depTicket.DepositNumber, CType([Enum].Parse(chtp, s), CashType)))
+            If Me._db.CashDenomExists(Me._depTicket.DepositNumber, CType([Enum].Parse(chtp, s), CashType)) Then
+                retList.Add(Me._db.GetCashDenomClass(Me._depTicket.DepositNumber, CType([Enum].Parse(chtp, s), CashType)))
             End If
         Next
         Return retList
     End Function
 
     Public Sub SetCashClass(ByVal type As CashType, ByVal count As Integer)
-        Dim cash As New CashClass(_depTicket.DepositNumber, type)
+        Dim cash As New CashClass(Me._depTicket.DepositNumber, type)
         cash.Count = count
-        _db.SetCashDenomClass(cash)
+        Me._db.SetCashDenomClass(cash)
     End Sub
 
     Public Function GetCheckQueueCount(ByVal queue As CheckStatus) As Integer
-        Return _chkRegister.CheckQueueCount(queue)
+        Return Me._chkRegister.CheckQueueCount(queue)
     End Function
 
     Public Sub NextQueueCheck(ByVal queue As CheckStatus)
-        _chkRegister.NextCheck = queue
+        Me._chkRegister.NextCheck = queue
     End Sub
 
     Public Sub PrevQueueCheck(ByVal queue As CheckStatus)
-        _chkRegister.PreviousCheck = queue
+        Me._chkRegister.PreviousCheck = queue
     End Sub
 
     Public Sub FirstQueueCheck(ByVal queue As CheckStatus)
-        _chkRegister.FirstCheck = queue
+        Me._chkRegister.FirstCheck = queue
     End Sub
 
     Public Sub LastQueueCheck(ByVal queue As CheckStatus)
-        _chkRegister.LastCheck = queue
+        Me._chkRegister.LastCheck = queue
     End Sub
 
     Public Function CurrentQueueCheck(ByVal queue As CheckStatus) As ChecksClass
@@ -204,15 +203,15 @@ Public Class DepositManagerModel
     End Sub
 
     Public Sub UpdateCheckData(ByVal chkArgs As CheckDataEventArgs)
-        _db.SetChecksClass(chkArgs, False)
+        Me._db.SetChecksClass(chkArgs, False)
     End Sub
 
     Public Sub UpdateCheckStatus(ByVal chkArgs As CheckDataEventArgs)
-        _db.UpdateChecksClassStatus(chkArgs)
+        Me._db.UpdateChecksClassStatus(chkArgs)
     End Sub
 
     Public Function GetCheckList() As List(Of ChecksClass)
-        Dim retList As List(Of ChecksClass) = _db.GetDepositCheckList(_depTicket.DepositNumber)
+        Dim retList As List(Of ChecksClass) = Me._db.GetDepositCheckList(Me._depTicket.DepositNumber)
         For Each itm As ChecksClass In retList
             If itm.ImageFullPath Is String.Empty Then
                 itm.ImageFullPath = Me._depTicket.CheckImagePath
@@ -235,7 +234,7 @@ Public Class DepositManagerModel
 
     'Public Function HandleSearchRequest(ByVal searchArgs As SearchCriteriaClass) As List(Of ChecksClass)
     Public Function HandleSearchRequest(ByVal queryString As String) As List(Of ChecksClass)
-        Dim retList As List(Of ChecksClass) = _db.HandleSearchRequest(queryString)
+        Dim retList As List(Of ChecksClass) = Me._db.HandleSearchRequest(queryString)
         For Each itm As ChecksClass In retList
             If (itm.ImageFullPath Is String.Empty And Me._depTicket IsNot Nothing) Then
                 'TODO: Me._depTicket will return nothing if no deposit is open.  
@@ -249,14 +248,14 @@ Public Class DepositManagerModel
     End Function
 
     Public Sub DeleteCheck(ByVal chk As ChecksClass, ByVal delImage As Boolean)
-        _db.DeleteCheckDonation(chk, delImage)
+        Me._db.DeleteCheckDonation(chk, delImage)
     End Sub
 
     Public Function GetNewManualCheck() As ChecksClass
-        Dim retVal As New ChecksClass(_depTicket.DepositNumber, "", "", "")
+        Dim retVal As New ChecksClass(Me._depTicket.DepositNumber, "", "", "")
         retVal.ManualCheck = True
         retVal.ImageFile = My.Settings.ManualCheckName
-        retVal.ImageFullPath = _depTicket.CheckImagePath
+        retVal.ImageFullPath = Me._depTicket.CheckImagePath
         retVal.Status = CheckStatus.csConfirmPending
         'Dim img As Image = [Image].FromFile(Application.StartupPath + "\" + retVal.ImageFile)
         Dim img As Image = [Image].FromHbitmap(My.Resources.ManualCheck200dpi.GetHbitmap)
@@ -271,21 +270,21 @@ Public Class DepositManagerModel
             MsgBox("Not all checks are verified! Use the queue tabs and check list to look for unverified checks and try again.")
         Else
             Dim detail As New DepositDetailClass
-            detail.DepositSummary = _db.GetDepositTicket(_depTicket.DepositNumber, False)
+            detail.DepositSummary = Me._db.GetDepositTicket(Me._depTicket.DepositNumber, False)
             detail.CashClassList = GetDepositCashList()
             detail.CheckClassList = GetCheckList()
-            _printer = New DepositReport(detail)
-            _printer.AttachObserver(Me)
-            _printer.PrintDepositTicket()
+            Me._printer = New DepositReport(detail)
+            Me._printer.AttachObserver(Me)
+            Me._printer.PrintDepositTicket()
         End If
     End Sub
 
     Public Function GetDonorList() As List(Of DonorClass)
-        Return Me._db.GetDonorList
+        Return Me._db.GetDonorInfo()
     End Function
 
     Public Sub SelectedDonorChanged(ByVal chk As ChecksClass)
-        Me.NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, Me._db.GetDonorInfo(chk.Donor), chk.Status))
+        Me.NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, Me._db.GetDonorInfo(chk.Donor)(0), chk.Status))
         'Me._chkRegister.CurrentDonorInformation = New DonorInfoEventArgs(EventName.evnmVwDonorInfoChanged, Me._db.GetDonorInfo(chk.Donor), chk.Status)
     End Sub
 
@@ -294,14 +293,14 @@ Public Class DepositManagerModel
     End Sub
 
     Public Sub ResetScanner()
-        If _checkScanner IsNot Nothing Then
-            _checkScanner.ResetScanner = True
+        If Me._checkScanner IsNot Nothing Then
+            Me._checkScanner.ResetScanner = True
         End If
     End Sub
 
     Public Sub CloseScanner()
-        If _checkScanner IsNot Nothing AndAlso _checkScanner.Connected Then
-            _checkScanner.Close()
+        If Me._checkScanner IsNot Nothing AndAlso Me._checkScanner.Connected Then
+            Me._checkScanner.Close()
         End If
     End Sub
 
@@ -327,7 +326,7 @@ Public Class DepositManagerModel
                             fname = "TTANoMICR" + index.ToString
                         Loop
                     Else
-                        _checkScanner.EnableScanner = True
+                        Me._checkScanner.EnableScanner = True
                         Exit Sub
                     End If
                 Case "S03"
@@ -340,26 +339,26 @@ Public Class DepositManagerModel
                     'S12 = (Status: Green Indicator) Short Account (maybe caused by mis-parsed check#)
                     WriteToErrorLog("DepositManagerModel.vb", "Scanner Status Code", err.Trim, fname.Trim)
                     If fname.Length = 0 Then
-                        _checkScanner.EnableScanner = True
+                        Me._checkScanner.EnableScanner = True
                         Exit Sub
                     End If
                 Case "S08"
                     WriteToErrorLog("DepositManagerModel.vb", "Scanner Status Code", err.Trim, fname.Trim)
                     If MsgBox("Canadian checks cannot be combined with US funds. Do you want to accept this document?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
-                        _checkScanner.EnableScanner = True
+                        Me._checkScanner.EnableScanner = True
                         Exit Sub
                     End If
                 Case "S09"
                     WriteToErrorLog("DepositManagerModel.vb", "Scanner Status Code", err.Trim, fname.Trim)
                     If MsgBox("Mexican checks cannot be combined with US funds. Do you want to accept this document?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
-                        _checkScanner.EnableScanner = True
+                        Me._checkScanner.EnableScanner = True
                         Exit Sub
                     End If
                 Case "S10"
                     WriteToErrorLog("DepositManagerModel.vb", "Scanner Status Code", err.Trim, fname.Trim)
                 Case Else
                     WriteToErrorLog("DepositManagerModel.vb", "Scanner Status Code", err.Trim, fname.Trim)
-                    _checkScanner.EnableScanner = True
+                    Me._checkScanner.EnableScanner = True
                     Exit Sub
             End Select
         Catch ex As Exception
@@ -384,7 +383,7 @@ Public Class DepositManagerModel
                     fname = fname.Substring(0, fname.LastIndexOf("S"))
                     Try
                         If Not (errStatus = "S00" Or errStatus = "S11") Then
-                            CheckScannerErrorStatus(errStatus, fname)
+                            Me.CheckScannerErrorStatus(errStatus, fname)
                         End If
                         Try
                             Dim invalidChars As Char() = Path.GetInvalidFileNameChars
@@ -395,7 +394,7 @@ Public Class DepositManagerModel
                                     player.Play()
                                     Dim invalChar As Char = fname(i)
                                     Dim newChar As Char
-                                    WriteToErrorLog("DepositManagerModel.vb", "Invalid Characters Found", invalChar, editFname)
+                                    MainModule.WriteToErrorLog("DepositManagerModel.vb", "Invalid Characters Found", invalChar, editFname)
                                     Do
                                         newChar = InputBox("The scanner could not read some characters on the check." + vbCr _
                                                  + "Please enter character to replace '" + invalChar + "' in sequence. " + editFname.Substring(0, i + 1), "Unrecognized characters")(0)
@@ -403,7 +402,7 @@ Public Class DepositManagerModel
                                     Loop Until Not invalidChars.Contains(newChar) OrElse newChar = Nothing
                                     If newChar = Nothing Then
                                         MsgBox("Check scan has been cancelled.  Please rescan this check.")
-                                        _checkScanner.EnableScanner = True
+                                        Me._checkScanner.EnableScanner = True
                                         Exit Sub
                                     ElseIf Not invalidChars.Contains(newChar) Then
                                         editFname = editFname.Remove(i, 1)
@@ -432,43 +431,43 @@ Public Class DepositManagerModel
                     Me._db.SetChecksClass(New CheckDataEventArgs(EventName.evnmCheckSearchResult, chk, chk), False)
                     If CType(NewEvent, StatusEventArgs).chkImage IsNot Nothing Then
                         Dim args As New CheckDataEventArgs(EventName.evnmScannedImageTransmitted, chk, chk, CType(NewEvent, StatusEventArgs).chkImage)
-                        NotifyObservers(Me, args)
+                        Me.NotifyObservers(Me, args)
                     Else
                         Dim args As New CheckDataEventArgs(EventName.evnmScannedImageTransmitted, chk, chk)
-                        NotifyObservers(Me, args)
+                        Me.NotifyObservers(Me, args)
                     End If
                     '==evnmCheckAmountChanged==
                     '==evnmCheckInserted==    '==evnmCheckUpdated==
                 Case EventName.evnmCheckInserted, EventName.evnmCheckUpdated, EventName.evnmCheckStatusChanged
-                    NotifyObservers(Me, NewEvent)
+                    Me.NotifyObservers(Me, NewEvent)
                 Case EventName.evnmCheckOnlyDeleted
-                    NotifyObservers(Me, NewEvent)
+                    Me.NotifyObservers(Me, NewEvent)
                     '==evnmCheckDeleted==
                 Case EventName.evnmCheckDeleted
                     Try
                         File.Delete(CType(NewEvent, CheckDataEventArgs).Check.ImageFullPath + CType(NewEvent, CheckDataEventArgs).Check.ImageFile)
-                        NotifyObservers(Me, NewEvent)
+                        Me.NotifyObservers(Me, NewEvent)
                     Catch ex As Exception
                         MsgBox("Delete check image file failed. " + ex.Message)
                     End Try
                     '==envmCurrentQueueCheckChanged==
                 Case EventName.envmCurrentQueueCheckChanged
-                    NotifyObservers(Me, NewEvent)
+                    Me.NotifyObservers(Me, NewEvent)
                     '==evnmDataTransactionFailed==
                 Case EventName.evnmDataTransactionFailed
                     MsgBox("Data transaction failed. (Model)")
                     '==evnmDepositInfoChanged==
                 Case EventName.evnmDepositInfoChanged
-                    NotifyObservers(Me, NewEvent)
+                    Me.NotifyObservers(Me, NewEvent)
                     '==evnmCashClassAdded==   '==evnmCashClassUpdated==
                 Case EventName.evnmCashClassAdded, EventName.evnmCashClassUpdated
-                    NotifyObservers(Me, NewEvent)
+                    Me.NotifyObservers(Me, NewEvent)
                     '==evnmBankInfoChanged==
                 Case EventName.evnmBankInfoChanged
-                    NotifyObservers(Me, NewEvent)
+                    Me.NotifyObservers(Me, NewEvent)
                     '==evnmBankInfoDeleted==
                 Case EventName.evnmBankInfoDeleted
-                    NotifyObservers(Me, NewEvent)
+                    Me.NotifyObservers(Me, NewEvent)
 
                 Case Else
 
