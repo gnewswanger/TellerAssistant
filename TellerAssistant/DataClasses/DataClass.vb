@@ -931,7 +931,7 @@ Public Class DataClass
         Return GetChecksListBySqlString(sqlFilter)
     End Function
 
-    Private Function GetChecksListBySqlString_old(ByVal sqlFilterStr As String) As List(Of ChecksClass)
+    Private Function GetChecksListBySqlStringold(ByVal sqlFilterStr As String) As List(Of ChecksClass)
         Dim sqlSelect As String = "SELECT d1.DepositNo, d1.RoutingNo, d1.AccountNo, d1.CheckNo, d1.DonorNo, " _
         & "d1.CheckDate, d1.CheckAmount, d1.CheckStatus, d1.ReceiptStatus, d1.ImageFile, d1.Manual, d2.ImagePath, " _
         & "d3.Address, d3.City, d3.State, d3.Zip, d3.Bank, d3.Account " _
@@ -1073,7 +1073,7 @@ Public Class DataClass
             rdr.Close()
             For i As Integer = 0 To retList.Count - 1
                 If retDonors(i) <> String.Empty Then
-                    retList(i).DonorInfo = Me.GetDonorInfo(retDonors(i))(0)
+                    retList(i).DonorInfo = Me.GetDonorInfo(retDonors(i))
                 End If
                 If retList(i).DonorInfo Is Nothing Then
                     retList(i).DonorInfo = Me.GetDonorInfoByAccount(retList(i).RoutingNo, retList(i).AccountNo)
@@ -1126,7 +1126,7 @@ Public Class DataClass
                         retClass.ImageFullPath += "\"
                     End If
                     If retDonor <> String.Empty Then
-                        retClass.DonorInfo = Me.GetDonorInfo(retDonor)(0)
+                        retClass.DonorInfo = Me.GetDonorInfo(retDonor)
                     End If
                     If retClass.DonorInfo Is Nothing Then
                         retClass.DonorInfo = Me.GetDonorInfoByAccount(retClass.RoutingNo, retClass.AccountNo)
@@ -1298,7 +1298,7 @@ Public Class DataClass
             rdr.Close()
             For i As Integer = 0 To retList.Count - 1
                 If retDonors(i) <> String.Empty Then
-                    retList(i).DonorInfo = Me.GetDonorInfo(retDonors(i))(0)
+                    retList(i).DonorInfo = Me.GetDonorInfo(retDonors(i))
                 End If
                 If retList(i).DonorInfo Is Nothing Then
                     retList(i).DonorInfo = Me.GetDonorInfoByAccount(retList(i).RoutingNo, retList(i).AccountNo)
@@ -1531,53 +1531,59 @@ Public Class DataClass
 
 #Region "Donor Information Methods dbo.donorinfo"
 
-    '    [spGetDonorInfo2] 
-    '[DonorID 0],[Donor 1],[Address 2],[City 3],[State 4],[Zip5],[Envelope6],[Bank7],[Account8] 
-    Public Function GetDonorInfo(Optional ByVal donor As String = "") As List(Of DonorClass)
+    '    [spGetDonorList] 
+    '[DonorID 0],[Donor 1],[Address 2],[City 3],[State 4],[Zip5]
+    Public Function GetDonorList() As List(Of DonorClass)
         Dim retList As New List(Of DonorClass)
-        Dim sqlSelect As String = "Execute  [spGetDonorInfo2] "
-        If donor <> String.Empty Then
-            sqlSelect += "@Donor = '" & donor & "'"
-        End If
+        Dim sqlSelect As String = "Execute  [spGetDonorList]"
         Dim sqlCmd As New SqlCommand(sqlSelect, Me.conn)
         If Not Me.conn.State = ConnectionState.Open Then
             Me.conn.Open()
         End If
-        Dim rdr As SqlDataReader = sqlCmd.ExecuteReader
         Try
+            Dim rdr As SqlDataReader = sqlCmd.ExecuteReader
             While rdr.Read
                 Dim retClass As DonorClass = New DonorClass(rdr.GetString(0))
                 retClass.Address = rdr.GetString(2)
                 retClass.City = rdr.GetString(3)
                 retClass.State = rdr.GetString(4)
                 retClass.Zip = rdr.GetString(5)
-                If IsDBNull(rdr.GetValue(6)) Then
-                    retClass.EnvelopeNo = String.Empty
-                Else
-                    retClass.EnvelopeNo = rdr.GetString(6)
-                End If
-                If IsDBNull(rdr.GetValue(7)) Then
-                    retClass.Bank = String.Empty
-                Else
-                    retClass.Bank = rdr.GetString(7)
-                End If
-                If IsDBNull(rdr.GetValue(8)) Then
-                    retClass.Account = String.Empty
-                Else
-                    retClass.Account = rdr.GetString(8)
-                End If
                 retList.Add(retClass)
             End While
-            If retList.Count > 0 AndAlso retList(0) IsNot Nothing Then
-                Return retList
-            End If
-        Catch ex As Exception
-            MsgBox("GetDonorInfo [spGetDonorInfo2] SqlDataReader failed. " + ex.Message)
-        Finally
             rdr.Close()
+        Catch ex As Exception
+            MsgBox("GetChecksClass SqlDataReader failed. " + ex.Message)
+        Finally
             conn.Close()
         End Try
-        Return Nothing
+        Return retList
+    End Function
+
+    '[spGetDonorInfo]
+    Public Function GetDonorInfo(ByVal donor As String) As DonorClass
+        '[DonorID 0],[Donor 1],[Address 2],[City 3],[State 4],[Zip5]
+        Dim retClass As DonorClass = Nothing
+        Dim sqlSelect As String = "Execute  [spGetDonorInfo] @Donor = '" & donor & "'"
+        Dim sqlCmd As New SqlCommand(sqlSelect, Me.conn)
+        If Not Me.conn.State = ConnectionState.Open Then
+            Me.conn.Open()
+        End If
+        Try
+            Dim rdr As SqlDataReader = sqlCmd.ExecuteReader
+            If rdr.Read Then
+                retClass = New DonorClass(rdr.GetString(0))
+                retClass.Address = rdr.GetString(2)
+                retClass.City = rdr.GetString(3)
+                retClass.State = rdr.GetString(4)
+                retClass.Zip = rdr.GetString(5)
+            End If
+            rdr.Close()
+        Catch ex As Exception
+            MsgBox("GetDonorInfo SqlDataReader failed. " + ex.Message)
+        Finally
+            conn.Close()
+        End Try
+        Return retClass
     End Function
 
     Public Function GetDonorInfoByAccount(ByVal bank As String, acct As String) As DonorClass
@@ -1609,7 +1615,7 @@ Public Class DataClass
     Private Function SetDonorInformation(ByVal chk As ChecksClass, ByVal leaveConnOpen As Boolean) As Integer
         Dim sqlCmd As New SqlCommand
         sqlCmd.CommandType = CommandType.StoredProcedure
-        sqlCmd.CommandText = "[spSetDonorInfo2]"
+        sqlCmd.CommandText = "[spSetDonorInfo]"
         sqlCmd.Connection = Me.conn
         If Not Me.conn.State = ConnectionState.Open Then
             Me.conn.Open()
@@ -1680,7 +1686,7 @@ Public Class DataClass
             Next i
             MsgBox(errorMessages.ToString)
         Catch ex As Exception
-            MsgBox("[spSetDonorInfo2] ExecuteNonQuery in SetDonorInformation failed. " + ex.Message)
+            MsgBox("[spSetDonorInfo] ExecuteNonQuery in SetDonorInformation failed. " + ex.Message)
         Finally
             If Not leaveConnOpen Then
                 Me.conn.Close()
@@ -1692,7 +1698,7 @@ Public Class DataClass
     Public Function SetDonorInformation(ByVal donor As DonorClass) As Integer
         Dim sqlCmd As New SqlCommand
         sqlCmd.CommandType = CommandType.StoredProcedure
-        sqlCmd.CommandText = "[spSetDonorInfo2]"
+        sqlCmd.CommandText = "[spSetDonorInfo]"
         sqlCmd.Connection = Me.conn
         If Not Me.conn.State = ConnectionState.Open Then
             Me.conn.Open()
@@ -1763,7 +1769,7 @@ Public Class DataClass
             Next i
             MsgBox(errorMessages.ToString)
         Catch ex As Exception
-            MsgBox("[spSetDonorInfo2] ExecuteNonQuery in SetDonorInformation failed. " + ex.Message)
+            MsgBox("[spSetDonorInfo] ExecuteNonQuery in SetDonorInformation failed. " + ex.Message)
         Finally
             Me.conn.Close()
         End Try

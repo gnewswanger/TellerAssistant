@@ -126,7 +126,7 @@ Public Class CheckViewerViewPanel
         End If
     End Sub
 
-
+   
 #End Region
 
 #Region "Text KeyPress Methods"
@@ -149,10 +149,9 @@ Public Class CheckViewerViewPanel
         End If
     End Sub
 
-
     Private Sub comboDonor_DropDownClosed(ByVal sender As Object, ByVal e As System.EventArgs) Handles comboDonor.DropDownClosed
         If Me.comboDonor.SelectedIndex > -1 Then
-            Me.SetButtonEditDonorInfoVisible(True)
+            Me.btnEditDonor.Enabled = True
             Me.SetCurrentDonorInfo(CType(Me.comboDonor.SelectedItem, DonorClass))
             Me.OriginalCheck.DonorInfo = Me.UpdatedCheck.DonorInfo
             'RaiseEvent CheckviewDonorChanged(sender, e)
@@ -160,6 +159,12 @@ Public Class CheckViewerViewPanel
             SetApplyButtonEnabled(sender, e)
         End If
     End Sub
+
+    'Private Sub comboDonor_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles comboDonor.KeyPress
+    '    If e.KeyChar = vbCr Then
+    '        e.Handled = True
+    '    End If
+    'End Sub
 
 #End Region
 
@@ -183,17 +188,8 @@ Public Class CheckViewerViewPanel
         End If
     End Sub
 
-    Private Sub comboDonor_KeyDown(sender As Object, e As KeyEventArgs) Handles comboDonor.KeyDown
-        If e.KeyCode = Keys.Enter AndAlso Me.comboDonor.Text <> "" Then
-            Me.SetButtonEditDonorInfoVisible(True)
-            e.Handled = True
-        End If
-    End Sub
-
     Private Sub comboDonor_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles comboDonor.Leave
         If Me.comboDonor.SelectedIndex = -1 And Me.comboDonor.Text <> "" Then
-            Me.btnEditDonor.Visible = True
-            Me.btnEditDonor.Enabled = True
             Me.UpdatedCheck.DonorInfo = New DonorClass(Me.comboDonor.Text.Trim)
             Me.OriginalCheck.DonorInfo = Me.UpdatedCheck.DonorInfo
             RaiseEvent CheckviewDonorChanged(sender, e)

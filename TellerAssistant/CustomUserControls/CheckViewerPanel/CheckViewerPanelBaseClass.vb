@@ -87,7 +87,7 @@ Public Class CheckViewerPanelBaseClass
         Me.UpdatedCheck.DonorZip = donor.Zip
         Me.UpdatedCheck.DonorInfo.EnvelopeNo = donor.EnvelopeNo
         Me.UpdatedCheck.DonorInfo.Bank = Me.OriginalCheck.RoutingNo
-        Me.UpdatedCheck.DonorInfo.Account = Me.OriginalCheck.AccountNo
+        Me.UpdatedCheck.DonorInfo.Account = Me.OriginalCheck.DonorInfo.Account
     End Sub
 
     Protected Overridable Sub SetCheckPixImage()

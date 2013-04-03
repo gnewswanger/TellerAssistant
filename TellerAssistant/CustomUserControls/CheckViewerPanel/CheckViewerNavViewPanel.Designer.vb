@@ -22,17 +22,16 @@ Partial Class CheckViewerNavViewPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtCheckAmt = New CalculatorClasses.CalculatorTextbox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.dtpCheckDate = New System.Windows.Forms.DateTimePicker()
-        Me.Label19 = New System.Windows.Forms.Label()
-        Me.btnNavLast = New System.Windows.Forms.Button()
-        Me.btnNavFirst = New System.Windows.Forms.Button()
-        Me.btnCheckNext = New System.Windows.Forms.Button()
-        Me.btnCheckPrev = New System.Windows.Forms.Button()
-        Me.btnCheckReset = New System.Windows.Forms.Button()
-        Me.btnCheckApply = New System.Windows.Forms.Button()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.txtCheckAmt = New CalculatorClasses.CalculatorTextbox
+        Me.Label18 = New System.Windows.Forms.Label
+        Me.dtpCheckDate = New System.Windows.Forms.DateTimePicker
+        Me.Label19 = New System.Windows.Forms.Label
+        Me.btnNavLast = New System.Windows.Forms.Button
+        Me.btnNavFirst = New System.Windows.Forms.Button
+        Me.btnCheckNext = New System.Windows.Forms.Button
+        Me.btnCheckPrev = New System.Windows.Forms.Button
+        Me.btnCheckReset = New System.Windows.Forms.Button
+        Me.btnCheckApply = New System.Windows.Forms.Button
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.SuspendLayout()
@@ -62,9 +61,7 @@ Partial Class CheckViewerNavViewPanel
         '
         'txtCheckAmt
         '
-        Me.txtCheckAmt.AdvanceOnEnterKey = False
         Me.txtCheckAmt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtCheckAmt.DecimalPlaces = 0
         Me.txtCheckAmt.FormatString = "$#,###,##0.00;($#,###,##0.00)"
         Me.txtCheckAmt.Location = New System.Drawing.Point(149, 38)
         Me.txtCheckAmt.Name = "txtCheckAmt"
@@ -191,7 +188,6 @@ Partial Class CheckViewerNavViewPanel
         Me.Name = "CheckViewerNavViewPanel"
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()
-        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

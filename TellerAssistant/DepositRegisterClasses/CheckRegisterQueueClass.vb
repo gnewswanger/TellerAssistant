@@ -1,7 +1,7 @@
 ﻿Public Class CheckRegisterQueueClass
     Inherits mvcLibrary.mvcAbstractModel
 
-    ' Delegate Sub SetCheckListCallback(ByVal value As List(Of ChecksClass))
+    Delegate Sub SetCheckListCallback(ByVal value As List(Of ChecksClass))
     Private _checkQueue As New List(Of ChecksClass)
     Private _queueIndex As Integer
     Private _checkCountText As String = String.Empty
@@ -62,7 +62,7 @@
         Set(ByVal value As List(Of ChecksClass))
             Me._checkQueue = value
             If Me.CheckQueueCount > 0 Then
-                Me._queueIndex = 0
+                _queueIndex = 0
             End If
             NotifyObservers(Me, New CheckRegisterEventArgs(EventName.envmCurrentQueueCheckChanged, Me.CurrentQueueCheck, Me.CurrentQueueCheck, Me.CheckQueueCount, Me.CheckQueueIndex))
         End Set

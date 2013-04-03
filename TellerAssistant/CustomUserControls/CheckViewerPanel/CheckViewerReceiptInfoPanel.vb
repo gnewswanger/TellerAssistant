@@ -27,7 +27,6 @@ Public Class CheckViewerReceiptInfoPanel
 
         ' Add any initialization after the InitializeComponent() call.
         Me.IsDirty = True
-        Me.txtDonorState.CharacterCasing = CharacterCasing.Upper
     End Sub
 
 #Region "Set Current Check / Donor Methods"
