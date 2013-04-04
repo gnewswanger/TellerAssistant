@@ -26,13 +26,13 @@
 
     Public Overrides Sub UpdateData(ByVal NewEvent As mvcLibrary.mvcEventArgsBase)
         Select Case CType(NewEvent, AbstractEventArgs).Name
-            Case EventName.evnmCheckInserted
+            Case EventName.evnmDbCheckInserted
                 CType(Me.View, IViewFrmCheckSearch).CheckAdded = CType(NewEvent, CheckDataEventArgs).modCheck
 
-            Case EventName.evnmCheckAmountChanged, EventName.evnmCheckUpdated
+            Case EventName.evnmDbCheckAmountChanged, EventName.evnmDbCheckUpdated
                 CType(Me.View, IViewFrmCheckSearch).CheckChanged = CType(NewEvent, CheckDataEventArgs).modCheck
 
-            Case EventName.evnmCheckDeleted, EventName.evnmCheckOnlyDeleted
+            Case EventName.evnmDbCheckDeleted, EventName.evnmDbCheckOnlyDeleted
                 CType(Me.View, IViewFrmCheckSearch).CheckDeleted = CType(NewEvent, CheckDataEventArgs).Check
 
         End Select

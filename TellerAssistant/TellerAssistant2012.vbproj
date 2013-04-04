@@ -165,7 +165,8 @@
     <Compile Include="DepositRegisterClasses\DepositDetailClass.vb" />
     <Compile Include="DepositRegisterClasses\DepositTicketClass.vb" />
     <Compile Include="DepositRegisterClasses\CheckImageClass.vb" />
-    <Compile Include="DepositRegisterClasses\CheckRegisterClass.vb" />
+    <Compile Include="EventClasses\ObserverEventArgs.vb" />
+    <Compile Include="Model\CheckRegisterClass.vb" />
     <Compile Include="DepositRegisterClasses\DonorClass.vb" />
     <Compile Include="DepositRegisterClasses\SearchCriteriaClass.vb" />
     <Compile Include="EventClasses\AbstractEventArgs.vb" />

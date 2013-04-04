@@ -3,11 +3,11 @@
 Public Class DepositManagerPresenter
     Inherits mvcLibrary.mvcAbstractPresenter
 
-    Private _myModel As DepositManagerModel = CType(MyBase.BaseModel, DepositManagerModel)
+    Private WithEvents _myModel As DepositManagerModel
 
     Public Sub New(ByVal aView As IViewFrmMain)
         MyBase.New(aView, New DepositManagerModel())
-        MyBase.BaseModel.AttachObserver(Me)
+        Me._myModel = CType(MyBase.BaseModel, DepositManagerModel)
     End Sub
 
     Public ReadOnly Property IsTicketOpen() As Boolean
@@ -49,17 +49,27 @@ Public Class DepositManagerPresenter
         Me._myModel.SetNewDepositTicket(depDate, depDesc, bank)
         CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
     End Sub
+
     Public Sub SetDepositTicket(ByVal depTicket As DepositTicketClass)
         'Me._myModel.SetDepositTicket(depTicket, CType(View, IViewFrmMain).ScannerConnectionMode)
         Me._myModel.SetDepositTicket(depTicket)
         CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
     End Sub
+
+    Private Sub _myModel_AttachObserverCallback(observed As mvcLibrary.IObserver) Handles _myModel.AttachObserverCallback
+        If Not CType(observed, mvcLibrary.mvcAbstractModel).IsAttached(Me) Then
+            CType(observed, mvcLibrary.mvcAbstractModel).AttachObserver(Me)
+        End If
+    End Sub
+
     Public Function GetDepositTotals() As DepositBalanceClass
         Return Me._myModel.GetDepositBalances
     End Function
+
     Public Sub SetCashCount(ByVal type As CashType, ByVal count As Integer)
         Me._myModel.SetCashClass(type, count)
     End Sub
+
     Public Sub InitializeCashText()
         Dim list As List(Of CashClass) = Me._myModel.GetDepositCashList()
         For Each item As CashClass In list
@@ -91,7 +101,9 @@ Public Class DepositManagerPresenter
     Public Sub EditDonorInformation(ByRef checkArgs As CheckRegisterEventArgs)
         Dim dlg As New FormDonorInformation(Me, checkArgs)
         If dlg.ShowDialog() = DialogResult.OK Then
-            CType(View, IViewFrmMain).CheckImage = checkArgs
+            Me.UpdateCheckStatus(checkArgs.ToCheckDataEventArgs)
+        Else
+            Me.UpdateCheckStatus(checkArgs.ToCheckDataEventArgs)
         End If
     End Sub
 
@@ -226,21 +238,21 @@ Public Class DepositManagerPresenter
                 ''==evnmCheckAmountChanged()==
                 '==evnmCheckInserted()==
                 '==evnmCheckDeleted()==
-            Case EventName.evnmCheckOnlyDeleted
+            Case EventName.evnmVWCheckOnlyDeleted
 
-            Case EventName.evnmCheckDeleted
+            Case EventName.evnmVwCheckDeleted
 
                 '==evnmCheckUpdated()==
                 '==envmCurrentQueueCheckChanged()==
-            Case EventName.envmCurrentQueueCheckChanged
+            Case EventName.evnmVwCurrentQueueCheckChanged
                 CType(View, IViewFrmMain).Checklist = GetCheckList()
                 CType(View, IViewFrmMain).DepositTotals = GetDepositTotals()
                 CType(View, IViewFrmMain).CheckImage = CType(NewEvent, CheckRegisterEventArgs)
                 '==evnmDataTransactionFailed()==
-            Case EventName.evnmDataTransactionFailed
+            Case EventName.evnmDbTransactionFailed
                 MsgBox("Data Transaction failed. (Presenter)")
                 '==evnmCashClassAdded()==   '==evnmCashClassUpdated()==
-            Case EventName.evnmCashClassAdded, EventName.evnmCashClassUpdated
+            Case EventName.evnmVwCashClassAdded, EventName.evnmVwCashClassUpdated
                 CType(View, IViewFrmMain).CashText = (CType(NewEvent, CashEventArgs).Cash)
                 CType(View, IViewFrmMain).Checklist = GetCheckList()
                 CType(View, IViewFrmMain).DepositTotals = GetDepositTotals()
@@ -253,8 +265,9 @@ Public Class DepositManagerPresenter
                 '==evnmBankInfoDeleted()==
             Case EventName.evnmBankInfoDeleted
                 SetBankList()
-            Case EventName.evnmDbCheckDonorInserted, EventName.evnmDbCheckDonorUpdated
+            Case EventName.evnmVwDonorInfoChanged
                 CType(View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
+
         End Select
     End Sub
 
@@ -269,5 +282,4 @@ Public Class DepositManagerPresenter
     End Function
 
 #End Region
-
 End Class

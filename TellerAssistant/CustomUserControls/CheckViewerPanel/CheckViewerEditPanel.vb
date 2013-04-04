@@ -23,7 +23,7 @@
             If appliedCheck.CheckAmount > 0 OrElse MsgBox("Check amount is " + appliedCheck.CheckAmount.ToString + ". Do you want to save changes and enter amount later?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                 If appliedCheck.ManualCheck AndAlso appliedCheck.RoutingNo.ToString + appliedCheck.AccountNo.ToString + appliedCheck.CheckNo.ToString <> _
                 Me.OriginalCheck.RoutingNo.ToString + Me.OriginalCheck.AccountNo.ToString + Me.OriginalCheck.CheckNo.ToString Then
-                    Dim eArgs As New CheckStatusEventArgs(EventName.evnmCheckUpdated, Me.OriginalCheck, CheckStatus.csNone)
+                    Dim eArgs As New CheckStatusEventArgs(EventName.evnmDbCheckUpdated, Me.OriginalCheck, CheckStatus.csNone)
                     RaiseEvent CheckviewDeleteCurrentCheckOnly(Me, eArgs)
                 End If
                 Me.UpdatedCheck = New ChecksClass(appliedCheck)

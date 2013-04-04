@@ -25,6 +25,17 @@ Public MustInherit Class mvcAbstractModel
         End If
     End Sub
 
+    Public Function IsAttached(Observer As IObserver) As Boolean Implements IModel1.IsAttached
+        Dim objObject As Object
+        If Not Me._myObservers Is Nothing Then
+            objObject = Observer
+            If Me._myObservers.Contains(CStr(objObject.GetHashCode)) Then
+                Return True
+            End If
+        End If
+        Return False
+    End Function
+
     Public Sub NotifyObservers(ByVal sender As Object, ByVal NewEvent As mvcEventArgsBase) Implements IModel1.NotifyObservers
         Dim objTemp As IObserver
         If Not Me._myObservers Is Nothing Then

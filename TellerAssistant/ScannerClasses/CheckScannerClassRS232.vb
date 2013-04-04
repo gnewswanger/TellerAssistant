@@ -91,6 +91,7 @@ Public Class CheckScannerClassRS232
     Protected Sub New(ByVal sender As Object)
         MyBase.New()
         Me.AttachObserver(CType(sender, mvcLibrary.IObserver))
+        Me.NotifyObservers(Me, New StatusEventArgs(EventName.evnmScannerStatusChanged, ConnectionType.ctRS232, "MICR Attaching..."))
         Dim wid As WindowsIdentity = WindowsIdentity.GetCurrent
         MainModule.WriteToErrorLog("WindowsIdentity", "CheckScannerClassRS232.vb", "WID name", wid.Name & ": " & wid.IsAuthenticated)
     End Sub

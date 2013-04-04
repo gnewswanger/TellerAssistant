@@ -747,12 +747,12 @@ Public Class FormMain2012
     Private Sub CheckAddPanel1_CheckviewApplyClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerAddPanel1.CheckviewApplyClick
         If CheckViewerAddPanel1.CurrentCheckArgs IsNot Nothing Then
             ctrlr.UpdateCheckData(CheckViewerAddPanel1.CurrentCheckArgs.ToCheckDataEventArgs)
-            CheckViewerAddPanel1.CurrentCheckArgs = New CheckRegisterEventArgs(EventName.evnmCheckStatusChanged, ctrlr.GetNewCheck, Nothing, Nothing)
+            CheckViewerAddPanel1.CurrentCheckArgs = New CheckRegisterEventArgs(EventName.evnmDbCheckStatusChanged, ctrlr.GetNewCheck, Nothing, Nothing)
         End If
     End Sub
 
     Private Sub CheckAddPanel1_CheckviewResetClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerAddPanel1.CheckviewResetClick
-        CheckViewerAddPanel1.CurrentCheckArgs = New CheckRegisterEventArgs(EventName.evnmCheckUpdated, ctrlr.GetNewCheck, Nothing, Nothing)
+        CheckViewerAddPanel1.CurrentCheckArgs = New CheckRegisterEventArgs(EventName.evnmDbCheckUpdated, ctrlr.GetNewCheck, Nothing, Nothing)
     End Sub
 
     Private Sub CheckAddPanel1_DonorInfo(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerAddPanel1.CheckviewDonorClick
@@ -1020,7 +1020,7 @@ Public Class FormMain2012
             If TabControl2.SelectedTab Is tpAddManualCheck Then
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmAddView)
                 If CheckViewerAddPanel1.CurrentCheckArgs.origCheck Is Nothing Then
-                    CheckViewerAddPanel1.CurrentCheckArgs = New CheckRegisterEventArgs(EventName.evnmCheckUpdated, ctrlr.GetNewCheck, ctrlr.GetNewCheck, Nothing, Nothing)
+                    CheckViewerAddPanel1.CurrentCheckArgs = New CheckRegisterEventArgs(EventName.evnmDbCheckUpdated, ctrlr.GetNewCheck, ctrlr.GetNewCheck, Nothing, Nothing)
                 End If
             ElseIf TabControl2.SelectedTab Is tpEditQueue Then
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmEditView)

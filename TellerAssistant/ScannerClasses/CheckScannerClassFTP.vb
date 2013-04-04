@@ -104,6 +104,7 @@ Public Class CheckScannerClassFTP
         MyBase.New()
         AttachObserver(CType(sender, mvcLibrary.IObserver))
         AttachDevice()
+        Me.NotifyObservers(Me, New StatusEventArgs(EventName.evnmScannerStatusChanged, ConnectionType.ctFTP, "MICR Attaching..."))
         'ImageDirectory = imageDir
     End Sub
 

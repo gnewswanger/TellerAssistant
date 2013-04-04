@@ -9,16 +9,18 @@ Imports System.Xml
 Public Class DepositManagerModel
     Inherits mvcLibrary.mvcAbstractModel
 
+    Event AttachObserverCallback(ByVal observed As mvcLibrary.IObserver)
+
 #Region "Private Class Variable Declarations"
 
     Private _depTicket As DepositTicketClass
     Private _chkRegister As TellerAssistant2012.CheckRegisterClass
-
-    Private _imageSize As Size
-
     Private _checkScanner As ICheckScanner
     Private _db As DataClass
     Private _printer As DepositReport
+
+    Private _imageSize As Size
+
     Private _viewMode As ViewMode
 
 #End Region
@@ -59,18 +61,15 @@ Public Class DepositManagerModel
 
     Public Sub New()
         MyBase.New()
-        Me._db = DataClass.getInstance(Me, My.Settings.ConnectionString)
-        Me._db.AttachObserver(Me)
+        Me._db = DataClass.getInstance(My.Settings.ConnectionString)
+        Me.AttachObserver(Me._db)
     End Sub
 
     Private Sub AttachScanner(ByVal connType As ConnectionType)
         If connType = ConnectionType.ctFTP Then
-            _checkScanner = CheckScannerClassFTP.getInstance(Me)
-            NotifyObservers(Me, New StatusEventArgs(EventName.evnmScannerStatusChanged, ConnectionType.ctFTP, "MICR Attaching..."))
+            Me._checkScanner = CheckScannerClassFTP.getInstance(Me)
         ElseIf connType = ConnectionType.ctRS232 Then
             _checkScanner = CheckScannerClassRS232.getInstance(Me, _depTicket.CheckImagePath)
-            'checkScanner = New CheckScannerClassRS232(Me, depTicket.CheckImagePath)
-            NotifyObservers(Me, New StatusEventArgs(EventName.evnmScannerStatusChanged, ConnectionType.ctRS232, "MICR Attaching..."))
         End If
     End Sub
 
@@ -117,13 +116,15 @@ Public Class DepositManagerModel
 
     Public Function SetDepositTicket(ByVal ticket As DepositTicketClass) As DepositTicketClass
         Me._depTicket = Me._db.SetDepositTicket(ticket)
-        Me._chkRegister = New TellerAssistant2012.CheckRegisterClass(Me)
+        Me._chkRegister = New TellerAssistant2012.CheckRegisterClass()
+        Me._chkRegister.AttachObserver(Me)
+        RaiseEvent AttachObserverCallback(Me._chkRegister)
         Me._db.AttachObserver(_chkRegister)
-        'Me.chkRegister.AttachObserver(Me)
         AttachScanner(CType([Enum].Parse(GetType(ConnectionType), My.Settings.ImageTransferMethod), ConnectionType))
-        Me._chkRegister.CheckQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
-        Me._chkRegister.CheckQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
-        Me._chkRegister.CheckQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
+        RaiseEvent AttachObserverCallback(CType(Me._checkScanner, mvcLibrary.mvcAbstractModel))
+        Me._chkRegister.ChecksQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
+        Me._chkRegister.ChecksQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
+        Me._chkRegister.ChecksQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
         Return _depTicket
     End Function
 
@@ -176,11 +177,11 @@ Public Class DepositManagerModel
     End Sub
 
     Public Function GetCheckQueueCount(ByVal queue As CheckStatus) As Integer
-        Return _chkRegister.CheckQueueCount(queue)
+        Return Me._chkRegister.CheckQueueCount(queue)
     End Function
 
     Public Sub NextQueueCheck(ByVal queue As CheckStatus)
-        _chkRegister.NextCheck = queue
+        Me._chkRegister.NextCheck = queue
     End Sub
 
     Public Sub PrevQueueCheck(ByVal queue As CheckStatus)
@@ -200,7 +201,8 @@ Public Class DepositManagerModel
     End Function
 
     Public Sub ResetCheck(ByVal queue As CheckStatus)
-        Me.NotifyObservers(Me, New CheckRegisterEventArgs(EventName.envmCurrentQueueCheckChanged, _chkRegister.CurrentQueueCheck(queue), _chkRegister.CurrentQueueCheck(queue), _chkRegister.CheckQueueCount(queue), _chkRegister.CheckQueueIndex(queue)))
+        Me._chkRegister.ResetCheck(queue)
+        'Me.NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _chkRegister.CurrentQueueCheck(queue), _chkRegister.CurrentQueueCheck(queue), _chkRegister.CheckQueueCount(queue), _chkRegister.CheckQueueIndex(queue)))
     End Sub
 
     Public Sub UpdateCheckData(ByVal chkArgs As CheckDataEventArgs)
@@ -233,7 +235,6 @@ Public Class DepositManagerModel
         Return retList
     End Function
 
-    'Public Function HandleSearchRequest(ByVal searchArgs As SearchCriteriaClass) As List(Of ChecksClass)
     Public Function HandleSearchRequest(ByVal queryString As String) As List(Of ChecksClass)
         Dim retList As List(Of ChecksClass) = _db.HandleSearchRequest(queryString)
         For Each itm As ChecksClass In retList
@@ -285,7 +286,8 @@ Public Class DepositManagerModel
     End Function
 
     Public Sub SelectedDonorChanged(ByVal chk As ChecksClass)
-        Me.NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, Me._db.GetDonorInfo(chk.Donor), chk.Status))
+        Me._db.GetDonorInfo(chk.Donor)
+        'Me.NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, Me._db.GetDonorInfo(chk.Donor), chk.Status))
         'Me._chkRegister.CurrentDonorInformation = New DonorInfoEventArgs(EventName.evnmVwDonorInfoChanged, Me._db.GetDonorInfo(chk.Donor), chk.Status)
     End Sub
 
@@ -437,31 +439,25 @@ Public Class DepositManagerModel
                         Dim args As New CheckDataEventArgs(EventName.evnmScannedImageTransmitted, chk, chk)
                         NotifyObservers(Me, args)
                     End If
-                    '==evnmCheckAmountChanged==
-                    '==evnmCheckInserted==    '==evnmCheckUpdated==
-                Case EventName.evnmCheckInserted, EventName.evnmCheckUpdated, EventName.evnmCheckStatusChanged
-                    NotifyObservers(Me, NewEvent)
-                Case EventName.evnmCheckOnlyDeleted
+
+                Case EventName.evnmDbCheckOnlyDeleted
                     NotifyObservers(Me, NewEvent)
                     '==evnmCheckDeleted==
-                Case EventName.evnmCheckDeleted
+                Case EventName.evnmDbCheckDeleted
                     Try
                         File.Delete(CType(NewEvent, CheckDataEventArgs).Check.ImageFullPath + CType(NewEvent, CheckDataEventArgs).Check.ImageFile)
                         NotifyObservers(Me, NewEvent)
                     Catch ex As Exception
                         MsgBox("Delete check image file failed. " + ex.Message)
                     End Try
-                    '==envmCurrentQueueCheckChanged==
-                Case EventName.envmCurrentQueueCheckChanged
-                    NotifyObservers(Me, NewEvent)
-                    '==evnmDataTransactionFailed==
-                Case EventName.evnmDataTransactionFailed
+
+                Case EventName.evnmDbTransactionFailed
                     MsgBox("Data transaction failed. (Model)")
                     '==evnmDepositInfoChanged==
                 Case EventName.evnmDepositInfoChanged
                     NotifyObservers(Me, NewEvent)
                     '==evnmCashClassAdded==   '==evnmCashClassUpdated==
-                Case EventName.evnmCashClassAdded, EventName.evnmCashClassUpdated
+                Case EventName.evnmDbCashClassAdded, EventName.evnmDbCashClassUpdated
                     NotifyObservers(Me, NewEvent)
                     '==evnmBankInfoChanged==
                 Case EventName.evnmBankInfoChanged

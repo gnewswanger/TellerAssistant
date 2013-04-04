@@ -8,7 +8,7 @@ Public Class DataClass
     Private conn As SqlConnection
     Private Shared instance As DataClass
 
-    Friend Shared Function getInstance(ByVal sender As Object, ByVal connString As String) As DataClass
+    Friend Shared Function getInstance(ByVal connString As String) As DataClass
         If instance Is Nothing Then
             instance = New DataClass(connString)
             Return instance
@@ -463,7 +463,7 @@ Public Class DataClass
                     End If
                     NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmBankInfoDeleted, acct))
                 Else
-                    NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmDataTransactionFailed, acct))
+                    NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmDbTransactionFailed, acct))
                 End If
             Catch ex As Exception
                 MsgBox("DeleteBankAccount ExecuteNonQuery failed. " + ex.Message)
@@ -870,15 +870,15 @@ Public Class DataClass
             End If
             Dim retCheck As ChecksClass = Me.GetChecksClass(chkargs.modCheck.DepositNo, chkargs.modCheck.RoutingNo, chkargs.modCheck.AccountNo, chkargs.modCheck.CheckNo)
             If retVal = 1 Then
-                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmCheckUpdated, retCheck, retCheck))
+                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDbCheckUpdated, retCheck, retCheck))
                 'NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmCheckUpdated, chkargs.modCheck, chkargs.modCheck))
                 Return DataTransactionTypes.dbUpdated
             ElseIf retVal = 2 Then
                 'NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmCheckInserted, chk, chk))
-                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmCheckInserted, retCheck, retCheck))
+                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDbCheckInserted, retCheck, retCheck))
                 Return DataTransactionTypes.dbInserted
             Else
-                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDataTransactionFailed, chkargs.modCheck, chkargs.modCheck))
+                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDbTransactionFailed, chkargs.modCheck, chkargs.modCheck))
                 Return DataTransactionTypes.dbFailed
             End If
         Catch ex As Exception
@@ -1220,9 +1220,9 @@ Public Class DataClass
             End If
             Try
                 If sqlCmd.ExecuteNonQuery() > 0 Then
-                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmCheckStatusChanged, chkArgs.Check, chkArgs.modCheck))
+                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDbCheckStatusChanged, chkArgs.Check, chkArgs.modCheck))
                 Else
-                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDataTransactionFailed, chkArgs.Check, chkArgs.modCheck))
+                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDbTransactionFailed, chkArgs.Check, chkArgs.modCheck))
                 End If
             Catch ex As Exception
                 MsgBox("UpdateChecksClassStatus ExecuteNonQuery failed. " + ex.Message)
@@ -1243,14 +1243,14 @@ Public Class DataClass
             Try
                 If sqlCmd.ExecuteNonQuery() > 0 Then
                     If delImage Then
-                        NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmCheckDeleted, chk, chk))
+                        NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDbCheckDeleted, chk, chk))
                     Else
-                        NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmCheckOnlyDeleted, chk, chk))
+                        NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDbCheckOnlyDeleted, chk, chk))
                     End If
                     Return DataTransactionTypes.dbDeleted
                 Else
                     MsgBox("Delete Failed at DataClass")
-                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDataTransactionFailed, chk, chk))
+                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmDbTransactionFailed, chk, chk))
                     Return DataTransactionTypes.dbFailed
                 End If
             Catch ex As Exception
@@ -1369,10 +1369,10 @@ Public Class DataClass
         Try
             sqlCmd.Prepare()
             If sqlCmd.ExecuteNonQuery() > 0 Then
-                NotifyObservers(Me, New CashEventArgs(EventName.evnmCashClassAdded, cash))
+                NotifyObservers(Me, New CashEventArgs(EventName.evnmDbCashClassAdded, cash))
                 Return DataTransactionTypes.dbInserted
             Else
-                NotifyObservers(Me, New CashEventArgs(EventName.evnmDataTransactionFailed, cash))
+                NotifyObservers(Me, New CashEventArgs(EventName.evnmDbTransactionFailed, cash))
                 Return DataTransactionTypes.dbFailed
             End If
         Catch ex As Exception
@@ -1392,10 +1392,10 @@ Public Class DataClass
         End If
         Try
             If sqlCmd.ExecuteNonQuery() > 0 Then
-                NotifyObservers(Me, New CashEventArgs(EventName.evnmCashClassUpdated, cash))
+                NotifyObservers(Me, New CashEventArgs(EventName.evnmDbCashClassUpdated, cash))
                 Return DataTransactionTypes.dbUpdated
             Else
-                NotifyObservers(Me, New CashEventArgs(EventName.evnmDataTransactionFailed, cash))
+                NotifyObservers(Me, New CashEventArgs(EventName.evnmDbTransactionFailed, cash))
                 Return DataTransactionTypes.dbFailed
             End If
         Catch ex As Exception
@@ -1532,10 +1532,11 @@ Public Class DataClass
 #Region "Donor Information Methods dbo.donorinfo"
 
     '    [spGetDonorList] 
-    '[DonorID 0],[Donor 1],[Address 2],[City 3],[State 4],[Zip5]
+    '[DonorID 0],[Donor 1],[Address 2],[City 3],[State 4],[Zip5],[Envelope6],[Bank7],[Account8]
+
     Public Function GetDonorList() As List(Of DonorClass)
         Dim retList As New List(Of DonorClass)
-        Dim sqlSelect As String = "Execute  [spGetDonorList]"
+        Dim sqlSelect As String = "Execute  [spGetDonorList2]"
         Dim sqlCmd As New SqlCommand(sqlSelect, Me.conn)
         If Not Me.conn.State = ConnectionState.Open Then
             Me.conn.Open()
@@ -1548,7 +1549,21 @@ Public Class DataClass
                 retClass.City = rdr.GetString(3)
                 retClass.State = rdr.GetString(4)
                 retClass.Zip = rdr.GetString(5)
-                retList.Add(retClass)
+                If IsDBNull(rdr.GetValue(6)) Then
+                    retClass.EnvelopeNo = String.Empty
+                Else
+                    retClass.EnvelopeNo = rdr.GetString(6)
+                End If
+                If IsDBNull(rdr.GetValue(7)) Then
+                    retClass.Bank = String.Empty
+                Else
+                    retClass.Bank = rdr.GetString(7)
+                End If
+                If IsDBNull(rdr.GetValue(8)) Then
+                    retClass.Account = String.Empty
+                Else
+                    retClass.Account = rdr.GetString(8)
+                End If
             End While
             rdr.Close()
         Catch ex As Exception
@@ -1561,9 +1576,10 @@ Public Class DataClass
 
     '[spGetDonorInfo]
     Public Function GetDonorInfo(ByVal donor As String) As DonorClass
-        '[DonorID 0],[Donor 1],[Address 2],[City 3],[State 4],[Zip5]
+        '[DonorID 0],[Donor 1],[Address 2],[City 3],[State 4],[Zip5],[Envelope6],[Bank7],[Account8]
+
         Dim retClass As DonorClass = Nothing
-        Dim sqlSelect As String = "Execute  [spGetDonorInfo] @Donor = '" & donor & "'"
+        Dim sqlSelect As String = "Execute  [spGetDonorInfo2] @Donor = '" & donor & "'"
         Dim sqlCmd As New SqlCommand(sqlSelect, Me.conn)
         If Not Me.conn.State = ConnectionState.Open Then
             Me.conn.Open()
@@ -1576,6 +1592,21 @@ Public Class DataClass
                 retClass.City = rdr.GetString(3)
                 retClass.State = rdr.GetString(4)
                 retClass.Zip = rdr.GetString(5)
+                If IsDBNull(rdr.GetValue(6)) Then
+                    retClass.EnvelopeNo = String.Empty
+                Else
+                    retClass.EnvelopeNo = rdr.GetString(6)
+                End If
+                If IsDBNull(rdr.GetValue(7)) Then
+                    retClass.Bank = String.Empty
+                Else
+                    retClass.Bank = rdr.GetString(7)
+                End If
+                If IsDBNull(rdr.GetValue(8)) Then
+                    retClass.Account = String.Empty
+                Else
+                    retClass.Account = rdr.GetString(8)
+                End If
             End If
             rdr.Close()
         Catch ex As Exception
@@ -1602,6 +1633,21 @@ Public Class DataClass
                 retClass.City = rdr.GetString(3)
                 retClass.State = rdr.GetString(4)
                 retClass.Zip = rdr.GetString(5)
+                If IsDBNull(rdr.GetValue(6)) Then
+                    retClass.EnvelopeNo = String.Empty
+                Else
+                    retClass.EnvelopeNo = rdr.GetString(6)
+                End If
+                If IsDBNull(rdr.GetValue(7)) Then
+                    retClass.Bank = String.Empty
+                Else
+                    retClass.Bank = rdr.GetString(7)
+                End If
+                If IsDBNull(rdr.GetValue(8)) Then
+                    retClass.Account = String.Empty
+                Else
+                    retClass.Account = rdr.GetString(8)
+                End If
             End If
             rdr.Close()
         Catch ex As Exception
@@ -1615,7 +1661,7 @@ Public Class DataClass
     Private Function SetDonorInformation(ByVal chk As ChecksClass, ByVal leaveConnOpen As Boolean) As Integer
         Dim sqlCmd As New SqlCommand
         sqlCmd.CommandType = CommandType.StoredProcedure
-        sqlCmd.CommandText = "[spSetDonorInfo]"
+        sqlCmd.CommandText = "[spSetDonorInfo2]"
         sqlCmd.Connection = Me.conn
         If Not Me.conn.State = ConnectionState.Open Then
             Me.conn.Open()
@@ -1623,11 +1669,11 @@ Public Class DataClass
         Try
             sqlCmd.Parameters.Add("@DonorID", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@DonorID").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@DonorID").Value = Trim(chk.Donor)
+            sqlCmd.Parameters.Item("@DonorID").Value = Trim(chk.DonorInfo.Donor)
 
             sqlCmd.Parameters.Add("@Donor", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Donor").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Donor").Value = Trim(chk.Donor)
+            sqlCmd.Parameters.Item("@Donor").Value = Trim(chk.DonorInfo.Donor)
 
             sqlCmd.Parameters.Add("@Address", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Address").Direction = ParameterDirection.Input
@@ -1670,7 +1716,7 @@ Public Class DataClass
                 NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorInserted, chk.DonorInfo, chk.Status))
                 Return DataTransactionTypes.dbInserted
             Else
-                NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDataTransactionFailed, chk.DonorInfo, chk.Status))
+                NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbTransactionFailed, chk.DonorInfo, chk.Status))
                 Return DataTransactionTypes.dbFailed
             End If
         Catch ex As SqlException
@@ -1698,7 +1744,7 @@ Public Class DataClass
     Public Function SetDonorInformation(ByVal donor As DonorClass) As Integer
         Dim sqlCmd As New SqlCommand
         sqlCmd.CommandType = CommandType.StoredProcedure
-        sqlCmd.CommandText = "[spSetDonorInfo]"
+        sqlCmd.CommandText = "[spSetDonorInfo2]"
         sqlCmd.Connection = Me.conn
         If Not Me.conn.State = ConnectionState.Open Then
             Me.conn.Open()
@@ -1746,16 +1792,16 @@ Public Class DataClass
             sqlCmd.Prepare()
             sqlCmd.ExecuteNonQuery()
             Dim retVal As Integer = CInt(sqlCmd.Parameters("@RetStatus").Value)
-            If retVal = 1 Then
-                NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, donor))
-                Return DataTransactionTypes.dbUpdated
-            ElseIf retVal = 2 Then
-                NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorInserted, donor))
-                Return DataTransactionTypes.dbInserted
-            Else
-                NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDataTransactionFailed, donor))
-                Return DataTransactionTypes.dbFailed
-            End If
+            'If retVal = 1 Then
+            '    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, donor))
+            '    Return DataTransactionTypes.dbUpdated
+            'ElseIf retVal = 2 Then
+            '    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorInserted, donor))
+            '    Return DataTransactionTypes.dbInserted
+            'Else
+            '    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDataTransactionFailed, donor))
+            '    Return DataTransactionTypes.dbFailed
+            'End If
         Catch ex As SqlException
             'MsgBox("SqlException: " & ex.Message)
             Dim errorMessages As New StringBuilder()

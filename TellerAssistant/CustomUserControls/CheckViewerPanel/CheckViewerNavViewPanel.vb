@@ -154,10 +154,12 @@ Public Class CheckViewerNavViewPanel
     End Sub
 
     Protected Sub SetNavButtonsEnabled(ByVal cnt As Integer, ByVal indx As Integer)
-        SetCheckNextEnabled(cnt, indx)
-        SetCheckPrevEnabled(cnt, indx)
-        SetCheckFirstEnabled(cnt, indx)
-        SetCheckLastEnabled(cnt, indx)
+        If cnt > -1 AndAlso indx > -1 Then
+            SetCheckNextEnabled(cnt, indx)
+            SetCheckPrevEnabled(cnt, indx)
+            SetCheckFirstEnabled(cnt, indx)
+            SetCheckLastEnabled(cnt, indx)
+        End If
     End Sub
 #End Region
 

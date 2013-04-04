@@ -10,19 +10,27 @@ Public Enum EventName
     evnmScannerEnableChanged
     evnmScannedImageReady
     evnmScannedImageTransmitted
-    evnmCheckStatusChanged
-    evnmCheckAmountChanged
-    evnmCheckInserted
-    evnmCheckUpdated
-    evnmCheckOnlyDeleted
-    evnmCheckDeleted
+    evnmDbCheckStatusChanged
+    evnmVwCheckStatusChanged
+    evnmDbCheckAmountChanged
+    evnmVwCheckAmountChanged
+    evnmDbCheckInserted
+    evnmVwCheckInserted
+    evnmDbCheckUpdated
+    evnmVwCheckUpdated
+    evnmDbCheckOnlyDeleted
+    evnmVWCheckOnlyDeleted
+    evnmDbCheckDeleted
+    evnmVwCheckDeleted
     evnmDbCheckDonorUpdated
     evnmDbCheckDonorInserted
     evnmVwDonorInfoChanged
-    envmCurrentQueueCheckChanged
-    evnmDataTransactionFailed
-    evnmCashClassAdded
-    evnmCashClassUpdated
+    evnmVwCurrentQueueCheckChanged
+    evnmDbTransactionFailed
+    evnmDbCashClassAdded
+    evnmVwCashClassAdded
+    evnmDbCashClassUpdated
+    evnmVwCashClassUpdated
     evnmDepositInfoChanged
     evnmBankInfoChanged
     evnmBankInfoDeleted
