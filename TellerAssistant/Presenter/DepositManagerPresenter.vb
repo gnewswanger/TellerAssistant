@@ -44,15 +44,15 @@ Public Class DepositManagerPresenter
         CType(View, IViewFrmMain).ListViewDeposits = Me._myModel.GetDepositSummaryList(CType(View, IViewFrmMain).FilterYTDIsChecked)
     End Sub
 
-    Public Sub SetDepositTicket(ByVal depDate As DateTime, ByVal depDesc As String, ByVal bank As BankAccountClass)
+    Public Sub OpenDepositTicket(ByVal depDate As DateTime, ByVal depDesc As String, ByVal bank As BankAccountClass)
         'Me._myModel.SetNewDepositTicket(depDate, depDesc, CType(View, IViewFrmMain).ScannerConnectionMode)
-        Me._myModel.SetNewDepositTicket(depDate, depDesc, bank)
+        Me._myModel.OpenDepositTicket(depDate, depDesc, bank)
         CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
     End Sub
 
-    Public Sub SetDepositTicket(ByVal depTicket As DepositTicketClass)
+    Public Sub OpenDepositTicket(ByVal depTicket As DepositTicketClass)
         'Me._myModel.SetDepositTicket(depTicket, CType(View, IViewFrmMain).ScannerConnectionMode)
-        Me._myModel.SetDepositTicket(depTicket)
+        Me._myModel.OpenDepositTicket(depTicket)
         CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
     End Sub
 
@@ -239,36 +239,31 @@ Public Class DepositManagerPresenter
                         CType(View, IViewFrmMain).CheckImageFlyout = Nothing
                     End If
                 End If
-                ''==evnmCheckAmountChanged()==
-                '==evnmCheckInserted()==
-                '==evnmCheckDeleted()==
+
             Case EventName.evnmVWCheckOnlyDeleted
 
             Case EventName.evnmVwCheckDeleted
 
-                '==evnmCheckUpdated()==
-                '==envmCurrentQueueCheckChanged()==
+
             Case EventName.evnmVwCurrentQueueCheckChanged
                 CType(View, IViewFrmMain).Checklist = GetCheckList()
                 CType(View, IViewFrmMain).DepositTotals = GetDepositTotals()
                 CType(View, IViewFrmMain).CheckImage = CType(NewEvent, CheckRegisterEventArgs)
-                '==evnmDataTransactionFailed()==
-            Case EventName.evnmDbTransactionFailed
-                MsgBox("Data Transaction failed. (Presenter)")
-                '==evnmCashClassAdded()==   '==evnmCashClassUpdated()==
+
             Case EventName.evnmVwCashClassAdded, EventName.evnmVwCashClassUpdated
                 CType(View, IViewFrmMain).CashText = (CType(NewEvent, CashEventArgs).Cash)
                 CType(View, IViewFrmMain).Checklist = GetCheckList()
                 CType(View, IViewFrmMain).DepositTotals = GetDepositTotals()
-                '==evnmDepositInfoChanged()==
-            Case EventName.evnmDepositInfoChanged
+
+            Case EventName.evnmVwDepositInfoChanged
                 CType(View, IViewFrmMain).DepositTicket = CType(NewEvent, DepositEventArgs).DepositTicket
-                '==evnmBankInfoChanged()==
+
             Case EventName.evnmBankInfoChanged
                 SetBankList()
-                '==evnmBankInfoDeleted()==
+
             Case EventName.evnmBankInfoDeleted
                 SetBankList()
+
             Case EventName.evnmVwDonorInfoChanged
                 CType(View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
 

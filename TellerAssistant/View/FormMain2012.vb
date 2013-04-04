@@ -369,11 +369,11 @@ Public Class FormMain2012
             Me.Cursor = Cursors.WaitCursor
             If btnGetTicket.Enabled Then
                 If lvDepositsList.SelectedItems.Count > 0 Then
-                    ctrlr.SetDepositTicket(CType(lvDepositsList.SelectedItems(0).Tag, DepositTicketClass))
+                    ctrlr.OpenDepositTicket(CType(lvDepositsList.SelectedItems(0).Tag, DepositTicketClass))
                     ctrlr.InitializeCashText()
                 ElseIf NewDepositIsChecked Then
                     If SelectedBank IsNot Nothing Then
-                        ctrlr.SetDepositTicket(dateDepositDate.Value, txtDepDescript.Text, SelectedBank)
+                        ctrlr.OpenDepositTicket(dateDepositDate.Value, txtDepDescript.Text, SelectedBank)
                     Else
                         TabControl1.SelectedIndex = TabControl1.TabPages.IndexOf(tpSelectDeposit)
                     End If

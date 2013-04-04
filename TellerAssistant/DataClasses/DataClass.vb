@@ -732,7 +732,7 @@ Public Class DataClass
         Try
             sqlCmd.Prepare()
             sqlCmd.ExecuteNonQuery()
-            NotifyObservers(Me, New DepositEventArgs(EventName.evnmDepositInfoChanged, ticket))
+            NotifyObservers(Me, New DepositEventArgs(EventName.evnmDBDepositInfoChanged, ticket))
             Return ticket
         Catch ex As Exception
             MsgBox("ExecuteNonQuery failed in UpdateDepositTicket. " + ex.Message)
@@ -759,7 +759,7 @@ Public Class DataClass
         Try
             sqlCmd.Prepare()
             sqlCmd.ExecuteNonQuery()
-            NotifyObservers(Me, New DepositEventArgs(EventName.evnmDepositInfoChanged, ticket))
+            NotifyObservers(Me, New DepositEventArgs(EventName.evnmDBDepositInfoChanged, ticket))
             Return GetDepositTicket(num, True)
         Catch ex As Exception
             MsgBox("ExecuteNonQuery failed in InsertDepositTicket. " + ex.Message)

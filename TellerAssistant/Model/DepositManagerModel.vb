@@ -7,7 +7,9 @@ Imports System.Xml
 ''' <remarks>Main model</remarks>
 ''' <author>Galen Newswanger</author>
 Public Class DepositManagerModel
-    Inherits mvcLibrary.mvcAbstractModel
+    Implements mvcLibrary.IObserver
+
+    'Inherits mvcLibrary.mvcAbstractModel
 
     Event AttachObserverCallback(ByVal observed As mvcLibrary.IObserver)
 
@@ -109,12 +111,12 @@ Public Class DepositManagerModel
         End If
     End Function
 
-    Public Function SetNewDepositTicket(ByVal depDate As DateTime, ByVal depDesc As String, ByVal bank As BankAccountClass) As DepositTicketClass
+    Public Function OpenDepositTicket(ByVal depDate As DateTime, ByVal depDesc As String, ByVal bank As BankAccountClass) As DepositTicketClass
         Dim ticket As DepositTicketClass = New DepositTicketClass(_db.GetUniqueNo, depDate, depDesc, bank)
-        Return SetDepositTicket(ticket)
+        Return OpenDepositTicket(ticket)
     End Function
 
-    Public Function SetDepositTicket(ByVal ticket As DepositTicketClass) As DepositTicketClass
+    Public Function OpenDepositTicket(ByVal ticket As DepositTicketClass) As DepositTicketClass
         Me._depTicket = Me._db.SetDepositTicket(ticket)
         Me._chkRegister = New TellerAssistant2012.CheckRegisterClass()
         Me._chkRegister.AttachObserver(Me)
@@ -129,10 +131,10 @@ Public Class DepositManagerModel
     End Function
 
     Public Sub CloseDepositTicket()
-        If Me.IsAttached(CType(Me._checkScanner, mvcLibrary.IObserver)) Then
-            Me.DetachObserver(CType(Me._checkScanner, mvcLibrary.IObserver))
-        End If
         Me.CloseScanner()
+        If Me._db.IsAttached(CType(Me._chkRegister, mvcLibrary.IObserver)) Then
+            Me._db.DetachObserver(CType(Me._chkRegister, mvcLibrary.IObserver))
+        End If
         Me._chkRegister = Nothing
     End Sub
 
@@ -210,7 +212,6 @@ Public Class DepositManagerModel
 
     Public Sub ResetCheck(ByVal queue As CheckStatus)
         Me._chkRegister.ResetCheck(queue)
-        'Me.NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _chkRegister.CurrentQueueCheck(queue), _chkRegister.CurrentQueueCheck(queue), _chkRegister.CheckQueueCount(queue), _chkRegister.CheckQueueIndex(queue)))
     End Sub
 
     Public Sub UpdateCheckData(ByVal chkArgs As CheckDataEventArgs)
@@ -378,15 +379,121 @@ Public Class DepositManagerModel
     End Sub
 
 #Region "Baseclass Overrides"
-    Public Overrides Sub UpdateData(ByVal NewEvent As mvcLibrary.mvcEventArgsBase)
+    'Public Overrides Sub UpdateData(ByVal NewEvent As mvcLibrary.mvcEventArgsBase)
+    '    Try
+    '        Select Case CType(NewEvent, AbstractEventArgs).Name
+    '            '==evnmScannerStatusChanged==
+    '            Case EventName.evnmScannerStatusChanged
+    '                NotifyObservers(Me, NewEvent)
+    '            Case EventName.evnmScannerEnableChanged
+    '                NotifyObservers(Me, NewEvent)
+    '                '==evnmScannedImageReady==
+    '            Case EventName.evnmScannedImageReady
+    '                Dim errStatus As String = CType(NewEvent, StatusEventArgs).micrText
+    '                errStatus = errStatus.Substring(errStatus.LastIndexOf("S"), 3)
+    '                Dim fname As String = CType(NewEvent, StatusEventArgs).micrText
+    '                fname = fname.Substring(0, fname.LastIndexOf("S"))
+    '                Try
+    '                    If Not (errStatus = "S00" Or errStatus = "S11") Then
+    '                        CheckScannerErrorStatus(errStatus, fname)
+    '                    End If
+    '                    Try
+    '                        Dim invalidChars As Char() = Path.GetInvalidFileNameChars
+    '                        Dim editFname As String = fname
+    '                        For i As Integer = 0 To fname.Count - 1
+    '                            If invalidChars.Contains(fname(i)) Then
+    '                                Dim player As New System.Media.SoundPlayer(My.Resources.NOTIFY)
+    '                                player.Play()
+    '                                Dim invalChar As Char = fname(i)
+    '                                Dim newChar As Char
+    '                                WriteToErrorLog("DepositManagerModel.vb", "Invalid Characters Found", invalChar, editFname)
+    '                                Do
+    '                                    newChar = InputBox("The scanner could not read some characters on the check." + vbCr _
+    '                                             + "Please enter character to replace '" + invalChar + "' in sequence. " + editFname.Substring(0, i + 1), "Unrecognized characters")(0)
+
+    '                                Loop Until Not invalidChars.Contains(newChar) OrElse newChar = Nothing
+    '                                If newChar = Nothing Then
+    '                                    MsgBox("Check scan has been cancelled.  Please rescan this check.")
+    '                                    _checkScanner.EnableScanner = True
+    '                                    Exit Sub
+    '                                ElseIf Not invalidChars.Contains(newChar) Then
+    '                                    editFname = editFname.Remove(i, 1)
+    '                                    editFname = editFname.Insert(i, newChar)
+    '                                End If
+    '                            End If
+    '                        Next i
+    '                        fname = editFname + ".tif"
+    '                        Me._checkScanner.TransmitImage(fname.Trim)
+    '                        'CType(NewEvent, StatusEventArgs).micrText = editFname + ".tif"
+    '                        'Me._checkScanner.TransmitImage(Trim(CType(NewEvent, StatusEventArgs).micrText))
+    '                        Me.NotifyObservers(Me, NewEvent)
+    '                    Catch excpt As Exception
+    '                        MsgBox("Failed search for invalid scanned characters. " & excpt.Message)
+    '                    End Try
+    '                Catch ex As Exception
+    '                    MsgBox("Failed Select Case. Scan errorStatus = " & errStatus & ". " & ex.Message)
+    '                End Try
+    '                '==evnmScannedImageTransmitted==
+    '            Case EventName.evnmScannedImageTransmitted
+    '                Dim strs() As String = Trim(CType(NewEvent, StatusEventArgs).micrText).Split(New [Char]() {"T"c, "A"c, "S"c, "."c})
+    '                Dim chk As New ChecksClass(Me._depTicket.DepositNumber, strs(1), strs(2), strs(3), Me._depTicket.DepositDate)
+    '                chk.ImageFile = CType(NewEvent, StatusEventArgs).micrText
+    '                chk.ImageFullPath = Me._depTicket.CheckImagePath
+    '                chk.ManualCheck = False
+    '                Me._db.SetChecksClass(New CheckDataEventArgs(EventName.evnmCheckSearchResult, chk, chk), False)
+    '                If CType(NewEvent, StatusEventArgs).chkImage IsNot Nothing Then
+    '                    Dim args As New CheckDataEventArgs(EventName.evnmScannedImageTransmitted, chk, chk, CType(NewEvent, StatusEventArgs).chkImage)
+    '                    NotifyObservers(Me, args)
+    '                Else
+    '                    Dim args As New CheckDataEventArgs(EventName.evnmScannedImageTransmitted, chk, chk)
+    '                    NotifyObservers(Me, args)
+    '                End If
+
+    '            Case EventName.evnmDbCheckOnlyDeleted
+    '                NotifyObservers(Me, NewEvent)
+    '                '==evnmCheckDeleted==
+    '            Case EventName.evnmDbCheckDeleted
+    '                Try
+    '                    File.Delete(CType(NewEvent, CheckDataEventArgs).Check.ImageFullPath + CType(NewEvent, CheckDataEventArgs).Check.ImageFile)
+    '                    NotifyObservers(Me, NewEvent)
+    '                Catch ex As Exception
+    '                    MsgBox("Delete check image file failed. " + ex.Message)
+    '                End Try
+
+    '            Case EventName.evnmDbTransactionFailed
+    '                MsgBox("Data transaction failed. (Model)")
+    '                '==evnmDepositInfoChanged==
+    '            Case EventName.evnmDBDepositInfoChanged
+    '                NotifyObservers(Me, NewEvent)
+    '                '==evnmCashClassAdded==   '==evnmCashClassUpdated==
+    '            Case EventName.evnmDbCashClassAdded, EventName.evnmDbCashClassUpdated
+    '                NotifyObservers(Me, NewEvent)
+    '                '==evnmBankInfoChanged==
+    '            Case EventName.evnmBankInfoChanged
+    '                NotifyObservers(Me, NewEvent)
+    '                '==evnmBankInfoDeleted==
+    '            Case EventName.evnmBankInfoDeleted
+    '                NotifyObservers(Me, NewEvent)
+
+    '            Case Else
+
+    '        End Select
+    '    Catch ex As Exception
+    '        MsgBox("Exception caught in DepositManagerModel.UpdateData method. " + ex.Message)
+    '    End Try
+    'End Sub
+
+#End Region
+
+    Public Sub UpdateData1(NewEvent As mvcLibrary.mvcEventArgsBase) Implements mvcLibrary.IObserver.UpdateData
         Try
             Select Case CType(NewEvent, AbstractEventArgs).Name
                 '==evnmScannerStatusChanged==
-                Case EventName.evnmScannerStatusChanged
-                    NotifyObservers(Me, NewEvent)
-                Case EventName.evnmScannerEnableChanged
-                    NotifyObservers(Me, NewEvent)
-                    '==evnmScannedImageReady==
+                'Case EventName.evnmScannerStatusChanged
+                '    NotifyObservers(Me, NewEvent)
+                'Case EventName.evnmScannerEnableChanged
+                '    NotifyObservers(Me, NewEvent)
+                '==evnmScannedImageReady==
                 Case EventName.evnmScannedImageReady
                     Dim errStatus As String = CType(NewEvent, StatusEventArgs).micrText
                     errStatus = errStatus.Substring(errStatus.LastIndexOf("S"), 3)
@@ -448,31 +555,6 @@ Public Class DepositManagerModel
                         NotifyObservers(Me, args)
                     End If
 
-                Case EventName.evnmDbCheckOnlyDeleted
-                    NotifyObservers(Me, NewEvent)
-                    '==evnmCheckDeleted==
-                Case EventName.evnmDbCheckDeleted
-                    Try
-                        File.Delete(CType(NewEvent, CheckDataEventArgs).Check.ImageFullPath + CType(NewEvent, CheckDataEventArgs).Check.ImageFile)
-                        NotifyObservers(Me, NewEvent)
-                    Catch ex As Exception
-                        MsgBox("Delete check image file failed. " + ex.Message)
-                    End Try
-
-                Case EventName.evnmDbTransactionFailed
-                    MsgBox("Data transaction failed. (Model)")
-                    '==evnmDepositInfoChanged==
-                Case EventName.evnmDepositInfoChanged
-                    NotifyObservers(Me, NewEvent)
-                    '==evnmCashClassAdded==   '==evnmCashClassUpdated==
-                Case EventName.evnmDbCashClassAdded, EventName.evnmDbCashClassUpdated
-                    NotifyObservers(Me, NewEvent)
-                    '==evnmBankInfoChanged==
-                Case EventName.evnmBankInfoChanged
-                    NotifyObservers(Me, NewEvent)
-                    '==evnmBankInfoDeleted==
-                Case EventName.evnmBankInfoDeleted
-                    NotifyObservers(Me, NewEvent)
 
                 Case Else
 
@@ -482,5 +564,4 @@ Public Class DepositManagerModel
         End Try
     End Sub
 
-#End Region
 End Class

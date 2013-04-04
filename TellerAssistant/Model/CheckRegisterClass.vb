@@ -1,4 +1,6 @@
-﻿Public Class CheckRegisterClass
+﻿Imports System.IO
+
+Public Class CheckRegisterClass
     Inherits mvcLibrary.mvcAbstractModel
 
     Private checkEntryQueue As TellerAssistant2012.CheckRegisterQueueClass
@@ -220,10 +222,12 @@
                 If Not AddCheck(CType(NewEvent, CheckDataEventArgs)) Then
                     MsgBox("Failed to add check to queue, " + CType(NewEvent, CheckDataEventArgs).Check.Status.ToString)
                 End If
+
             Case EventName.evnmDbCheckDeleted, EventName.evnmDbCheckOnlyDeleted
                 If Not Me.RemoveCheck(CType(NewEvent, CheckDataEventArgs)) Then
                     MsgBox("Failed to remove check from queue.")
                 End If
+
             Case EventName.evnmDbCheckUpdated, EventName.evnmDbCheckStatusChanged
                 If Not Me.RemoveCheck(CType(NewEvent, CheckDataEventArgs)) Then
                     MsgBox("Failed to remove check from queue.")
@@ -231,8 +235,35 @@
                 If Not AddCheck(CType(NewEvent, CheckDataEventArgs)) Then
                     MsgBox("Failed to add check to queue, " + CType(NewEvent, CheckDataEventArgs).Check.Status.ToString)
                 End If
+
             Case EventName.evnmDbCheckDonorInserted, EventName.evnmDbCheckDonorUpdated
                 Me.UpdateDonorInfo(CType(NewEvent, CheckDataEventArgs))
+
+            Case EventName.evnmDBDepositInfoChanged
+                Me.NotifyObservers(Me, New DepositEventArgs(EventName.evnmVwDepositInfoChanged, CType(NewEvent, DepositEventArgs).DepositTicket))
+
+            Case EventName.evnmDbCheckOnlyDeleted
+                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmVWCheckOnlyDeleted, CType(NewEvent, CheckDataEventArgs).Check, CType(NewEvent, CheckDataEventArgs).Check))
+
+            Case EventName.evnmDbCheckDeleted
+                Try
+                    File.Delete(CType(NewEvent, CheckDataEventArgs).Check.ImageFullPath + CType(NewEvent, CheckDataEventArgs).Check.ImageFile)
+                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmVwCheckDeleted, CType(NewEvent, CheckDataEventArgs).Check, CType(NewEvent, CheckDataEventArgs).Check))
+                Catch ex As Exception
+                    MsgBox("Delete check image file failed. " + ex.Message)
+                End Try
+
+            Case EventName.evnmBankInfoChanged
+                NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmBankInfoDeleted, CType(NewEvent, BankAccountEventArgs).BankAccount))
+
+            Case EventName.evnmBankInfoDeleted
+                NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmBankInfoDeleted, CType(NewEvent, BankAccountEventArgs).BankAccount))
+
+            Case EventName.evnmDbCashClassAdded, EventName.evnmDbCashClassUpdated
+                NotifyObservers(Me, New CashEventArgs(EventName.evnmVwCashClassAdded, CType(NewEvent, CashEventArgs).Cash))
+
+            Case EventName.evnmDbTransactionFailed
+                MsgBox("Data transaction failed. (Model)")
 
         End Select
     End Sub

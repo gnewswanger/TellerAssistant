@@ -31,7 +31,8 @@ Public Enum EventName
     evnmVwCashClassAdded
     evnmDbCashClassUpdated
     evnmVwCashClassUpdated
-    evnmDepositInfoChanged
+    evnmDBDepositInfoChanged
+    evnmVwDepositInfoChanged
     evnmBankInfoChanged
     evnmBankInfoDeleted
     evnmCheckSearchRequest
