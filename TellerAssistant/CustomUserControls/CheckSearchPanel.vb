@@ -47,7 +47,7 @@ Public Class CheckSearchPanel
 
     Public Property CurrentCheck() As CheckRegisterEventArgs Implements IViewChecksPanel.CurrentCheck
         Get
-            Return New CheckRegisterEventArgs(EventName.evnmCheckSearchResult, Me._currCheck, Nothing, Nothing)
+            Return New CheckRegisterEventArgs(EventName.evnmCheckSearchResult, Me._currCheck, Me._currCheck, -1, -1)
         End Get
         Set(ByVal value As CheckRegisterEventArgs)
             If value IsNot Nothing Then
@@ -255,7 +255,7 @@ Public Class CheckSearchPanel
 
     Private Sub btnCheckReset_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCheckReset.Click
         If MsgBox("You are about to reset to original settings. You will loose any changes. Do you want to continue?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-            Me.CurrentCheck = New CheckRegisterEventArgs(EventName.evnmCheckSearchRequest, Nothing, Nothing, 0, 0)
+            Me.CurrentCheck = New CheckRegisterEventArgs(EventName.evnmCheckSearchRequest, Nothing, Nothing, -1, -1)
             RaiseEvent CheckviewResetClick(sender, e)
             Me.ImageViewerPanel1.Image = Nothing
             Me.groupSelectCriteria.Enabled = True

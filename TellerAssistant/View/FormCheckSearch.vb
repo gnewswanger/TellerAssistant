@@ -83,7 +83,7 @@ Public Class FormCheckSearch
         ToolTip1.SetToolTip(Me.CheckSearchPanel1.TabControl1, "Enter data for at least 1 field.")
         Me.ctrlr = New CheckSearchPresenter(Me, aModel)
 
-        Me.CheckSearchPanel1.CurrentCheck = New CheckRegisterEventArgs(EventName.evnmCheckSearchResult, New ChecksClass("", "", "", ""), Nothing, Nothing)
+        Me.CheckSearchPanel1.CurrentCheck = New CheckRegisterEventArgs(EventName.evnmCheckSearchResult, New ChecksClass("", "", "", ""), Nothing, -1, -1)
     End Sub
 
     Private Sub frmCheckSearch_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

@@ -128,6 +128,14 @@ Public Class DepositManagerModel
         Return _depTicket
     End Function
 
+    Public Sub CloseDepositTicket()
+        If Me.IsAttached(CType(Me._checkScanner, mvcLibrary.IObserver)) Then
+            Me.DetachObserver(CType(Me._checkScanner, mvcLibrary.IObserver))
+        End If
+        Me.CloseScanner()
+        Me._chkRegister = Nothing
+    End Sub
+
     Public Function GetChecksTotal() As Single
         Dim retVal As Single
         If Not _depTicket Is Nothing Then

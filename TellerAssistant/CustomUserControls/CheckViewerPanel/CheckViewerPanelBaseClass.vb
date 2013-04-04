@@ -53,7 +53,7 @@ Public Class CheckViewerPanelBaseClass
 
     Public Property CurrentCheckArgs() As CheckRegisterEventArgs Implements IViewChecksPanel.CurrentCheck
         Get
-            Return New CheckRegisterEventArgs(EventName.evnmCheckSearchResult, _origCheck, _updatedCheck, Nothing, Nothing)
+            Return New CheckRegisterEventArgs(EventName.evnmCheckSearchResult, _origCheck, _updatedCheck, -1, -1)
         End Get
         Set(ByVal value As CheckRegisterEventArgs)
             If value IsNot Nothing Then

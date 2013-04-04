@@ -56,6 +56,10 @@ Public Class DepositManagerPresenter
         CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
     End Sub
 
+    Public Sub CloseDepositTicket()
+        Me._myModel.CloseDepositTicket()
+    End Sub
+
     Private Sub _myModel_AttachObserverCallback(observed As mvcLibrary.IObserver) Handles _myModel.AttachObserverCallback
         If Not CType(observed, mvcLibrary.mvcAbstractModel).IsAttached(Me) Then
             CType(observed, mvcLibrary.mvcAbstractModel).AttachObserver(Me)
