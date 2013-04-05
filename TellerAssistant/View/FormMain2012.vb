@@ -335,8 +335,6 @@ Public Class FormMain2012
         ctrlr.SetBankList()
     End Sub
 
-#End Region
-
     Private Sub SetSelectionPage()
         For i As Integer = TabControl1.TabPages.Count - 1 To 0 Step -1
             If i > 0 Then
@@ -345,6 +343,8 @@ Public Class FormMain2012
             TabControl1.SelectedIndex = 0
         Next
     End Sub
+
+#End Region
 
     Private Sub SetDonorList(ByVal list As List(Of DonorClass))
         Me.CheckViewEditPanel1.DonorList = list

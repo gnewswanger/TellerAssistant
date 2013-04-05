@@ -22,14 +22,6 @@ Public Class DataClass
         conn = New SqlConnection(connString)
     End Sub
 
-
-#Region "Baseclass Overrides"
-    Public Overrides Sub UpdateData(ByVal NewEvent As mvcLibrary.mvcEventArgsBase)
-
-    End Sub
-
-#End Region
-
 #Region "Bank Account Methods - dbo.Bank"
 
     Public Function BankExists(ByVal bnkId As String, ByVal leaveConnOpen As Boolean) As Boolean
@@ -706,7 +698,6 @@ Public Class DataClass
         End Try
         Return retVal
     End Function
-
 
     Public Function SetDepositTicket(ByVal ticket As DepositTicketClass) As DepositTicketClass
         If DepositExists(ticket, True) Then
@@ -1536,7 +1527,7 @@ Public Class DataClass
 
     Public Function GetDonorList() As List(Of DonorClass)
         Dim retList As New List(Of DonorClass)
-        Dim sqlSelect As String = "Execute  [spGetDonorList2]"
+        Dim sqlSelect As String = "Execute  [spGetDonorInfo2]"
         Dim sqlCmd As New SqlCommand(sqlSelect, Me.conn)
         If Not Me.conn.State = ConnectionState.Open Then
             Me.conn.Open()
@@ -1564,10 +1555,11 @@ Public Class DataClass
                 Else
                     retClass.Account = rdr.GetString(8)
                 End If
+                retList.Add(retClass)
             End While
             rdr.Close()
         Catch ex As Exception
-            MsgBox("GetChecksClass SqlDataReader failed. " + ex.Message)
+            MsgBox("GetDonorList [spGetDonorInfo2] SqlDataReader failed. " + ex.Message)
         Finally
             conn.Close()
         End Try
@@ -1792,16 +1784,7 @@ Public Class DataClass
             sqlCmd.Prepare()
             sqlCmd.ExecuteNonQuery()
             Dim retVal As Integer = CInt(sqlCmd.Parameters("@RetStatus").Value)
-            'If retVal = 1 Then
-            '    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, donor))
-            '    Return DataTransactionTypes.dbUpdated
-            'ElseIf retVal = 2 Then
-            '    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorInserted, donor))
-            '    Return DataTransactionTypes.dbInserted
-            'Else
-            '    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDataTransactionFailed, donor))
-            '    Return DataTransactionTypes.dbFailed
-            'End If
+            
         Catch ex As SqlException
             'MsgBox("SqlException: " & ex.Message)
             Dim errorMessages As New StringBuilder()
@@ -1823,4 +1806,12 @@ Public Class DataClass
     End Function
 
 #End Region
+
+#Region "Baseclass Overrides"
+    Public Overrides Sub UpdateData(ByVal NewEvent As mvcLibrary.mvcEventArgsBase)
+
+    End Sub
+
+#End Region
+
 End Class

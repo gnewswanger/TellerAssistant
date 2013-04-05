@@ -20,7 +20,7 @@ Public MustInherit Class mvcAbstractModel
         If Not Me._myObservers Is Nothing Then
             objObject = Observer
             If Me._myObservers.Contains(CStr(objObject.GetHashCode)) Then
-                Me._myObservers.Remove(objObject.GetHashCode)
+                Me._myObservers.Remove(CStr(objObject.GetHashCode))
             End If
         End If
     End Sub
@@ -45,7 +45,7 @@ Public MustInherit Class mvcAbstractModel
         End If
     End Sub
 
-    Public MustOverride Sub UpdateData(ByVal NewEvent As mvcEventArgsBase) Implements IObserver.UpdateData
+    Public MustOverride Sub UpdateData(ByVal NotifyEvent As mvcEventArgsBase) Implements IObserver.UpdateData
 
     Public Sub New()
         Me._myObservers = New Collection

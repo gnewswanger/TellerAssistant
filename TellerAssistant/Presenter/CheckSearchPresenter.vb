@@ -1,7 +1,12 @@
-﻿Public Class CheckSearchPresenter
+﻿''' <summary>
+''' <file>CheckSearchPresenter.vb</file>
+''' This class is the MVC controller (presenter) for the IViewFrmCheckSearch interface used in 
+''' FormCheckSearch.vb
+''' </summary>
+''' <author>Galen Newswanger</author>
+''' <remarks></remarks>
+Public Class CheckSearchPresenter
     Inherits mvcLibrary.mvcAbstractPresenter
-
-    'Private _searchRegister As CheckSearchRegisterClass
 
     Public ReadOnly Property ActiveDepositNo() As String
         Get
