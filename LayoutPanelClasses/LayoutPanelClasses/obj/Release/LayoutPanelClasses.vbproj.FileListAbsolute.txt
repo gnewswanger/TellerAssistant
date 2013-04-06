@@ -38,7 +38,6 @@ C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelCl
 C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.pdb
 C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\bin\Release\mvcLibrary.xml
-C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.vbprojResolveAssemblyReference.cache
 C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.GraphicLayoutPanel.resources
 C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.Resources.resources
 C:\Users\Galen\Documents\GitHub\TellerAssistant\LayoutPanelClasses\LayoutPanelClasses\obj\Release\LayoutPanelClasses.vbproj.GenerateResource.Cache

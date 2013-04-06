@@ -114,13 +114,47 @@ Public Class FormCheckSearch
         rpt.AddTitleTextLine("Check Search Results", 0, params, True)
 
         params.TextFont = New Font("Times New Roman", 10, FontStyle.Bold)
-        rpt.AddTitleTextLine("From " + CStr(Me.CheckSearchPanel1.dtpFromDate.Value) + " to " + CStr(Me.CheckSearchPanel1.dtpToDate.Value), , params, True)
+        'rpt.AddTitleTextLine("From " + CStr(Me.CheckSearchPanel1.dtpFromDate.Value) + " to " + CStr(Me.CheckSearchPanel1.dtpToDate.Value), , params, True)
+
+        Dim criteria As String = String.Empty
+        If Me.CheckSearchPanel1.SearchMode = CheckSearchPanel.SearchModes.smByDate Then
+            rpt.AddTitleTextLine("From " + CStr(Me.CheckSearchPanel1.dtpFromDate.Value) + " to " + CStr(Me.CheckSearchPanel1.dtpToDate.Value), , params, True)
+        ElseIf Me.CheckSearchPanel1.SearchMode = CheckSearchPanel.SearchModes.smByDeposit Then
+            rpt.AddTitleTextLine("Search Criteria: Deposit Number = " + Me.CheckSearchPanel1.txtSearchDepNo.Text.Trim, , params, True)
+            criteria = ""
+        ElseIf Me.CheckSearchPanel1.SearchMode = CheckSearchPanel.SearchModes.smByIndividual Then
+            rpt.AddTitleTextLine("From " + CStr(Me.CheckSearchPanel1.dtpFromDateIndiv.Value) + " to " + CStr(Me.CheckSearchPanel1.dtpToDateIndiv.Value), , params, True)
+            criteria = "Search Criteria: Transit = " + Me.CheckSearchPanel1.txtSearchCheckBank.Text.Trim _
+                                  + ";  Check No. = " + Me.CheckSearchPanel1.txtSearchCheckNo.Text.Trim _
+                                  + ";  Account = " + Me.CheckSearchPanel1.txtSearchCheckAcct.Text.Trim _
+                                  + ";  Check Amount = " + String.Format("C", Me.CheckSearchPanel1.txtSearchCheckAmt.Text) _
+                                  + ";  Donor = " + Me.CheckSearchPanel1.txtSearchCheckDonor.Text.Trim
+        End If
+
+        If Me.CheckSearchPanel1.SearchMode = CheckSearchPanel.SearchModes.smByDeposit Then
+            If Me.CheckSearchPanel1.checkbxFilterReceiptStatus.Checked Then
+                If Me.CheckSearchPanel1.radioDepReceiptNotSent.Checked Then
+                    criteria += " Filtered by Receipt Requests Not Sent"
+                ElseIf Me.CheckSearchPanel1.radioDepReceiptSent.Checked Then
+                    criteria += " Filtered by Receipt Requests Sent"
+                Else
+                    criteria += " Filtered by All Receipt Requests"
+                End If
+            End If
+        ElseIf Me.CheckSearchPanel1.SearchMode = CheckSearchPanel.SearchModes.smByDate Then
+            If Me.CheckSearchPanel1.checkbxDateFilterReceiptStatus.Checked Then
+                If Me.CheckSearchPanel1.radioRequestsNotSent.Checked Then
+                    criteria += " Filtered by Receipt Requests Not Sent"
+                ElseIf Me.CheckSearchPanel1.radioRequestsSent.Checked Then
+                    criteria += " Filtered by Receipt Requests Sent"
+                Else
+                    criteria += " Filtered by All Receipt Requests"
+                End If
+            End If
+        End If
         params.TextFont = New Font("Times New Roman", 8, FontStyle.Bold)
-        rpt.AddTitleTextLine("Search Criteria: Transit = " + Me.CheckSearchPanel1.txtSearchCheckBank.Text.Trim _
-                             + ";  Account = " + Me.CheckSearchPanel1.txtSearchCheckAcct.Text.Trim _
-                             + ";  Check No. = " + Me.CheckSearchPanel1.txtSearchCheckNo.Text.Trim _
-                             + ";  Check Amount = " + String.Format("C", Me.CheckSearchPanel1.txtSearchCheckAmt.Text) _
-                             + ";  Donor = " + Me.CheckSearchPanel1.txtSearchCheckDonor.Text.Trim, , params, True)
+        rpt.AddTitleTextLine(criteria, , params, True)
+
         rpt.PrintCheckList(lvSearchResults.Items)
 
     End Sub

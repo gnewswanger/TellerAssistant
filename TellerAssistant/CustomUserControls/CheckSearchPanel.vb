@@ -23,7 +23,7 @@ Public Class CheckSearchPanel
     Public Event CheckviewApplyClick As GenericCallback
     Public Event CheckviewResetClick As GenericCallback
 
-    Private Enum SearchMode
+    Public Enum SearchModes
         smByDeposit
         smByDate
         smByIndividual
@@ -32,7 +32,7 @@ Public Class CheckSearchPanel
     Private _currCheck As ChecksClass
     Private _updatedCheck As ChecksClass
     Private _myPages(4) As TabPage
-    Private _searchMode As SearchMode
+    Private _searchMode As SearchModes
 
 #Region "Class Properties"
 
@@ -84,6 +84,11 @@ Public Class CheckSearchPanel
         End Set
     End Property
 
+    Public ReadOnly Property SearchMode As CheckSearchPanel.SearchModes
+        Get
+            Return Me._searchMode
+        End Get
+    End Property
 #End Region
 
 #Region "Set Current Check"
@@ -510,10 +515,10 @@ Public Class CheckSearchPanel
         Next
     End Sub
 
-    Private Function GenerateQueryString(mode As SearchMode) As String
+    Private Function GenerateQueryString(mode As SearchModes) As String
         Dim retString As String = String.Empty
         Select Case True
-            Case mode = SearchMode.smByIndividual
+            Case mode = SearchModes.smByIndividual
                 retString = " @StartDate = '" + Me.dtpFromDateIndiv.Value.ToShortDateString + "', " _
                  + " @EndDate = '" + Me.dtpToDateIndiv.Value.ToShortDateString + "'"
                 If ((Me.ckbxAmount.Checked) AndAlso (CSng(Me.txtSearchCheckAmt.Text.Trim) > 0)) Then
@@ -546,14 +551,14 @@ Public Class CheckSearchPanel
                     End If
                     retString += " @DonorNo = '" + Me.txtSearchCheckDonor.Text.Trim + "'"
                 End If
-            Case mode = SearchMode.smByDeposit
+            Case mode = SearchModes.smByDeposit
                 If Me.txtSearchDepNo.Text <> String.Empty Then
                     retString = " @DepositNo = '" + Me.txtSearchDepNo.Text.Trim + "'"
                     If Me.checkbxFilterReceiptStatus.Checked Then
                         retString += ", @ReceiptStatus = " & Me.SelectedReceiptRequestStatus(tpSearchDeposit)
                     End If
                 End If
-            Case mode = SearchMode.smByDate
+            Case mode = SearchModes.smByDate
                 retString = " @StartDate = '" + Me.dtpFromDate.Value.ToShortDateString + "', " _
                  + " @EndDate = '" + Me.dtpToDate.Value.ToShortDateString + "'"
                 If Me.checkbxDateFilterReceiptStatus.Checked Then
@@ -609,11 +614,11 @@ Public Class CheckSearchPanel
 
     Private Sub TabControl1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TabControl1.SelectedIndexChanged
         If Me.TabControl1.SelectedTab Is tpSearchDeposit Then
-            Me._searchMode = SearchMode.smByDeposit
+            Me._searchMode = SearchModes.smByDeposit
         ElseIf Me.TabControl1.SelectedTab Is tpSearchDate Then
-            Me._searchMode = SearchMode.smByDate
+            Me._searchMode = SearchModes.smByDate
         ElseIf Me.TabControl1.SelectedTab Is tpIndivCriteria Then
-            Me._searchMode = SearchMode.smByIndividual
+            Me._searchMode = SearchModes.smByIndividual
         End If
         Me.IsDirty()
     End Sub

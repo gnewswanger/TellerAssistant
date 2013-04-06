@@ -4,9 +4,15 @@ Imports System.Media
 Imports System.IO
 Imports System.Drawing
 Imports System.Drawing.Drawing2D
-
+''' <summary>
+''' 
+''' </summary>
+''' <author>Galen Newswanger</author>
+''' <remarks></remarks>
 Public Class FormMain2012
     Implements IViewFrmMain
+
+#Region "Public Delegates and Private Class Variables"
 
     Delegate Sub SetTextCallback(ByVal text As String)
     Delegate Sub SetConnectionTypeCallback(ByVal value As ConnectionType)
@@ -21,6 +27,8 @@ Public Class FormMain2012
     Private ctrlr As DepositManagerPresenter
     Private myPages(2) As TabPage
     Private isActivated As Boolean = False
+
+#End Region
 
 #Region "Implemented Interface Methods"
 
@@ -346,12 +354,15 @@ Public Class FormMain2012
 
 #End Region
 
+#Region "Donor Methods"
+
     Private Sub SetDonorList(ByVal list As List(Of DonorClass))
         Me.CheckViewEditPanel1.DonorList = list
         Me.CheckViewerAddPanel1.DonorList = list
         Me.CheckviewerEntryPanel1.DonorList = list
     End Sub
 
+#End Region
 
 #Region "User Control Changed Methods"
 
@@ -830,6 +841,83 @@ Public Class FormMain2012
     End Sub
 
 
+    Private Sub ctxmnuLVChecksRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ctxmnuLVChecksRefresh.Click
+        Me.Checklist = ctrlr.GetCheckList()
+    End Sub
+
+    Private Sub ctxmnuLVChecksEdit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ctxmnuLVChecksEdit.Click
+        mnuEditSelectedCheck_Click(sender, e)
+    End Sub
+
+    Private Sub ctxmnuLVChecksView_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ctxmnuLVChecksView.Click
+        Me.lvChecklist_DoubleClick(sender, e)
+    End Sub
+
+    Private Sub toolMnuDelayText_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles toolMnuDelayText.TextChanged
+        ctrlr.SetScannerDelay(CInt(toolMnuDelayText.Text))
+    End Sub
+
+    Private Sub ckbxFilterYTD_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckbxFilterYTD.CheckedChanged
+        If ctrlr IsNot Nothing Then
+            ctrlr.SetDepositSummaryList()
+        End If
+    End Sub
+
+    Private Sub mnuPrintFormSetup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrintFormSetup.Click
+        Dim dlg As New FormPrintPageSetup
+        dlg.ShowDialog()
+
+    End Sub
+
+    Private Sub mnuPrintReport_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrintReport.Click
+
+    End Sub
+
+    Private Sub mnuViewExceptionLog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuViewExceptionLog.Click
+        Dim dlg As FormLogViewer
+        dlg = New FormLogViewer(Application.StartupPath & "\Log\Exceptions.log")
+        dlg.ShowDialog()
+    End Sub
+
+    Private Sub mnuLoggingOn_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuLoggingOn.Click
+        ctrlr.ToggleLogging()
+    End Sub
+
+    Private Sub mnuEditAppSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuEditAppSettings.Click
+        Dim dlg As New DialogEditAppSettings
+        dlg.ShowDialog()
+    End Sub
+
+    Private Sub toolBtnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles toolBtnExit.Click
+        Close()
+    End Sub
+
+    Private Sub mnuAbout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAbout.Click
+        With New FormSplash
+            .Label1.Visible = True
+            .ShowDialog()
+        End With
+    End Sub
+
+
+    Private Sub mnuManageImageFiles_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuManageImageFiles.Click
+        Dim dlg As New FileManagerUtility.FormFileManager
+        dlg.ShowDialog()
+
+    End Sub
+
+    Private Sub mnuPageSetup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPageSetup.Click
+        Dim dlg As New PageSetupDialog
+        If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
+
+
+        End If
+    End Sub
+
+    Private Sub mnuPrintReceipts_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrintReceipts.Click
+
+    End Sub
+
 #End Region
 
 #Region "Control Callback Methods"
@@ -1004,22 +1092,6 @@ Public Class FormMain2012
 
     End Sub
 
-    Private Sub ctxmnuLVChecksRefresh_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ctxmnuLVChecksRefresh.Click
-        Me.Checklist = ctrlr.GetCheckList()
-    End Sub
-
-    Private Sub ctxmnuLVChecksEdit_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ctxmnuLVChecksEdit.Click
-        mnuEditSelectedCheck_Click(sender, e)
-    End Sub
-
-    Private Sub ctxmnuLVChecksView_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles ctxmnuLVChecksView.Click
-        Me.lvChecklist_DoubleClick(sender, e)
-    End Sub
-
-    Private Sub toolMnuDelayText_TextChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles toolMnuDelayText.TextChanged
-        ctrlr.SetScannerDelay(CInt(toolMnuDelayText.Text))
-    End Sub
-
     Private Sub TabControl2_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabControl2.SelectedIndexChanged
         Try
             If TabControl2.SelectedTab Is tpAddManualCheck Then
@@ -1037,66 +1109,5 @@ Public Class FormMain2012
         Catch ex As Exception
             MsgBox("at TabControl2_SelectedIndexChanged: " & ex.Message)
         End Try
-    End Sub
-
-    Private Sub ckbxFilterYTD_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckbxFilterYTD.CheckedChanged
-        If ctrlr IsNot Nothing Then
-            ctrlr.SetDepositSummaryList()
-        End If
-    End Sub
-
-    Private Sub mnuPrintFormSetup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrintFormSetup.Click
-        Dim dlg As New FormPrintPageSetup
-        dlg.ShowDialog()
-
-    End Sub
-
-    Private Sub mnuPrintReport_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrintReport.Click
-
-    End Sub
-
-    Private Sub mnuViewExceptionLog_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuViewExceptionLog.Click
-        Dim dlg As FormLogViewer
-        dlg = New FormLogViewer(Application.StartupPath & "\Log\Exceptions.log")
-        dlg.ShowDialog()
-    End Sub
-
-    Private Sub mnuLoggingOn_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuLoggingOn.Click
-        ctrlr.ToggleLogging()
-    End Sub
-
-    Private Sub mnuEditAppSettings_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuEditAppSettings.Click
-        Dim dlg As New DialogEditAppSettings
-        dlg.ShowDialog()
-    End Sub
-
-    Private Sub toolBtnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles toolBtnExit.Click
-        Close()
-    End Sub
-
-    Private Sub mnuAbout_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuAbout.Click
-        With New FormSplash
-            .Label1.Visible = True
-            .ShowDialog()
-        End With
-    End Sub
-
-
-    Private Sub mnuManageImageFiles_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuManageImageFiles.Click
-        Dim dlg As New FileManagerUtility.FormFileManager
-        dlg.ShowDialog()
-
-    End Sub
-
-    Private Sub mnuPageSetup_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPageSetup.Click
-        Dim dlg As New PageSetupDialog
-        If dlg.ShowDialog = Windows.Forms.DialogResult.OK Then
-
-
-        End If
-    End Sub
-
-    Private Sub mnuPrintReceipts_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrintReceipts.Click
-
     End Sub
 End Class
