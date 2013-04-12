@@ -208,10 +208,23 @@ Public Class DepositManagerModel
         RaiseEvent AttachObserverCallback(Me._chkRegister)
         Me._db.AttachObserver(_chkRegister)
         AttachScanner(CType([Enum].Parse(GetType(ConnectionType), My.Settings.ImageTransferMethod), ConnectionType))
-        Me._chkRegister.ChecksQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
-        Me._chkRegister.ChecksQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
-        Me._chkRegister.ChecksQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
+        Me.UpdateCheckRegisterQueues()
+        'Me._chkRegister.ChecksQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
+        'Me._chkRegister.ChecksQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
+        'Me._chkRegister.ChecksQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
         Return _depTicket
+    End Function
+
+    Private Function UpdateCheckRegisterQueues(Optional status As CheckStatus = CheckStatus.csNone) As Boolean
+        Dim retVal As Boolean = False
+        If status = CheckStatus.csAmountPending Or status = CheckStatus.csNone Then
+            Me._chkRegister.ChecksQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
+        ElseIf status = CheckStatus.csEditPending Or status = CheckStatus.csNone Then
+            Me._chkRegister.ChecksQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
+        ElseIf status = CheckStatus.csConfirmPending Or status = CheckStatus.csNone Then
+            Me._chkRegister.ChecksQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
+        End If
+        Return retVal
     End Function
 
     Public Sub CloseDepositTicket()
@@ -469,6 +482,19 @@ Public Class DepositManagerModel
                         Dim args As New CheckDataEventArgs(EventName.evnmScannedImageTransmitted, chk, chk)
                         NotifyObservers(Me, args)
                     End If
+
+                Case EventName.evnmDbCheckUpdated, EventName.evnmDbCheckStatusChanged
+                    Me.UpdateCheckRegisterQueues()
+
+                Case EventName.evnmDbCheckDeleted, EventName.evnmDbCheckOnlyDeleted
+                    Me.UpdateCheckRegisterQueues()
+
+                Case EventName.evnmDbCheckInserted
+                    Me.UpdateCheckRegisterQueues()
+
+                Case EventName.evnmDbCheckDonorInserted, EventName.evnmDbCheckDonorUpdated
+                    Me.UpdateCheckRegisterQueues(CType(NotifyEvent,)
+
             End Select
         Catch ex As Exception
             MsgBox("Exception caught in DepositManagerModel.UpdateData method. " + ex.Message)

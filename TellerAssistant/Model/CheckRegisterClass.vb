@@ -139,68 +139,68 @@ Public Class CheckRegisterClass
         End Get
     End Property
 
-    Private Function RemoveCheck(args As CheckDataEventArgs) As Boolean
-        Dim retVal As Boolean = False
-        If Me.checkEntryQueue.RemoveCheck(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
-                                                           Me.checkEntryQueue.CurrentQueueCheck, Me.checkEntryQueue.CurrentQueueCheck, _
-                                                           Me.checkEntryQueue.CheckQueueCount, Me.checkEntryQueue.CheckQueueIndex))
-        ElseIf Me.checkEditQueue.RemoveCheck(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
-                                                           Me.checkEditQueue.CurrentQueueCheck, Me.checkEditQueue.CurrentQueueCheck, _
-                                                           Me.checkEditQueue.CheckQueueCount, Me.checkEditQueue.CheckQueueIndex))
-        ElseIf Me.checkConfirmQueue.RemoveCheck(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
-                                                           Me.checkConfirmQueue.CurrentQueueCheck, Me.checkConfirmQueue.CurrentQueueCheck, _
-                                                           Me.checkConfirmQueue.CheckQueueCount, Me.checkConfirmQueue.CheckQueueIndex))
-        End If
-        Return retVal
-    End Function
+    'Private Function RemoveCheck(args As CheckDataEventArgs) As Boolean
+    '    Dim retVal As Boolean = False
+    '    If Me.checkEntryQueue.RemoveCheck(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
+    '                                                       Me.checkEntryQueue.CurrentQueueCheck, Me.checkEntryQueue.CurrentQueueCheck, _
+    '                                                       Me.checkEntryQueue.CheckQueueCount, Me.checkEntryQueue.CheckQueueIndex))
+    '    ElseIf Me.checkEditQueue.RemoveCheck(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
+    '                                                       Me.checkEditQueue.CurrentQueueCheck, Me.checkEditQueue.CurrentQueueCheck, _
+    '                                                       Me.checkEditQueue.CheckQueueCount, Me.checkEditQueue.CheckQueueIndex))
+    '    ElseIf Me.checkConfirmQueue.RemoveCheck(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
+    '                                                       Me.checkConfirmQueue.CurrentQueueCheck, Me.checkConfirmQueue.CurrentQueueCheck, _
+    '                                                       Me.checkConfirmQueue.CheckQueueCount, Me.checkConfirmQueue.CheckQueueIndex))
+    '    End If
+    '    Return retVal
+    'End Function
 
-    Private Function AddCheck(args As CheckDataEventArgs) As Boolean
-        Dim retVal As Boolean = False
-        If Me.checkEntryQueue.AddCheck(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
-                                                           Me.checkEntryQueue.CurrentQueueCheck, Me.checkEntryQueue.CurrentQueueCheck, _
-                                                           Me.checkEntryQueue.CheckQueueCount, Me.checkEntryQueue.CheckQueueIndex))
-        ElseIf Me.checkEditQueue.AddCheck(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
-                                                           Me.checkEditQueue.CurrentQueueCheck, Me.checkEditQueue.CurrentQueueCheck, _
-                                                           Me.checkEditQueue.CheckQueueCount, Me.checkEditQueue.CheckQueueIndex))
-        ElseIf Me.checkConfirmQueue.AddCheck(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
-                                                           Me.checkConfirmQueue.CurrentQueueCheck, Me.checkConfirmQueue.CurrentQueueCheck, _
-                                                           Me.checkConfirmQueue.CheckQueueCount, Me.checkConfirmQueue.CheckQueueIndex))
-        End If
-        Return retVal
-    End Function
+    'Private Function AddCheck(args As CheckDataEventArgs) As Boolean
+    '    Dim retVal As Boolean = False
+    '    If Me.checkEntryQueue.AddCheck(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
+    '                                                       Me.checkEntryQueue.CurrentQueueCheck, Me.checkEntryQueue.CurrentQueueCheck, _
+    '                                                       Me.checkEntryQueue.CheckQueueCount, Me.checkEntryQueue.CheckQueueIndex))
+    '    ElseIf Me.checkEditQueue.AddCheck(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
+    '                                                       Me.checkEditQueue.CurrentQueueCheck, Me.checkEditQueue.CurrentQueueCheck, _
+    '                                                       Me.checkEditQueue.CheckQueueCount, Me.checkEditQueue.CheckQueueIndex))
+    '    ElseIf Me.checkConfirmQueue.AddCheck(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, _
+    '                                                       Me.checkConfirmQueue.CurrentQueueCheck, Me.checkConfirmQueue.CurrentQueueCheck, _
+    '                                                       Me.checkConfirmQueue.CheckQueueCount, Me.checkConfirmQueue.CheckQueueIndex))
+    '    End If
+    '    Return retVal
+    'End Function
 
-    Private Function UpdateDonorInfo(args As CheckDataEventArgs) As Boolean
-        Dim retVal As Boolean = False
-        If Me.checkEntryQueue.UpdateDonorInfo(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwDonorInfoChanged, _
-                                                           Me.checkEntryQueue.CurrentQueueCheck, Me.checkEntryQueue.CurrentQueueCheck, _
-                                                           Me.checkEntryQueue.CheckQueueCount, Me.checkEntryQueue.CheckQueueIndex))
-        ElseIf Me.checkEditQueue.AddCheck(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwDonorInfoChanged, _
-                                                           Me.checkEditQueue.CurrentQueueCheck, Me.checkEditQueue.CurrentQueueCheck, _
-                                                           Me.checkEditQueue.CheckQueueCount, Me.checkEditQueue.CheckQueueIndex))
-        ElseIf Me.checkConfirmQueue.AddCheck(args) Then
-            retVal = True
-            NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwDonorInfoChanged, _
-                                                           Me.checkConfirmQueue.CurrentQueueCheck, Me.checkConfirmQueue.CurrentQueueCheck, _
-                                                           Me.checkConfirmQueue.CheckQueueCount, Me.checkConfirmQueue.CheckQueueIndex))
-        End If
-        Return retVal
-    End Function
+    'Private Function UpdateDonorInfo(args As CheckDataEventArgs) As Boolean
+    '    Dim retVal As Boolean = False
+    '    If Me.checkEntryQueue.UpdateDonorInfo(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwDonorInfoChanged, _
+    '                                                       Me.checkEntryQueue.CurrentQueueCheck, Me.checkEntryQueue.CurrentQueueCheck, _
+    '                                                       Me.checkEntryQueue.CheckQueueCount, Me.checkEntryQueue.CheckQueueIndex))
+    '    ElseIf Me.checkEditQueue.AddCheck(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwDonorInfoChanged, _
+    '                                                       Me.checkEditQueue.CurrentQueueCheck, Me.checkEditQueue.CurrentQueueCheck, _
+    '                                                       Me.checkEditQueue.CheckQueueCount, Me.checkEditQueue.CheckQueueIndex))
+    '    ElseIf Me.checkConfirmQueue.AddCheck(args) Then
+    '        retVal = True
+    '        NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwDonorInfoChanged, _
+    '                                                       Me.checkConfirmQueue.CurrentQueueCheck, Me.checkConfirmQueue.CurrentQueueCheck, _
+    '                                                       Me.checkConfirmQueue.CheckQueueCount, Me.checkConfirmQueue.CheckQueueIndex))
+    '    End If
+    '    Return retVal
+    'End Function
 
     Public Sub ResetCheck(ByVal queue As CheckStatus)
         Me.NotifyObservers(Me, New CheckRegisterEventArgs(EventName.evnmVwCurrentQueueCheckChanged, Me.CurrentQueueCheck(queue), _
@@ -216,51 +216,55 @@ Public Class CheckRegisterClass
         Me.checkConfirmQueue = New TellerAssistant2012.CheckRegisterQueueClass(CheckStatus.csConfirmPending)
     End Sub
 
-    Public Overrides Sub UpdateData(ByVal NewEvent As mvcLibrary.mvcEventArgsBase)
-        Select Case CType(NewEvent, AbstractEventArgs).Name
+    Public Overrides Sub UpdateData(ByVal NotifyEvent As mvcLibrary.mvcEventArgsBase)
+        Select Case CType(NotifyEvent, AbstractEventArgs).Name
             Case EventName.evnmDbCheckInserted
-                If Not AddCheck(CType(NewEvent, CheckDataEventArgs)) Then
-                    MsgBox("Failed to add check to queue, " + CType(NewEvent, CheckDataEventArgs).Check.Status.ToString)
-                End If
+                Me.NotifyObservers(Me, NotifyEvent)
+                'If Not AddCheck(CType(NotifyEvent, CheckDataEventArgs)) Then
+                '    MsgBox("Failed to add check to queue, " + CType(NotifyEvent, CheckDataEventArgs).Check.Status.ToString)
+                'End If
 
             Case EventName.evnmDbCheckDeleted, EventName.evnmDbCheckOnlyDeleted
-                If Not Me.RemoveCheck(CType(NewEvent, CheckDataEventArgs)) Then
-                    MsgBox("Failed to remove check from queue.")
-                End If
+                Me.NotifyObservers(Me, NotifyEvent)
+                'If Not Me.RemoveCheck(CType(NotifyEvent, CheckDataEventArgs)) Then
+                '    MsgBox("Failed to remove check from queue.")
+                'End If
 
             Case EventName.evnmDbCheckUpdated, EventName.evnmDbCheckStatusChanged
-                If Not Me.RemoveCheck(CType(NewEvent, CheckDataEventArgs)) Then
-                    MsgBox("Failed to remove check from queue.")
-                End If
-                If Not AddCheck(CType(NewEvent, CheckDataEventArgs)) Then
-                    MsgBox("Failed to add check to queue, " + CType(NewEvent, CheckDataEventArgs).Check.Status.ToString)
-                End If
+                Me.NotifyObservers(Me, NotifyEvent)
+                'If Not Me.RemoveCheck(CType(NewEvent, CheckDataEventArgs)) Then
+                '    MsgBox("Failed to remove check from queue.")
+                'End If
+                'If Not AddCheck(CType(NewEvent, CheckDataEventArgs)) Then
+                '    MsgBox("Failed to add check to queue, " + CType(NewEvent, CheckDataEventArgs).Check.Status.ToString)
+                'End If
 
             Case EventName.evnmDbCheckDonorInserted, EventName.evnmDbCheckDonorUpdated
-                Me.UpdateDonorInfo(CType(NewEvent, CheckDataEventArgs))
+                Me.NotifyObservers(Me, NotifyEvent)
+                'Me.UpdateDonorInfo(CType(NotifyEvent, CheckDataEventArgs))
 
             Case EventName.evnmDBDepositInfoChanged
-                Me.NotifyObservers(Me, New DepositEventArgs(EventName.evnmVwDepositInfoChanged, CType(NewEvent, DepositEventArgs).DepositTicket))
+                Me.NotifyObservers(Me, New DepositEventArgs(EventName.evnmVwDepositInfoChanged, CType(NotifyEvent, DepositEventArgs).DepositTicket))
 
             Case EventName.evnmDbCheckOnlyDeleted
-                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmVWCheckOnlyDeleted, CType(NewEvent, CheckDataEventArgs).Check, CType(NewEvent, CheckDataEventArgs).Check))
+                NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmVWCheckOnlyDeleted, CType(NotifyEvent, CheckDataEventArgs).Check, CType(NotifyEvent, CheckDataEventArgs).Check))
 
             Case EventName.evnmDbCheckDeleted
                 Try
-                    File.Delete(CType(NewEvent, CheckDataEventArgs).Check.ImageFullPath + CType(NewEvent, CheckDataEventArgs).Check.ImageFile)
-                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmVwCheckDeleted, CType(NewEvent, CheckDataEventArgs).Check, CType(NewEvent, CheckDataEventArgs).Check))
+                    File.Delete(CType(NotifyEvent, CheckDataEventArgs).Check.ImageFullPath + CType(NotifyEvent, CheckDataEventArgs).Check.ImageFile)
+                    NotifyObservers(Me, New CheckDataEventArgs(EventName.evnmVwCheckDeleted, CType(NotifyEvent, CheckDataEventArgs).Check, CType(NotifyEvent, CheckDataEventArgs).Check))
                 Catch ex As Exception
                     MsgBox("Delete check image file failed. " + ex.Message)
                 End Try
 
             Case EventName.evnmBankInfoChanged
-                NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmBankInfoDeleted, CType(NewEvent, BankAccountEventArgs).BankAccount))
+                NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmBankInfoDeleted, CType(NotifyEvent, BankAccountEventArgs).BankAccount))
 
             Case EventName.evnmBankInfoDeleted
-                NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmBankInfoDeleted, CType(NewEvent, BankAccountEventArgs).BankAccount))
+                NotifyObservers(Me, New BankAccountEventArgs(EventName.evnmBankInfoDeleted, CType(NotifyEvent, BankAccountEventArgs).BankAccount))
 
             Case EventName.evnmDbCashClassAdded, EventName.evnmDbCashClassUpdated
-                NotifyObservers(Me, New CashEventArgs(EventName.evnmVwCashClassAdded, CType(NewEvent, CashEventArgs).Cash))
+                NotifyObservers(Me, New CashEventArgs(EventName.evnmVwCashClassAdded, CType(NotifyEvent, CashEventArgs).Cash))
 
             Case EventName.evnmDbTransactionFailed
                 MsgBox("Data transaction failed. (Model)")

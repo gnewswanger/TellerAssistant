@@ -30,7 +30,7 @@ Public Class FormMain2012
 
 #End Region
 
-#Region "Implemented Interface Methods"
+#Region "Implemented Interface Properties"
 
     Public Property ChecksTotal() As Single Implements IViewFrmMain.ChecksTotal
         Get
