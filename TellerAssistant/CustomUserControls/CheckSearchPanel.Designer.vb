@@ -45,25 +45,23 @@ Partial Class CheckSearchPanel
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tpSearchDeposit = New System.Windows.Forms.TabPage()
         Me.pnlDepositCriteria = New System.Windows.Forms.Panel()
-        Me.groupReceiptByDeposit = New System.Windows.Forms.GroupBox()
-        Me.radioDepReceiptSent = New System.Windows.Forms.RadioButton()
-        Me.radioDepReceiptNotSent = New System.Windows.Forms.RadioButton()
-        Me.radioDepReceiptRequests = New System.Windows.Forms.RadioButton()
-        Me.checkbxFilterReceiptStatus = New System.Windows.Forms.CheckBox()
+        Me.comboCheckStatusByDeposit = New System.Windows.Forms.ComboBox()
+        Me.checkbxDepFilterCheckStatus = New System.Windows.Forms.CheckBox()
+        Me.comboReceiptByDeposit = New System.Windows.Forms.ComboBox()
+        Me.checkbxDepFilterReceiptStatus = New System.Windows.Forms.CheckBox()
         Me.radioDepNoSearch = New System.Windows.Forms.RadioButton()
         Me.txtSearchDepNo = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.tpSearchDate = New System.Windows.Forms.TabPage()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.comboStatusByDate = New System.Windows.Forms.ComboBox()
+        Me.checkbxDateFilterCheckStatus = New System.Windows.Forms.CheckBox()
+        Me.comboReceiptByDate = New System.Windows.Forms.ComboBox()
         Me.checkbxDateFilterReceiptStatus = New System.Windows.Forms.CheckBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.dtpFromDate = New System.Windows.Forms.DateTimePicker()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.dtpToDate = New System.Windows.Forms.DateTimePicker()
-        Me.groupReceiptByDate = New System.Windows.Forms.GroupBox()
-        Me.radioRequestsSent = New System.Windows.Forms.RadioButton()
-        Me.radioRequestsNotSent = New System.Windows.Forms.RadioButton()
-        Me.radioReceiptRequests = New System.Windows.Forms.RadioButton()
         Me.tpIndivCriteria = New System.Windows.Forms.TabPage()
         Me.tpCheckInfo = New System.Windows.Forms.TabPage()
         Me.Panel3 = New System.Windows.Forms.Panel()
@@ -90,10 +88,8 @@ Partial Class CheckSearchPanel
         Me.TabControl1.SuspendLayout()
         Me.tpSearchDeposit.SuspendLayout()
         Me.pnlDepositCriteria.SuspendLayout()
-        Me.groupReceiptByDeposit.SuspendLayout()
         Me.tpSearchDate.SuspendLayout()
         Me.Panel2.SuspendLayout()
-        Me.groupReceiptByDate.SuspendLayout()
         Me.tpIndivCriteria.SuspendLayout()
         Me.tpCheckInfo.SuspendLayout()
         Me.Panel3.SuspendLayout()
@@ -361,8 +357,10 @@ Partial Class CheckSearchPanel
         'pnlDepositCriteria
         '
         Me.pnlDepositCriteria.BackColor = System.Drawing.Color.White
-        Me.pnlDepositCriteria.Controls.Add(Me.groupReceiptByDeposit)
-        Me.pnlDepositCriteria.Controls.Add(Me.checkbxFilterReceiptStatus)
+        Me.pnlDepositCriteria.Controls.Add(Me.comboCheckStatusByDeposit)
+        Me.pnlDepositCriteria.Controls.Add(Me.checkbxDepFilterCheckStatus)
+        Me.pnlDepositCriteria.Controls.Add(Me.comboReceiptByDeposit)
+        Me.pnlDepositCriteria.Controls.Add(Me.checkbxDepFilterReceiptStatus)
         Me.pnlDepositCriteria.Controls.Add(Me.radioDepNoSearch)
         Me.pnlDepositCriteria.Controls.Add(Me.txtSearchDepNo)
         Me.pnlDepositCriteria.Controls.Add(Me.Label2)
@@ -374,62 +372,47 @@ Partial Class CheckSearchPanel
         Me.pnlDepositCriteria.Size = New System.Drawing.Size(241, 175)
         Me.pnlDepositCriteria.TabIndex = 0
         '
-        'groupReceiptByDeposit
+        'comboCheckStatusByDeposit
         '
-        Me.groupReceiptByDeposit.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.groupReceiptByDeposit.Controls.Add(Me.radioDepReceiptSent)
-        Me.groupReceiptByDeposit.Controls.Add(Me.radioDepReceiptNotSent)
-        Me.groupReceiptByDeposit.Controls.Add(Me.radioDepReceiptRequests)
-        Me.groupReceiptByDeposit.Enabled = False
-        Me.groupReceiptByDeposit.Location = New System.Drawing.Point(50, 61)
-        Me.groupReceiptByDeposit.Name = "groupReceiptByDeposit"
-        Me.groupReceiptByDeposit.Padding = New System.Windows.Forms.Padding(0)
-        Me.groupReceiptByDeposit.Size = New System.Drawing.Size(139, 83)
-        Me.groupReceiptByDeposit.TabIndex = 4
-        Me.groupReceiptByDeposit.TabStop = False
+        Me.comboCheckStatusByDeposit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.comboCheckStatusByDeposit.FormattingEnabled = True
+        Me.comboCheckStatusByDeposit.Items.AddRange(New Object() {"Amount Pending", "Edit Pending", "Confirm Pending", "Verified"})
+        Me.comboCheckStatusByDeposit.Location = New System.Drawing.Point(63, 112)
+        Me.comboCheckStatusByDeposit.Name = "comboCheckStatusByDeposit"
+        Me.comboCheckStatusByDeposit.Size = New System.Drawing.Size(121, 21)
+        Me.comboCheckStatusByDeposit.TabIndex = 7
         '
-        'radioDepReceiptSent
+        'checkbxDepFilterCheckStatus
         '
-        Me.radioDepReceiptSent.AutoSize = True
-        Me.radioDepReceiptSent.Location = New System.Drawing.Point(13, 57)
-        Me.radioDepReceiptSent.Name = "radioDepReceiptSent"
-        Me.radioDepReceiptSent.Size = New System.Drawing.Size(95, 17)
-        Me.radioDepReceiptSent.TabIndex = 2
-        Me.radioDepReceiptSent.Text = "Requests Sent"
-        Me.radioDepReceiptSent.UseVisualStyleBackColor = True
+        Me.checkbxDepFilterCheckStatus.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.checkbxDepFilterCheckStatus.AutoSize = True
+        Me.checkbxDepFilterCheckStatus.Location = New System.Drawing.Point(43, 96)
+        Me.checkbxDepFilterCheckStatus.Name = "checkbxDepFilterCheckStatus"
+        Me.checkbxDepFilterCheckStatus.Size = New System.Drawing.Size(129, 17)
+        Me.checkbxDepFilterCheckStatus.TabIndex = 6
+        Me.checkbxDepFilterCheckStatus.Text = "Filter by Check Status"
+        Me.checkbxDepFilterCheckStatus.UseVisualStyleBackColor = True
         '
-        'radioDepReceiptNotSent
+        'comboReceiptByDeposit
         '
-        Me.radioDepReceiptNotSent.AutoSize = True
-        Me.radioDepReceiptNotSent.Location = New System.Drawing.Point(13, 37)
-        Me.radioDepReceiptNotSent.Name = "radioDepReceiptNotSent"
-        Me.radioDepReceiptNotSent.Size = New System.Drawing.Size(115, 17)
-        Me.radioDepReceiptNotSent.TabIndex = 1
-        Me.radioDepReceiptNotSent.Text = "Requests Not Sent"
-        Me.radioDepReceiptNotSent.UseVisualStyleBackColor = True
+        Me.comboReceiptByDeposit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.comboReceiptByDeposit.FormattingEnabled = True
+        Me.comboReceiptByDeposit.Items.AddRange(New Object() {"Receipt Requests", "Requests Not Sent", "Requests Sent"})
+        Me.comboReceiptByDeposit.Location = New System.Drawing.Point(63, 65)
+        Me.comboReceiptByDeposit.Name = "comboReceiptByDeposit"
+        Me.comboReceiptByDeposit.Size = New System.Drawing.Size(121, 21)
+        Me.comboReceiptByDeposit.TabIndex = 5
         '
-        'radioDepReceiptRequests
+        'checkbxDepFilterReceiptStatus
         '
-        Me.radioDepReceiptRequests.AutoSize = True
-        Me.radioDepReceiptRequests.Checked = True
-        Me.radioDepReceiptRequests.Location = New System.Drawing.Point(13, 16)
-        Me.radioDepReceiptRequests.Name = "radioDepReceiptRequests"
-        Me.radioDepReceiptRequests.Size = New System.Drawing.Size(110, 17)
-        Me.radioDepReceiptRequests.TabIndex = 0
-        Me.radioDepReceiptRequests.TabStop = True
-        Me.radioDepReceiptRequests.Text = "Receipt Requests"
-        Me.radioDepReceiptRequests.UseVisualStyleBackColor = True
-        '
-        'checkbxFilterReceiptStatus
-        '
-        Me.checkbxFilterReceiptStatus.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.checkbxFilterReceiptStatus.AutoSize = True
-        Me.checkbxFilterReceiptStatus.Location = New System.Drawing.Point(43, 47)
-        Me.checkbxFilterReceiptStatus.Name = "checkbxFilterReceiptStatus"
-        Me.checkbxFilterReceiptStatus.Size = New System.Drawing.Size(135, 17)
-        Me.checkbxFilterReceiptStatus.TabIndex = 3
-        Me.checkbxFilterReceiptStatus.Text = "Filter by Receipt Status"
-        Me.checkbxFilterReceiptStatus.UseVisualStyleBackColor = True
+        Me.checkbxDepFilterReceiptStatus.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.checkbxDepFilterReceiptStatus.AutoSize = True
+        Me.checkbxDepFilterReceiptStatus.Location = New System.Drawing.Point(43, 49)
+        Me.checkbxDepFilterReceiptStatus.Name = "checkbxDepFilterReceiptStatus"
+        Me.checkbxDepFilterReceiptStatus.Size = New System.Drawing.Size(135, 17)
+        Me.checkbxDepFilterReceiptStatus.TabIndex = 3
+        Me.checkbxDepFilterReceiptStatus.Text = "Filter by Receipt Status"
+        Me.checkbxDepFilterReceiptStatus.UseVisualStyleBackColor = True
         '
         'radioDepNoSearch
         '
@@ -447,7 +430,7 @@ Partial Class CheckSearchPanel
         'txtSearchDepNo
         '
         Me.txtSearchDepNo.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtSearchDepNo.Location = New System.Drawing.Point(142, 21)
+        Me.txtSearchDepNo.Location = New System.Drawing.Point(142, 23)
         Me.txtSearchDepNo.Name = "txtSearchDepNo"
         Me.txtSearchDepNo.Size = New System.Drawing.Size(92, 20)
         Me.txtSearchDepNo.TabIndex = 1
@@ -456,7 +439,7 @@ Partial Class CheckSearchPanel
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(26, 24)
+        Me.Label2.Location = New System.Drawing.Point(26, 26)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(114, 13)
         Me.Label2.TabIndex = 0
@@ -475,17 +458,50 @@ Partial Class CheckSearchPanel
         '
         'Panel2
         '
+        Me.Panel2.Controls.Add(Me.comboStatusByDate)
+        Me.Panel2.Controls.Add(Me.checkbxDateFilterCheckStatus)
+        Me.Panel2.Controls.Add(Me.comboReceiptByDate)
         Me.Panel2.Controls.Add(Me.checkbxDateFilterReceiptStatus)
         Me.Panel2.Controls.Add(Me.Label4)
         Me.Panel2.Controls.Add(Me.dtpFromDate)
         Me.Panel2.Controls.Add(Me.Label5)
         Me.Panel2.Controls.Add(Me.dtpToDate)
-        Me.Panel2.Controls.Add(Me.groupReceiptByDate)
         Me.Panel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel2.Location = New System.Drawing.Point(3, 3)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(241, 157)
         Me.Panel2.TabIndex = 0
+        '
+        'comboStatusByDate
+        '
+        Me.comboStatusByDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.comboStatusByDate.FormattingEnabled = True
+        Me.comboStatusByDate.Items.AddRange(New Object() {"Amount Pending", "Edit Pending", "Confirm Pending", "Verified"})
+        Me.comboStatusByDate.Location = New System.Drawing.Point(60, 113)
+        Me.comboStatusByDate.Name = "comboStatusByDate"
+        Me.comboStatusByDate.Size = New System.Drawing.Size(121, 21)
+        Me.comboStatusByDate.TabIndex = 47
+        '
+        'checkbxDateFilterCheckStatus
+        '
+        Me.checkbxDateFilterCheckStatus.Anchor = System.Windows.Forms.AnchorStyles.Right
+        Me.checkbxDateFilterCheckStatus.AutoSize = True
+        Me.checkbxDateFilterCheckStatus.Location = New System.Drawing.Point(40, 97)
+        Me.checkbxDateFilterCheckStatus.Name = "checkbxDateFilterCheckStatus"
+        Me.checkbxDateFilterCheckStatus.Size = New System.Drawing.Size(129, 17)
+        Me.checkbxDateFilterCheckStatus.TabIndex = 46
+        Me.checkbxDateFilterCheckStatus.Text = "Filter by Check Status"
+        Me.checkbxDateFilterCheckStatus.UseVisualStyleBackColor = True
+        '
+        'comboReceiptByDate
+        '
+        Me.comboReceiptByDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.comboReceiptByDate.FormattingEnabled = True
+        Me.comboReceiptByDate.Items.AddRange(New Object() {"Receipt Requests", "Requests Not Sent", "Requests Sent"})
+        Me.comboReceiptByDate.Location = New System.Drawing.Point(60, 66)
+        Me.comboReceiptByDate.Name = "comboReceiptByDate"
+        Me.comboReceiptByDate.Size = New System.Drawing.Size(121, 21)
+        Me.comboReceiptByDate.TabIndex = 45
         '
         'checkbxDateFilterReceiptStatus
         '
@@ -534,54 +550,6 @@ Partial Class CheckSearchPanel
         Me.dtpToDate.Name = "dtpToDate"
         Me.dtpToDate.Size = New System.Drawing.Size(82, 20)
         Me.dtpToDate.TabIndex = 39
-        '
-        'groupReceiptByDate
-        '
-        Me.groupReceiptByDate.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.groupReceiptByDate.Controls.Add(Me.radioRequestsSent)
-        Me.groupReceiptByDate.Controls.Add(Me.radioRequestsNotSent)
-        Me.groupReceiptByDate.Controls.Add(Me.radioReceiptRequests)
-        Me.groupReceiptByDate.Enabled = False
-        Me.groupReceiptByDate.Location = New System.Drawing.Point(50, 63)
-        Me.groupReceiptByDate.Name = "groupReceiptByDate"
-        Me.groupReceiptByDate.Padding = New System.Windows.Forms.Padding(0)
-        Me.groupReceiptByDate.Size = New System.Drawing.Size(141, 84)
-        Me.groupReceiptByDate.TabIndex = 1
-        Me.groupReceiptByDate.TabStop = False
-        '
-        'radioRequestsSent
-        '
-        Me.radioRequestsSent.AutoSize = True
-        Me.radioRequestsSent.Location = New System.Drawing.Point(13, 57)
-        Me.radioRequestsSent.Name = "radioRequestsSent"
-        Me.radioRequestsSent.Size = New System.Drawing.Size(95, 17)
-        Me.radioRequestsSent.TabIndex = 2
-        Me.radioRequestsSent.TabStop = True
-        Me.radioRequestsSent.Text = "Requests Sent"
-        Me.radioRequestsSent.UseVisualStyleBackColor = True
-        '
-        'radioRequestsNotSent
-        '
-        Me.radioRequestsNotSent.AutoSize = True
-        Me.radioRequestsNotSent.Location = New System.Drawing.Point(13, 37)
-        Me.radioRequestsNotSent.Name = "radioRequestsNotSent"
-        Me.radioRequestsNotSent.Size = New System.Drawing.Size(115, 17)
-        Me.radioRequestsNotSent.TabIndex = 1
-        Me.radioRequestsNotSent.TabStop = True
-        Me.radioRequestsNotSent.Text = "Requests Not Sent"
-        Me.radioRequestsNotSent.UseVisualStyleBackColor = True
-        '
-        'radioReceiptRequests
-        '
-        Me.radioReceiptRequests.AutoSize = True
-        Me.radioReceiptRequests.Checked = True
-        Me.radioReceiptRequests.Location = New System.Drawing.Point(13, 16)
-        Me.radioReceiptRequests.Name = "radioReceiptRequests"
-        Me.radioReceiptRequests.Size = New System.Drawing.Size(110, 17)
-        Me.radioReceiptRequests.TabIndex = 0
-        Me.radioReceiptRequests.TabStop = True
-        Me.radioReceiptRequests.Text = "Receipt Requests"
-        Me.radioReceiptRequests.UseVisualStyleBackColor = True
         '
         'tpIndivCriteria
         '
@@ -837,13 +805,9 @@ Partial Class CheckSearchPanel
         Me.tpSearchDeposit.ResumeLayout(False)
         Me.pnlDepositCriteria.ResumeLayout(False)
         Me.pnlDepositCriteria.PerformLayout()
-        Me.groupReceiptByDeposit.ResumeLayout(False)
-        Me.groupReceiptByDeposit.PerformLayout()
         Me.tpSearchDate.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
-        Me.groupReceiptByDate.ResumeLayout(False)
-        Me.groupReceiptByDate.PerformLayout()
         Me.tpIndivCriteria.ResumeLayout(False)
         Me.tpCheckInfo.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
@@ -885,19 +849,11 @@ Partial Class CheckSearchPanel
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents tpSearchDate As System.Windows.Forms.TabPage
     Friend WithEvents Panel2 As System.Windows.Forms.Panel
-    Friend WithEvents groupReceiptByDate As System.Windows.Forms.GroupBox
-    Friend WithEvents radioRequestsSent As System.Windows.Forms.RadioButton
-    Friend WithEvents radioRequestsNotSent As System.Windows.Forms.RadioButton
-    Friend WithEvents radioReceiptRequests As System.Windows.Forms.RadioButton
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents dtpFromDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents dtpToDate As System.Windows.Forms.DateTimePicker
-    Friend WithEvents checkbxFilterReceiptStatus As System.Windows.Forms.CheckBox
-    Friend WithEvents groupReceiptByDeposit As System.Windows.Forms.GroupBox
-    Friend WithEvents radioDepReceiptSent As System.Windows.Forms.RadioButton
-    Friend WithEvents radioDepReceiptNotSent As System.Windows.Forms.RadioButton
-    Friend WithEvents radioDepReceiptRequests As System.Windows.Forms.RadioButton
+    Friend WithEvents checkbxDepFilterReceiptStatus As System.Windows.Forms.CheckBox
     Friend WithEvents checkbxDateFilterReceiptStatus As System.Windows.Forms.CheckBox
     Friend WithEvents groupSelectCriteria As System.Windows.Forms.GroupBox
     Friend WithEvents ckbxCheckAcct As System.Windows.Forms.CheckBox
@@ -922,5 +878,11 @@ Partial Class CheckSearchPanel
     Friend WithEvents txtCheckNo As System.Windows.Forms.TextBox
     Friend WithEvents txtCheckAmt As CalculatorClasses.CalculatorTextbox
     Friend WithEvents txtCheckDonor As System.Windows.Forms.TextBox
+    Friend WithEvents comboReceiptByDeposit As System.Windows.Forms.ComboBox
+    Friend WithEvents comboCheckStatusByDeposit As System.Windows.Forms.ComboBox
+    Friend WithEvents checkbxDepFilterCheckStatus As System.Windows.Forms.CheckBox
+    Friend WithEvents comboStatusByDate As System.Windows.Forms.ComboBox
+    Friend WithEvents checkbxDateFilterCheckStatus As System.Windows.Forms.CheckBox
+    Friend WithEvents comboReceiptByDate As System.Windows.Forms.ComboBox
 
 End Class

@@ -281,6 +281,8 @@ Public Class CheckSearchPanel
 
 #Region "Button Enabled Methods"
 
+#Region "Navigation buttons enabled methods"
+
     Private Sub SetCheckNextEnabled(ByVal cnt As Integer, ByVal indx As Integer)
         If Me.btnCheckNext.InvokeRequired Then
             Me.Invoke(New TwoIntegerCallback(AddressOf SetCheckNextEnabled), cnt, indx)
@@ -320,6 +322,8 @@ Public Class CheckSearchPanel
         Me.SetCheckLastEnabled(cnt, indx)
     End Sub
 
+#End Region
+
     Private Sub SetSearchTextboxEnabled()
         If InvokeRequired Then
             Me.Invoke(New SetImageCallback(AddressOf SetSearchTextboxEnabled))
@@ -333,20 +337,38 @@ Public Class CheckSearchPanel
         Me.IsDirty()
     End Sub
 
-    Private Sub SetDepSrchRadiobuttonsEnabled(ByVal value As Boolean)
-        If InvokeRequired Then
-            Me.Invoke(New SetBooleanCallback(AddressOf SetDepSrchRadiobuttonsEnabled), value)
+    Private Sub SetDepFilterReceiptStatusCheckboxEnabled(value As Boolean)
+        If Me.checkbxDepFilterReceiptStatus.InvokeRequired Then
+            Me.checkbxDepFilterReceiptStatus.Invoke(New SetBooleanCallback(AddressOf SetDepFilterReceiptStatusCheckboxEnabled), value)
         Else
-            Me.groupReceiptByDeposit.Enabled = value
         End If
     End Sub
 
-    Private Sub SetDateSrchRadiobuttonsEnabled(ByVal value As Boolean)
-        If InvokeRequired Then
-            Me.Invoke(New SetBooleanCallback(AddressOf SetDateSrchRadiobuttonsEnabled), value)
+    Private Sub SetDepFilterCheckStatusComboEnabled(ByVal value As Boolean)
+        If Me.comboCheckStatusByDeposit.InvokeRequired Then
+            Me.comboCheckStatusByDeposit.Invoke(New SetBooleanCallback(AddressOf SetDepFilterCheckStatusComboEnabled), value)
         Else
-            Me.groupReceiptByDate.Enabled = value
+            Me.comboCheckStatusByDeposit.Enabled = value
         End If
+    End Sub
+
+    Private Sub SetDateSrchFilterReceiptCheckboxEnabled(ByVal value As Boolean)
+        If Me.checkbxDepFilterCheckStatus.InvokeRequired Then
+            Me.checkbxDepFilterCheckStatus.Invoke(New SetBooleanCallback(AddressOf SetDateSrchFilterReceiptCheckboxEnabled), value)
+        Else
+        End If
+    End Sub
+
+    Private Sub ResetGroupReceiptByDeposit()
+        Me.checkbxDepFilterReceiptStatus.Checked = False
+        Me.checkbxDepFilterCheckStatus.Checked = False
+    End Sub
+
+    Private Sub ResetGroupReceiptByDate()
+        Me.dtpFromDate.Value = New Date(Today.Year, 1, 1)
+        Me.dtpToDate.Value = Today
+        Me.checkbxDateFilterReceiptStatus.Checked = False
+        Me.checkbxDateFilterCheckStatus.Checked = False
     End Sub
 
     Private Sub ResetGroupIndivCriteria()
@@ -364,13 +386,6 @@ Public Class CheckSearchPanel
             Next
         End With
     End Sub
-
-    Private Sub ResetGroupReceiptByDate()
-        Me.dtpFromDate.Value = New Date(Today.Year, 1, 1)
-        Me.dtpToDate.Value = Today
-        Me.checkbxDateFilterReceiptStatus.Checked = False
-    End Sub
-
 
 #End Region
 
@@ -496,14 +511,15 @@ Public Class CheckSearchPanel
     End Sub
 
     Private Sub CheckSearchPanel_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If Me.checkbxFilterReceiptStatus.Checked Then
-            Me.SetDepSrchRadiobuttonsEnabled(True)
-        Else
-            Me.SetDepSrchRadiobuttonsEnabled(False)
-        End If
         Me.ResetGroupIndivCriteria()
         Me.ResetGroupReceiptByDate()
         Me.InitializeTabPages2Start()
+        Me.EnableFilterControls()
+    End Sub
+
+    Private Sub EnableFilterControls()
+        Me.checkbxDepFilterCheckStatus_CheckStateChanged(Me, New System.EventArgs)
+        Me.checkbxDateFilterCheckStatus_CheckStateChanged(Me, New System.EventArgs)
     End Sub
 
     Private Sub InitializeTabPages2Start()
@@ -554,15 +570,21 @@ Public Class CheckSearchPanel
             Case mode = SearchModes.smByDeposit
                 If Me.txtSearchDepNo.Text <> String.Empty Then
                     retString = " @DepositNo = '" + Me.txtSearchDepNo.Text.Trim + "'"
-                    If Me.checkbxFilterReceiptStatus.Checked Then
-                        retString += ", @ReceiptStatus = " & Me.SelectedReceiptRequestStatus(tpSearchDeposit)
+                    If Me.checkbxDepFilterReceiptStatus.Checked Then
+                        retString += ", @ReceiptStatus = '" & Me.SelectedReceiptRequestStatus(tpSearchDeposit) & "'"
+                    End If
+                    If Me.checkbxDepFilterCheckStatus.Checked Then
+                        retString += ", @Checkstatus = '" & [Enum].GetName(GetType(CheckStatus), Me.comboCheckStatusByDeposit.SelectedIndex + 1) & "'"
                     End If
                 End If
             Case mode = SearchModes.smByDate
                 retString = " @StartDate = '" + Me.dtpFromDate.Value.ToShortDateString + "', " _
                  + " @EndDate = '" + Me.dtpToDate.Value.ToShortDateString + "'"
                 If Me.checkbxDateFilterReceiptStatus.Checked Then
-                    retString += ", @ReceiptStatus = " & Me.SelectedReceiptRequestStatus(tpSearchDate)
+                    retString += ", @ReceiptStatus = '" & Me.SelectedReceiptRequestStatus(tpSearchDate) & "'"
+                End If
+                If Me.checkbxDateFilterCheckStatus.Checked Then
+                    retString += ", @Checkstatus = '" & [Enum].GetName(GetType(CheckStatus), Me.comboStatusByDate.SelectedIndex + 1) & "'"
                 End If
         End Select
 
@@ -571,41 +593,63 @@ Public Class CheckSearchPanel
 
     Private Function SelectedReceiptRequestStatus(ByVal tp As TabPage) As ReceiptRequestStatus
         If tp Is tpSearchDeposit Then
-            If Me.radioDepReceiptRequests.Checked Then
+            'If Me.radioDepReceiptRequests.Checked Then
+            If Me.comboReceiptByDeposit.SelectedIndex = 0 Then
                 Return ReceiptRequestStatus.rrsAllRequests
-            ElseIf Me.radioDepReceiptNotSent.Checked Then
+            ElseIf Me.comboReceiptByDeposit.SelectedIndex = 1 Then
                 Return ReceiptRequestStatus.rrsRequestedNotSent
-            ElseIf Me.radioDepReceiptSent.Checked Then
+            ElseIf Me.comboReceiptByDeposit.SelectedIndex = 2 Then
                 Return ReceiptRequestStatus.rrsRequestedSent
             End If
         ElseIf tp Is tpSearchDate Then
-            If Me.radioReceiptRequests.Checked Then
+            If Me.comboReceiptByDate.SelectedIndex = 0 Then
                 Return ReceiptRequestStatus.rrsAllRequests
-            ElseIf Me.radioRequestsNotSent.Checked Then
+            ElseIf Me.comboReceiptByDate.SelectedIndex = 1 Then
                 Return ReceiptRequestStatus.rrsRequestedNotSent
-            ElseIf Me.radioRequestsSent.Checked Then
+            ElseIf Me.comboReceiptByDate.SelectedIndex = 2 Then
                 Return ReceiptRequestStatus.rrsRequestedSent
             End If
         End If
         Return Nothing
     End Function
 
-    Private Sub checkbxFilterReceiptStatus_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles checkbxFilterReceiptStatus.CheckStateChanged
-        If Me.checkbxFilterReceiptStatus.CheckState = CheckState.Checked Then
-            Me.SetDepSrchRadiobuttonsEnabled(True)
+    Private Sub checkbxDepFilterReceiptStatus_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles checkbxDepFilterReceiptStatus.CheckStateChanged
+        If Me.checkbxDepFilterReceiptStatus.CheckState = CheckState.Checked Then
+            Me.comboReceiptByDeposit.Enabled = True
+            Me.comboReceiptByDeposit.SelectedIndex = 0
         Else
-            Me.SetDepSrchRadiobuttonsEnabled(False)
+            Me.comboReceiptByDeposit.Enabled = False
+        End If
+        Me.IsDirty()
+    End Sub
+
+    Private Sub checkbxDepFilterCheckStatus_CheckStateChanged(sender As Object, e As EventArgs) Handles checkbxDepFilterCheckStatus.CheckStateChanged
+        If Me.checkbxDepFilterCheckStatus.CheckState = CheckState.Checked Then
+            Me.comboCheckStatusByDeposit.Enabled = True
+            Me.comboCheckStatusByDeposit.SelectedIndex = 0
+        Else
+            Me.comboCheckStatusByDeposit.Enabled = False
         End If
         Me.IsDirty()
     End Sub
 
     Private Sub checkbxDateFilterReceiptStatus_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles checkbxDateFilterReceiptStatus.CheckStateChanged
         If Me.checkbxDateFilterReceiptStatus.CheckState = CheckState.Checked Then
-            Me.SetDateSrchRadiobuttonsEnabled(True)
+            Me.comboReceiptByDate.Enabled = True
+            Me.comboReceiptByDate.SelectedIndex = 0
         Else
-            Me.SetDateSrchRadiobuttonsEnabled(False)
+            Me.comboReceiptByDate.Enabled = False
         End If
         Me.IsDirty()
+    End Sub
+
+    Private Sub checkbxDateFilterCheckStatus_CheckStateChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles checkbxDateFilterCheckStatus.CheckStateChanged
+        If Me.checkbxDateFilterCheckStatus.CheckState = CheckState.Checked Then
+            Me.comboStatusByDate.Enabled = True
+            Me.comboStatusByDate.SelectedIndex = 0
+        Else
+            Me.comboStatusByDate.Enabled = False
+        End If
     End Sub
 
     Private Sub checkbox_Click(sender As Object, e As EventArgs) Handles ckbxAmount.Click, ckbxBank.Click, ckbxCheckAcct.Click, ckbxCheckNo.Click, ckbxDonor.Click
@@ -655,5 +699,4 @@ Public Class CheckSearchPanel
         Me.btnExecuteSearch.Enabled = dirty
         Return dirty
     End Function
-
 End Class

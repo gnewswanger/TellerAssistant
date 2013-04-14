@@ -17,6 +17,7 @@ Public Class FormCheckSearch
     Public WriteOnly Property Checklist() As System.Collections.Generic.List(Of ChecksClass) Implements IViewFrmCheckSearch.Checklist
         Set(ByVal value As System.Collections.Generic.List(Of ChecksClass))
             Me.lvSearchResults.CheckQueue = value
+            Me.labelCount.Text = Me.lvSearchResults.CheckQueueCount.ToString
             If Me.lvSearchResults.ItemsCount > 0 Then
                 Me.lvSearchResults.ItemsSelectedItem = 0
                 Me.CheckSearchPanel1.CurrentCheck = New CheckRegisterEventArgs(EventName.evnmCheckSearchResult, _
@@ -132,24 +133,30 @@ Public Class FormCheckSearch
         End If
 
         If Me.CheckSearchPanel1.SearchMode = CheckSearchPanel.SearchModes.smByDeposit Then
-            If Me.CheckSearchPanel1.checkbxFilterReceiptStatus.Checked Then
-                If Me.CheckSearchPanel1.radioDepReceiptNotSent.Checked Then
+            If Me.CheckSearchPanel1.checkbxDepFilterReceiptStatus.Checked Then
+                If Me.CheckSearchPanel1.comboReceiptByDeposit.SelectedIndex = 1 Then
                     criteria += " Filtered by Receipt Requests Not Sent"
-                ElseIf Me.CheckSearchPanel1.radioDepReceiptSent.Checked Then
+                ElseIf Me.CheckSearchPanel1.comboReceiptByDeposit.SelectedIndex = 2 Then
                     criteria += " Filtered by Receipt Requests Sent"
                 Else
                     criteria += " Filtered by All Receipt Requests"
                 End If
             End If
+            If Me.CheckSearchPanel1.checkbxDepFilterCheckStatus.Checked Then
+                criteria += " Filtered by Check Status = " + Me.CheckSearchPanel1.comboCheckStatusByDeposit.SelectedItem.ToString
+            End If
         ElseIf Me.CheckSearchPanel1.SearchMode = CheckSearchPanel.SearchModes.smByDate Then
             If Me.CheckSearchPanel1.checkbxDateFilterReceiptStatus.Checked Then
-                If Me.CheckSearchPanel1.radioRequestsNotSent.Checked Then
+                If Me.CheckSearchPanel1.comboReceiptByDate.SelectedIndex = 1 Then
                     criteria += " Filtered by Receipt Requests Not Sent"
-                ElseIf Me.CheckSearchPanel1.radioRequestsSent.Checked Then
+                ElseIf Me.CheckSearchPanel1.comboReceiptByDate.SelectedIndex = 2 Then
                     criteria += " Filtered by Receipt Requests Sent"
                 Else
                     criteria += " Filtered by All Receipt Requests"
                 End If
+            End If
+            If Me.CheckSearchPanel1.checkbxDateFilterCheckStatus.Checked Then
+                criteria += " Filtered by Check Status = " + Me.CheckSearchPanel1.comboStatusByDate.SelectedItem.ToString
             End If
         End If
         params.TextFont = New Font("Times New Roman", 8, FontStyle.Bold)
@@ -179,10 +186,7 @@ Public Class FormCheckSearch
 
 #Region "Button Events"
 
-    Private Sub CheckSearchPanel1_CheckviewApplyClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckSearchPanel1.CheckviewApplyClick
-        Me.Cursor = Cursors.WaitCursor
-        Me.ctrlr.HandleSearchRequest(Me.CheckSearchPanel1.QueryString)
-    End Sub
+#Region "Navigation button events"
 
     Private Sub CheckSearchPanel1_CheckviewFirstNavClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckSearchPanel1.CheckviewFirstNavClick
         Me.lvSearchResults.FirstCheck()
@@ -200,6 +204,13 @@ Public Class FormCheckSearch
         Me.lvSearchResults.PreviousCheck()
     End Sub
 
+#End Region
+
+    Private Sub CheckSearchPanel1_CheckviewApplyClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckSearchPanel1.CheckviewApplyClick
+        Me.Cursor = Cursors.WaitCursor
+        Me.ctrlr.HandleSearchRequest(Me.CheckSearchPanel1.QueryString)
+    End Sub
+
     Private Sub lvSearchResults_SelectedCheckIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvSearchResults.SelectedCheckIndexChanged
         Me.CheckSearchPanel1.CurrentCheck = CType(e, CheckRegisterEventArgs)
     End Sub
@@ -210,7 +221,4 @@ Public Class FormCheckSearch
 #End Region
 
    
-    Private Sub ToolStripStatusLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel1.Click
-
-    End Sub
 End Class

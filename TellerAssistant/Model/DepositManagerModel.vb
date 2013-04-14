@@ -209,9 +209,6 @@ Public Class DepositManagerModel
         Me._db.AttachObserver(_chkRegister)
         AttachScanner(CType([Enum].Parse(GetType(ConnectionType), My.Settings.ImageTransferMethod), ConnectionType))
         Me.UpdateCheckRegisterQueues()
-        'Me._chkRegister.ChecksQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
-        'Me._chkRegister.ChecksQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
-        'Me._chkRegister.ChecksQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
         Return _depTicket
     End Function
 
@@ -219,9 +216,11 @@ Public Class DepositManagerModel
         Dim retVal As Boolean = False
         If status = CheckStatus.csAmountPending Or status = CheckStatus.csNone Then
             Me._chkRegister.ChecksQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
-        ElseIf status = CheckStatus.csEditPending Or status = CheckStatus.csNone Then
+        End If
+        If status = CheckStatus.csEditPending Or status = CheckStatus.csNone Then
             Me._chkRegister.ChecksQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
-        ElseIf status = CheckStatus.csConfirmPending Or status = CheckStatus.csNone Then
+        End If
+        If status = CheckStatus.csConfirmPending Or status = CheckStatus.csNone Then
             Me._chkRegister.ChecksQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
         End If
         Return retVal
@@ -490,10 +489,10 @@ Public Class DepositManagerModel
                     Me.UpdateCheckRegisterQueues()
 
                 Case EventName.evnmDbCheckInserted
-                    Me.UpdateCheckRegisterQueues()
+                    Me.UpdateCheckRegisterQueues(CType(NotifyEvent, CheckDataEventArgs).Check.Status)
 
                 Case EventName.evnmDbCheckDonorInserted, EventName.evnmDbCheckDonorUpdated
-                    Me.UpdateCheckRegisterQueues(CType(NotifyEvent,)
+                    Me.UpdateCheckRegisterQueues(CType(NotifyEvent, CheckDataEventArgs).Check.Status)
 
             End Select
         Catch ex As Exception

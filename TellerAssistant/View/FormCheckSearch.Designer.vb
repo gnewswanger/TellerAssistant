@@ -25,7 +25,11 @@ Partial Class FormCheckSearch
         Me.components = New System.ComponentModel.Container()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.txtChecksCount = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lvSearchResults = New TellerAssistant2012.CheckListView()
+        Me.CheckSearchPanel1 = New TellerAssistant2012.CheckSearchPanel()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.toolBtnPrint = New System.Windows.Forms.ToolStripButton()
         Me.toolBtnExit = New System.Windows.Forms.ToolStripButton()
@@ -39,21 +43,18 @@ Partial Class FormCheckSearch
         Me.mnuViewLargeIcon = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuViewList = New System.Windows.Forms.ToolStripMenuItem()
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.txtChecksCount = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.CheckSearchPanel1 = New TellerAssistant2012.CheckSearchPanel()
-        Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout
-        Me.ToolStripContainer1.ContentPanel.SuspendLayout
-        Me.ToolStripContainer1.SuspendLayout
-        Me.ToolStrip1.SuspendLayout
-        Me.MenuStrip1.SuspendLayout
-        Me.StatusStrip1.SuspendLayout
-        Me.SuspendLayout
+        Me.labelCount = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
+        Me.ToolStripContainer1.ContentPanel.SuspendLayout()
+        Me.ToolStripContainer1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
+        Me.ToolStrip1.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
+        Me.SuspendLayout()
         '
         'ToolTip1
         '
-        Me.ToolTip1.ShowAlways = true
+        Me.ToolTip1.ShowAlways = True
         '
         'ToolStripContainer1
         '
@@ -76,6 +77,27 @@ Partial Class FormCheckSearch
         Me.ToolStripContainer1.TabIndex = 0
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.txtChecksCount, Me.labelCount})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(802, 22)
+        Me.StatusStrip1.TabIndex = 0
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(44, 17)
+        Me.ToolStripStatusLabel1.Text = "Found:"
+        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'txtChecksCount
+        '
+        Me.txtChecksCount.Name = "txtChecksCount"
+        Me.txtChecksCount.Size = New System.Drawing.Size(0, 17)
+        '
         'lvSearchResults
         '
         Me.lvSearchResults.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
@@ -86,9 +108,19 @@ Partial Class FormCheckSearch
         Me.lvSearchResults.Size = New System.Drawing.Size(802, 336)
         Me.lvSearchResults.TabIndex = 13
         '
+        'CheckSearchPanel1
+        '
+        Me.CheckSearchPanel1.BackColor = System.Drawing.Color.Transparent
+        Me.CheckSearchPanel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.CheckSearchPanel1.Location = New System.Drawing.Point(0, 24)
+        Me.CheckSearchPanel1.Name = "CheckSearchPanel1"
+        Me.CheckSearchPanel1.Size = New System.Drawing.Size(802, 225)
+        Me.CheckSearchPanel1.StartDate = New Date(2013, 1, 1, 0, 0, 0, 0)
+        Me.CheckSearchPanel1.TabIndex = 14
+        '
         'ToolStrip1
         '
-        Me.ToolStrip1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.ToolStrip1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolBtnPrint, Me.toolBtnExit})
@@ -135,14 +167,14 @@ Partial Class FormCheckSearch
         '
         Me.mnuPrint.Image = Global.TellerAssistant2012.My.Resources.Resources.PrintHS
         Me.mnuPrint.Name = "mnuPrint"
-        Me.mnuPrint.Size = New System.Drawing.Size(152, 22)
+        Me.mnuPrint.Size = New System.Drawing.Size(103, 22)
         Me.mnuPrint.Text = "&Print"
         '
         'mnuExit
         '
         Me.mnuExit.Image = Global.TellerAssistant2012.My.Resources.Resources.Cancel_Red_24
         Me.mnuExit.Name = "mnuExit"
-        Me.mnuExit.Size = New System.Drawing.Size(152, 22)
+        Me.mnuExit.Size = New System.Drawing.Size(103, 22)
         Me.mnuExit.Text = "&Close"
         '
         'ViewToolStripMenuItem
@@ -184,57 +216,33 @@ Partial Class FormCheckSearch
         Me.ImageList1.ImageSize = New System.Drawing.Size(16, 16)
         Me.ImageList1.TransparentColor = System.Drawing.Color.Transparent
         '
-        'StatusStrip1
+        'labelCount
         '
-        Me.StatusStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.txtChecksCount})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(802, 22)
-        Me.StatusStrip1.TabIndex = 0
-        '
-        'ToolStripStatusLabel1
-        '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(44, 17)
-        Me.ToolStripStatusLabel1.Text = "Found:"
-        Me.ToolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
-        'txtChecksCount
-        '
-        Me.txtChecksCount.Name = "txtChecksCount"
-        Me.txtChecksCount.Size = New System.Drawing.Size(0, 17)
-        '
-        'CheckSearchPanel1
-        '
-        Me.CheckSearchPanel1.BackColor = System.Drawing.Color.Transparent
-        Me.CheckSearchPanel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.CheckSearchPanel1.Location = New System.Drawing.Point(0, 24)
-        Me.CheckSearchPanel1.Name = "CheckSearchPanel1"
-        Me.CheckSearchPanel1.Size = New System.Drawing.Size(802, 225)
-        Me.CheckSearchPanel1.TabIndex = 14
+        Me.labelCount.Name = "labelCount"
+        Me.labelCount.Size = New System.Drawing.Size(121, 17)
+        Me.labelCount.Text = "ToolStripStatusLabel2"
         '
         'FormCheckSearch
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(802, 632)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Name = "FormCheckSearch"
         Me.Text = "Check Search"
-        Me.ToolStripContainer1.BottomToolStripPanel.ResumeLayout(false)
-        Me.ToolStripContainer1.BottomToolStripPanel.PerformLayout
-        Me.ToolStripContainer1.ContentPanel.ResumeLayout(false)
-        Me.ToolStripContainer1.ContentPanel.PerformLayout
-        Me.ToolStripContainer1.ResumeLayout(false)
-        Me.ToolStripContainer1.PerformLayout
-        Me.ToolStrip1.ResumeLayout(false)
-        Me.ToolStrip1.PerformLayout
-        Me.MenuStrip1.ResumeLayout(false)
-        Me.MenuStrip1.PerformLayout
-        Me.StatusStrip1.ResumeLayout(false)
-        Me.StatusStrip1.PerformLayout
-        Me.ResumeLayout(false)
+        Me.ToolStripContainer1.BottomToolStripPanel.ResumeLayout(False)
+        Me.ToolStripContainer1.BottomToolStripPanel.PerformLayout()
+        Me.ToolStripContainer1.ContentPanel.ResumeLayout(False)
+        Me.ToolStripContainer1.ContentPanel.PerformLayout()
+        Me.ToolStripContainer1.ResumeLayout(False)
+        Me.ToolStripContainer1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
+        Me.ToolStrip1.ResumeLayout(False)
+        Me.ToolStrip1.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
+        Me.ResumeLayout(False)
 
 End Sub
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
@@ -257,4 +265,5 @@ End Sub
     Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents txtChecksCount As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents CheckSearchPanel1 As TellerAssistant2012.CheckSearchPanel
+    Friend WithEvents labelCount As System.Windows.Forms.ToolStripStatusLabel
 End Class
