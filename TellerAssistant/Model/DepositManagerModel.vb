@@ -209,6 +209,7 @@ Public Class DepositManagerModel
         Me._db.AttachObserver(_chkRegister)
         AttachScanner(CType([Enum].Parse(GetType(ConnectionType), My.Settings.ImageTransferMethod), ConnectionType))
         Me.UpdateCheckRegisterQueues()
+        Me.NotifyObservers(Me, New DepositEventArgs(EventName.evnmVwDepositInfoChanged, Me._depTicket))
         Return _depTicket
     End Function
 
@@ -492,7 +493,7 @@ Public Class DepositManagerModel
                     Me.UpdateCheckRegisterQueues(CType(NotifyEvent, CheckDataEventArgs).Check.Status)
 
                 Case EventName.evnmDbCheckDonorInserted, EventName.evnmDbCheckDonorUpdated
-                    Me.UpdateCheckRegisterQueues(CType(NotifyEvent, CheckDataEventArgs).Check.Status)
+                    Me.UpdateCheckRegisterQueues(CType(NotifyEvent, DonorInfoEventArgs).CheckQueue)
 
             End Select
         Catch ex As Exception

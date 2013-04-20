@@ -13,6 +13,7 @@ Public Class DepositManagerPresenter
     Public Sub New(ByVal aView As IViewFrmMain)
         MyBase.New(aView, New DepositManagerModel())
         Me._myModel = CType(MyBase.BaseModel, DepositManagerModel)
+        Me._myModel.AttachObserver(Me)
     End Sub
 
     Private Sub _myModel_AttachObserverCallback(observed As mvcLibrary.IObserver) Handles _myModel.AttachObserverCallback

@@ -151,12 +151,12 @@ Public Class CheckViewerViewPanel
 
     Private Sub comboDonor_DropDownClosed(ByVal sender As Object, ByVal e As System.EventArgs) Handles comboDonor.DropDownClosed
         If Me.comboDonor.SelectedIndex > -1 Then
-            Me.btnEditDonor.Enabled = True
+            Me.SetButtonEditDonorInfoVisible(True)
+            Me.IsDirty = True
+            SetApplyButtonEnabled(sender, e)
             Me.SetCurrentDonorInfo(CType(Me.comboDonor.SelectedItem, DonorClass))
             Me.OriginalCheck.DonorInfo = Me.UpdatedCheck.DonorInfo
             'RaiseEvent CheckviewDonorChanged(sender, e)
-            Me.IsDirty = True
-            SetApplyButtonEnabled(sender, e)
         End If
     End Sub
 
@@ -191,8 +191,13 @@ Public Class CheckViewerViewPanel
     Private Sub comboDonor_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles comboDonor.Leave
         If Me.comboDonor.SelectedIndex = -1 And Me.comboDonor.Text <> "" Then
             Me.UpdatedCheck.DonorInfo = New DonorClass(Me.comboDonor.Text.Trim)
+            Me.UpdatedCheck.DonorInfo.Bank = Me.UpdatedCheck.RoutingNo
+            Me.UpdatedCheck.DonorInfo.Account = Me.UpdatedCheck.AccountNo
             Me.OriginalCheck.DonorInfo = Me.UpdatedCheck.DonorInfo
             RaiseEvent CheckviewDonorChanged(sender, e)
+            Me.IsDirty = True
+            Me.SetButtonEditDonorInfoVisible(True)
+            Me.SetApplyButtonEnabled(Me, e)
             txtCheckAmt.Focus()
         End If
     End Sub

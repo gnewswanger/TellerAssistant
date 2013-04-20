@@ -31,13 +31,13 @@ Public Class CheckSearchPresenter
 
     Public Overrides Sub UpdateData(ByVal NewEvent As mvcLibrary.mvcEventArgsBase)
         Select Case CType(NewEvent, AbstractEventArgs).Name
-            Case EventName.evnmDbCheckInserted
+            Case EventName.evnmVwCheckInserted
                 CType(Me.View, IViewFrmCheckSearch).CheckAdded = CType(NewEvent, CheckDataEventArgs).modCheck
 
-            Case EventName.evnmDbCheckAmountChanged, EventName.evnmDbCheckUpdated
+            Case EventName.evnmVwCheckAmountChanged, EventName.evnmVwCheckUpdated
                 CType(Me.View, IViewFrmCheckSearch).CheckChanged = CType(NewEvent, CheckDataEventArgs).modCheck
 
-            Case EventName.evnmDbCheckDeleted, EventName.evnmDbCheckOnlyDeleted
+            Case EventName.evnmVwCheckDeleted, EventName.evnmVWCheckOnlyDeleted
                 CType(Me.View, IViewFrmCheckSearch).CheckDeleted = CType(NewEvent, CheckDataEventArgs).Check
 
         End Select
