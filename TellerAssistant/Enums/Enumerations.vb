@@ -118,3 +118,4 @@ End Enum
     rrsRequestedSent = 4
     rrsAllRequests = rrsRequestedNotSent Or rrsRequestedSent
 End Enum
+

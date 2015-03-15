@@ -179,4 +179,8 @@ Public Class FormCheckSearch
     Private Sub ToolStripStatusLabel1_Click(sender As Object, e As EventArgs) Handles ToolStripStatusLabel1.Click
 
     End Sub
+
+    Private Sub CheckSearchPanel1_Load(sender As Object, e As EventArgs) Handles CheckSearchPanel1.Load
+
+    End Sub
 End Class
