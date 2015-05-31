@@ -98,13 +98,13 @@ Public Class DepositManagerModel
         _db.DeleteBankAccount(bnk)
     End Sub
 
-    Public Function GetDepositSummaryList(ByVal filterRange As Integer) As List(Of DepositTicketClass)
-        If filterRange = -1 Then
-            Return Nothing
-        Else
-            Return _db.GetDepositTicketList(filterRange)
-        End If
-    End Function
+    'Public Function GetDepositSummaryList(ByVal filterRange As Integer) As List(Of DepositTicketClass)
+    '    If filterRange = -1 Then
+    '        Return Nothing
+    '    Else
+    '        Return _db.GetDepositTicketList(filterRange)
+    '    End If
+    'End Function
 
     Public Function GetDepositSummaryListViewItems(ByVal filterRange As Integer) As List(Of ListViewItem)
         If filterRange = -1 Then

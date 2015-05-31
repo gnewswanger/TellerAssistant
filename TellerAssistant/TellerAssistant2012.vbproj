@@ -124,10 +124,10 @@
     <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerAddPanel.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerConfirmPanel.Designer.vb">
+    <Compile Include="CustomUserControls\CheckViewerConfirmPanel.Designer.vb">
       <DependentUpon>CheckViewerConfirmPanel.vb</DependentUpon>
     </Compile>
-    <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerConfirmPanel.vb">
+    <Compile Include="CustomUserControls\CheckViewerConfirmPanel.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomUserControls\CheckViewerPanel\CheckViewerEditPanel.Designer.vb">
@@ -315,7 +315,7 @@
     <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerAddPanel.resx">
       <DependentUpon>CheckViewerAddPanel.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerConfirmPanel.resx">
+    <EmbeddedResource Include="CustomUserControls\CheckViewerConfirmPanel.resx">
       <DependentUpon>CheckViewerConfirmPanel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomUserControls\CheckViewerPanel\CheckViewerEditPanel.resx">
@@ -409,6 +409,9 @@
     <None Include="..\..\..\..\MyTellerAssistant2008.xml">
       <Link>bin\Debug\MyTellerAssistant2008.xml</Link>
     </None>
+    <Content Include="..\..\..\..\AppData\Local\TellerAssistant2012\TellerAssistant2012\2012.1.0.0\MyTellerAssistant.xml">
+      <Link>MyTellerAssistant.xml</Link>
+    </Content>
     <Content Include="FourTones.wav" />
     <None Include="Resources\prospe_micrimage_mn.jpg" />
     <None Include="Resources\FourTones.wav" />
@@ -451,7 +454,6 @@
     <None Include="Resources\Cable SH.png" />
     <None Include="Resources\Cable SH1.png" />
     <None Include="Resources\Check-OK.png" />
-    <Content Include="MyTellerAssistant2008.xml" />
     <None Include="Resources\80 yellow flag.png" />
     <Content Include="twotones.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

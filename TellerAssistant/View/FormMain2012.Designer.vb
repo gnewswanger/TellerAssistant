@@ -24,12 +24,12 @@ Partial Class FormMain2012
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain2012))
-        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup1 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Not Assigned", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup2 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Amount Pending", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup3 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Edit Pending", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup4 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Confirm Pending", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup5 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Verified", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup7 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Not Assigned", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup8 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Amount Pending", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup9 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Edit Pending", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup10 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Confirm Pending", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup11 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Verified", System.Windows.Forms.HorizontalAlignment.Left)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.ContextMenuLVChecks = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ctxmnuLVChecksRefresh = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,21 +40,26 @@ Partial Class FormMain2012
         Me.txtDepDescript = New System.Windows.Forms.TextBox()
         Me.TabControl2 = New System.Windows.Forms.TabControl()
         Me.tpEntryQueue = New System.Windows.Forms.TabPage()
+        Me.CheckviewerEntryPanel1 = New TellerAssistant2012.CheckViewerEditPanel()
         Me.tpEditQueue = New System.Windows.Forms.TabPage()
+        Me.CheckViewEditPanel1 = New TellerAssistant2012.CheckViewerEditPanel()
         Me.tpConfirmQueue = New System.Windows.Forms.TabPage()
+        Me.CheckViewerConfirmPanel1 = New TellerAssistant2012.CheckViewerConfirmPanel()
         Me.tpAddManualCheck = New System.Windows.Forms.TabPage()
+        Me.CheckViewerAddPanel1 = New TellerAssistant2012.CheckViewerAddPanel()
+        Me.tpView = New System.Windows.Forms.TabPage()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
+        Me.toolStripBankInfo = New System.Windows.Forms.ToolStrip()
+        Me.toolLabel1 = New System.Windows.Forms.ToolStripLabel()
+        Me.toolTextBankInfo = New System.Windows.Forms.ToolStripTextBox()
+        Me.toolStripDepositTotal = New System.Windows.Forms.ToolStrip()
+        Me.ToolLabel4 = New System.Windows.Forms.ToolStripLabel()
+        Me.toolTextDepositTotal = New System.Windows.Forms.ToolStripTextBox()
         Me.ToolStripStatus1 = New System.Windows.Forms.ToolStrip()
         Me.toolLabelStatusText = New System.Windows.Forms.ToolStripLabel()
         Me.toolBtnPortIcon = New System.Windows.Forms.ToolStripDropDownButton()
         Me.toolMnuDelayInterval = New System.Windows.Forms.ToolStripMenuItem()
         Me.toolMnuDelayText = New System.Windows.Forms.ToolStripTextBox()
-        Me.toolStripDepositTotal = New System.Windows.Forms.ToolStrip()
-        Me.ToolLabel4 = New System.Windows.Forms.ToolStripLabel()
-        Me.toolTextDepositTotal = New System.Windows.Forms.ToolStripTextBox()
-        Me.toolStripBankInfo = New System.Windows.Forms.ToolStrip()
-        Me.toolLabel1 = New System.Windows.Forms.ToolStripLabel()
-        Me.toolTextBankInfo = New System.Windows.Forms.ToolStripTextBox()
         Me.TextPanelFlyout1 = New Flyout_Control.TextPanelFlyout()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.pnlBottomBarExtension = New System.Windows.Forms.Panel()
@@ -148,16 +153,6 @@ Partial Class FormMain2012
         Me.Label26 = New System.Windows.Forms.Label()
         Me.lvChecklist = New System.Windows.Forms.ListView()
         Me.ImageListStates = New System.Windows.Forms.ImageList(Me.components)
-        Me.ToolStripTop = New System.Windows.Forms.ToolStrip()
-        Me.toolbtnPrintTicket = New System.Windows.Forms.ToolStripButton()
-        Me.ToolSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.toolBtnCheckSearch = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
-        Me.toolbtnAddCheck = New System.Windows.Forms.ToolStripButton()
-        Me.toolbtnEditCheck = New System.Windows.Forms.ToolStripButton()
-        Me.toolbtnDeleteCheck = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
-        Me.toolBtnExit = New System.Windows.Forms.ToolStripButton()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -192,24 +187,32 @@ Partial Class FormMain2012
         Me.mnuManageImageFiles = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.mnuAbout = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripTop = New System.Windows.Forms.ToolStrip()
+        Me.toolbtnPrintTicket = New System.Windows.Forms.ToolStripButton()
+        Me.ToolSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.toolBtnCheckSearch = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
+        Me.toolbtnAddCheck = New System.Windows.Forms.ToolStripButton()
+        Me.toolbtnEditCheck = New System.Windows.Forms.ToolStripButton()
+        Me.toolbtnDeleteCheck = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
+        Me.toolBtnExit = New System.Windows.Forms.ToolStripButton()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
-        Me.CheckviewerEntryPanel1 = New TellerAssistant2012.CheckViewerEditPanel()
-        Me.CheckViewEditPanel1 = New TellerAssistant2012.CheckViewerEditPanel()
-        Me.CheckViewerConfirmPanel1 = New TellerAssistant2012.CheckViewerConfirmPanel()
-        Me.CheckViewerAddPanel1 = New TellerAssistant2012.CheckViewerAddPanel()
+        Me.CheckViewerViewPanel1 = New TellerAssistant2012.CheckViewerViewPanel()
         Me.ContextMenuLVChecks.SuspendLayout()
         Me.TabControl2.SuspendLayout()
         Me.tpEntryQueue.SuspendLayout()
         Me.tpEditQueue.SuspendLayout()
         Me.tpConfirmQueue.SuspendLayout()
         Me.tpAddManualCheck.SuspendLayout()
+        Me.tpView.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
-        Me.ToolStripStatus1.SuspendLayout()
-        Me.toolStripDepositTotal.SuspendLayout()
         Me.toolStripBankInfo.SuspendLayout()
+        Me.toolStripDepositTotal.SuspendLayout()
+        Me.ToolStripStatus1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -225,8 +228,8 @@ Partial Class FormMain2012
         Me.GroupBoxCurrency.SuspendLayout()
         Me.GroupBoxCoins.SuspendLayout()
         Me.pnlDepositInfo.SuspendLayout()
-        Me.ToolStripTop.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        Me.ToolStripTop.SuspendLayout()
         Me.SuspendLayout()
         '
         'ImageList1
@@ -246,6 +249,7 @@ Partial Class FormMain2012
         '
         'ContextMenuLVChecks
         '
+        Me.ContextMenuLVChecks.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ContextMenuLVChecks.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ctxmnuLVChecksRefresh, Me.ctxmnuLVChecksView, Me.ctxmnuLVChecksEdit})
         Me.ContextMenuLVChecks.Name = "ContextMenuLVChecks"
         Me.ContextMenuLVChecks.Size = New System.Drawing.Size(177, 94)
@@ -288,6 +292,7 @@ Partial Class FormMain2012
         Me.TabControl2.Controls.Add(Me.tpEditQueue)
         Me.TabControl2.Controls.Add(Me.tpConfirmQueue)
         Me.TabControl2.Controls.Add(Me.tpAddManualCheck)
+        Me.TabControl2.Controls.Add(Me.tpView)
         Me.TabControl2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl2.Location = New System.Drawing.Point(4, 359)
         Me.TabControl2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -310,6 +315,18 @@ Partial Class FormMain2012
         Me.tpEntryQueue.Text = "Entry Queue (0)"
         Me.tpEntryQueue.UseVisualStyleBackColor = True
         '
+        'CheckviewerEntryPanel1
+        '
+        Me.CheckviewerEntryPanel1.ApplyonEntryKey = True
+        Me.CheckviewerEntryPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CheckviewerEntryPanel1.Location = New System.Drawing.Point(4, 5)
+        Me.CheckviewerEntryPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        Me.CheckviewerEntryPanel1.Name = "CheckviewerEntryPanel1"
+        Me.CheckviewerEntryPanel1.OkButtonLabel = "&Apply"
+        Me.CheckviewerEntryPanel1.Size = New System.Drawing.Size(1502, 397)
+        Me.CheckviewerEntryPanel1.SpliterDistance = 1040
+        Me.CheckviewerEntryPanel1.TabIndex = 0
+        '
         'tpEditQueue
         '
         Me.tpEditQueue.Controls.Add(Me.CheckViewEditPanel1)
@@ -321,6 +338,18 @@ Partial Class FormMain2012
         Me.tpEditQueue.TabIndex = 1
         Me.tpEditQueue.Text = "Edit Queue (0)"
         Me.tpEditQueue.UseVisualStyleBackColor = True
+        '
+        'CheckViewEditPanel1
+        '
+        Me.CheckViewEditPanel1.ApplyonEntryKey = False
+        Me.CheckViewEditPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CheckViewEditPanel1.Location = New System.Drawing.Point(4, 5)
+        Me.CheckViewEditPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        Me.CheckViewEditPanel1.Name = "CheckViewEditPanel1"
+        Me.CheckViewEditPanel1.OkButtonLabel = "&Apply"
+        Me.CheckViewEditPanel1.Size = New System.Drawing.Size(1502, 397)
+        Me.CheckViewEditPanel1.SpliterDistance = 1040
+        Me.CheckViewEditPanel1.TabIndex = 0
         '
         'tpConfirmQueue
         '
@@ -334,6 +363,16 @@ Partial Class FormMain2012
         Me.tpConfirmQueue.Text = "Confirm Queue (0)"
         Me.tpConfirmQueue.UseVisualStyleBackColor = True
         '
+        'CheckViewerConfirmPanel1
+        '
+        Me.CheckViewerConfirmPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CheckViewerConfirmPanel1.Location = New System.Drawing.Point(4, 5)
+        Me.CheckViewerConfirmPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        Me.CheckViewerConfirmPanel1.Name = "CheckViewerConfirmPanel1"
+        Me.CheckViewerConfirmPanel1.Size = New System.Drawing.Size(1502, 397)
+        Me.CheckViewerConfirmPanel1.SpliterDistance = 1092
+        Me.CheckViewerConfirmPanel1.TabIndex = 0
+        '
         'tpAddManualCheck
         '
         Me.tpAddManualCheck.Controls.Add(Me.CheckViewerAddPanel1)
@@ -346,14 +385,38 @@ Partial Class FormMain2012
         Me.tpAddManualCheck.Text = "Add Check"
         Me.tpAddManualCheck.UseVisualStyleBackColor = True
         '
+        'CheckViewerAddPanel1
+        '
+        Me.CheckViewerAddPanel1.ApplyonEntryKey = False
+        Me.CheckViewerAddPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CheckViewerAddPanel1.Location = New System.Drawing.Point(4, 5)
+        Me.CheckViewerAddPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        Me.CheckViewerAddPanel1.Name = "CheckViewerAddPanel1"
+        Me.CheckViewerAddPanel1.NavButtonsVisible = False
+        Me.CheckViewerAddPanel1.OkButtonLabel = "&Apply"
+        Me.CheckViewerAddPanel1.Size = New System.Drawing.Size(1502, 397)
+        Me.CheckViewerAddPanel1.SpliterDistance = 1084
+        Me.CheckViewerAddPanel1.TabIndex = 0
+        '
+        'tpView
+        '
+        Me.tpView.Controls.Add(Me.CheckViewerViewPanel1)
+        Me.tpView.Location = New System.Drawing.Point(4, 29)
+        Me.tpView.Name = "tpView"
+        Me.tpView.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpView.Size = New System.Drawing.Size(1510, 407)
+        Me.tpView.TabIndex = 4
+        Me.tpView.Text = "View Confirmed"
+        Me.tpView.UseVisualStyleBackColor = True
+        '
         'ToolStripContainer1
         '
         '
         'ToolStripContainer1.BottomToolStripPanel
         '
-        Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.ToolStripStatus1)
-        Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.toolStripDepositTotal)
         Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.toolStripBankInfo)
+        Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.toolStripDepositTotal)
+        Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.ToolStripStatus1)
         '
         'ToolStripContainer1.ContentPanel
         '
@@ -363,7 +426,7 @@ Partial Class FormMain2012
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.Panel2)
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.TableLayoutPanel1)
         Me.ToolStripContainer1.ContentPanel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1554, 920)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1554, 912)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripContainer1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -374,56 +437,40 @@ Partial Class FormMain2012
         '
         'ToolStripContainer1.TopToolStripPanel
         '
-        Me.ToolStripContainer1.TopToolStripPanel.Controls.Add(Me.ToolStripTop)
         Me.ToolStripContainer1.TopToolStripPanel.Controls.Add(Me.MenuStrip1)
+        Me.ToolStripContainer1.TopToolStripPanel.Controls.Add(Me.ToolStripTop)
         '
-        'ToolStripStatus1
+        'toolStripBankInfo
         '
-        Me.ToolStripStatus1.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStripStatus1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolLabelStatusText, Me.toolBtnPortIcon})
-        Me.ToolStripStatus1.Location = New System.Drawing.Point(3, 0)
-        Me.ToolStripStatus1.Name = "ToolStripStatus1"
-        Me.ToolStripStatus1.Size = New System.Drawing.Size(226, 25)
-        Me.ToolStripStatus1.TabIndex = 4
+        Me.toolStripBankInfo.Dock = System.Windows.Forms.DockStyle.None
+        Me.toolStripBankInfo.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.toolStripBankInfo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolLabel1, Me.toolTextBankInfo})
+        Me.toolStripBankInfo.Location = New System.Drawing.Point(528, 0)
+        Me.toolStripBankInfo.Name = "toolStripBankInfo"
+        Me.toolStripBankInfo.Size = New System.Drawing.Size(307, 28)
+        Me.toolStripBankInfo.TabIndex = 2
         '
-        'toolLabelStatusText
+        'toolLabel1
         '
-        Me.toolLabelStatusText.ActiveLinkColor = System.Drawing.Color.Red
-        Me.toolLabelStatusText.AutoSize = False
-        Me.toolLabelStatusText.BackColor = System.Drawing.SystemColors.Info
-        Me.toolLabelStatusText.Name = "toolLabelStatusText"
-        Me.toolLabelStatusText.Size = New System.Drawing.Size(185, 22)
+        Me.toolLabel1.Name = "toolLabel1"
+        Me.toolLabel1.Size = New System.Drawing.Size(91, 25)
+        Me.toolLabel1.Text = "Bank Info:"
         '
-        'toolBtnPortIcon
+        'toolTextBankInfo
         '
-        Me.toolBtnPortIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.toolBtnPortIcon.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolMnuDelayInterval})
-        Me.toolBtnPortIcon.Image = CType(resources.GetObject("toolBtnPortIcon.Image"), System.Drawing.Image)
-        Me.toolBtnPortIcon.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.toolBtnPortIcon.Name = "toolBtnPortIcon"
-        Me.toolBtnPortIcon.Size = New System.Drawing.Size(29, 22)
-        Me.toolBtnPortIcon.Text = "ToolStripButton1"
-        Me.toolBtnPortIcon.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
-        Me.toolBtnPortIcon.ToolTipText = "Scanner Not Connected"
-        '
-        'toolMnuDelayInterval
-        '
-        Me.toolMnuDelayInterval.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolMnuDelayText})
-        Me.toolMnuDelayInterval.Name = "toolMnuDelayInterval"
-        Me.toolMnuDelayInterval.Size = New System.Drawing.Size(191, 30)
-        Me.toolMnuDelayInterval.Text = "Delay Interval"
-        '
-        'toolMnuDelayText
-        '
-        Me.toolMnuDelayText.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.toolMnuDelayText.Name = "toolMnuDelayText"
-        Me.toolMnuDelayText.Size = New System.Drawing.Size(100, 27)
+        Me.toolTextBankInfo.AutoSize = False
+        Me.toolTextBankInfo.BackColor = System.Drawing.SystemColors.Info
+        Me.toolTextBankInfo.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.toolTextBankInfo.Name = "toolTextBankInfo"
+        Me.toolTextBankInfo.ReadOnly = True
+        Me.toolTextBankInfo.Size = New System.Drawing.Size(202, 25)
         '
         'toolStripDepositTotal
         '
         Me.toolStripDepositTotal.Dock = System.Windows.Forms.DockStyle.None
+        Me.toolStripDepositTotal.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.toolStripDepositTotal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolLabel4, Me.toolTextDepositTotal})
-        Me.toolStripDepositTotal.Location = New System.Drawing.Point(229, 0)
+        Me.toolStripDepositTotal.Location = New System.Drawing.Point(835, 0)
         Me.toolStripDepositTotal.Name = "toolStripDepositTotal"
         Me.toolStripDepositTotal.Size = New System.Drawing.Size(296, 37)
         Me.toolStripDepositTotal.TabIndex = 3
@@ -444,29 +491,48 @@ Partial Class FormMain2012
         Me.toolTextDepositTotal.Size = New System.Drawing.Size(120, 37)
         Me.toolTextDepositTotal.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'toolStripBankInfo
+        'ToolStripStatus1
         '
-        Me.toolStripBankInfo.Dock = System.Windows.Forms.DockStyle.None
-        Me.toolStripBankInfo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolLabel1, Me.toolTextBankInfo})
-        Me.toolStripBankInfo.Location = New System.Drawing.Point(525, 0)
-        Me.toolStripBankInfo.Name = "toolStripBankInfo"
-        Me.toolStripBankInfo.Size = New System.Drawing.Size(307, 28)
-        Me.toolStripBankInfo.TabIndex = 2
+        Me.ToolStripStatus1.Dock = System.Windows.Forms.DockStyle.None
+        Me.ToolStripStatus1.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.ToolStripStatus1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolLabelStatusText, Me.toolBtnPortIcon})
+        Me.ToolStripStatus1.Location = New System.Drawing.Point(1131, 0)
+        Me.ToolStripStatus1.Name = "ToolStripStatus1"
+        Me.ToolStripStatus1.Size = New System.Drawing.Size(239, 31)
+        Me.ToolStripStatus1.TabIndex = 4
         '
-        'toolLabel1
+        'toolLabelStatusText
         '
-        Me.toolLabel1.Name = "toolLabel1"
-        Me.toolLabel1.Size = New System.Drawing.Size(91, 25)
-        Me.toolLabel1.Text = "Bank Info:"
+        Me.toolLabelStatusText.ActiveLinkColor = System.Drawing.Color.Red
+        Me.toolLabelStatusText.AutoSize = False
+        Me.toolLabelStatusText.BackColor = System.Drawing.SystemColors.Info
+        Me.toolLabelStatusText.Name = "toolLabelStatusText"
+        Me.toolLabelStatusText.Size = New System.Drawing.Size(185, 22)
         '
-        'toolTextBankInfo
+        'toolBtnPortIcon
         '
-        Me.toolTextBankInfo.AutoSize = False
-        Me.toolTextBankInfo.BackColor = System.Drawing.SystemColors.Info
-        Me.toolTextBankInfo.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.toolTextBankInfo.Name = "toolTextBankInfo"
-        Me.toolTextBankInfo.ReadOnly = True
-        Me.toolTextBankInfo.Size = New System.Drawing.Size(202, 25)
+        Me.toolBtnPortIcon.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.toolBtnPortIcon.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolMnuDelayInterval})
+        Me.toolBtnPortIcon.Image = CType(resources.GetObject("toolBtnPortIcon.Image"), System.Drawing.Image)
+        Me.toolBtnPortIcon.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.toolBtnPortIcon.Name = "toolBtnPortIcon"
+        Me.toolBtnPortIcon.Size = New System.Drawing.Size(42, 28)
+        Me.toolBtnPortIcon.Text = "ToolStripButton1"
+        Me.toolBtnPortIcon.TextImageRelation = System.Windows.Forms.TextImageRelation.Overlay
+        Me.toolBtnPortIcon.ToolTipText = "Scanner Not Connected"
+        '
+        'toolMnuDelayInterval
+        '
+        Me.toolMnuDelayInterval.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolMnuDelayText})
+        Me.toolMnuDelayInterval.Name = "toolMnuDelayInterval"
+        Me.toolMnuDelayInterval.Size = New System.Drawing.Size(191, 30)
+        Me.toolMnuDelayInterval.Text = "Delay Interval"
+        '
+        'toolMnuDelayText
+        '
+        Me.toolMnuDelayText.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.toolMnuDelayText.Name = "toolMnuDelayText"
+        Me.toolMnuDelayText.Size = New System.Drawing.Size(100, 27)
         '
         'TextPanelFlyout1
         '
@@ -475,7 +541,7 @@ Partial Class FormMain2012
         Me.TextPanelFlyout1.AutoSize = True
         Me.TextPanelFlyout1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.TextPanelFlyout1.BackColor = System.Drawing.SystemColors.Control
-        Me.TextPanelFlyout1.Location = New System.Drawing.Point(1082, 876)
+        Me.TextPanelFlyout1.Location = New System.Drawing.Point(1082, 868)
         Me.TextPanelFlyout1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.TextPanelFlyout1.Name = "TextPanelFlyout1"
         Me.TextPanelFlyout1.OpenedLength = 100
@@ -491,7 +557,7 @@ Partial Class FormMain2012
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.SystemColors.Control
         Me.Panel3.Controls.Add(Me.pnlBottomBarExtension)
-        Me.Panel3.Location = New System.Drawing.Point(4, 874)
+        Me.Panel3.Location = New System.Drawing.Point(4, 866)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(854, 18)
@@ -552,7 +618,7 @@ Partial Class FormMain2012
         Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.39394!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.60606!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 728.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 731.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.TabControl1, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
@@ -562,7 +628,7 @@ Partial Class FormMain2012
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.106796!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.8932!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1554, 920)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1554, 912)
         Me.TableLayoutPanel1.TabIndex = 32
         '
         'TabControl1
@@ -576,7 +642,7 @@ Partial Class FormMain2012
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1546, 851)
+        Me.TabControl1.Size = New System.Drawing.Size(1546, 843)
         Me.TabControl1.TabIndex = 0
         Me.TabControl1.TabStop = False
         '
@@ -589,7 +655,7 @@ Partial Class FormMain2012
         Me.tpSelectDeposit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpSelectDeposit.Name = "tpSelectDeposit"
         Me.tpSelectDeposit.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpSelectDeposit.Size = New System.Drawing.Size(1538, 815)
+        Me.tpSelectDeposit.Size = New System.Drawing.Size(1538, 807)
         Me.tpSelectDeposit.TabIndex = 0
         Me.tpSelectDeposit.Text = "Select Deposit"
         '
@@ -614,7 +680,7 @@ Partial Class FormMain2012
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 192.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(1528, 803)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(1528, 795)
         Me.TableLayoutPanel2.TabIndex = 19
         '
         'Panel1
@@ -674,9 +740,9 @@ Partial Class FormMain2012
         Me.lvBankAccounts.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colHdrAcctId, Me.colHdrAcctType, Me.colHdrBankName})
         Me.lvBankAccounts.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lvBankAccounts.FullRowSelect = True
-        ListViewGroup6.Header = "ListViewGroup"
-        ListViewGroup6.Name = "ListViewGroup1"
-        Me.lvBankAccounts.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup6})
+        ListViewGroup7.Header = "ListViewGroup"
+        ListViewGroup7.Name = "ListViewGroup1"
+        Me.lvBankAccounts.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup7})
         Me.lvBankAccounts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.lvBankAccounts.HideSelection = False
         Me.lvBankAccounts.HoverSelection = True
@@ -825,7 +891,7 @@ Partial Class FormMain2012
         Me.tpViewDeposit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpViewDeposit.Name = "tpViewDeposit"
         Me.tpViewDeposit.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpViewDeposit.Size = New System.Drawing.Size(1538, 815)
+        Me.tpViewDeposit.Size = New System.Drawing.Size(1538, 807)
         Me.tpViewDeposit.TabIndex = 1
         Me.tpViewDeposit.Text = "Edit Deposit"
         Me.tpViewDeposit.UseVisualStyleBackColor = True
@@ -847,7 +913,7 @@ Partial Class FormMain2012
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 254.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1526, 801)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1526, 793)
         Me.TableLayoutPanel3.TabIndex = 13
         '
         'pnlCashRegister
@@ -1531,17 +1597,17 @@ Partial Class FormMain2012
         Me.lvChecklist.ContextMenuStrip = Me.ContextMenuLVChecks
         Me.lvChecklist.Cursor = System.Windows.Forms.Cursors.Default
         Me.lvChecklist.Dock = System.Windows.Forms.DockStyle.Fill
-        ListViewGroup1.Header = "Not Assigned"
-        ListViewGroup1.Name = "csNone"
-        ListViewGroup2.Header = "Amount Pending"
-        ListViewGroup2.Name = "csAmountPending"
-        ListViewGroup3.Header = "Edit Pending"
-        ListViewGroup3.Name = "csEditPending"
-        ListViewGroup4.Header = "Confirm Pending"
-        ListViewGroup4.Name = "csConfirmPending"
-        ListViewGroup5.Header = "Verified"
-        ListViewGroup5.Name = "csVerified"
-        Me.lvChecklist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1, ListViewGroup2, ListViewGroup3, ListViewGroup4, ListViewGroup5})
+        ListViewGroup6.Header = "Not Assigned"
+        ListViewGroup6.Name = "csNone"
+        ListViewGroup8.Header = "Amount Pending"
+        ListViewGroup8.Name = "csAmountPending"
+        ListViewGroup9.Header = "Edit Pending"
+        ListViewGroup9.Name = "csEditPending"
+        ListViewGroup10.Header = "Confirm Pending"
+        ListViewGroup10.Name = "csConfirmPending"
+        ListViewGroup11.Header = "Verified"
+        ListViewGroup11.Name = "csVerified"
+        Me.lvChecklist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup6, ListViewGroup8, ListViewGroup9, ListViewGroup10, ListViewGroup11})
         Me.lvChecklist.HideSelection = False
         Me.lvChecklist.Location = New System.Drawing.Point(462, 105)
         Me.lvChecklist.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -1567,102 +1633,12 @@ Partial Class FormMain2012
         Me.ImageListStates.Images.SetKeyName(6, "tick-small.png")
         Me.ImageListStates.Images.SetKeyName(7, "flag-small.png")
         '
-        'ToolStripTop
-        '
-        Me.ToolStripTop.Dock = System.Windows.Forms.DockStyle.None
-        Me.ToolStripTop.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbtnPrintTicket, Me.ToolSeparator2, Me.toolBtnCheckSearch, Me.ToolStripSeparator7, Me.toolbtnAddCheck, Me.toolbtnEditCheck, Me.toolbtnDeleteCheck, Me.ToolStripSeparator6, Me.toolBtnExit})
-        Me.ToolStripTop.Location = New System.Drawing.Point(3, 0)
-        Me.ToolStripTop.Name = "ToolStripTop"
-        Me.ToolStripTop.Size = New System.Drawing.Size(613, 48)
-        Me.ToolStripTop.TabIndex = 0
-        '
-        'toolbtnPrintTicket
-        '
-        Me.toolbtnPrintTicket.Image = CType(resources.GetObject("toolbtnPrintTicket.Image"), System.Drawing.Image)
-        Me.toolbtnPrintTicket.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.toolbtnPrintTicket.ImageTransparentColor = System.Drawing.Color.Black
-        Me.toolbtnPrintTicket.Name = "toolbtnPrintTicket"
-        Me.toolbtnPrintTicket.Size = New System.Drawing.Size(102, 45)
-        Me.toolbtnPrintTicket.Text = "Print Ticket"
-        Me.toolbtnPrintTicket.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.toolbtnPrintTicket.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'ToolSeparator2
-        '
-        Me.ToolSeparator2.Name = "ToolSeparator2"
-        Me.ToolSeparator2.Size = New System.Drawing.Size(6, 48)
-        '
-        'toolBtnCheckSearch
-        '
-        Me.toolBtnCheckSearch.Image = Global.TellerAssistant2012.My.Resources.Resources.Folder_Doc_Search_16
-        Me.toolBtnCheckSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.toolBtnCheckSearch.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.toolBtnCheckSearch.Name = "toolBtnCheckSearch"
-        Me.toolBtnCheckSearch.Size = New System.Drawing.Size(120, 45)
-        Me.toolBtnCheckSearch.Text = "Check Search"
-        Me.toolBtnCheckSearch.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.toolBtnCheckSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'ToolStripSeparator7
-        '
-        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 48)
-        '
-        'toolbtnAddCheck
-        '
-        Me.toolbtnAddCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.NewCardHS
-        Me.toolbtnAddCheck.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.toolbtnAddCheck.ImageTransparentColor = System.Drawing.Color.Black
-        Me.toolbtnAddCheck.Name = "toolbtnAddCheck"
-        Me.toolbtnAddCheck.Size = New System.Drawing.Size(102, 45)
-        Me.toolbtnAddCheck.Text = "Add Check"
-        Me.toolbtnAddCheck.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.toolbtnAddCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'toolbtnEditCheck
-        '
-        Me.toolbtnEditCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.EditInformationHS
-        Me.toolbtnEditCheck.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.toolbtnEditCheck.ImageTransparentColor = System.Drawing.Color.Black
-        Me.toolbtnEditCheck.Name = "toolbtnEditCheck"
-        Me.toolbtnEditCheck.Size = New System.Drawing.Size(98, 45)
-        Me.toolbtnEditCheck.Text = "Edit Check"
-        Me.toolbtnEditCheck.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.toolbtnEditCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'toolbtnDeleteCheck
-        '
-        Me.toolbtnDeleteCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.Trash
-        Me.toolbtnDeleteCheck.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.toolbtnDeleteCheck.ImageTransparentColor = System.Drawing.Color.Black
-        Me.toolbtnDeleteCheck.Name = "toolbtnDeleteCheck"
-        Me.toolbtnDeleteCheck.Size = New System.Drawing.Size(118, 45)
-        Me.toolbtnDeleteCheck.Text = "Delete Check"
-        Me.toolbtnDeleteCheck.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.toolbtnDeleteCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 48)
-        '
-        'toolBtnExit
-        '
-        Me.toolBtnExit.Image = Global.TellerAssistant2012.My.Resources.Resources.Cancel_Red_24
-        Me.toolBtnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.toolBtnExit.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.toolBtnExit.Name = "toolBtnExit"
-        Me.toolBtnExit.Size = New System.Drawing.Size(43, 45)
-        Me.toolBtnExit.Text = "Exit"
-        Me.toolBtnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.toolBtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
-        Me.toolBtnExit.ToolTipText = "Close program"
-        '
         'MenuStrip1
         '
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ToolStripMenuItem1, Me.OptionsToolStripMenuItem, Me.HelpsToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 48)
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.MenuStrip1.Size = New System.Drawing.Size(1554, 33)
@@ -1679,13 +1655,13 @@ Partial Class FormMain2012
         'ToolSeparator1
         '
         Me.ToolSeparator1.Name = "ToolSeparator1"
-        Me.ToolSeparator1.Size = New System.Drawing.Size(108, 6)
+        Me.ToolSeparator1.Size = New System.Drawing.Size(116, 6)
         '
         'mnuExit
         '
         Me.mnuExit.Image = Global.TellerAssistant2012.My.Resources.Resources.Cancel_Red_24
         Me.mnuExit.Name = "mnuExit"
-        Me.mnuExit.Size = New System.Drawing.Size(111, 30)
+        Me.mnuExit.Size = New System.Drawing.Size(119, 30)
         Me.mnuExit.Text = "E&xit"
         '
         'EditToolStripMenuItem
@@ -1699,21 +1675,21 @@ Partial Class FormMain2012
         '
         Me.mnuAddManualCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.NewCardHS
         Me.mnuAddManualCheck.Name = "mnuAddManualCheck"
-        Me.mnuAddManualCheck.Size = New System.Drawing.Size(210, 30)
+        Me.mnuAddManualCheck.Size = New System.Drawing.Size(218, 30)
         Me.mnuAddManualCheck.Text = "Add New Check"
         '
         'mnuEditSelectedCheck
         '
         Me.mnuEditSelectedCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.EditInformationHS
         Me.mnuEditSelectedCheck.Name = "mnuEditSelectedCheck"
-        Me.mnuEditSelectedCheck.Size = New System.Drawing.Size(210, 30)
+        Me.mnuEditSelectedCheck.Size = New System.Drawing.Size(218, 30)
         Me.mnuEditSelectedCheck.Text = "Edit Check"
         '
         'mnuDeleteSelectedCheck
         '
         Me.mnuDeleteSelectedCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.Trash
         Me.mnuDeleteSelectedCheck.Name = "mnuDeleteSelectedCheck"
-        Me.mnuDeleteSelectedCheck.Size = New System.Drawing.Size(210, 30)
+        Me.mnuDeleteSelectedCheck.Size = New System.Drawing.Size(218, 30)
         Me.mnuDeleteSelectedCheck.Text = "Delete ChecK"
         '
         'ToolStripMenuItem1
@@ -1727,38 +1703,38 @@ Partial Class FormMain2012
         '
         Me.mnuPrintTicket.Image = Global.TellerAssistant2012.My.Resources.Resources.PrintHS
         Me.mnuPrintTicket.Name = "mnuPrintTicket"
-        Me.mnuPrintTicket.Size = New System.Drawing.Size(232, 30)
+        Me.mnuPrintTicket.Size = New System.Drawing.Size(240, 30)
         Me.mnuPrintTicket.Text = "Print Ticket"
         '
         'mnuPrintReport
         '
         Me.mnuPrintReport.Image = Global.TellerAssistant2012.My.Resources.Resources.PrintHSReport
         Me.mnuPrintReport.Name = "mnuPrintReport"
-        Me.mnuPrintReport.Size = New System.Drawing.Size(232, 30)
+        Me.mnuPrintReport.Size = New System.Drawing.Size(240, 30)
         Me.mnuPrintReport.Text = "Print Report"
         '
         'mnuPageSetup
         '
         Me.mnuPageSetup.Name = "mnuPageSetup"
-        Me.mnuPageSetup.Size = New System.Drawing.Size(232, 30)
+        Me.mnuPageSetup.Size = New System.Drawing.Size(240, 30)
         Me.mnuPageSetup.Text = "Page/Printer Setup"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(229, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(237, 6)
         '
         'mnuCheckSearch
         '
         Me.mnuCheckSearch.Image = Global.TellerAssistant2012.My.Resources.Resources.Folder_Doc_Search_16
         Me.mnuCheckSearch.Name = "mnuCheckSearch"
-        Me.mnuCheckSearch.Size = New System.Drawing.Size(232, 30)
+        Me.mnuCheckSearch.Size = New System.Drawing.Size(240, 30)
         Me.mnuCheckSearch.Text = "Search for Checks"
         '
         'mnuPrintReceipts
         '
         Me.mnuPrintReceipts.Name = "mnuPrintReceipts"
-        Me.mnuPrintReceipts.Size = New System.Drawing.Size(232, 30)
+        Me.mnuPrintReceipts.Size = New System.Drawing.Size(240, 30)
         Me.mnuPrintReceipts.Text = "Print Receipts"
         '
         'OptionsToolStripMenuItem
@@ -1772,44 +1748,44 @@ Partial Class FormMain2012
         '
         Me.mnuAddEditBanks.Image = Global.TellerAssistant2012.My.Resources.Resources.Bank_List
         Me.mnuAddEditBanks.Name = "mnuAddEditBanks"
-        Me.mnuAddEditBanks.Size = New System.Drawing.Size(329, 30)
+        Me.mnuAddEditBanks.Size = New System.Drawing.Size(337, 30)
         Me.mnuAddEditBanks.Text = "&Add/Edit Banks"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(326, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(334, 6)
         '
         'mnuPrintFormSetup
         '
         Me.mnuPrintFormSetup.Name = "mnuPrintFormSetup"
-        Me.mnuPrintFormSetup.Size = New System.Drawing.Size(329, 30)
+        Me.mnuPrintFormSetup.Size = New System.Drawing.Size(337, 30)
         Me.mnuPrintFormSetup.Text = "Print Form Setup"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(326, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(334, 6)
         '
         'mnuInitScanner
         '
         Me.mnuInitScanner.Image = Global.TellerAssistant2012.My.Resources.Resources.MICRImageInitialize
         Me.mnuInitScanner.Name = "mnuInitScanner"
-        Me.mnuInitScanner.Size = New System.Drawing.Size(329, 30)
+        Me.mnuInitScanner.Size = New System.Drawing.Size(337, 30)
         Me.mnuInitScanner.Text = "Initialize Scanner"
         '
         'mnuResetScanner
         '
         Me.mnuResetScanner.Image = Global.TellerAssistant2012.My.Resources.Resources.MICRImageReset3
         Me.mnuResetScanner.Name = "mnuResetScanner"
-        Me.mnuResetScanner.Size = New System.Drawing.Size(329, 30)
+        Me.mnuResetScanner.Size = New System.Drawing.Size(337, 30)
         Me.mnuResetScanner.Text = "Reset Scanner"
         '
         'mnuCommunicationMode
         '
         Me.mnuCommunicationMode.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFTP, Me.mnuRS232})
         Me.mnuCommunicationMode.Name = "mnuCommunicationMode"
-        Me.mnuCommunicationMode.Size = New System.Drawing.Size(329, 30)
+        Me.mnuCommunicationMode.Size = New System.Drawing.Size(337, 30)
         Me.mnuCommunicationMode.Text = "Scanner &Communication Mode"
         '
         'mnuFTP
@@ -1817,7 +1793,7 @@ Partial Class FormMain2012
         Me.mnuFTP.CheckOnClick = True
         Me.mnuFTP.Image = Global.TellerAssistant2012.My.Resources.Resources.NetworkConn
         Me.mnuFTP.Name = "mnuFTP"
-        Me.mnuFTP.Size = New System.Drawing.Size(407, 30)
+        Me.mnuFTP.Size = New System.Drawing.Size(415, 30)
         Me.mnuFTP.Text = "FTP (Connect to Network)"
         '
         'mnuRS232
@@ -1825,30 +1801,30 @@ Partial Class FormMain2012
         Me.mnuRS232.CheckOnClick = True
         Me.mnuRS232.Image = CType(resources.GetObject("mnuRS232.Image"), System.Drawing.Image)
         Me.mnuRS232.Name = "mnuRS232"
-        Me.mnuRS232.Size = New System.Drawing.Size(407, 30)
+        Me.mnuRS232.Size = New System.Drawing.Size(415, 30)
         Me.mnuRS232.Text = "RS232 (Connect to Computer Serial Port)"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(326, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(334, 6)
         '
         'mnuEditAppSettings
         '
         Me.mnuEditAppSettings.Name = "mnuEditAppSettings"
-        Me.mnuEditAppSettings.Size = New System.Drawing.Size(329, 30)
+        Me.mnuEditAppSettings.Size = New System.Drawing.Size(337, 30)
         Me.mnuEditAppSettings.Text = "Edit Application Settings"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(326, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(334, 6)
         '
         'EventLoggingToolStripMenuItem
         '
         Me.EventLoggingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuViewExceptionLog, Me.mnuLoggingOn})
         Me.EventLoggingToolStripMenuItem.Name = "EventLoggingToolStripMenuItem"
-        Me.EventLoggingToolStripMenuItem.Size = New System.Drawing.Size(329, 30)
+        Me.EventLoggingToolStripMenuItem.Size = New System.Drawing.Size(337, 30)
         Me.EventLoggingToolStripMenuItem.Text = "Event Logging"
         '
         'mnuViewExceptionLog
@@ -1866,7 +1842,7 @@ Partial Class FormMain2012
         'mnuManageImageFiles
         '
         Me.mnuManageImageFiles.Name = "mnuManageImageFiles"
-        Me.mnuManageImageFiles.Size = New System.Drawing.Size(329, 30)
+        Me.mnuManageImageFiles.Size = New System.Drawing.Size(337, 30)
         Me.mnuManageImageFiles.Text = "Manage Image Files"
         '
         'HelpsToolStripMenuItem
@@ -1882,52 +1858,110 @@ Partial Class FormMain2012
         Me.mnuAbout.Size = New System.Drawing.Size(134, 30)
         Me.mnuAbout.Text = "About"
         '
-        'CheckviewerEntryPanel1
+        'ToolStripTop
         '
-        Me.CheckviewerEntryPanel1.ApplyonEntryKey = True
-        Me.CheckviewerEntryPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckviewerEntryPanel1.Location = New System.Drawing.Point(4, 5)
-        Me.CheckviewerEntryPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
-        Me.CheckviewerEntryPanel1.Name = "CheckviewerEntryPanel1"
-        Me.CheckviewerEntryPanel1.OkButtonLabel = "&Apply"
-        Me.CheckviewerEntryPanel1.Size = New System.Drawing.Size(1502, 397)
-        Me.CheckviewerEntryPanel1.SpliterDistance = 1040
-        Me.CheckviewerEntryPanel1.TabIndex = 0
+        Me.ToolStripTop.Dock = System.Windows.Forms.DockStyle.None
+        Me.ToolStripTop.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.ToolStripTop.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbtnPrintTicket, Me.ToolSeparator2, Me.toolBtnCheckSearch, Me.ToolStripSeparator7, Me.toolbtnAddCheck, Me.toolbtnEditCheck, Me.toolbtnDeleteCheck, Me.ToolStripSeparator6, Me.toolBtnExit})
+        Me.ToolStripTop.Location = New System.Drawing.Point(3, 33)
+        Me.ToolStripTop.Name = "ToolStripTop"
+        Me.ToolStripTop.Size = New System.Drawing.Size(613, 56)
+        Me.ToolStripTop.TabIndex = 0
         '
-        'CheckViewEditPanel1
+        'toolbtnPrintTicket
         '
-        Me.CheckViewEditPanel1.ApplyonEntryKey = False
-        Me.CheckViewEditPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckViewEditPanel1.Location = New System.Drawing.Point(4, 5)
-        Me.CheckViewEditPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
-        Me.CheckViewEditPanel1.Name = "CheckViewEditPanel1"
-        Me.CheckViewEditPanel1.OkButtonLabel = "&Apply"
-        Me.CheckViewEditPanel1.Size = New System.Drawing.Size(1502, 397)
-        Me.CheckViewEditPanel1.SpliterDistance = 1040
-        Me.CheckViewEditPanel1.TabIndex = 0
+        Me.toolbtnPrintTicket.Image = CType(resources.GetObject("toolbtnPrintTicket.Image"), System.Drawing.Image)
+        Me.toolbtnPrintTicket.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.toolbtnPrintTicket.ImageTransparentColor = System.Drawing.Color.Black
+        Me.toolbtnPrintTicket.Name = "toolbtnPrintTicket"
+        Me.toolbtnPrintTicket.Size = New System.Drawing.Size(102, 53)
+        Me.toolbtnPrintTicket.Text = "Print Ticket"
+        Me.toolbtnPrintTicket.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.toolbtnPrintTicket.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         '
-        'CheckViewerConfirmPanel1
+        'ToolSeparator2
         '
-        Me.CheckViewerConfirmPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckViewerConfirmPanel1.Location = New System.Drawing.Point(4, 5)
-        Me.CheckViewerConfirmPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
-        Me.CheckViewerConfirmPanel1.Name = "CheckViewerConfirmPanel1"
-        Me.CheckViewerConfirmPanel1.Size = New System.Drawing.Size(1502, 397)
-        Me.CheckViewerConfirmPanel1.SpliterDistance = 1092
-        Me.CheckViewerConfirmPanel1.TabIndex = 0
+        Me.ToolSeparator2.Name = "ToolSeparator2"
+        Me.ToolSeparator2.Size = New System.Drawing.Size(6, 56)
         '
-        'CheckViewerAddPanel1
+        'toolBtnCheckSearch
         '
-        Me.CheckViewerAddPanel1.ApplyonEntryKey = False
-        Me.CheckViewerAddPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckViewerAddPanel1.Location = New System.Drawing.Point(4, 5)
-        Me.CheckViewerAddPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
-        Me.CheckViewerAddPanel1.Name = "CheckViewerAddPanel1"
-        Me.CheckViewerAddPanel1.NavButtonsVisible = False
-        Me.CheckViewerAddPanel1.OkButtonLabel = "&Apply"
-        Me.CheckViewerAddPanel1.Size = New System.Drawing.Size(1502, 397)
-        Me.CheckViewerAddPanel1.SpliterDistance = 1084
-        Me.CheckViewerAddPanel1.TabIndex = 0
+        Me.toolBtnCheckSearch.Image = Global.TellerAssistant2012.My.Resources.Resources.Folder_Doc_Search_16
+        Me.toolBtnCheckSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.toolBtnCheckSearch.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.toolBtnCheckSearch.Name = "toolBtnCheckSearch"
+        Me.toolBtnCheckSearch.Size = New System.Drawing.Size(120, 53)
+        Me.toolBtnCheckSearch.Text = "Check Search"
+        Me.toolBtnCheckSearch.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.toolBtnCheckSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(6, 56)
+        '
+        'toolbtnAddCheck
+        '
+        Me.toolbtnAddCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.NewCardHS
+        Me.toolbtnAddCheck.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.toolbtnAddCheck.ImageTransparentColor = System.Drawing.Color.Black
+        Me.toolbtnAddCheck.Name = "toolbtnAddCheck"
+        Me.toolbtnAddCheck.Size = New System.Drawing.Size(102, 53)
+        Me.toolbtnAddCheck.Text = "Add Check"
+        Me.toolbtnAddCheck.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.toolbtnAddCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'toolbtnEditCheck
+        '
+        Me.toolbtnEditCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.EditInformationHS
+        Me.toolbtnEditCheck.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.toolbtnEditCheck.ImageTransparentColor = System.Drawing.Color.Black
+        Me.toolbtnEditCheck.Name = "toolbtnEditCheck"
+        Me.toolbtnEditCheck.Size = New System.Drawing.Size(98, 53)
+        Me.toolbtnEditCheck.Text = "Edit Check"
+        Me.toolbtnEditCheck.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.toolbtnEditCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'toolbtnDeleteCheck
+        '
+        Me.toolbtnDeleteCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.Trash
+        Me.toolbtnDeleteCheck.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.toolbtnDeleteCheck.ImageTransparentColor = System.Drawing.Color.Black
+        Me.toolbtnDeleteCheck.Name = "toolbtnDeleteCheck"
+        Me.toolbtnDeleteCheck.Size = New System.Drawing.Size(118, 53)
+        Me.toolbtnDeleteCheck.Text = "Delete Check"
+        Me.toolbtnDeleteCheck.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.toolbtnDeleteCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 56)
+        '
+        'toolBtnExit
+        '
+        Me.toolBtnExit.Image = Global.TellerAssistant2012.My.Resources.Resources.Cancel_Red_24
+        Me.toolBtnExit.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.toolBtnExit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.toolBtnExit.Name = "toolBtnExit"
+        Me.toolBtnExit.Size = New System.Drawing.Size(43, 53)
+        Me.toolBtnExit.Text = "Exit"
+        Me.toolBtnExit.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.toolBtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
+        Me.toolBtnExit.ToolTipText = "Close program"
+        '
+        'CheckViewerViewPanel1
+        '
+        Me.CheckViewerViewPanel1.ApplyonEntryKey = False
+        Me.CheckViewerViewPanel1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.CheckViewerViewPanel1.Location = New System.Drawing.Point(3, 3)
+        Me.CheckViewerViewPanel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.CheckViewerViewPanel1.Name = "CheckViewerViewPanel1"
+        Me.CheckViewerViewPanel1.NavButtonsVisible = False
+        Me.CheckViewerViewPanel1.OkButtonLabel = "&Apply"
+        Me.CheckViewerViewPanel1.Size = New System.Drawing.Size(1504, 392)
+        Me.CheckViewerViewPanel1.SpliterDistance = 1040
+        Me.CheckViewerViewPanel1.TabIndex = 0
         '
         'FormMain2012
         '
@@ -1949,6 +1983,7 @@ Partial Class FormMain2012
         Me.tpEditQueue.ResumeLayout(False)
         Me.tpConfirmQueue.ResumeLayout(False)
         Me.tpAddManualCheck.ResumeLayout(False)
+        Me.tpView.ResumeLayout(False)
         Me.ToolStripContainer1.BottomToolStripPanel.ResumeLayout(False)
         Me.ToolStripContainer1.BottomToolStripPanel.PerformLayout()
         Me.ToolStripContainer1.ContentPanel.ResumeLayout(False)
@@ -1957,12 +1992,12 @@ Partial Class FormMain2012
         Me.ToolStripContainer1.TopToolStripPanel.PerformLayout()
         Me.ToolStripContainer1.ResumeLayout(False)
         Me.ToolStripContainer1.PerformLayout()
-        Me.ToolStripStatus1.ResumeLayout(False)
-        Me.ToolStripStatus1.PerformLayout()
-        Me.toolStripDepositTotal.ResumeLayout(False)
-        Me.toolStripDepositTotal.PerformLayout()
         Me.toolStripBankInfo.ResumeLayout(False)
         Me.toolStripBankInfo.PerformLayout()
+        Me.toolStripDepositTotal.ResumeLayout(False)
+        Me.toolStripDepositTotal.PerformLayout()
+        Me.ToolStripStatus1.ResumeLayout(False)
+        Me.ToolStripStatus1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -1985,10 +2020,10 @@ Partial Class FormMain2012
         Me.GroupBoxCoins.PerformLayout()
         Me.pnlDepositInfo.ResumeLayout(False)
         Me.pnlDepositInfo.PerformLayout()
-        Me.ToolStripTop.ResumeLayout(False)
-        Me.ToolStripTop.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.ToolStripTop.ResumeLayout(False)
+        Me.ToolStripTop.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -2159,4 +2194,6 @@ Partial Class FormMain2012
     Friend WithEvents comboDateRange As System.Windows.Forms.ComboBox
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents tpView As System.Windows.Forms.TabPage
+    Friend WithEvents CheckViewerViewPanel1 As TellerAssistant2012.CheckViewerViewPanel
 End Class

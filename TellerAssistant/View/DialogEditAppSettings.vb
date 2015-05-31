@@ -1,4 +1,5 @@
-﻿Imports System.Xml
+﻿Imports System.IO
+Imports System.Xml
 
 Public Class DialogEditAppSettings
 
@@ -19,9 +20,19 @@ Public Class DialogEditAppSettings
 
     Private Sub dlgEditAppSettings_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         isDirty = False
-        xd.Load(Application.LocalUserAppDataPath & "\" & My.Settings.MySettingsFilename)
-        GetScannerSettings()
-        PropertyGrid1.SelectedObject = My.Settings
+        Try
+            Dim path As String = Application.LocalUserAppDataPath & "\" & My.Settings.MySettingsFilename
+            If File.Exists(path) Then
+                xd.Load(path)
+                GetScannerSettings()
+                PropertyGrid1.SelectedObject = My.Settings
+            Else
+
+            End If
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
     End Sub
 
     Private Sub toolBtnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles toolBtnClose.Click

@@ -723,6 +723,10 @@ Public Class FormMain2012
         End If
     End Sub
 
+    Private Sub CheckViewerConfirmPanel1_CheckviewSetCurrentCheck(sender As Object, e As EventArgs) Handles CheckViewerConfirmPanel1.CheckviewSetCurrentCheck
+
+    End Sub
+
     Private Sub CheckConfirmPanel1_CheckviewSkipClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerConfirmPanel1.CheckviewSkipClick
         ctrlr.DisplayNextCheck(CheckStatus.csConfirmPending)
     End Sub
@@ -1016,6 +1020,8 @@ Public Class FormMain2012
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmEditView)
             ElseIf TabControl2.SelectedTab Is tpConfirmQueue Then
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmConfirmView)
+            ElseIf TabControl2.SelectedTab Is tpView Then
+                Me.ctrlr.UpdateViewerMode(ViewMode.vmVerifiedView)
             Else
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmEntryView)
             End If
@@ -1026,11 +1032,11 @@ Public Class FormMain2012
 
     Private Sub comboDateRange_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboDateRange.SelectedIndexChanged
         If ctrlr IsNot Nothing Then
-            If Me.comboDateRange.SelectedItem.ToString = "All" Then
-                If MsgBox("This may take some time. Do you want to continue?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
-                    Me.comboDateRange.SelectedIndex = Me.depositListDateRangeIndex
-                End If
-            End If
+            'If Me.comboDateRange.SelectedItem.ToString = "All" Then
+            '    If MsgBox("This may take some time. Do you want to continue?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+            '        Me.comboDateRange.SelectedIndex = Me.depositListDateRangeIndex
+            '    End If
+            'End If
             Me.Cursor = Cursors.WaitCursor
             ctrlr.SetDepositSummaryList()
         End If
@@ -1091,4 +1097,5 @@ Public Class FormMain2012
 
     End Sub
 
+  
 End Class
