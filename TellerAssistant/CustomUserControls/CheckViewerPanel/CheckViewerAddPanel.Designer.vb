@@ -29,38 +29,38 @@ Partial Class CheckViewerAddPanel
         '
         'txtCheckNo
         '
-        Me.txtCheckNo.Location = New System.Drawing.Point(178, 176)
-        Me.txtCheckNo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtCheckNo.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
         '
         'txtCheckAcct
         '
-        Me.txtCheckAcct.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtCheckAcct.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
         '
         'txtCheckBank
         '
-        Me.txtCheckBank.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.txtCheckBank.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
         '
         'txtCheckAmt
         '
-        Me.txtCheckAmt.Margin = New System.Windows.Forms.Padding(9, 12, 9, 12)
+        Me.txtCheckAmt.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         '
         'btnCheckReset
         '
-        Me.btnCheckReset.Location = New System.Drawing.Point(260, 320)
+        Me.btnCheckReset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         '
         'btnCheckApply
         '
-        Me.btnCheckApply.Location = New System.Drawing.Point(146, 320)
+        Me.btnCheckApply.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
         '
         'SplitContainer1
         '
+        Me.SplitContainer1.SplitterDistance = 524
         '
         'CheckViewerAddPanel
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Margin = New System.Windows.Forms.Padding(9, 12, 9, 12)
         Me.Name = "CheckViewerAddPanel"
+        Me.SpliterDistance = 524
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()

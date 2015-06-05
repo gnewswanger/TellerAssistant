@@ -46,7 +46,7 @@ Partial Class CheckViewerConfirmPanel
         Me.SplitContainer1.Panel2.Controls.Add(Me.btnSkipConfirm)
         Me.SplitContainer1.Panel2.Controls.Add(Me.btnConfirmCheck)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label21)
-        Me.SplitContainer1.SplitterDistance = 850
+        Me.SplitContainer1.SplitterDistance = 568
         '
         'txtConfirmCheckAmt
         '
@@ -54,10 +54,9 @@ Partial Class CheckViewerConfirmPanel
         Me.txtConfirmCheckAmt.BackColor = System.Drawing.SystemColors.Info
         Me.txtConfirmCheckAmt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.txtConfirmCheckAmt.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtConfirmCheckAmt.Location = New System.Drawing.Point(18, 92)
-        Me.txtConfirmCheckAmt.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.txtConfirmCheckAmt.Location = New System.Drawing.Point(20, 60)
         Me.txtConfirmCheckAmt.Name = "txtConfirmCheckAmt"
-        Me.txtConfirmCheckAmt.Size = New System.Drawing.Size(285, 64)
+        Me.txtConfirmCheckAmt.Size = New System.Drawing.Size(190, 42)
         Me.txtConfirmCheckAmt.TabIndex = 18
         Me.txtConfirmCheckAmt.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
@@ -65,20 +64,18 @@ Partial Class CheckViewerConfirmPanel
         '
         Me.Label21.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(14, 59)
-        Me.Label21.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label21.Location = New System.Drawing.Point(17, 38)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(118, 20)
+        Me.Label21.Size = New System.Drawing.Size(80, 13)
         Me.Label21.TabIndex = 17
         Me.Label21.Text = "Check Amount:"
         '
         'picReceiptFlag
         '
         Me.picReceiptFlag.Image = Global.TellerAssistant2012.My.Resources.Resources._80_yellow_flag
-        Me.picReceiptFlag.Location = New System.Drawing.Point(521, 124)
-        Me.picReceiptFlag.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.picReceiptFlag.Location = New System.Drawing.Point(347, 81)
         Me.picReceiptFlag.Name = "picReceiptFlag"
-        Me.picReceiptFlag.Size = New System.Drawing.Size(33, 32)
+        Me.picReceiptFlag.Size = New System.Drawing.Size(22, 21)
         Me.picReceiptFlag.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picReceiptFlag.TabIndex = 19
         Me.picReceiptFlag.TabStop = False
@@ -88,10 +85,9 @@ Partial Class CheckViewerConfirmPanel
         '
         Me.btnEditCheck.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.btnEditCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.EditInformationHS
-        Me.btnEditCheck.Location = New System.Drawing.Point(127, 305)
-        Me.btnEditCheck.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnEditCheck.Location = New System.Drawing.Point(84, 208)
         Me.btnEditCheck.Name = "btnEditCheck"
-        Me.btnEditCheck.Size = New System.Drawing.Size(112, 42)
+        Me.btnEditCheck.Size = New System.Drawing.Size(75, 27)
         Me.btnEditCheck.TabIndex = 16
         Me.btnEditCheck.Text = "&Edit"
         Me.btnEditCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -101,10 +97,9 @@ Partial Class CheckViewerConfirmPanel
         '
         Me.btnSkipConfirm.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.btnSkipConfirm.Image = Global.TellerAssistant2012.My.Resources.Resources.GreenRightArrow
-        Me.btnSkipConfirm.Location = New System.Drawing.Point(186, 188)
-        Me.btnSkipConfirm.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnSkipConfirm.Location = New System.Drawing.Point(124, 127)
         Me.btnSkipConfirm.Name = "btnSkipConfirm"
-        Me.btnSkipConfirm.Size = New System.Drawing.Size(99, 75)
+        Me.btnSkipConfirm.Size = New System.Drawing.Size(66, 49)
         Me.btnSkipConfirm.TabIndex = 15
         Me.btnSkipConfirm.Text = "&Skip"
         Me.btnSkipConfirm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -114,10 +109,9 @@ Partial Class CheckViewerConfirmPanel
         '
         Me.btnConfirmCheck.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.btnConfirmCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.Check_OK
-        Me.btnConfirmCheck.Location = New System.Drawing.Point(30, 188)
-        Me.btnConfirmCheck.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.btnConfirmCheck.Location = New System.Drawing.Point(20, 127)
         Me.btnConfirmCheck.Name = "btnConfirmCheck"
-        Me.btnConfirmCheck.Size = New System.Drawing.Size(148, 75)
+        Me.btnConfirmCheck.Size = New System.Drawing.Size(99, 49)
         Me.btnConfirmCheck.TabIndex = 14
         Me.btnConfirmCheck.Text = "&Confirm"
         Me.btnConfirmCheck.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
@@ -125,11 +119,11 @@ Partial Class CheckViewerConfirmPanel
         '
         'CheckViewerConfirmPanel
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "CheckViewerConfirmPanel"
-        Me.SpliterDistance = 850
+        Me.SpliterDistance = 568
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
