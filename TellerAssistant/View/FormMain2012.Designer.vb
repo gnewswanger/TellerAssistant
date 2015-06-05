@@ -24,12 +24,12 @@ Partial Class FormMain2012
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormMain2012))
-        Dim ListViewGroup7 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Not Assigned", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup8 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Amount Pending", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup9 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Edit Pending", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup10 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Confirm Pending", System.Windows.Forms.HorizontalAlignment.Left)
-        Dim ListViewGroup11 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Verified", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup6 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup1 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Not Assigned", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup2 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Amount Pending", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup3 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Edit Pending", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup4 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Confirm Pending", System.Windows.Forms.HorizontalAlignment.Left)
+        Dim ListViewGroup5 As System.Windows.Forms.ListViewGroup = New System.Windows.Forms.ListViewGroup("Verified", System.Windows.Forms.HorizontalAlignment.Left)
         Me.ImageList1 = New System.Windows.Forms.ImageList(Me.components)
         Me.ContextMenuLVChecks = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.ctxmnuLVChecksRefresh = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,10 +44,14 @@ Partial Class FormMain2012
         Me.tpEditQueue = New System.Windows.Forms.TabPage()
         Me.CheckViewEditPanel1 = New TellerAssistant2012.CheckViewerEditPanel()
         Me.tpConfirmQueue = New System.Windows.Forms.TabPage()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.CheckViewerConfirmPanel1 = New TellerAssistant2012.CheckViewerConfirmPanel()
         Me.tpAddManualCheck = New System.Windows.Forms.TabPage()
         Me.CheckViewerAddPanel1 = New TellerAssistant2012.CheckViewerAddPanel()
-        Me.tpView = New System.Windows.Forms.TabPage()
+        Me.tpViewVerified = New System.Windows.Forms.TabPage()
+        Me.CheckViewerVerifiedPanel1 = New TellerAssistant2012.CheckViewerViewPanel()
+        Me.ImageListStates = New System.Windows.Forms.ImageList(Me.components)
+        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
         Me.toolStripBankInfo = New System.Windows.Forms.ToolStrip()
         Me.toolLabel1 = New System.Windows.Forms.ToolStripLabel()
@@ -152,7 +156,6 @@ Partial Class FormMain2012
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.lvChecklist = New System.Windows.Forms.ListView()
-        Me.ImageListStates = New System.Windows.Forms.ImageList(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -197,15 +200,14 @@ Partial Class FormMain2012
         Me.toolbtnDeleteCheck = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.toolBtnExit = New System.Windows.Forms.ToolStripButton()
-        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
-        Me.CheckViewerViewPanel1 = New TellerAssistant2012.CheckViewerViewPanel()
         Me.ContextMenuLVChecks.SuspendLayout()
         Me.TabControl2.SuspendLayout()
         Me.tpEntryQueue.SuspendLayout()
         Me.tpEditQueue.SuspendLayout()
         Me.tpConfirmQueue.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.tpAddManualCheck.SuspendLayout()
-        Me.tpView.SuspendLayout()
+        Me.tpViewVerified.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
@@ -292,7 +294,7 @@ Partial Class FormMain2012
         Me.TabControl2.Controls.Add(Me.tpEditQueue)
         Me.TabControl2.Controls.Add(Me.tpConfirmQueue)
         Me.TabControl2.Controls.Add(Me.tpAddManualCheck)
-        Me.TabControl2.Controls.Add(Me.tpView)
+        Me.TabControl2.Controls.Add(Me.tpViewVerified)
         Me.TabControl2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl2.Location = New System.Drawing.Point(4, 359)
         Me.TabControl2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -300,7 +302,7 @@ Partial Class FormMain2012
         Me.TabControl2.RightToLeftLayout = True
         Me.TabControl2.SelectedIndex = 0
         Me.HelpProvider1.SetShowHelp(Me.TabControl2, True)
-        Me.TabControl2.Size = New System.Drawing.Size(1518, 440)
+        Me.TabControl2.Size = New System.Drawing.Size(1518, 460)
         Me.TabControl2.TabIndex = 11
         '
         'tpEntryQueue
@@ -310,7 +312,7 @@ Partial Class FormMain2012
         Me.tpEntryQueue.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpEntryQueue.Name = "tpEntryQueue"
         Me.tpEntryQueue.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpEntryQueue.Size = New System.Drawing.Size(1510, 407)
+        Me.tpEntryQueue.Size = New System.Drawing.Size(1510, 427)
         Me.tpEntryQueue.TabIndex = 0
         Me.tpEntryQueue.Text = "Entry Queue (0)"
         Me.tpEntryQueue.UseVisualStyleBackColor = True
@@ -323,7 +325,7 @@ Partial Class FormMain2012
         Me.CheckviewerEntryPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.CheckviewerEntryPanel1.Name = "CheckviewerEntryPanel1"
         Me.CheckviewerEntryPanel1.OkButtonLabel = "&Apply"
-        Me.CheckviewerEntryPanel1.Size = New System.Drawing.Size(1502, 397)
+        Me.CheckviewerEntryPanel1.Size = New System.Drawing.Size(1502, 417)
         Me.CheckviewerEntryPanel1.SpliterDistance = 1040
         Me.CheckviewerEntryPanel1.TabIndex = 0
         '
@@ -334,7 +336,7 @@ Partial Class FormMain2012
         Me.tpEditQueue.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpEditQueue.Name = "tpEditQueue"
         Me.tpEditQueue.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpEditQueue.Size = New System.Drawing.Size(1510, 407)
+        Me.tpEditQueue.Size = New System.Drawing.Size(1510, 427)
         Me.tpEditQueue.TabIndex = 1
         Me.tpEditQueue.Text = "Edit Queue (0)"
         Me.tpEditQueue.UseVisualStyleBackColor = True
@@ -347,30 +349,39 @@ Partial Class FormMain2012
         Me.CheckViewEditPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.CheckViewEditPanel1.Name = "CheckViewEditPanel1"
         Me.CheckViewEditPanel1.OkButtonLabel = "&Apply"
-        Me.CheckViewEditPanel1.Size = New System.Drawing.Size(1502, 397)
+        Me.CheckViewEditPanel1.Size = New System.Drawing.Size(1502, 417)
         Me.CheckViewEditPanel1.SpliterDistance = 1040
         Me.CheckViewEditPanel1.TabIndex = 0
         '
         'tpConfirmQueue
         '
-        Me.tpConfirmQueue.Controls.Add(Me.CheckViewerConfirmPanel1)
+        Me.tpConfirmQueue.Controls.Add(Me.Panel6)
         Me.tpConfirmQueue.Location = New System.Drawing.Point(4, 29)
         Me.tpConfirmQueue.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpConfirmQueue.Name = "tpConfirmQueue"
         Me.tpConfirmQueue.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpConfirmQueue.Size = New System.Drawing.Size(1510, 407)
+        Me.tpConfirmQueue.Size = New System.Drawing.Size(1510, 427)
         Me.tpConfirmQueue.TabIndex = 2
         Me.tpConfirmQueue.Text = "Confirm Queue (0)"
         Me.tpConfirmQueue.UseVisualStyleBackColor = True
         '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.CheckViewerConfirmPanel1)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(4, 5)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(1502, 417)
+        Me.Panel6.TabIndex = 0
+        '
         'CheckViewerConfirmPanel1
         '
         Me.CheckViewerConfirmPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckViewerConfirmPanel1.Location = New System.Drawing.Point(4, 5)
+        Me.CheckViewerConfirmPanel1.Location = New System.Drawing.Point(0, 0)
         Me.CheckViewerConfirmPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.CheckViewerConfirmPanel1.Name = "CheckViewerConfirmPanel1"
-        Me.CheckViewerConfirmPanel1.Size = New System.Drawing.Size(1502, 397)
-        Me.CheckViewerConfirmPanel1.SpliterDistance = 1092
+        Me.CheckViewerConfirmPanel1.Size = New System.Drawing.Size(1502, 417)
+        Me.CheckViewerConfirmPanel1.SpliterDistance = 1063
         Me.CheckViewerConfirmPanel1.TabIndex = 0
         '
         'tpAddManualCheck
@@ -380,7 +391,7 @@ Partial Class FormMain2012
         Me.tpAddManualCheck.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpAddManualCheck.Name = "tpAddManualCheck"
         Me.tpAddManualCheck.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpAddManualCheck.Size = New System.Drawing.Size(1510, 407)
+        Me.tpAddManualCheck.Size = New System.Drawing.Size(1510, 427)
         Me.tpAddManualCheck.TabIndex = 3
         Me.tpAddManualCheck.Text = "Add Check"
         Me.tpAddManualCheck.UseVisualStyleBackColor = True
@@ -394,20 +405,46 @@ Partial Class FormMain2012
         Me.CheckViewerAddPanel1.Name = "CheckViewerAddPanel1"
         Me.CheckViewerAddPanel1.NavButtonsVisible = False
         Me.CheckViewerAddPanel1.OkButtonLabel = "&Apply"
-        Me.CheckViewerAddPanel1.Size = New System.Drawing.Size(1502, 397)
+        Me.CheckViewerAddPanel1.Size = New System.Drawing.Size(1502, 417)
         Me.CheckViewerAddPanel1.SpliterDistance = 1084
         Me.CheckViewerAddPanel1.TabIndex = 0
         '
-        'tpView
+        'tpViewVerified
         '
-        Me.tpView.Controls.Add(Me.CheckViewerViewPanel1)
-        Me.tpView.Location = New System.Drawing.Point(4, 29)
-        Me.tpView.Name = "tpView"
-        Me.tpView.Padding = New System.Windows.Forms.Padding(3)
-        Me.tpView.Size = New System.Drawing.Size(1510, 407)
-        Me.tpView.TabIndex = 4
-        Me.tpView.Text = "View Confirmed"
-        Me.tpView.UseVisualStyleBackColor = True
+        Me.tpViewVerified.Controls.Add(Me.CheckViewerVerifiedPanel1)
+        Me.tpViewVerified.Location = New System.Drawing.Point(4, 29)
+        Me.tpViewVerified.Name = "tpViewVerified"
+        Me.tpViewVerified.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpViewVerified.Size = New System.Drawing.Size(1510, 427)
+        Me.tpViewVerified.TabIndex = 4
+        Me.tpViewVerified.Text = "View Verified"
+        Me.tpViewVerified.UseVisualStyleBackColor = True
+        '
+        'CheckViewerVerifiedPanel1
+        '
+        Me.CheckViewerVerifiedPanel1.ApplyonEntryKey = False
+        Me.CheckViewerVerifiedPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CheckViewerVerifiedPanel1.Location = New System.Drawing.Point(3, 3)
+        Me.CheckViewerVerifiedPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        Me.CheckViewerVerifiedPanel1.Name = "CheckViewerVerifiedPanel1"
+        Me.CheckViewerVerifiedPanel1.NavButtonsVisible = False
+        Me.CheckViewerVerifiedPanel1.OkButtonLabel = "&Apply"
+        Me.CheckViewerVerifiedPanel1.Size = New System.Drawing.Size(1504, 421)
+        Me.CheckViewerVerifiedPanel1.SpliterDistance = 1040
+        Me.CheckViewerVerifiedPanel1.TabIndex = 0
+        '
+        'ImageListStates
+        '
+        Me.ImageListStates.ImageStream = CType(resources.GetObject("ImageListStates.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageListStates.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageListStates.Images.SetKeyName(0, "tick.png")
+        Me.ImageListStates.Images.SetKeyName(1, "80 yellow flag.png")
+        Me.ImageListStates.Images.SetKeyName(2, "flag-yellow.png")
+        Me.ImageListStates.Images.SetKeyName(3, "flag-blue.png")
+        Me.ImageListStates.Images.SetKeyName(4, "81 blue flag.png")
+        Me.ImageListStates.Images.SetKeyName(5, "flag--pencil.png")
+        Me.ImageListStates.Images.SetKeyName(6, "tick-small.png")
+        Me.ImageListStates.Images.SetKeyName(7, "flag-small.png")
         '
         'ToolStripContainer1
         '
@@ -618,16 +655,15 @@ Partial Class FormMain2012
         Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.39394!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.60606!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 731.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 745.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.TabControl1, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 3
+        Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.106796!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.8932!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(1554, 912)
         Me.TableLayoutPanel1.TabIndex = 32
         '
@@ -638,11 +674,11 @@ Partial Class FormMain2012
         Me.TabControl1.Controls.Add(Me.tpSelectDeposit)
         Me.TabControl1.Controls.Add(Me.tpViewDeposit)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Location = New System.Drawing.Point(4, 32)
+        Me.TabControl1.Location = New System.Drawing.Point(4, 33)
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1546, 843)
+        Me.TabControl1.Size = New System.Drawing.Size(1546, 874)
         Me.TabControl1.TabIndex = 0
         Me.TabControl1.TabStop = False
         '
@@ -655,7 +691,7 @@ Partial Class FormMain2012
         Me.tpSelectDeposit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpSelectDeposit.Name = "tpSelectDeposit"
         Me.tpSelectDeposit.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpSelectDeposit.Size = New System.Drawing.Size(1538, 807)
+        Me.tpSelectDeposit.Size = New System.Drawing.Size(1538, 838)
         Me.tpSelectDeposit.TabIndex = 0
         Me.tpSelectDeposit.Text = "Select Deposit"
         '
@@ -680,7 +716,7 @@ Partial Class FormMain2012
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 192.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(1528, 795)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(1528, 826)
         Me.TableLayoutPanel2.TabIndex = 19
         '
         'Panel1
@@ -740,9 +776,9 @@ Partial Class FormMain2012
         Me.lvBankAccounts.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colHdrAcctId, Me.colHdrAcctType, Me.colHdrBankName})
         Me.lvBankAccounts.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lvBankAccounts.FullRowSelect = True
-        ListViewGroup7.Header = "ListViewGroup"
-        ListViewGroup7.Name = "ListViewGroup1"
-        Me.lvBankAccounts.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup7})
+        ListViewGroup6.Header = "ListViewGroup"
+        ListViewGroup6.Name = "ListViewGroup1"
+        Me.lvBankAccounts.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup6})
         Me.lvBankAccounts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.lvBankAccounts.HideSelection = False
         Me.lvBankAccounts.HoverSelection = True
@@ -750,7 +786,7 @@ Partial Class FormMain2012
         Me.lvBankAccounts.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.lvBankAccounts.MultiSelect = False
         Me.lvBankAccounts.Name = "lvBankAccounts"
-        Me.lvBankAccounts.Size = New System.Drawing.Size(575, 480)
+        Me.lvBankAccounts.Size = New System.Drawing.Size(575, 501)
         Me.lvBankAccounts.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.lvBankAccounts.StateImageList = Me.ImageList1
         Me.lvBankAccounts.TabIndex = 21
@@ -814,7 +850,7 @@ Partial Class FormMain2012
         Me.lvDepositsList.MultiSelect = False
         Me.lvDepositsList.Name = "lvDepositsList"
         Me.TableLayoutPanel2.SetRowSpan(Me.lvDepositsList, 2)
-        Me.lvDepositsList.Size = New System.Drawing.Size(937, 672)
+        Me.lvDepositsList.Size = New System.Drawing.Size(937, 693)
         Me.lvDepositsList.StateImageList = Me.ImageList1
         Me.lvDepositsList.TabIndex = 15
         Me.lvDepositsList.UseCompatibleStateImageBehavior = False
@@ -891,7 +927,7 @@ Partial Class FormMain2012
         Me.tpViewDeposit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpViewDeposit.Name = "tpViewDeposit"
         Me.tpViewDeposit.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpViewDeposit.Size = New System.Drawing.Size(1538, 807)
+        Me.tpViewDeposit.Size = New System.Drawing.Size(1538, 838)
         Me.tpViewDeposit.TabIndex = 1
         Me.tpViewDeposit.Text = "Edit Deposit"
         Me.tpViewDeposit.UseVisualStyleBackColor = True
@@ -913,7 +949,7 @@ Partial Class FormMain2012
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 254.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1526, 793)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1526, 824)
         Me.TableLayoutPanel3.TabIndex = 13
         '
         'pnlCashRegister
@@ -1597,17 +1633,17 @@ Partial Class FormMain2012
         Me.lvChecklist.ContextMenuStrip = Me.ContextMenuLVChecks
         Me.lvChecklist.Cursor = System.Windows.Forms.Cursors.Default
         Me.lvChecklist.Dock = System.Windows.Forms.DockStyle.Fill
-        ListViewGroup6.Header = "Not Assigned"
-        ListViewGroup6.Name = "csNone"
-        ListViewGroup8.Header = "Amount Pending"
-        ListViewGroup8.Name = "csAmountPending"
-        ListViewGroup9.Header = "Edit Pending"
-        ListViewGroup9.Name = "csEditPending"
-        ListViewGroup10.Header = "Confirm Pending"
-        ListViewGroup10.Name = "csConfirmPending"
-        ListViewGroup11.Header = "Verified"
-        ListViewGroup11.Name = "csVerified"
-        Me.lvChecklist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup6, ListViewGroup8, ListViewGroup9, ListViewGroup10, ListViewGroup11})
+        ListViewGroup1.Header = "Not Assigned"
+        ListViewGroup1.Name = "csNone"
+        ListViewGroup2.Header = "Amount Pending"
+        ListViewGroup2.Name = "csAmountPending"
+        ListViewGroup3.Header = "Edit Pending"
+        ListViewGroup3.Name = "csEditPending"
+        ListViewGroup4.Header = "Confirm Pending"
+        ListViewGroup4.Name = "csConfirmPending"
+        ListViewGroup5.Header = "Verified"
+        ListViewGroup5.Name = "csVerified"
+        Me.lvChecklist.Groups.AddRange(New System.Windows.Forms.ListViewGroup() {ListViewGroup1, ListViewGroup2, ListViewGroup3, ListViewGroup4, ListViewGroup5})
         Me.lvChecklist.HideSelection = False
         Me.lvChecklist.Location = New System.Drawing.Point(462, 105)
         Me.lvChecklist.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -1619,19 +1655,6 @@ Partial Class FormMain2012
         Me.lvChecklist.TileSize = New System.Drawing.Size(120, 15)
         Me.lvChecklist.UseCompatibleStateImageBehavior = False
         Me.lvChecklist.View = System.Windows.Forms.View.Tile
-        '
-        'ImageListStates
-        '
-        Me.ImageListStates.ImageStream = CType(resources.GetObject("ImageListStates.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageListStates.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageListStates.Images.SetKeyName(0, "tick.png")
-        Me.ImageListStates.Images.SetKeyName(1, "80 yellow flag.png")
-        Me.ImageListStates.Images.SetKeyName(2, "flag-yellow.png")
-        Me.ImageListStates.Images.SetKeyName(3, "flag-blue.png")
-        Me.ImageListStates.Images.SetKeyName(4, "81 blue flag.png")
-        Me.ImageListStates.Images.SetKeyName(5, "flag--pencil.png")
-        Me.ImageListStates.Images.SetKeyName(6, "tick-small.png")
-        Me.ImageListStates.Images.SetKeyName(7, "flag-small.png")
         '
         'MenuStrip1
         '
@@ -1950,19 +1973,6 @@ Partial Class FormMain2012
         Me.toolBtnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText
         Me.toolBtnExit.ToolTipText = "Close program"
         '
-        'CheckViewerViewPanel1
-        '
-        Me.CheckViewerViewPanel1.ApplyonEntryKey = False
-        Me.CheckViewerViewPanel1.Dock = System.Windows.Forms.DockStyle.Top
-        Me.CheckViewerViewPanel1.Location = New System.Drawing.Point(3, 3)
-        Me.CheckViewerViewPanel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.CheckViewerViewPanel1.Name = "CheckViewerViewPanel1"
-        Me.CheckViewerViewPanel1.NavButtonsVisible = False
-        Me.CheckViewerViewPanel1.OkButtonLabel = "&Apply"
-        Me.CheckViewerViewPanel1.Size = New System.Drawing.Size(1504, 392)
-        Me.CheckViewerViewPanel1.SpliterDistance = 1040
-        Me.CheckViewerViewPanel1.TabIndex = 0
-        '
         'FormMain2012
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -1982,8 +1992,9 @@ Partial Class FormMain2012
         Me.tpEntryQueue.ResumeLayout(False)
         Me.tpEditQueue.ResumeLayout(False)
         Me.tpConfirmQueue.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
         Me.tpAddManualCheck.ResumeLayout(False)
-        Me.tpView.ResumeLayout(False)
+        Me.tpViewVerified.ResumeLayout(False)
         Me.ToolStripContainer1.BottomToolStripPanel.ResumeLayout(False)
         Me.ToolStripContainer1.BottomToolStripPanel.PerformLayout()
         Me.ToolStripContainer1.ContentPanel.ResumeLayout(False)
@@ -2159,7 +2170,6 @@ Partial Class FormMain2012
     Friend WithEvents CheckviewerEntryPanel1 As TellerAssistant2012.CheckViewerEditPanel
     Friend WithEvents CheckViewEditPanel1 As TellerAssistant2012.CheckViewerEditPanel
     Friend WithEvents CheckViewerAddPanel1 As TellerAssistant2012.CheckViewerAddPanel
-    Friend WithEvents CheckViewerConfirmPanel1 As TellerAssistant2012.CheckViewerConfirmPanel
     Friend WithEvents mnuManageImageFiles As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents TextPanelFlyout1 As Flyout_Control.TextPanelFlyout
@@ -2194,6 +2204,8 @@ Partial Class FormMain2012
     Friend WithEvents comboDateRange As System.Windows.Forms.ComboBox
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
     Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents tpView As System.Windows.Forms.TabPage
-    Friend WithEvents CheckViewerViewPanel1 As TellerAssistant2012.CheckViewerViewPanel
+    Friend WithEvents tpViewVerified As System.Windows.Forms.TabPage
+    Friend WithEvents CheckViewerVerifiedPanel1 As TellerAssistant2012.CheckViewerViewPanel
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents CheckViewerConfirmPanel1 As TellerAssistant2012.CheckViewerConfirmPanel
 End Class

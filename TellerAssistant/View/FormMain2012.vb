@@ -717,17 +717,17 @@ Public Class FormMain2012
 
 #Region "CheckConfirmPanel"
 
-    Private Sub CheckConfirmPanel1_CheckviewApplyClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerConfirmPanel1.CheckviewApplyClick
+    Private Sub CheckConfirmPanel1_CheckviewApplyClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If CheckViewerConfirmPanel1.CurrentCheckArgs IsNot Nothing Then
             ctrlr.UpdateCheckStatus(CheckViewerConfirmPanel1.CurrentCheckArgs.ToCheckDataEventArgs)
         End If
     End Sub
 
-    Private Sub CheckViewerConfirmPanel1_CheckviewSetCurrentCheck(sender As Object, e As EventArgs) Handles CheckViewerConfirmPanel1.CheckviewSetCurrentCheck
+    Private Sub CheckViewerConfirmPanel1_CheckviewSetCurrentCheck(sender As Object, e As EventArgs)
 
     End Sub
 
-    Private Sub CheckConfirmPanel1_CheckviewSkipClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerConfirmPanel1.CheckviewSkipClick
+    Private Sub CheckConfirmPanel1_CheckviewSkipClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ctrlr.DisplayNextCheck(CheckStatus.csConfirmPending)
     End Sub
 
@@ -751,6 +751,37 @@ Public Class FormMain2012
 
     Private Sub CheckAddPanel1_DonorInfo(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerAddPanel1.CheckviewDonorClick
         ctrlr.EditDonorInformation(CheckViewerAddPanel1.CurrentCheckArgs)
+    End Sub
+
+#End Region
+
+
+#Region "CheckVerifiedPanel"
+
+    Private Sub CheckVerifiedPanel_PrevNavClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewPrevNavClick
+        ctrlr.DisplayPrevCheck(CheckStatus.csVerified)
+    End Sub
+
+    Private Sub CheckVerifiedPanel_NextNavClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewNextNavClick
+        ctrlr.DisplayNextCheck(CheckStatus.csVerified)
+    End Sub
+
+    Private Sub CheckVerifiedPanel_FirstNavClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewFirstNavClick
+        ctrlr.DisplayFirstCheck(CheckStatus.csVerified)
+    End Sub
+
+    Private Sub CheckVerifiedPanel_LastNavClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewLastNavClick
+        ctrlr.DisplayLastCheck(CheckStatus.csVerified)
+    End Sub
+
+    Private Sub CheckVerifiedPanel_ApplyClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewApplyClick
+        If CheckViewerVerifiedPanel1.CurrentCheckArgs IsNot Nothing Then
+            ctrlr.UpdateCheckData(CheckViewerVerifiedPanel1.CurrentCheckArgs.ToCheckDataEventArgs)
+        End If
+    End Sub
+
+    Private Sub CheckVerifiedPanel_ResetClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewResetClick
+        ctrlr.ResetCheck(CheckStatus.csAmountPending)
     End Sub
 
 #End Region
@@ -1020,7 +1051,7 @@ Public Class FormMain2012
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmEditView)
             ElseIf TabControl2.SelectedTab Is tpConfirmQueue Then
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmConfirmView)
-            ElseIf TabControl2.SelectedTab Is tpView Then
+            ElseIf TabControl2.SelectedTab Is tpViewVerified Then
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmVerifiedView)
             Else
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmEntryView)
@@ -1093,9 +1124,14 @@ Public Class FormMain2012
         End If
     End Sub
 
-    Private Sub mnuPrintReceipts_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrintReceipts.Click
+    Private Sub mnuPrintReceipts_Click(sender As Object, e As EventArgs)
+
+    End Sub
+    Private Sub CheckViewerConfirmPanel1_Load(sender As Object, e As EventArgs)
 
     End Sub
 
-  
+    Private Sub CheckViewerConfirmPanel1_Load_1(sender As Object, e As EventArgs)
+
+    End Sub
 End Class

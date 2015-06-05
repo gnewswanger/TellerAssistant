@@ -267,4 +267,5 @@ Public Class CheckViewerViewPanel
         Me.IsDirty = True
         SetApplyButtonEnabled(sender, e)
     End Sub
+
 End Class

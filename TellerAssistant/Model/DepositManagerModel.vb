@@ -135,6 +135,7 @@ Public Class DepositManagerModel
         Me._chkRegister.CheckQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
         Me._chkRegister.CheckQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
         Me._chkRegister.CheckQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
+        Me._chkRegister.CheckQueue(CheckStatus.csVerified) = Me.GetCheckListByStatus(CheckStatus.csVerified)
         Return Me._depTicket
     End Function
 
@@ -147,6 +148,7 @@ Public Class DepositManagerModel
         Me._chkRegister.CheckQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
         Me._chkRegister.CheckQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
         Me._chkRegister.CheckQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
+        Me._chkRegister.CheckQueue(CheckStatus.csVerified) = Me.GetCheckListByStatus(CheckStatus.csVerified)
         Return Me._depTicket
     End Function
 

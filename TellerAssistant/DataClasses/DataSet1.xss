@@ -16,8 +16,8 @@
     <Shape ID="DesignTable:upGetDepositTicketList" ZOrder="3" X="11" Y="190" Height="99" Width="300" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="331" SplitterPosition="32" />
     <Shape ID="DesignTable:upGetDepositTotals" ZOrder="4" X="16" Y="23" Height="128" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="84" OldDataTableHeight="0" SplitterPosition="62" />
     <Shape ID="DesignTable:upGetChecksListWithDonor" ZOrder="2" X="781" Y="391" Height="99" Width="300" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="358" SplitterPosition="32" />
-    <Shape ID="DesignSources:QueriesTableAdapter" ZOrder="5" X="775" Y="303" Height="36" Width="300" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="141" SplitterPosition="32" />
     <Shape ID="DesignTable:upGetCheck" ZOrder="1" X="784" Y="513" Height="99" Width="300" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="358" SplitterPosition="32" />
+    <Shape ID="DesignSources:QueriesTableAdapter" ZOrder="5" X="775" Y="303" Height="36" Width="300" AdapterExpanded="true" DataTableExpanded="false" OldAdapterHeight="0" OldDataTableHeight="141" SplitterPosition="32" />
   </Shapes>
   <Connectors />
 </DiagramLayout>

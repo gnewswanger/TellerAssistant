@@ -22,67 +22,86 @@ Partial Class CheckViewerEditPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
         '
-        Me.Label1.Location = New System.Drawing.Point(77, 138)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         '
         'Label33
         '
-        Me.Label33.Location = New System.Drawing.Point(64, 117)
+        Me.Label33.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        '
+        'txtCheckNo
+        '
+        Me.txtCheckNo.Location = New System.Drawing.Point(174, 171)
+        Me.txtCheckNo.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         '
         'Label36
         '
-        Me.Label36.Location = New System.Drawing.Point(72, 97)
+        Me.Label36.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         '
-        'Label37
+        'txtCheckAcct
         '
-        Me.Label37.Location = New System.Drawing.Point(87, 77)
+        Me.txtCheckAcct.Location = New System.Drawing.Point(174, 139)
+        Me.txtCheckAcct.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        '
+        'txtCheckBank
+        '
+        Me.txtCheckBank.Location = New System.Drawing.Point(174, 107)
+        Me.txtCheckBank.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         '
         'chkbxSendReceipt
         '
-        Me.chkbxSendReceipt.Location = New System.Drawing.Point(126, 182)
+        Me.chkbxSendReceipt.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        '
+        'Label37
+        '
+        Me.Label37.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         '
         'txtCheckAmt
         '
-        Me.txtCheckAmt.Location = New System.Drawing.Point(171, 41)
+        Me.txtCheckAmt.Location = New System.Drawing.Point(230, 64)
+        Me.txtCheckAmt.Margin = New System.Windows.Forms.Padding(9, 12, 9, 12)
         '
         'Label18
         '
-        Me.Label18.Location = New System.Drawing.Point(98, 20)
+        Me.Label18.Location = New System.Drawing.Point(106, 31)
+        Me.Label18.Margin = New System.Windows.Forms.Padding(9, 0, 9, 0)
         '
         'dtpCheckDate
         '
-        Me.dtpCheckDate.Location = New System.Drawing.Point(171, 14)
+        Me.dtpCheckDate.Location = New System.Drawing.Point(230, 31)
+        Me.dtpCheckDate.Margin = New System.Windows.Forms.Padding(9, 12, 9, 12)
         '
         'Label19
         '
-        Me.Label19.Location = New System.Drawing.Point(85, 44)
+        Me.Label19.Location = New System.Drawing.Point(106, 67)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(9, 0, 9, 0)
         '
         'btnCheckReset
         '
-        Me.btnCheckReset.Location = New System.Drawing.Point(196, 218)
+        Me.btnCheckReset.Margin = New System.Windows.Forms.Padding(9, 12, 9, 12)
         '
         'btnCheckApply
         '
-        Me.btnCheckApply.Location = New System.Drawing.Point(115, 218)
+        Me.btnCheckApply.Margin = New System.Windows.Forms.Padding(9, 12, 9, 12)
         '
         'SplitContainer1
         '
-        Me.SplitContainer1.SplitterDistance = 513
         '
         'CheckViewerEditPanel
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Name = "CheckViewerEditPanel"
         Me.NavButtonsVisible = True
-        Me.SpliterDistance = 513
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
 
