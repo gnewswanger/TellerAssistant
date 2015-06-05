@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<TellerAssistant>
+  <ComportSettings>
+    <PortSetting name="PortName">COM1</PortSetting>
+    <PortSetting name="BaudRate">115200</PortSetting>
+    <PortSetting name="Parity">None</PortSetting>
+    <PortSetting name="DataBits">8</PortSetting>
+    <PortSetting name="StopBits">1</PortSetting>
+  </ComportSettings>
+  <SwitchSettingsRS232>
+    <SwitchSetting name="SWA">00100010</SwitchSetting>
+    <SwitchSetting name="SWB">11100000</SwitchSetting>
+    <SwitchSetting name="SWC">00000000</SwitchSetting>
+    <SwitchSetting name="SWD">00100010</SwitchSetting>
+    <SwitchSetting name="SWE">00000100</SwitchSetting>
+    <SwitchSetting name="SWF">00000000</SwitchSetting>
+    <SwitchSetting name="SWI">00000000</SwitchSetting>
+    <SwitchSetting name="HW">00111100</SwitchSetting>
+    <SwitchSetting name="FC">6200</SwitchSetting>
+  </SwitchSettingsRS232>
+  <SwitchSettingsFTP>
+    <SwitchSetting name="SWA">00100010</SwitchSetting>
+    <SwitchSetting name="SWB">11100000</SwitchSetting>
+    <SwitchSetting name="SWC">00100000</SwitchSetting>
+    <SwitchSetting name="SWE">10100000</SwitchSetting>
+    <SwitchSetting name="SWF">00000000</SwitchSetting>
+    <SwitchSetting name="SWI">00000000</SwitchSetting>
+    <SwitchSetting name="HW">00111100</SwitchSetting>
+    <SwitchSetting name="FC">6200</SwitchSetting>
+  </SwitchSettingsFTP>
+  <PropertySettings>
+    <PropertySetting name="PR0" desc="DeviceIp">192.168.2.104</PropertySetting>
+    <PropertySetting name="PR1" desc="DeviceIpSource">1</PropertySetting>
+    <PropertySetting name="PR2" desc="SubnetMask">255.255.255.0</PropertySetting>
+    <PropertySetting name="PR3" desc="MaskSource">1</PropertySetting>
+    <PropertySetting name="PR4" desc="GatewayIp">192.168.2.1</PropertySetting>
+    <PropertySetting name="PR5" desc="GatewayIpSource">1</PropertySetting>
+    <PropertySetting name="PR6" desc="FtpNameorIp">192.168.2.102:21</PropertySetting>
+    <PropertySetting name="PR7" desc="FtpIpSource">1</PropertySetting>
+    <PropertySetting name="PR8" desc="FtpUserId">Church Finance</PropertySetting>
+    <PropertySetting name="PR9" desc="FtpUserIdSource">1</PropertySetting>
+    <PropertySetting name="PR10" desc="FtpPassword">9656</PropertySetting>
+    <PropertySetting name="PR11" desc="FtpPasswordSource">1</PropertySetting>
+    <PropertySetting name="PR12" desc="FilenameSpec">?.tif</PropertySetting>
+    <PropertySetting name="PR13" desc="Dns1Ip">206.192.87.4</PropertySetting>
+    <PropertySetting name="PR14" desc="Dns2Ip">206.192.87.3</PropertySetting>
+    <PropertySetting name="PR15" desc="DnsIpSource">0</PropertySetting>
+    <PropertySetting name="PR16" desc="PhoneNo">
+    </PropertySetting>
+    <PropertySetting name="PR17" desc="PhoneUser">
+    </PropertySetting>
+    <PropertySetting name="PR18" desc="PhonePassword">
+    </PropertySetting>
+    <PropertySetting name="PR19" desc="ImageDirectory">
+    </PropertySetting>
+    <PropertySetting name="PR30" desc="MinImageLength">1200</PropertySetting>
+    <PropertySetting name="PR31" desc="MinImageHeight">550</PropertySetting>
+  </PropertySettings>
+  <BankAccounts>
+    <Account name="CurrentDepositAcct">
+      <AccountParm name="Routing">031310413</AccountParm>
+      <AccountParm name="AccountNo">1032062</AccountParm>
+    </Account>
+  </BankAccounts>
+  <Directories>
+    <!-- <Directory name="ImagePath">\\GrnSdnBase\c\</Directory> -->
+    <Directory name="ImagePath">C:\CheckImages</Directory>
+    <Directory name="ImageFolder">
+    </Directory>
+  </Directories>
+</TellerAssistant>
