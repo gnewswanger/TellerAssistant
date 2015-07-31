@@ -1,13 +1,15 @@
 ﻿Public Interface IViewFrmMain
     Inherits mvcLibrary.IView
 
-    WriteOnly Property ListViewDeposits() As List(Of DepositTicketClass)
+    'WriteOnly Property ListViewDeposits() As List(Of DepositTicketClass)
+    WriteOnly Property ListViewDepositsList() As List(Of ListViewItem)
     WriteOnly Property DepositTicket() As DepositTicketClass
     WriteOnly Property ListViewBanks() As List(Of BankAccountClass)
     WriteOnly Property PortTypeIcon() As ConnectionType
     Property SelectedBank() As BankAccountClass
     ReadOnly Property NewDepositIsChecked() As Boolean
-    ReadOnly Property FilterYTDIsChecked() As Boolean
+    'ReadOnly Property FilterYTDIsChecked() As Boolean
+    ReadOnly Property FilterDateRange As Integer
     Property ChecksTotal() As Single
     Property ScannerConnectionMode() As ConnectionType
     WriteOnly Property DelayInterval() As Integer
@@ -22,4 +24,5 @@
     WriteOnly Property Donorlist() As List(Of DonorClass)
     WriteOnly Property ScannerEnabled() As Boolean
     WriteOnly Property LoggingToggle() As Boolean
+
 End Interface

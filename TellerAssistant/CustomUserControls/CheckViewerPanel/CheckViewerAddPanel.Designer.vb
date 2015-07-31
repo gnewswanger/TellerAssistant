@@ -22,19 +22,48 @@ Partial Class CheckViewerAddPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.SuspendLayout()
         '
+        'txtCheckNo
+        '
+        Me.txtCheckNo.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        '
+        'txtCheckAcct
+        '
+        Me.txtCheckAcct.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        '
+        'txtCheckBank
+        '
+        Me.txtCheckBank.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        '
+        'txtCheckAmt
+        '
+        Me.txtCheckAmt.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        '
+        'btnCheckReset
+        '
+        Me.btnCheckReset.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        '
+        'btnCheckApply
+        '
+        Me.btnCheckApply.Margin = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        '
         'SplitContainer1
         '
-        Me.SplitContainer1.SplitterDistance = 525
+        Me.SplitContainer1.SplitterDistance = 524
         '
         'CheckViewerAddPanel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Name = "CheckViewerAddPanel"
-        Me.SpliterDistance = 525
+        Me.SpliterDistance = 524
+        Me.SplitContainer1.Panel2.ResumeLayout(False)
+        Me.SplitContainer1.Panel2.PerformLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

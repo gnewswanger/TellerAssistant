@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Windows Desktop
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8BE6AEED-56A4-4E66-AAD5-8C5FEE0D0020}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TellerAssistant2012", "TellerAssistant\TellerAssistant2012.vbproj", "{021BFAA9-EE70-4134-9A38-7B8D9012925E}"
@@ -20,6 +22,11 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SimpAccess", "SimpAccess\SimpAccess\SimpAccess.vbproj", "{2BB2ED04-BC3C-4263-8EBA-B04887DB1F0E}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "FileManagerUtility", "FileManagerUtility\FileManagerUtility.vbproj", "{453C3F2F-A79B-4D49-9DC7-FF1CE9B3F476}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5CB83323-A5FA-4E8C-90C4-73EB8C15902B}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

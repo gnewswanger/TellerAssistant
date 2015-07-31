@@ -102,6 +102,7 @@ Public Enum ViewMode
     vmEditView
     vmConfirmView
     vmAddView
+    vmVerifiedView
 End Enum
 
 Public Enum CheckImageView
@@ -118,3 +119,4 @@ End Enum
     rrsRequestedSent = 4
     rrsAllRequests = rrsRequestedNotSent Or rrsRequestedSent
 End Enum
+

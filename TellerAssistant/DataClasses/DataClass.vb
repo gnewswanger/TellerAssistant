@@ -539,7 +539,7 @@ Public Class DataClass
 #Region "Bank Deposit Methods - dbo.DepositTickets"
 
     Public Function GetUniqueNo() As String
-        Dim sqlCmd As New SqlCommand("Select MAX(DepositNo) " _
+        Dim sqlCmd As New SqlCommand("Select MAX(Number) " _
                 + " FROM dbo.DonationDeposits", conn)
         If Not conn.State = ConnectionState.Open Then
             conn.Open()
@@ -550,7 +550,7 @@ Public Class DataClass
                 retVal = "DEP100"
             Else
                 retVal = CStr(sqlCmd.ExecuteScalar)
-                Dim num As Integer = CInt(retVal.Substring(3))
+                Dim num As Integer = CInt(retVal)
                 num += 1
                 retVal = "DEP" & num
             End If
@@ -565,7 +565,7 @@ Public Class DataClass
 
     Public Function GetDepositNos() As ArrayList
         Dim retList As New ArrayList
-        Dim sql As String = "SELECT DepositNo from DonationDeposits ORDER BY DepositNo"
+        Dim sql As String = "SELECT DepositNo from DonationDeposits ORDER BY Number"
         Dim cmd As New SqlCommand(sql, conn)
         If Not conn.State = ConnectionState.Open Then
             conn.Open()
@@ -584,44 +584,224 @@ Public Class DataClass
         End Try
     End Function
 
-    Public Function GetDepositTicketList(ByVal ytd As Boolean) As List(Of DepositTicketClass)
-        Dim retList As New List(Of DepositTicketClass)
-        Dim filter As String = String.Empty
-        If ytd Then
-            filter = "WHERE DepDate >= '01/01/" & Today.Year.ToString & "'"
-        Else
-            filter = ""
-        End If
-        Dim sql As String = "SELECT DepositNo, DepDate, DepDescript, BankId, AccountId, ImagePath from DonationDeposits " & filter & " ORDER BY DepositNo DESC"
-        Dim cmd As New SqlCommand(sql, conn)
-        If Not conn.State = ConnectionState.Open Then
-            conn.Open()
+    'Public Function GetDepositTicketList(ByVal ytd As Boolean) As List(Of DepositTicketClass)
+    '    Dim retList As New List(Of DepositTicketClass)
+    '    Dim filter As String = String.Empty
+    '    If ytd Then
+    '        filter = "WHERE DepDate >= '01/01/" & Today.Year.ToString & "'"
+    '    Else
+    '        filter = ""
+    '    End If
+    '    Dim sql As String = "SELECT DepositNo, DepDate, DepDescript, BankId, AccountId, ImagePath from DonationDeposits " & filter & " ORDER BY DepositNo DESC"
+    '    Dim cmd As New SqlCommand(sql, conn)
+    '    If Not conn.State = ConnectionState.Open Then
+    '        conn.Open()
+    '    End If
+    '    Try
+    '        Dim rdr As SqlDataReader = cmd.ExecuteReader
+    '        While rdr.Read
+    '            Dim depSummary As DepositTicketClass
+    '            depSummary = New DepositTicketClass(rdr.GetString(0), rdr.GetDateTime(1), rdr.GetString(2), New BankAccountClass(rdr.GetString(3), rdr.GetString(4)))
+    '            If IsDBNull(rdr.GetValue(5)) Then
+    '                depSummary.CheckImagePath = depSummary.CheckImagePath
+    '            Else
+    '                depSummary.CheckImagePath = Trim(rdr.GetString(5))
+    '            End If
+    '            retList.Add(depSummary)
+    '        End While
+    '        rdr.Close()
+    '        For Each item As DepositTicketClass In retList
+    '            item.BankInfo = GetBankAccountClass(item.BankInfo.DepositBankNo, item.BankInfo.AccountNo, True)
+    '            item.DepositTotal = (GetCashDepositTotal(item.DepositNumber, True) / 100) + GetChecksDepositTotal(item.DepositNumber, False)
+    '        Next
+    '        Return retList
+    '    Catch ex As Exception
+    '        MsgBox("SqlDataReader failed in GetDepositTicketList. " + ex.Message)
+    '        Return Nothing
+    '    Finally
+    '        conn.Close()
+    '    End Try
+    'End Function
+
+    Public Function GetDepositListViewCollection(ByVal dateRange As Integer) As List(Of ListViewItem)
+        Dim retList As New List(Of ListViewItem)
+        Dim filterStart As DateTime
+        Dim filterEnd As DateTime
+        Select Case dateRange
+            Case 0  'Ths Year
+                filterStart = New DateTime(Today.Year, 1, 1)
+                filterEnd = New DateTime(Today.Year, 12, 31)
+            Case 1  'Last Year
+                Dim yr As Integer
+                yr = Today.Year - 1
+                filterStart = New DateTime(yr, 1, 1)
+                filterEnd = New DateTime(yr, 12, 31)
+            Case 2  'This year and last year
+                Dim yr As Integer
+                yr = Today.Year - 1
+                filterStart = New DateTime(yr, 1, 1)
+                filterEnd = New DateTime(Today.Year, 12, 31)
+            Case 3  'This quarter
+                Dim mon As Integer = Today.Month
+                If mon <= 3 Then
+                    filterStart = New DateTime(Today.Year, 1, 1)
+                    filterEnd = New DateTime(Today.Year, 3, 31)
+                ElseIf mon <= 6 Then
+                    filterStart = New DateTime(Today.Year, 4, 1)
+                    filterEnd = New DateTime(Today.Year, 6, 30)
+                ElseIf mon <= 9 Then
+                    filterStart = New DateTime(Today.Year, 7, 1)
+                    filterEnd = New DateTime(Today.Year, 9, 30)
+                Else
+                    filterStart = New DateTime(Today.Year, 10, 1)
+                    filterEnd = New DateTime(Today.Year, 12, 31)
+                End If
+            Case Else   'All records
+                filterStart = New DateTime(1990, 10, 1)
+                filterEnd = New DateTime(Today.Year, 12, 31)
+        End Select
+        Try
+
+            Dim dt As New DataSet1.upGetDepositTicketListDataTable
+            Dim adptr As New DataSet1TableAdapters.upGetDepositTicketListTableAdapter
+            adptr.Fill(dt, filterStart, filterEnd)
+
+
+            For Each row As DataSet1.upGetDepositTicketListRow In dt
+                Dim itm As New ListViewItem
+                itm.Text = row.DepositNo.Trim
+                itm.SubItems.Add(row.DepDate.ToShortDateString)
+                itm.SubItems.Add(row.DepDescript.Trim)
+                Dim amt As Single = row.CashTotal + row.CheckTotal
+                itm.SubItems.Add(amt.ToString("C"))
+                itm.Tag = row.AccountId.Trim
+                retList.Add(itm)
+            Next
+
+            'Dim cmd As SqlCommand = New SqlCommand("[upGetDepositTicketList]", Me.conn)
+            'cmd.CommandType = CommandType.StoredProcedure
+            'cmd.Parameters.AddWithValue("@filterStart", Nothing)
+            'cmd.Parameters.AddWithValue("@filterEnd", Nothing)
+
+            'If Not conn.State = ConnectionState.Open Then
+            '    conn.Open()
+            'End If
+            'Try
+            '    Dim rdr As SqlDataReader = cmd.ExecuteReader
+            '    While rdr.Read
+            '        Dim itm As New ListViewItem
+            '        itm.Text = rdr.GetString(1)
+            '        itm.SubItems.Add(rdr.GetDateTime(2).ToShortDateString)
+            '        itm.SubItems.Add(rdr.GetString(3))
+            '        Dim amt As Single = rdr.GetDecimal(9) + rdr.GetDecimal(10)
+            '        itm.SubItems.Add(amt.ToString("C"))
+            '        itm.Tag = rdr.GetString(6)
+
+            '        retList.Add(itm)
+            '    End While
+            '    rdr.Close()
+            'For Each item As ListViewItem In retList
+            '    Dim dep As Single = Me.GetDepositTotals(item.Text.Trim, True)
+            '    item.SubItems.Add(dep.ToString("C"))
+            'Next
+            Return retList
+        Catch ex As Exception
+            MsgBox("SqlDataReader failed in GetDepositListViewCollection. " + ex.Message)
+            Return Nothing
+        End Try
+        'Finally
+        '    conn.Close()
+        'End Try
+    End Function
+
+    Public Function GetDepositTotals(dep As String, ByVal leaveConnOpen As Boolean) As Single
+        Dim retVal As Single = 0
+
+        Dim cmd As SqlCommand = New SqlCommand("[upGetDepositTotals]", Me.conn)
+        cmd.CommandType = CommandType.StoredProcedure
+        cmd.Parameters.AddWithValue("@depositNo", dep)
+
+        If Not Me.conn.State = ConnectionState.Open Then
+            Me.conn.Open()
         End If
         Try
             Dim rdr As SqlDataReader = cmd.ExecuteReader
             While rdr.Read
-                Dim depSummary As DepositTicketClass
-                depSummary = New DepositTicketClass(rdr.GetString(0), rdr.GetDateTime(1), rdr.GetString(2), New BankAccountClass(rdr.GetString(3), rdr.GetString(4)))
-                If IsDBNull(rdr.GetValue(5)) Then
-                    depSummary.CheckImagePath = depSummary.CheckImagePath
-                Else
-                    depSummary.CheckImagePath = Trim(rdr.GetString(5))
+                If Not IsDBNull(rdr.GetValue(0)) Then
+                    retVal += CSng(rdr.GetValue(0))
                 End If
-                retList.Add(depSummary)
             End While
             rdr.Close()
-            For Each item As DepositTicketClass In retList
-                item.BankInfo = GetBankAccountClass(item.BankInfo.DepositBankNo, item.BankInfo.AccountNo, True)
-                item.DepositTotal = (GetCashDepositTotal(item.DepositNumber, True) / 100) + GetChecksDepositTotal(item.DepositNumber, False)
-            Next
-            Return retList
         Catch ex As Exception
-            MsgBox("SqlDataReader failed in GetDepositTicketList. " + ex.Message)
+            MsgBox("SqlDataReader failed in GetDepositTotals. " + ex.Message)
             Return Nothing
         Finally
-            conn.Close()
+            If Not leaveConnOpen Then
+                conn.Close()
+            End If
         End Try
+        Return retVal
     End Function
+
+    'Public Function GetDepositTicketList(ByVal dateRange As Integer) As List(Of DepositTicketClass)
+    '    Dim retList As New List(Of DepositTicketClass)
+    '    Dim filter As String = String.Empty
+    '    Select Case dateRange
+    '        Case 0  'Ths Year
+    '            filter = "WHERE DepDate >= '01/01/" & Today.Year.ToString & "'"
+    '        Case 1  'Last Year
+    '            Dim yr As Integer
+    '            yr = Today.Year - 1
+    '            filter = "WHERE DepDate >= '01/01/" & yr.ToString & "' AND DepDate <= '12/31/" & yr.ToString & "'"
+    '        Case 2  'This year and last year
+    '            Dim yr As Integer
+    '            yr = Today.Year - 1
+    '            filter = "WHERE DepDate >= '01/01/" & yr.ToString & "' AND DepDate <= '12/31/" & Today.Year.ToString & "'"
+    '        Case 3  'This quarter
+    '            Dim mon As Integer = Today.Month
+    '            If mon <= 3 Then
+    '                filter = "WHERE DepDate >= '01/01/" & Today.Year.ToString & "' AND DepDate <= '03/31/" & Today.Year.ToString & "'"
+    '            ElseIf mon <= 6 Then
+    '                filter = "WHERE DepDate >= '04/01/" & Today.Year.ToString & "' AND DepDate <= '06/30/" & Today.Year.ToString & "'"
+    '            ElseIf mon <= 9 Then
+    '                filter = "WHERE DepDate >= '07/01/" & Today.Year.ToString & "' AND DepDate <= '09/30/" & Today.Year.ToString & "'"
+    '            Else
+    '                filter = "WHERE DepDate >= '10/01/" & Today.Year.ToString & "' AND DepDate <= '12/31/" & Today.Year.ToString & "'"
+    '            End If
+    '        Case Else   'All records
+    '            filter = ""
+    '    End Select
+
+    '    Dim sql As String = "SELECT DepositNo, DepDate, DepDescript, BankId, AccountId, ImagePath from DonationDeposits " & filter & " ORDER BY DepositNo DESC"
+    '    Dim cmd As New SqlCommand(sql, conn)
+    '    If Not conn.State = ConnectionState.Open Then
+    '        conn.Open()
+    '    End If
+    '    Try
+    '        Dim rdr As SqlDataReader = cmd.ExecuteReader
+    '        While rdr.Read
+    '            Dim depSummary As DepositTicketClass
+    '            depSummary = New DepositTicketClass(rdr.GetString(0), rdr.GetDateTime(1), rdr.GetString(2), New BankAccountClass(rdr.GetString(3), rdr.GetString(4)))
+    '            If IsDBNull(rdr.GetValue(5)) Then
+    '                depSummary.CheckImagePath = depSummary.CheckImagePath
+    '            Else
+    '                depSummary.CheckImagePath = Trim(rdr.GetString(5))
+    '            End If
+    '            retList.Add(depSummary)
+    '        End While
+    '        rdr.Close()
+    '        For Each item As DepositTicketClass In retList
+    '            item.BankInfo = GetBankAccountClass(item.BankInfo.DepositBankNo, item.BankInfo.AccountNo, True)
+    '            item.DepositTotal = (GetCashDepositTotal(item.DepositNumber, True) / 100) + GetChecksDepositTotal(item.DepositNumber, False)
+    '        Next
+    '        Return retList
+    '    Catch ex As Exception
+    '        MsgBox("SqlDataReader failed in GetDepositTicketList. " + ex.Message)
+    '        Return Nothing
+    '    Finally
+    '        conn.Close()
+    '    End Try
+    'End Function
 
     Public Function DepositExists(ByVal dep As DepositTicketClass, ByVal leaveConnOpen As Boolean) As Boolean
         Dim sqlSelect As String = "SELECT DepositNo FROM DonationDeposits " _
@@ -665,7 +845,6 @@ Public Class DataClass
                 retVal.DepositTotal = GetCashDepositTotal(retVal.DepositNumber, False) + GetChecksDepositTotal(retVal.DepositNumber, False)
                 Return retVal
             End If
-            Return Nothing
         Catch ex As Exception
             MsgBox("SqlDataReader failed in GetDepositTicket. " + ex.Message)
             Return Nothing
@@ -674,6 +853,7 @@ Public Class DataClass
                 conn.Close()
             End If
         End Try
+        Return Nothing
     End Function
 
     Public Function GetDepositCheckImageDirectory(ByVal depNo As String, ByVal leaveConnOpen As Boolean) As String
@@ -717,12 +897,13 @@ Public Class DataClass
     End Function
 
     Public Function UpdateDepositTicket(ByVal ticket As DepositTicketClass) As DepositTicketClass
-        Dim sqlCmd As New SqlCommand("UPDATE dbo.DonationDeposits SET DepositNo = @DepositNo, DepDate = @DepDate, " _
+        Dim sqlCmd As New SqlCommand("UPDATE dbo.DonationDeposits SET Number = @Number, DepositNo = @DepositNo, DepDate = @DepDate, " _
             + "DepDescript = @DepDescript, BankId = @BankID, AccountId = @AccountId, ImagePath = @ImagePath " _
             + " WHERE DepositNo = '" + ticket.DepositNumber.Trim + "'", conn)
         If Not conn.State = ConnectionState.Open Then
             conn.Open()
         End If
+        sqlCmd.Parameters.Add("@Number", SqlDbType.Int).Value = CInt(ticket.DepositNumber.Substring(3))
         sqlCmd.Parameters.Add("@DepositNo", SqlDbType.VarChar, 10).Value = ticket.DepositNumber.Trim
         sqlCmd.Parameters.Add("@DepDate", SqlDbType.DateTime, 8).Value = ticket.DepositDate
         sqlCmd.Parameters.Add("@DepDescript", SqlDbType.VarChar, 50).Value = ticket.Description.Trim
@@ -744,12 +925,13 @@ Public Class DataClass
 
     Private Function InsertDepositTicket(ByVal ticket As DepositTicketClass) As DepositTicketClass
         Dim num As String = GetUniqueNo()
-        Dim sqlCmd As New SqlCommand("INSERT INTO  dbo.DonationDeposits (DepositNo, DepDate, DepDescript, " _
+        Dim sqlCmd As New SqlCommand("INSERT INTO  dbo.DonationDeposits (Number, DepositNo, DepDate, DepDescript, " _
             + "BankId, AccountId, ImagePath) " _
-            + " VALUES (@DepositNo, @DepDate, @DepDescript, @BankID, @AccountId, @ImagePath)", conn)
+            + " VALUES (@Number, @DepositNo, @DepDate, @DepDescript, @BankID, @AccountId, @ImagePath)", conn)
         If Not conn.State = ConnectionState.Open Then
             conn.Open()
         End If
+        sqlCmd.Parameters.Add("@Number", SqlDbType.Int).Value = CInt(ticket.DepositNumber.Substring(3))
         sqlCmd.Parameters.Add("@DepositNo", SqlDbType.VarChar, 10).Value = num
         sqlCmd.Parameters.Add("@DepDate", SqlDbType.DateTime, 8).Value = ticket.DepositDate
         sqlCmd.Parameters.Add("@DepDescript", SqlDbType.VarChar, 50).Value = ticket.Description
@@ -797,6 +979,7 @@ Public Class DataClass
     End Function
 
     Public Function SetChecksClass(ByVal chkargs As CheckDataEventArgs, ByVal leaveConnOpen As Boolean) As Integer
+
         Dim sqlCmd As New SqlCommand
         sqlCmd.CommandType = CommandType.StoredProcedure
         sqlCmd.CommandText = "[spSetCheck2]"
@@ -917,179 +1100,258 @@ Public Class DataClass
     End Function
 
     Public Function GetCheckListByStatus(ByVal depNo As String, ByVal chkStatus As CheckStatus) As List(Of ChecksClass)
-        Dim sqlFilter As String = " AND d1.DepositNo = '" + Trim(depNo) + "' AND d1.CheckStatus = '" & [Enum].GetName(GetType(CheckStatus), chkStatus) + "' ORDER BY d1.CheckNo "
-        Return GetChecksListBySqlString(sqlFilter)
+        'Dim sqlFilter As String = " AND d1.DepositNo = '" + Trim(depNo) + "' AND d1.CheckStatus = '" & [Enum].GetName(GetType(CheckStatus), chkStatus) + "' ORDER BY d1.CheckNo "
+        Dim sqlFilter As String = "DepositNo = '" + Trim(depNo) + "' AND CheckStatus = '" + [Enum].GetName(GetType(CheckStatus), chkStatus) + "'"
+        Dim sqlSort As String = "CheckNo ASC"
+        Return GetChecksListBySqlString_New(sqlFilter, sqlSort)
     End Function
 
     Public Function GetCheckListByReceiptRequestStatus(ByVal depno As String, ByVal receiptStatus As ReceiptRequestStatus) As List(Of ChecksClass)
-        Dim sqlFilter As String = " AND d1.DepositNo = '" + Trim(depno) + "' AND ((d1.ReceiptStatus & " + CStr(receiptStatus) + ") <> 0) ORDER BY d1.CheckNo "
-        Return GetChecksListBySqlString(sqlFilter) '(([ReceiptStatus] & @ReceiptStatus) <> 0)
+        Dim sqlFilter As String = "DepositNo = '" + Trim(depno) + "' AND ((ReceiptStatus & " + CStr(receiptStatus) + ") <> 0)"
+        Dim sqlSort As String = "CheckNo ASC"
+        'Dim sqlFilter As String = " AND d1.DepositNo = '" + Trim(depno) + "' AND ((d1.ReceiptStatus & " + CStr(receiptStatus) + ") <> 0) ORDER BY d1.CheckNo "
+        Return GetChecksListBySqlString_New(sqlFilter, sqlSort) '(([ReceiptStatus] & @ReceiptStatus) <> 0)
+        'Return GetChecksListBySqlString(sqlFilter) '(([ReceiptStatus] & @ReceiptStatus) <> 0)
     End Function
 
     Public Function GetDepositCheckList(ByVal depNo As String) As List(Of ChecksClass)
-        Dim sqlFilter As String = " AND d1.DepositNo = '" + Trim(depNo) + "' ORDER BY d1.CheckNo "
-        Return GetChecksListBySqlString(sqlFilter)
+        Dim sqlFilter As String = " DepositNo = '" + Trim(depNo) + "'"
+        Dim sqlSort As String = "CheckNo ASC"
+        'Dim sqlFilter As String = " AND d1.DepositNo = '" + Trim(depNo) + "' ORDER BY d1.CheckNo "
+        Return GetChecksListBySqlString_New(sqlFilter, sqlSort)
     End Function
 
-    Private Function GetChecksListBySqlString_old(ByVal sqlFilterStr As String) As List(Of ChecksClass)
-        Dim sqlSelect As String = "SELECT d1.DepositNo, d1.RoutingNo, d1.AccountNo, d1.CheckNo, d1.DonorNo, " _
-        & "d1.CheckDate, d1.CheckAmount, d1.CheckStatus, d1.ReceiptStatus, d1.ImageFile, d1.Manual, d2.ImagePath, " _
-        & "d3.Address, d3.City, d3.State, d3.Zip, d3.Bank, d3.Account " _
-        & "FROM CheckDonations AS d1 LEFT OUTER JOIN DonorInfo as d3 ON d3.Donor = d1.DonorNo JOIN DonationDeposits AS d2 " _
-        & "ON d2.DepositNo = d1.DepositNo "
+    'Private Function GetChecksListBySqlString_old(ByVal sqlFilterStr As String) As List(Of ChecksClass)
+    '    Dim sqlSelect As String = "SELECT d1.DepositNo, d1.RoutingNo, d1.AccountNo, d1.CheckNo, d1.DonorNo, " _
+    '    & "d1.CheckDate, d1.CheckAmount, d1.CheckStatus, d1.ReceiptStatus, d1.ImageFile, d1.Manual, d2.ImagePath, " _
+    '    & "d3.Address, d3.City, d3.State, d3.Zip, d3.Bank, d3.Account " _
+    '    & "FROM CheckDonations AS d1 LEFT OUTER JOIN DonorInfo as d3 ON d3.Donor = d1.DonorNo JOIN DonationDeposits AS d2 " _
+    '    & "ON d2.DepositNo = d1.DepositNo "
 
-        Dim sqlCmd As New SqlCommand(sqlSelect & sqlFilterStr, conn)
-        If Not conn.State = ConnectionState.Open Then
-            conn.Open()
-        End If
-        Dim rdr As SqlDataReader
-        rdr = sqlCmd.ExecuteReader
+    '    Dim sqlCmd As New SqlCommand(sqlSelect & sqlFilterStr, conn)
+    '    If Not conn.State = ConnectionState.Open Then
+    '        conn.Open()
+    '    End If
+    '    Dim rdr As SqlDataReader
+    '    rdr = sqlCmd.ExecuteReader
+    '    Try
+    '        Dim retClass As ChecksClass
+    '        Dim retList As New List(Of ChecksClass)
+
+    '        'd1.DepositNo 0, d1.RoutingNo 1, d1.AccountNo 2, d1.CheckNo 3, d1.DonorNo 4, d1.CheckDate 5, d1.CheckAmount 6
+    '        'd1.CheckStatus 7, d1.ReceiptStatus 8, d1.ImageFile 9, d1.Manual 10, d2.ImagePath 11, d3.Address 12, d3.City 13
+    '        'd3.State 14, d3.Zip 15, d3.Bank 16, d3.Ac
+
+    '        While rdr.Read
+    '            retClass = New ChecksClass(Trim(rdr.GetString(0)), Trim(rdr.GetString(1)), Trim(rdr.GetString(2)), Trim(rdr.GetString(3)), _
+    '                rdr.GetDateTime(5), rdr.GetDecimal(6), Trim(rdr.GetString(9)))
+    '            retClass.Status = CType([Enum].Parse(GetType(CheckStatus), rdr.GetString(7)), CheckStatus)
+    '            If IsDBNull(rdr.GetValue(8)) Then
+    '                retClass.ReceiptRequest = ReceiptRequestStatus.rrsNone
+    '            Else
+    '                retClass.ReceiptRequest = CType([Enum].Parse(GetType(ReceiptRequestStatus), CStr(rdr.GetValue(8))), ReceiptRequestStatus)
+    '            End If
+    '            If IsDBNull(rdr.GetValue(10)) Then
+    '                retClass.ManualCheck = False
+    '            Else
+    '                retClass.ManualCheck = Boolean.Parse(rdr.GetString(10))
+    '            End If
+    '            If IsDBNull(rdr.GetValue(11)) Then
+    '                retClass.ImageFullPath = String.Empty
+    '            Else
+    '                retClass.ImageFullPath = Trim(rdr.GetString(11))
+    '                If Not retClass.ImageFullPath.EndsWith("\") Then
+    '                    retClass.ImageFullPath += "\"
+    '                End If
+    '            End If
+    '            If Not IsDBNull(rdr.GetValue(4)) Then
+    '                retClass.DonorInfo = New DonorClass(rdr.GetString(4))
+    '                If IsDBNull(rdr.GetValue(12)) Then
+    '                    retClass.DonorAddress = String.Empty
+    '                Else
+    '                    retClass.DonorAddress = rdr.GetString(12)
+    '                End If
+    '                If IsDBNull(rdr.GetValue(13)) Then
+    '                    retClass.DonorCity = String.Empty
+    '                Else
+    '                    retClass.DonorCity = rdr.GetString(13)
+    '                End If
+    '                If IsDBNull(rdr.GetValue(14)) Then
+    '                    retClass.DonorState = String.Empty
+    '                Else
+    '                    retClass.DonorState = rdr.GetString(14)
+    '                End If
+    '                If IsDBNull(rdr.GetValue(15)) Then
+    '                    retClass.DonorZip = String.Empty
+    '                Else
+    '                    retClass.DonorZip = rdr.GetString(15)
+    '                End If
+    '                If IsDBNull(rdr.GetValue(16)) Then
+    '                    retClass.DonorInfo.Bank = String.Empty
+    '                Else
+    '                    retClass.DonorInfo.Bank = rdr.GetString(16)
+    '                End If
+    '                If IsDBNull(rdr.GetValue(17)) Then
+    '                    retClass.DonorInfo.Account = String.Empty
+    '                Else
+    '                    retClass.DonorInfo.Account = rdr.GetString(17)
+    '                End If
+    '            End If
+    '            retList.Add(retClass)
+    '        End While
+    '        Return retList
+    '    Catch ex As Exception
+    '        MsgBox("SqlDataReader failed in GetChecksListBySqlString. " + ex.Message)
+    '        Return Nothing
+    '    Finally
+    '        rdr.Close()
+    '        conn.Close()
+    '    End Try
+
+    'End Function
+
+    'Private Function GetChecksListBySqlString(ByVal sqlFilterStr As String) As List(Of ChecksClass)
+    '    Dim sqlSelect As String = "SELECT d1.DepositNo, d1.RoutingNo, d1.AccountNo, d1.CheckNo, d1.DonorNo, " _
+    '                              & "d1.CheckDate, d1.CheckAmount, d1.CheckStatus, d1.ReceiptStatus, d1.ImageFile, d1.Manual, d2.ImagePath " _
+    '                              & "FROM CheckDonations AS d1 JOIN DonationDeposits AS d2 " _
+    '                              & "ON d2.DepositNo = d1.DepositNo "
+
+    '    Dim sqlCmd As New SqlCommand(sqlSelect & sqlFilterStr, conn)
+    '    If Not conn.State = ConnectionState.Open Then
+    '        conn.Open()
+    '    End If
+    '    Dim rdr As SqlDataReader
+    '    rdr = sqlCmd.ExecuteReader
+    '    Try
+    '        Dim retClass As ChecksClass
+    '        Dim retList As New List(Of ChecksClass)
+    '        Dim retDonors As New List(Of String)
+
+    '        'd1.DepositNo 0, d1.RoutingNo 1, d1.AccountNo 2, d1.CheckNo 3, d1.DonorNo 4, d1.CheckDate 5, d1.CheckAmount 6
+    '        'd1.CheckStatus 7, d1.ReceiptStatus 8, d1.ImageFile 9, d1.Manual 10, d2.ImagePath 11
+
+    '        While rdr.Read
+    '            retClass = New ChecksClass(Trim(rdr.GetString(0)), Trim(rdr.GetString(1)), Trim(rdr.GetString(2)), Trim(rdr.GetString(3)), _
+    '                rdr.GetDateTime(5), rdr.GetDecimal(6), Trim(rdr.GetString(9)))
+    '            If IsDBNull(rdr.GetValue(4)) Then
+    '                retDonors.Add(String.Empty)
+    '            Else
+    '                retDonors.Add(rdr.GetString(4).Trim)
+    '            End If
+
+    '            retClass.Status = CType([Enum].Parse(GetType(CheckStatus), rdr.GetString(7)), CheckStatus)
+    '            If IsDBNull(rdr.GetValue(8)) Then
+    '                retClass.ReceiptRequest = ReceiptRequestStatus.rrsNone
+    '            Else
+    '                retClass.ReceiptRequest = CType([Enum].Parse(GetType(ReceiptRequestStatus), CStr(rdr.GetValue(8))), ReceiptRequestStatus)
+    '            End If
+    '            If IsDBNull(rdr.GetValue(10)) Then
+    '                retClass.ManualCheck = False
+    '            Else
+    '                retClass.ManualCheck = Boolean.Parse(rdr.GetString(10))
+    '            End If
+    '            If IsDBNull(rdr.GetValue(11)) Then
+    '                retClass.ImageFullPath = String.Empty
+    '            Else
+    '                retClass.ImageFullPath = Trim(rdr.GetString(11))
+    '                If Not retClass.ImageFullPath.EndsWith("\") Then
+    '                    retClass.ImageFullPath += "\"
+    '                End If
+    '            End If
+    '            retList.Add(retClass)
+    '        End While
+    '        rdr.Close()
+    '        'todo: stored procedure needs altered to eliminate these two calls.
+    '        For i As Integer = 0 To retList.Count - 1
+    '            If retDonors(i) <> String.Empty Then
+    '                retList(i).DonorInfo = Me.GetDonorInfo(retDonors(i))(0)
+    '            End If
+    '            If retList(i).DonorInfo Is Nothing Then
+    '                retList(i).DonorInfo = Me.GetDonorInfoByAccount(retList(i).RoutingNo, retList(i).AccountNo)
+    '            End If
+    '        Next
+    '        Return retList
+    '    Catch ex As Exception
+    '        MsgBox("SqlDataReader failed in GetChecksListBySqlString. " + ex.Message)
+    '        Return Nothing
+    '    Finally
+    '        rdr.Close()
+    '        conn.Close()
+    '    End Try
+    'End Function
+
+    Private Function GetChecksListBySqlString_New(ByVal sqlFilterStr As String, sqlSort As String) As List(Of ChecksClass)
+        Dim adapter As New DataSet1TableAdapters.upGetChecksListWithDonorTableAdapter
+        Dim dsTable As New DataSet1.upGetChecksListWithDonorDataTable
+        adapter.Fill(dsTable, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing)
+        Dim foundRows As DataRow() = dsTable.Select(sqlFilterStr, sqlSort)
+        Dim retList As New List(Of ChecksClass)
+        Dim retClass As ChecksClass
         Try
-            Dim retClass As ChecksClass
-            Dim retList As New List(Of ChecksClass)
+            For Each row As DataSet1.upGetChecksListWithDonorRow In foundRows
+                retClass = New ChecksClass(row.Item("DepositNo").ToString.Trim, _
+                                                row.Item("RoutingNo").ToString.Trim, _
+                                                row.Item("AccountNo").ToString.Trim, _
+                                                row.Item("CheckNo").ToString.Trim, _
+                                                CDate(row.Item("CheckDate")), _
+                                                CSng(row.Item("CheckAmount")), _
+                                                row.Item("ImageFile").ToString.Trim)
+                retClass.ImageFullPath = row.Item("ImagePath").ToString.Trim
+                retClass.ManualCheck = Boolean.Parse(row.Item("Manual").ToString.Trim)
+                retClass.Status = CType([Enum].Parse(GetType(CheckStatus), row.Item("CheckStatus").ToString.Trim), CheckStatus)
+                retClass.ReceiptRequest = CType([Enum].Parse(GetType(ReceiptRequestStatus), CStr(row.Item("ReceiptStatus")).Trim), ReceiptRequestStatus)
+                If row.Item("DonorNo").ToString.Trim <> String.Empty Then
+                    retClass.DonorInfo = New DonorClass(row.Item("DonorNo").ToString.Trim, row.Item("Bank").ToString, row.Item("Account").ToString.Trim)
+                    retClass.DonorInfo.Address = row.Item("Address").ToString.Trim
+                    retClass.DonorInfo.City = row.Item("City").ToString.Trim
+                    retClass.DonorInfo.Zip = row.Item("Zip").ToString.Trim
+                    retClass.DonorInfo.EnvelopeNo = row.Item("Envelope").ToString.Trim
+                End If
 
-            'd1.DepositNo 0, d1.RoutingNo 1, d1.AccountNo 2, d1.CheckNo 3, d1.DonorNo 4, d1.CheckDate 5, d1.CheckAmount 6
-            'd1.CheckStatus 7, d1.ReceiptStatus 8, d1.ImageFile 9, d1.Manual 10, d2.ImagePath 11, d3.Address 12, d3.City 13
-            'd3.State 14, d3.Zip 15, d3.Bank 16, d3.Ac
-
-            While rdr.Read
-                retClass = New ChecksClass(Trim(rdr.GetString(0)), Trim(rdr.GetString(1)), Trim(rdr.GetString(2)), Trim(rdr.GetString(3)), _
-                    rdr.GetDateTime(5), rdr.GetDecimal(6), Trim(rdr.GetString(9)))
-                retClass.Status = CType([Enum].Parse(GetType(CheckStatus), rdr.GetString(7)), CheckStatus)
-                If IsDBNull(rdr.GetValue(8)) Then
-                    retClass.ReceiptRequest = ReceiptRequestStatus.rrsNone
-                Else
-                    retClass.ReceiptRequest = CType([Enum].Parse(GetType(ReceiptRequestStatus), CStr(rdr.GetValue(8))), ReceiptRequestStatus)
-                End If
-                If IsDBNull(rdr.GetValue(10)) Then
-                    retClass.ManualCheck = False
-                Else
-                    retClass.ManualCheck = Boolean.Parse(rdr.GetString(10))
-                End If
-                If IsDBNull(rdr.GetValue(11)) Then
-                    retClass.ImageFullPath = String.Empty
-                Else
-                    retClass.ImageFullPath = Trim(rdr.GetString(11))
-                    If Not retClass.ImageFullPath.EndsWith("\") Then
-                        retClass.ImageFullPath += "\"
-                    End If
-                End If
-                If Not IsDBNull(rdr.GetValue(4)) Then
-                    retClass.DonorInfo = New DonorClass(rdr.GetString(4))
-                    If IsDBNull(rdr.GetValue(12)) Then
-                        retClass.DonorAddress = String.Empty
-                    Else
-                        retClass.DonorAddress = rdr.GetString(12)
-                    End If
-                    If IsDBNull(rdr.GetValue(13)) Then
-                        retClass.DonorCity = String.Empty
-                    Else
-                        retClass.DonorCity = rdr.GetString(13)
-                    End If
-                    If IsDBNull(rdr.GetValue(14)) Then
-                        retClass.DonorState = String.Empty
-                    Else
-                        retClass.DonorState = rdr.GetString(14)
-                    End If
-                    If IsDBNull(rdr.GetValue(15)) Then
-                        retClass.DonorZip = String.Empty
-                    Else
-                        retClass.DonorZip = rdr.GetString(15)
-                    End If
-                    If IsDBNull(rdr.GetValue(16)) Then
-                        retClass.DonorInfo.Bank = String.Empty
-                    Else
-                        retClass.DonorInfo.Bank = rdr.GetString(16)
-                    End If
-                    If IsDBNull(rdr.GetValue(17)) Then
-                        retClass.DonorInfo.Account = String.Empty
-                    Else
-                        retClass.DonorInfo.Account = rdr.GetString(17)
-                    End If
-                End If
                 retList.Add(retClass)
-            End While
-            Return retList
-        Catch ex As Exception
-            MsgBox("SqlDataReader failed in GetChecksListBySqlString. " + ex.Message)
-            Return Nothing
-        Finally
-            rdr.Close()
-            conn.Close()
-        End Try
-
-    End Function
-
-    Private Function GetChecksListBySqlString(ByVal sqlFilterStr As String) As List(Of ChecksClass)
-        Dim sqlSelect As String = "SELECT d1.DepositNo, d1.RoutingNo, d1.AccountNo, d1.CheckNo, d1.DonorNo, " _
-                                  & "d1.CheckDate, d1.CheckAmount, d1.CheckStatus, d1.ReceiptStatus, d1.ImageFile, d1.Manual, d2.ImagePath " _
-                                  & "FROM CheckDonations AS d1 JOIN DonationDeposits AS d2 " _
-                                  & "ON d2.DepositNo = d1.DepositNo "
-
-        Dim sqlCmd As New SqlCommand(sqlSelect & sqlFilterStr, conn)
-        If Not conn.State = ConnectionState.Open Then
-            conn.Open()
-        End If
-        Dim rdr As SqlDataReader
-        rdr = sqlCmd.ExecuteReader
-        Try
-            Dim retClass As ChecksClass
-            Dim retList As New List(Of ChecksClass)
-            Dim retDonors As New List(Of String)
-
-            'd1.DepositNo 0, d1.RoutingNo 1, d1.AccountNo 2, d1.CheckNo 3, d1.DonorNo 4, d1.CheckDate 5, d1.CheckAmount 6
-            'd1.CheckStatus 7, d1.ReceiptStatus 8, d1.ImageFile 9, d1.Manual 10, d2.ImagePath 11
-
-            While rdr.Read
-                retClass = New ChecksClass(Trim(rdr.GetString(0)), Trim(rdr.GetString(1)), Trim(rdr.GetString(2)), Trim(rdr.GetString(3)), _
-                    rdr.GetDateTime(5), rdr.GetDecimal(6), Trim(rdr.GetString(9)))
-                If IsDBNull(rdr.GetValue(4)) Then
-                    retDonors.Add(String.Empty)
-                Else
-                    retDonors.Add(rdr.GetString(4).Trim)
-                End If
-
-                retClass.Status = CType([Enum].Parse(GetType(CheckStatus), rdr.GetString(7)), CheckStatus)
-                If IsDBNull(rdr.GetValue(8)) Then
-                    retClass.ReceiptRequest = ReceiptRequestStatus.rrsNone
-                Else
-                    retClass.ReceiptRequest = CType([Enum].Parse(GetType(ReceiptRequestStatus), CStr(rdr.GetValue(8))), ReceiptRequestStatus)
-                End If
-                If IsDBNull(rdr.GetValue(10)) Then
-                    retClass.ManualCheck = False
-                Else
-                    retClass.ManualCheck = Boolean.Parse(rdr.GetString(10))
-                End If
-                If IsDBNull(rdr.GetValue(11)) Then
-                    retClass.ImageFullPath = String.Empty
-                Else
-                    retClass.ImageFullPath = Trim(rdr.GetString(11))
-                    If Not retClass.ImageFullPath.EndsWith("\") Then
-                        retClass.ImageFullPath += "\"
-                    End If
-                End If
-                retList.Add(retClass)
-            End While
-            rdr.Close()
-            For i As Integer = 0 To retList.Count - 1
-                If retDonors(i) <> String.Empty Then
-                    retList(i).DonorInfo = Me.GetDonorInfo(retDonors(i))(0)
-                End If
-                If retList(i).DonorInfo Is Nothing Then
-                    retList(i).DonorInfo = Me.GetDonorInfoByAccount(retList(i).RoutingNo, retList(i).AccountNo)
-                End If
             Next
+
             Return retList
         Catch ex As Exception
-            MsgBox("SqlDataReader failed in GetChecksListBySqlString. " + ex.Message)
-            Return Nothing
-        Finally
-            rdr.Close()
-            conn.Close()
+            MsgBox("GetChecksListBySqlString_New. " + ex.Message)
         End Try
+
     End Function
 
     Public Function GetChecksClass(ByVal depNo As String, ByVal rtg As String, ByVal acctNo As String, ByVal chkNo As String) As ChecksClass
+        Dim adapter As New DataSet1TableAdapters.upGetCheckTableAdapter
+        Dim dsTable As New DataSet1.upGetCheckDataTable
+        adapter.Fill(dsTable, depNo, rtg, acctNo, chkNo, Nothing, Nothing, Nothing, Nothing, Nothing)
+        Dim retClass As ChecksClass = Nothing
+        Try
+            If dsTable.Count > 0 Then
+                Dim row As DataRow = dsTable.Rows(0)
+                retClass = New ChecksClass(row.Item("DepositNo").ToString.Trim, _
+                                row.Item("RoutingNo").ToString.Trim, _
+                                row.Item("AccountNo").ToString.Trim, _
+                                row.Item("CheckNo").ToString.Trim, _
+                                CDate(row.Item("CheckDate")), _
+                                CSng(row.Item("CheckAmount")), _
+                                row.Item("ImageFile").ToString.Trim)
+                retClass.ImageFullPath = row.Item("ImagePath").ToString.Trim
+                retClass.ManualCheck = Boolean.Parse(row.Item("Manual").ToString.Trim)
+                retClass.Status = CType([Enum].Parse(GetType(CheckStatus), row.Item("CheckStatus").ToString.Trim), CheckStatus)
+                retClass.ReceiptRequest = CType([Enum].Parse(GetType(ReceiptRequestStatus), CStr(row.Item("ReceiptStatus")).Trim), ReceiptRequestStatus)
+                If row.Item("DonorNo").ToString.Trim <> String.Empty Then
+                    retClass.DonorInfo = New DonorClass(row.Item("DonorNo").ToString.Trim, row.Item("Bank").ToString, row.Item("Account").ToString.Trim)
+                    retClass.DonorInfo.Address = row.Item("Address").ToString.Trim
+                    retClass.DonorInfo.City = row.Item("City").ToString.Trim
+                    retClass.DonorInfo.Zip = row.Item("Zip").ToString.Trim
+                    retClass.DonorInfo.EnvelopeNo = row.Item("Envelope").ToString.Trim
+                End If
+            End If
+            Return retClass
+        Catch ex As Exception
+            MsgBox("GetChecksClass SqlDataReader failed. " + ex.Message)
+        End Try
+    End Function
+
+    Public Function GetChecksClass_old(ByVal depNo As String, ByVal rtg As String, ByVal acctNo As String, ByVal chkNo As String) As ChecksClass
         Dim retClass As ChecksClass = Nothing
         Dim retDonor As String = String.Empty
         Dim sqlSelect As String = "Execute  [spGetCheck] @DepositNo = '" & depNo.Trim & "', @RoutingNo = '" & rtg.Trim & "', @AccountNo = '" & acctNo.Trim & "', @CheckNo = '" & chkNo.Trim & "'"
@@ -1099,7 +1361,10 @@ Public Class DataClass
         End If
         Try
             Dim rdr As SqlDataReader = sqlCmd.ExecuteReader
-            'DepositNo 0,RoutingNo 1,AccountNo 2,CheckNo 3,DonorNo 4,CheckDate 5,CheckAmount 6,CheckStatus 7,ReceiptStatus 8,ImageFile 9,Manual 10
+            '0_D1.DepositNo(), 1_D1.RoutingNo, 2_D1.AccountNo ,3_D1.CheckNo ,4_D1.DonorNo, 5_D1.CheckDate, 6_D1.CheckAmount,7_D1.CheckStatus,
+            '8_D1.ReceiptStatus, 9_D1.ImageFile, 10_D1.Manual,'11_D2.Donor,12_D2.Address,13_D2.City,14_D2.State,15_D2.Zip,
+            '16_D2.Bank,17_D2.Account,18_D2.Envelope
+
 
             If rdr.Read Then
                 If IsDBNull(rdr.GetValue(0)) Then
@@ -1126,11 +1391,16 @@ Public Class DataClass
                         retClass.ImageFullPath += "\"
                     End If
                     If retDonor <> String.Empty Then
+                        Dim dInfo As New DonorClass(rdr.GetString(11), rdr.GetString(16), rdr.GetString(17))
+                        dInfo.Address = rdr.GetString(12)
+                        dInfo.City = rdr.GetString(13)
+                        dInfo.State = rdr.GetString(14)
+                        dInfo.Zip = rdr.GetString(15)
                         retClass.DonorInfo = Me.GetDonorInfo(retDonor)(0)
                     End If
-                    If retClass.DonorInfo Is Nothing Then
-                        retClass.DonorInfo = Me.GetDonorInfoByAccount(retClass.RoutingNo, retClass.AccountNo)
-                    End If
+                    'If retClass.DonorInfo Is Nothing Then
+                    '    retClass.DonorInfo = Me.GetDonorInfoByAccount(retClass.RoutingNo, retClass.AccountNo)
+                    'End If
                 End If
             End If
 
@@ -1591,7 +1861,7 @@ Public Class DataClass
         Try
             Dim rdr As SqlDataReader = sqlCmd.ExecuteReader
             If rdr.Read Then
-                retClass = New DonorClass(rdr.GetString(0))
+                retClass = New DonorClass(rdr.GetString(0), bank, acct)
                 retClass.Address = rdr.GetString(2)
                 retClass.City = rdr.GetString(3)
                 retClass.State = rdr.GetString(4)
@@ -1617,39 +1887,39 @@ Public Class DataClass
         Try
             sqlCmd.Parameters.Add("@DonorID", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@DonorID").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@DonorID").Value = Trim(chk.Donor)
+            sqlCmd.Parameters.Item("@DonorID").Value = chk.DonorInfo.Donor.Trim
 
             sqlCmd.Parameters.Add("@Donor", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Donor").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Donor").Value = Trim(chk.Donor)
+            sqlCmd.Parameters.Item("@Donor").Value = chk.DonorInfo.Donor.Trim
 
             sqlCmd.Parameters.Add("@Address", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Address").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Address").Value = Trim(chk.DonorAddress)
+            sqlCmd.Parameters.Item("@Address").Value = chk.DonorInfo.Address.Trim
 
             sqlCmd.Parameters.Add("@City", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@City").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@City").Value = Trim(chk.DonorCity)
+            sqlCmd.Parameters.Item("@City").Value = chk.DonorInfo.City.Trim
 
             sqlCmd.Parameters.Add("@State", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@State").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@State").Value = Trim(chk.DonorState)
+            sqlCmd.Parameters.Item("@State").Value = chk.DonorInfo.State.Trim
 
             sqlCmd.Parameters.Add("@Zip", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Zip").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Zip").Value = Trim(chk.DonorZip)
+            sqlCmd.Parameters.Item("@Zip").Value = chk.DonorInfo.Zip.Trim
 
             sqlCmd.Parameters.Add("@Envelope", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Envelope").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Envelope").Value = Trim(chk.DonorInfo.EnvelopeNo)
+            sqlCmd.Parameters.Item("@Envelope").Value = chk.DonorInfo.EnvelopeNo.Trim
 
             sqlCmd.Parameters.Add("@Bank", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Bank").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Bank").Value = Trim(chk.RoutingNo)
+            sqlCmd.Parameters.Item("@Bank").Value = chk.RoutingNo.Trim
 
             sqlCmd.Parameters.Add("@Account", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Account").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Account").Value = Trim(chk.AccountNo)
+            sqlCmd.Parameters.Item("@Account").Value = chk.AccountNo.Trim
 
             sqlCmd.Parameters.Add("@RetStatus", SqlDbType.Int)
             sqlCmd.Parameters.Item("@RetStatus").Direction = ParameterDirection.ReturnValue

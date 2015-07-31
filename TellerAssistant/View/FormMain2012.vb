@@ -21,6 +21,7 @@ Public Class FormMain2012
     Private ctrlr As DepositManagerPresenter
     Private myPages(2) As TabPage
     Private isActivated As Boolean = False
+    Private depositListDateRangeIndex As Integer = -1
 
 #Region "Implemented Interface Methods"
 
@@ -66,29 +67,35 @@ Public Class FormMain2012
         End Set
     End Property
 
-    Public ReadOnly Property FilterYTDIsChecked() As Boolean Implements IViewFrmMain.FilterYTDIsChecked
+    Public ReadOnly Property FilterDateRange() As Integer Implements IViewFrmMain.FilterDateRange
         Get
-            Return ckbxFilterYTD.Checked
+            If Me.comboDateRange.SelectedIndex = -1 Then
+                Me.comboDateRange.SelectedIndex = 0
+            ElseIf Me.comboDateRange.SelectedIndex = Me.depositListDateRangeIndex Then
+                Return -1
+            Else
+                Me.depositListDateRangeIndex = Me.comboDateRange.SelectedIndex
+                Return Me.comboDateRange.SelectedIndex
+            End If
         End Get
     End Property
 
-    Public WriteOnly Property ListViewDeposits() As System.Collections.Generic.List(Of DepositTicketClass) Implements IViewFrmMain.ListViewDeposits
-        Set(ByVal value As System.Collections.Generic.List(Of DepositTicketClass))
-            lvDepositsList.Items.Clear()
-            For Each dep As DepositTicketClass In value
-                Dim itm As New ListViewItem
-                itm.Text = dep.DepositNumber
-                itm.SubItems.Add(dep.DepositDate.ToString)
-                itm.SubItems.Add(dep.Description)
-                itm.SubItems.Add(dep.DepositTotal.ToString("C"))
-                itm.Tag = dep
-                Dim group As ListViewGroup = New ListViewGroup(dep.DepositDate.ToString("Y"), dep.DepositDate.ToString("Y"))
-                If lvDepositsList.Groups(group.Name) Is Nothing Then
-                    lvDepositsList.Groups.Add(group)
-                End If
-                itm.Group = lvDepositsList.Groups(group.Name)
-                lvDepositsList.Items.Add(itm)
-            Next
+    Public WriteOnly Property ListViewDepositsList() As System.Collections.Generic.List(Of ListViewItem) Implements IViewFrmMain.ListViewDepositsList
+        Set(value As System.Collections.Generic.List(Of ListViewItem))
+            If value IsNot Nothing Then
+                lvDepositsList.Items.Clear()
+                For Each item As ListViewItem In value
+                    Dim itemDate As DateTime = CDate(item.SubItems(1).Text)
+                    item.SubItems(1).Text = itemDate.ToString("MM/dd/yyyy")
+                    Dim group As ListViewGroup = New ListViewGroup(itemDate.ToString("Y"), itemDate.ToString("Y"))
+                    If Me.lvDepositsList.Groups(group.Name) Is Nothing Then
+                        Me.lvDepositsList.Groups.Add(group)
+                    End If
+                    lvDepositsList.Items.Add(item)
+                    item.Group = lvDepositsList.Groups(group.Name)
+                Next
+            End If
+            Me.Cursor = Cursors.Default
         End Set
     End Property
 
@@ -122,15 +129,7 @@ Public Class FormMain2012
             Return Nothing
         End Get
         Set(ByVal value As BankAccountClass)
-            Dim itm As New ListViewItem
-            itm.Text = value.AccountNo
-            itm.SubItems.Add(value.AccountType)
-            itm.SubItems.Add(value.DepositBank)
-            'itm.SubItems.Add(value.DepositBankAddress.Item(1))
-            'itm.SubItems.Add(value.DepositBankAddress.Item(2))
-            'itm.SubItems.Add(value.DepositBankNo.Trim)
-            itm.Tag = value
-            lvBankAccounts.FindItemWithText(itm.Text).Selected = True
+            lvBankAccounts.FindItemWithText(value.AccountNo.Trim).Selected = True
         End Set
     End Property
 
@@ -299,7 +298,6 @@ Public Class FormMain2012
         InitializeComponent()
         mnuLoggingOn.Checked = My.Settings.LoggingTurnedOn
         ctrlr = New DepositManagerPresenter(Me)
-        ClearFormRegisters()
     End Sub
 
     Public Sub OnMainFormShowing(ByVal Sender As Object, ByVal e As EventArgs)
@@ -316,6 +314,7 @@ Public Class FormMain2012
     End Sub
 
     Private Sub frmMain2008_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Me.Cursor = Cursors.AppStarting
         For i As Integer = TabControl1.TabPages.Count - 1 To 0 Step -1
             Dim tp = TabControl1.TabPages(i)
             myPages(i) = tp
@@ -333,6 +332,7 @@ Public Class FormMain2012
         SetToolBar1ButtonsVisible()
         ctrlr.SetDepositSummaryList()
         ctrlr.SetBankList()
+        Me.Cursor = Cursors.Default
     End Sub
 
 #End Region
@@ -364,12 +364,13 @@ Public Class FormMain2012
     End Sub
 
     Private Sub TabControl1_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles TabControl1.SelectedIndexChanged
+        Me.Cursor = Cursors.WaitCursor
         If TabControl1.SelectedTab Is tpViewDeposit Then
             TabControl1.TabPages(0).Text = "Close Ticket"
             Me.Cursor = Cursors.WaitCursor
             If btnGetTicket.Enabled Then
                 If lvDepositsList.SelectedItems.Count > 0 Then
-                    ctrlr.SetDepositTicket(CType(lvDepositsList.SelectedItems(0).Tag, DepositTicketClass))
+                    ctrlr.GetDepositTicket(lvDepositsList.SelectedItems(0).SubItems(0).Text)
                     ctrlr.InitializeCashText()
                 ElseIf NewDepositIsChecked Then
                     If SelectedBank IsNot Nothing Then
@@ -385,15 +386,17 @@ Public Class FormMain2012
             End If
             Me.Cursor = Cursors.Default
         ElseIf TabControl1.SelectedTab Is tpSelectDeposit Then
-            TabControl1.TabPages(0).Text = "Select Deposit"
-            SetSelectionPage()
+            Me.TabControl1.TabPages(0).Text = "Select Deposit"
+            Me.SetSelectionPage()
+            Me.ClearPnlCashRegister()
             If ctrlr IsNot Nothing Then
-                ctrlr.CloseScanner()
-                ctrlr.SetDepositSummaryList()
+                Me.ctrlr.CloseScanner()
+                Me.depositListDateRangeIndex = -1
+                Me.ctrlr.SetDepositSummaryList()
             End If
         End If
-        SetToolBar1ButtonsVisible()
-
+        Me.SetToolBar1ButtonsVisible()
+        Me.Cursor = Cursors.Default
     End Sub
 
     Private Sub ScannerModeChanged()
@@ -455,7 +458,8 @@ Public Class FormMain2012
         SetBtnGetTicketEnabled()
         If lvDepositsList.SelectedItems.Count > 0 Then
             ckbxNewDep.Checked = False
-            SelectedBank = CType(lvDepositsList.SelectedItems(0).Tag, DepositTicketClass).BankInfo
+            Dim bi As BankAccountClass = New BankAccountClass("", lvDepositsList.SelectedItems(0).Tag.ToString)
+            SelectedBank = bi
         End If
         For i As Integer = 0 To lvDepositsList.Items.Count - 1
             If lvDepositsList.Items(i).Selected Then
@@ -518,33 +522,19 @@ Public Class FormMain2012
 
 #Region "Set, Clear, Update Registers"
 
-    Private Sub ClearFormRegisters()
-        txtDollarCoinCt.Text = CStr(0)
-        txtHalfDollarCt.Text = CStr(0)
-        txtQuarterCt.Text = CStr(0)
-        txtDimeCt.Text = CStr(0)
-        txtNickelCt.Text = CStr(0)
-        txtPennyCt.Text = CStr(0)
-        txtHundredCt.Text = CStr(0)
-        txtFiftyCt.Text = CStr(0)
-        txtTwentyCt.Text = CStr(0)
-        txtTenCt.Text = CStr(0)
-        txtFiveCt.Text = CStr(0)
-        txtOneCt.Text = CStr(0)
+    Private Sub ClearPnlCashRegister()
+        For Each ctl As Control In GroupBoxCoins.Controls
+            If ctl.GetType() Is GetType(TextBox) Or ctl.GetType() Is GetType(CalculatorTextbox) Then
+                ctl.Text = String.Empty
+            End If
+        Next
+        For Each ctl As Control In GroupBoxCurrency.Controls
+            If ctl.GetType() Is GetType(TextBox) Or ctl.GetType() Is GetType(CalculatorTextbox) Then
+                ctl.Text = String.Empty
+            End If
+        Next
     End Sub
 
-    Private Sub SetCheckRegister()
-        '    lbxChecklist.Items.Clear()
-        '    lbxChecklist.ValueMember = "Text"
-        '    'depositView.SetCheckList()
-        '    lbxChecklist.Items.AddRange(depositView.GetAmtEnteredChecksList.ToArray)
-        '    If lbxChecklist.Items.Count > 0 Then
-        '        Dim width As Integer = CInt(lbxChecklist.CreateGraphics().MeasureString(CType(lbxChecklist.Items(lbxChecklist.Items.Count - 1),  _
-        '            TellerAssistant.ChecksClass).Text, lbxChecklist.Font).Width)
-        '        lbxChecklist.ColumnWidth = width
-        '    End If
-        'UpdateTotalRegisters()
-    End Sub
 #End Region
 
 #Region "Denomination Count TextChanged"
@@ -727,13 +717,17 @@ Public Class FormMain2012
 
 #Region "CheckConfirmPanel"
 
-    Private Sub CheckConfirmPanel1_CheckviewApplyClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerConfirmPanel1.CheckviewApplyClick
+    Private Sub CheckConfirmPanel1_CheckviewApplyClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If CheckViewerConfirmPanel1.CurrentCheckArgs IsNot Nothing Then
             ctrlr.UpdateCheckStatus(CheckViewerConfirmPanel1.CurrentCheckArgs.ToCheckDataEventArgs)
         End If
     End Sub
 
-    Private Sub CheckConfirmPanel1_CheckviewSkipClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerConfirmPanel1.CheckviewSkipClick
+    Private Sub CheckViewerConfirmPanel1_CheckviewSetCurrentCheck(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub CheckConfirmPanel1_CheckviewSkipClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
         ctrlr.DisplayNextCheck(CheckStatus.csConfirmPending)
     End Sub
 
@@ -757,6 +751,37 @@ Public Class FormMain2012
 
     Private Sub CheckAddPanel1_DonorInfo(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerAddPanel1.CheckviewDonorClick
         ctrlr.EditDonorInformation(CheckViewerAddPanel1.CurrentCheckArgs)
+    End Sub
+
+#End Region
+
+
+#Region "CheckVerifiedPanel"
+
+    Private Sub CheckVerifiedPanel_PrevNavClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewPrevNavClick
+        ctrlr.DisplayPrevCheck(CheckStatus.csVerified)
+    End Sub
+
+    Private Sub CheckVerifiedPanel_NextNavClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewNextNavClick
+        ctrlr.DisplayNextCheck(CheckStatus.csVerified)
+    End Sub
+
+    Private Sub CheckVerifiedPanel_FirstNavClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewFirstNavClick
+        ctrlr.DisplayFirstCheck(CheckStatus.csVerified)
+    End Sub
+
+    Private Sub CheckVerifiedPanel_LastNavClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewLastNavClick
+        ctrlr.DisplayLastCheck(CheckStatus.csVerified)
+    End Sub
+
+    Private Sub CheckVerifiedPanel_ApplyClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewApplyClick
+        If CheckViewerVerifiedPanel1.CurrentCheckArgs IsNot Nothing Then
+            ctrlr.UpdateCheckData(CheckViewerVerifiedPanel1.CurrentCheckArgs.ToCheckDataEventArgs)
+        End If
+    End Sub
+
+    Private Sub CheckVerifiedPanel_ResetClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CheckViewerVerifiedPanel1.CheckviewResetClick
+        ctrlr.ResetCheck(CheckStatus.csAmountPending)
     End Sub
 
 #End Region
@@ -1026,6 +1051,8 @@ Public Class FormMain2012
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmEditView)
             ElseIf TabControl2.SelectedTab Is tpConfirmQueue Then
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmConfirmView)
+            ElseIf TabControl2.SelectedTab Is tpViewVerified Then
+                Me.ctrlr.UpdateViewerMode(ViewMode.vmVerifiedView)
             Else
                 Me.ctrlr.UpdateViewerMode(ViewMode.vmEntryView)
             End If
@@ -1034,8 +1061,14 @@ Public Class FormMain2012
         End Try
     End Sub
 
-    Private Sub ckbxFilterYTD_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ckbxFilterYTD.CheckedChanged
+    Private Sub comboDateRange_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboDateRange.SelectedIndexChanged
         If ctrlr IsNot Nothing Then
+            'If Me.comboDateRange.SelectedItem.ToString = "All" Then
+            '    If MsgBox("This may take some time. Do you want to continue?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+            '        Me.comboDateRange.SelectedIndex = Me.depositListDateRangeIndex
+            '    End If
+            'End If
+            Me.Cursor = Cursors.WaitCursor
             ctrlr.SetDepositSummaryList()
         End If
     End Sub
@@ -1091,7 +1124,14 @@ Public Class FormMain2012
         End If
     End Sub
 
-    Private Sub mnuPrintReceipts_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles mnuPrintReceipts.Click
+    Private Sub mnuPrintReceipts_Click(sender As Object, e As EventArgs)
+
+    End Sub
+    Private Sub CheckViewerConfirmPanel1_Load(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Private Sub CheckViewerConfirmPanel1_Load_1(sender As Object, e As EventArgs)
 
     End Sub
 End Class
