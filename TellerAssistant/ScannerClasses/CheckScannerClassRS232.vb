@@ -12,7 +12,6 @@ Public Class CheckScannerClassRS232
     Private _currImageDir As String = String.Empty
     Private _currImageFilename As String = String.Empty
     Friend WithEvents SerialPort1 As New System.IO.Ports.SerialPort
-
     Private _transferMode As ReceiveDataMode = ReceiveDataMode.TextComing
     Private _bytesReceived As Integer
     Private _imageLength As Integer
@@ -116,9 +115,13 @@ Public Class CheckScannerClassRS232
     End Function
 
     Private Sub Initialize()
-        If PortOpen() Then
-            Me.AttachDevice()
-        End If
+        Try
+            If PortOpen() Then
+                Me.AttachDevice()
+            End If
+        Catch ex As Exception
+            MsgBox("No serial port is available on this computer")
+        End Try
     End Sub
 
     Private Sub GetPortSettings()
