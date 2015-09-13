@@ -1,0 +1,166 @@
+ 
+ formmain2012.vb
+ 
+ Add a label with "Filter by Date Range: "
+ Add a combobox name "comboDateRange"
+
+    Public ReadOnly Property FilterDateRange() As Integer Implements IViewFrmMain.FilterDateRange
+        Get
+            If Me.comboDateRange.SelectedIndex = -1 Then
+                Me.comboDateRange.SelectedIndex = 0
+            ElseIf Me.comboDateRange.SelectedIndex = Me.depositListDateRangeIndex Then
+                Return -1
+            Else
+                Me.depositListDateRangeIndex = Me.comboDateRange.SelectedIndex
+                Return Me.comboDateRange.SelectedIndex
+            End If
+        End Get
+    End Property
+	
+  Public WriteOnly Property ListViewDepositsList() As System.Collections.Generic.List(Of ListViewItem) Implements IViewFrmMain.ListViewDepositsList
+        Set(value As System.Collections.Generic.List(Of ListViewItem))
+            If value IsNot Nothing Then
+                lvDepositsList.Items.Clear()
+                For Each item As ListViewItem In value
+                    Dim itemDate As DateTime = CDate(item.SubItems(1).Text)
+                    item.SubItems(1).Text = itemDate.ToString("MM/dd/yyyy")
+                    Dim group As ListViewGroup = New ListViewGroup(itemDate.ToString("Y"), itemDate.ToString("Y"))
+                    If Me.lvDepositsList.Groups(group.Name) Is Nothing Then
+                        Me.lvDepositsList.Groups.Add(group)
+                    End If
+                    lvDepositsList.Items.Add(item)
+                    item.Group = lvDepositsList.Groups(group.Name)
+                Next
+            End If
+            Me.Cursor = Cursors.Default
+        End Set
+    End Property
+
+ 
+ Private Sub comboDateRange_SelectedIndexChanged(sender As Object, e As EventArgs) Handles comboDateRange.SelectedIndexChanged
+        If ctrlr IsNot Nothing Then
+            'If Me.comboDateRange.SelectedItem.ToString = "All" Then
+            '    If MsgBox("This may take some time. Do you want to continue?", MsgBoxStyle.YesNo) = MsgBoxResult.No Then
+            '        Me.comboDateRange.SelectedIndex = Me.depositListDateRangeIndex
+            '    End If
+            'End If
+            Me.Cursor = Cursors.WaitCursor
+            ctrlr.SetDepositSummaryList()
+        End If
+    End Sub
+	
+DepositManagerPresenter.vb
+
+    Public Sub SetDepositSummaryList()
+        'CType(View, IViewFrmMain).ListViewDeposits = Me._myModel.GetDepositSummaryList(CType(View, IViewFrmMain).FilterDateRange)
+        CType(View, IViewFrmMain).ListViewDepositsList = Me._myModel.GetDepositSummaryListViewItems(CType(View, IViewFrmMain).FilterDateRange)
+    End Sub
+
+
+	DepositManagerModel.vb
+	
+	
+    Public Function GetDepositSummaryListViewItems(ByVal filterRange As Integer) As List(Of ListViewItem)
+        If filterRange = -1 Then
+            Return Nothing
+        Else
+            Return _db.GetDepositListViewCollection(filterRange)
+        End If
+    End Function
+	
+	DataClass.vb
+	
+	  Public Function GetDepositListViewCollection(ByVal dateRange As Integer) As List(Of ListViewItem)
+        Dim retList As New List(Of ListViewItem)
+        Dim filterStart As DateTime
+        Dim filterEnd As DateTime
+        Select Case dateRange
+            Case 0  'Ths Year
+                filterStart = New DateTime(Today.Year, 1, 1)
+                filterEnd = New DateTime(Today.Year, 12, 31)
+            Case 1  'Last Year
+                Dim yr As Integer
+                yr = Today.Year - 1
+                filterStart = New DateTime(yr, 1, 1)
+                filterEnd = New DateTime(yr, 12, 31)
+            Case 2  'This year and last year
+                Dim yr As Integer
+                yr = Today.Year - 1
+                filterStart = New DateTime(yr, 1, 1)
+                filterEnd = New DateTime(Today.Year, 12, 31)
+            Case 3  'This quarter
+                Dim mon As Integer = Today.Month
+                If mon <= 3 Then
+                    filterStart = New DateTime(Today.Year, 1, 1)
+                    filterEnd = New DateTime(Today.Year, 3, 31)
+                ElseIf mon <= 6 Then
+                    filterStart = New DateTime(Today.Year, 4, 1)
+                    filterEnd = New DateTime(Today.Year, 6, 30)
+                ElseIf mon <= 9 Then
+                    filterStart = New DateTime(Today.Year, 7, 1)
+                    filterEnd = New DateTime(Today.Year, 9, 30)
+                Else
+                    filterStart = New DateTime(Today.Year, 10, 1)
+                    filterEnd = New DateTime(Today.Year, 12, 31)
+                End If
+            Case Else   'All records
+                filterStart = New DateTime(1990, 10, 1)
+                filterEnd = New DateTime(Today.Year, 12, 31)
+        End Select
+        Try
+
+            Dim dt As New DataSet1.upGetDepositTicketListDataTable
+            Dim adptr As New DataSet1TableAdapters.upGetDepositTicketListTableAdapter
+            adptr.Fill(dt, filterStart, filterEnd)
+
+
+            For Each row As DataSet1.upGetDepositTicketListRow In dt
+                Dim itm As New ListViewItem
+                itm.Text = row.DepositNo.Trim
+                itm.SubItems.Add(row.DepDate.ToShortDateString)
+                itm.SubItems.Add(row.DepDescript.Trim)
+                Dim amt As Single = row.CashTotal + row.CheckTotal
+                itm.SubItems.Add(amt.ToString("C"))
+                itm.Tag = row.AccountId.Trim
+                retList.Add(itm)
+            Next
+
+            'Dim cmd As SqlCommand = New SqlCommand("[upGetDepositTicketList]", Me.conn)
+            'cmd.CommandType = CommandType.StoredProcedure
+            'cmd.Parameters.AddWithValue("@filterStart", Nothing)
+            'cmd.Parameters.AddWithValue("@filterEnd", Nothing)
+
+            'If Not conn.State = ConnectionState.Open Then
+            '    conn.Open()
+            'End If
+            'Try
+            '    Dim rdr As SqlDataReader = cmd.ExecuteReader
+            '    While rdr.Read
+            '        Dim itm As New ListViewItem
+            '        itm.Text = rdr.GetString(1)
+            '        itm.SubItems.Add(rdr.GetDateTime(2).ToShortDateString)
+            '        itm.SubItems.Add(rdr.GetString(3))
+            '        Dim amt As Single = rdr.GetDecimal(9) + rdr.GetDecimal(10)
+            '        itm.SubItems.Add(amt.ToString("C"))
+            '        itm.Tag = rdr.GetString(6)
+
+            '        retList.Add(itm)
+            '    End While
+            '    rdr.Close()
+            'For Each item As ListViewItem In retList
+            '    Dim dep As Single = Me.GetDepositTotals(item.Text.Trim, True)
+            '    item.SubItems.Add(dep.ToString("C"))
+            'Next
+            Return retList
+        Catch ex As Exception
+            MsgBox("SqlDataReader failed in GetDepositListViewCollection. " + ex.Message)
+            Return Nothing
+        End Try
+        'Finally
+        '    conn.Close()
+        'End Try
+    End Function
+
+	
+	
+	
