@@ -98,8 +98,20 @@ Public Class DepositManagerModel
         _db.DeleteBankAccount(bnk)
     End Sub
 
-    Public Function GetDepositSummaryList(ByVal ytd As Boolean) As List(Of DepositTicketClass)
-        Return _db.GetDepositTicketList(ytd)
+    'Public Function GetDepositSummaryList(ByVal filterRange As Integer) As List(Of DepositTicketClass)
+    '    If filterRange = -1 Then
+    '        Return Nothing
+    '    Else
+    '        Return _db.GetDepositTicketList(filterRange)
+    '    End If
+    'End Function
+
+    Public Function GetDepositSummaryListViewItems(ByVal filterRange As Integer) As List(Of ListViewItem)
+        If filterRange = -1 Then
+            Return Nothing
+        Else
+            Return _db.GetDepositListViewCollection(filterRange)
+        End If
     End Function
 
     Public Function GetCurrentTicket() As DepositTicketClass
@@ -123,6 +135,20 @@ Public Class DepositManagerModel
         Me._chkRegister.CheckQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
         Me._chkRegister.CheckQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
         Me._chkRegister.CheckQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
+        Me._chkRegister.CheckQueue(CheckStatus.csVerified) = Me.GetCheckListByStatus(CheckStatus.csVerified)
+        Return Me._depTicket
+    End Function
+
+    Public Function GetDepositTicket(ByVal depNo As String) As DepositTicketClass
+        Me._depTicket = Me._db.GetDepositTicket(depNo, False)
+        NotifyObservers(Me, New DepositEventArgs(EventName.evnmDepositInfoChanged, Me._depTicket))
+        Me._chkRegister = New TellerAssistant2012.CheckRegisterClass(Me)
+        Me._db.AttachObserver(_chkRegister)
+        AttachScanner(CType([Enum].Parse(GetType(ConnectionType), My.Settings.ImageTransferMethod), ConnectionType))
+        Me._chkRegister.CheckQueue(CheckStatus.csAmountPending) = Me.GetCheckListByStatus(CheckStatus.csAmountPending)
+        Me._chkRegister.CheckQueue(CheckStatus.csEditPending) = Me.GetCheckListByStatus(CheckStatus.csEditPending)
+        Me._chkRegister.CheckQueue(CheckStatus.csConfirmPending) = Me.GetCheckListByStatus(CheckStatus.csConfirmPending)
+        Me._chkRegister.CheckQueue(CheckStatus.csVerified) = Me.GetCheckListByStatus(CheckStatus.csVerified)
         Return Me._depTicket
     End Function
 

@@ -4,7 +4,7 @@
     Private checkEntryQueue As TellerAssistant2012.CheckRegisterQueueClass
     Private checkEditQueue As TellerAssistant2012.CheckRegisterQueueClass
     Private checkConfirmQueue As TellerAssistant2012.CheckRegisterQueueClass
-
+    Private checkVerifiedQueue As TellerAssistant2012.CheckRegisterQueueClass
 
 #Region "Class Properties"
 
@@ -18,6 +18,8 @@
                     Me.checkEditQueue.NextCheck = CheckStatus.csEditPending
                 Case CheckStatus.csConfirmPending
                     Me.checkConfirmQueue.NextCheck = CheckStatus.csConfirmPending
+                Case CheckStatus.csVerified
+                    Me.checkVerifiedQueue.NextCheck = CheckStatus.csVerified
             End Select
         End Set
     End Property
@@ -31,6 +33,8 @@
                     Me.checkEditQueue.PreviousCheck = CheckStatus.csEditPending
                 Case CheckStatus.csConfirmPending
                     Me.checkConfirmQueue.PreviousCheck = CheckStatus.csConfirmPending
+                Case CheckStatus.csVerified
+                    Me.checkVerifiedQueue.PreviousCheck = CheckStatus.csVerified
             End Select
         End Set
     End Property
@@ -44,6 +48,8 @@
                     Me.checkEditQueue.FirstCheck = CheckStatus.csEditPending
                 Case CheckStatus.csConfirmPending
                     Me.checkConfirmQueue.FirstCheck = CheckStatus.csConfirmPending
+                Case CheckStatus.csVerified
+                    Me.checkVerifiedQueue.FirstCheck = CheckStatus.csVerified
             End Select
         End Set
     End Property
@@ -57,6 +63,8 @@
                     Me.checkEditQueue.LastCheck = CheckStatus.csEditPending
                 Case CheckStatus.csConfirmPending
                     Me.checkConfirmQueue.LastCheck = CheckStatus.csConfirmPending
+                Case CheckStatus.csVerified
+                    Me.checkVerifiedQueue.LastCheck = CheckStatus.csVerified
             End Select
         End Set
     End Property
@@ -70,6 +78,8 @@
                     Return Me.checkEditQueue.CurrentQueueCheck
                 Case CheckStatus.csConfirmPending
                     Return Me.checkConfirmQueue.CurrentQueueCheck
+                Case CheckStatus.csVerified
+                    Return Me.checkVerifiedQueue.CurrentQueueCheck
             End Select
             Return Nothing
         End Get
@@ -87,6 +97,8 @@
                     Return Me.checkEditQueue.CheckQueue
                 Case CheckStatus.csConfirmPending
                     Return Me.checkConfirmQueue.CheckQueue
+                Case CheckStatus.csVerified
+                    Return checkVerifiedQueue.CheckQueue
             End Select
             Return Nothing
         End Get
@@ -98,6 +110,8 @@
                     Me.checkEditQueue.CheckQueue = value
                 Case CheckStatus.csConfirmPending
                     Me.checkConfirmQueue.CheckQueue = value
+                Case CheckStatus.csVerified
+                    Me.checkVerifiedQueue.CheckQueue = value
             End Select
         End Set
     End Property
@@ -111,6 +125,8 @@
                     Return Me.checkEditQueue.CheckQueueCount
                 Case CheckStatus.csConfirmPending
                     Return Me.checkConfirmQueue.CheckQueueCount
+                Case CheckStatus.csVerified
+                    Return Me.checkVerifiedQueue.CheckQueueCount
             End Select
         End Get
     End Property
@@ -124,6 +140,8 @@
                     Return Me.checkEditQueue.CheckQueueIndex
                 Case CheckStatus.csConfirmPending
                     Return Me.checkConfirmQueue.CheckQueueIndex
+                Case CheckStatus.csVerified
+                    Return Me.checkVerifiedQueue.CheckQueueIndex
             End Select
         End Get
     End Property
@@ -141,6 +159,9 @@
         Me.checkConfirmQueue = New TellerAssistant2012.CheckRegisterQueueClass(CheckStatus.csConfirmPending)
         Me.checkConfirmQueue.AttachObserver(obs)
         Me.AttachObserver(Me.checkConfirmQueue)
+        Me.checkVerifiedQueue = New TellerAssistant2012.CheckRegisterQueueClass(CheckStatus.csVerified)
+        checkVerifiedQueue.AttachObserver(obs)
+        Me.AttachObserver(Me.checkVerifiedQueue)
     End Sub
 
     Public Overrides Sub UpdateData(ByVal NewEvent As mvcLibrary.mvcEventArgsBase)

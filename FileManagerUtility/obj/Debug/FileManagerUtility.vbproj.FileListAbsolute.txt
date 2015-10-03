@@ -35,3 +35,4 @@ C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Debug\Fil
 C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Debug\FileManagerUtility.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Debug\FileManagerUtility.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Debug\FileManagerUtility.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Debug\FileManagerUtility.vbprojResolveAssemblyReference.cache

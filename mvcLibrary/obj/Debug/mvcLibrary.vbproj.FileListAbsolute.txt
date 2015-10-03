@@ -41,3 +41,4 @@ C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Debug\mvcLibrary.
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Debug\mvcLibrary.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Debug\mvcLibrary.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Debug\mvcLibrary.pdb
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Debug\mvcLibrary.vbprojResolveAssemblyReference.cache

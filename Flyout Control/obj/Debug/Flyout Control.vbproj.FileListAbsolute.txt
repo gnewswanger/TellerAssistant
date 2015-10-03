@@ -83,6 +83,3 @@ C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout 
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Debug\Flyout Control.pdb
-C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\Microsoft.VisualBasic.PowerPacks.Design.dll
-C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
-C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
