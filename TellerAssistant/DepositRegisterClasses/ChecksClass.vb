@@ -95,7 +95,7 @@
     Public ReadOnly Property Donor() As String
         Get
             If Me._checkDonor Is Nothing Then
-                Return Nothing
+                Return String.Empty
             Else
                 Return Me._checkDonor.Donor
             End If
@@ -112,7 +112,7 @@
     Public Property DonorAddress() As String
         Get
             If Me._checkDonor Is Nothing Then
-                Return Nothing
+                Return String.Empty
             Else
                 Return Me._checkDonor.Address
             End If
@@ -128,7 +128,7 @@
     Public Property DonorCity() As String
         Get
             If Me._checkDonor Is Nothing Then
-                Return Nothing
+                Return String.Empty
             Else
                 Return Me._checkDonor.City
             End If
@@ -144,7 +144,7 @@
     Public Property DonorState() As String
         Get
             If Me._checkDonor Is Nothing Then
-                Return Nothing
+                Return String.Empty
             Else
                 Return Me._checkDonor.State
             End If
@@ -160,7 +160,7 @@
     Public Property DonorZip() As String
         Get
             If Me._checkDonor Is Nothing Then
-                Return Nothing
+                Return String.Empty
             Else
                 Return Me._checkDonor.Zip
             End If
