@@ -449,6 +449,7 @@
     <None Include="Resources\Cable SH.png" />
     <None Include="Resources\Cable SH1.png" />
     <None Include="Resources\Check-OK.png" />
+    <Content Include="MyTellerAssistant.xml" />
     <Content Include="MyTellerAssistant2008.xml" />
     <None Include="Resources\80 yellow flag.png" />
     <Content Include="twotones.wav">

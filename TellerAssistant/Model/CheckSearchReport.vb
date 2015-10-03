@@ -52,7 +52,10 @@
         Dim xPos As Single = e.PageSettings.Margins.Left
         Dim yPos As Single = e.MarginBounds.Top - (rptBody.DefaultFont.GetHeight(e.Graphics) / 2)
         Dim lineHeight As Single = rptBody.DefaultFont.GetHeight(e.Graphics)
-        Dim minColWidth As Single = 350
+        Dim minColWidth As Single = 350.0
+        If Me.Landscape Then
+            minColWidth = 450.0
+        End If
         Dim colCount As Integer = CInt((e.PageSettings.Bounds.Width - e.PageSettings.Margins.Right - e.PageSettings.Margins.Left) / minColWidth)
         Dim colWidth As Single = CSng(((e.PageSettings.Bounds.Width - e.PageSettings.Margins.Right - e.PageSettings.Margins.Left) / colCount) - colGutter)
         columns.Clear()

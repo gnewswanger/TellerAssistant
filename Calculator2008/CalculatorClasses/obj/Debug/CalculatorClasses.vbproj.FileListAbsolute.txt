@@ -43,4 +43,3 @@ C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.pdb
-C:\Users\Galen\Documents\GitHub\TellerAssistant\Calculator2008\CalculatorClasses\obj\Debug\CalculatorClasses.vbprojResolveAssemblyReference.cache
