@@ -41,7 +41,8 @@ Public Class DepositManagerPresenter
     End Function
 
     Public Sub SetDepositSummaryList()
-        CType(View, IViewFrmMain).ListViewDeposits = Me._myModel.GetDepositSummaryList(CType(View, IViewFrmMain).FilterYTDIsChecked)
+        'CType(View, IViewFrmMain).ListViewDeposits = Me._myModel.GetDepositSummaryList(CType(View, IViewFrmMain).FilterDateRange)
+        CType(View, IViewFrmMain).ListViewDepositsList = Me._myModel.GetDepositSummaryListViewItems(CType(View, IViewFrmMain).FilterDateRange)
     End Sub
 
     Public Sub SetDepositTicket(ByVal depDate As DateTime, ByVal depDesc As String, ByVal bank As BankAccountClass)
@@ -50,6 +51,10 @@ Public Class DepositManagerPresenter
     End Sub
     Public Sub SetDepositTicket(ByVal depTicket As DepositTicketClass)
         Me._myModel.SetDepositTicket(depTicket)
+        CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
+    End Sub
+    Public Sub GetDepositTicket(ByVal depNo As String)
+        Me._myModel.GetDepositTicket(depNo)
         CType(Me.View, IViewFrmMain).Donorlist = Me._myModel.GetDonorList
     End Sub
     Public Function GetDepositTotals() As DepositBalanceClass

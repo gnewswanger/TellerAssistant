@@ -10,7 +10,7 @@
     End Property
 
     Private Sub CheckViewerReceiptInfoPanel1_CheckviewApplyClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles CheckViewerReceiptInfoPanel1.CheckviewApplyClick
-        If CheckViewerReceiptInfoPanel1.CurrentCheckArgs IsNot Nothing Then
+        If CheckViewerReceiptInfoPanel1.CurrentCheckArgs IsNot Nothing And Me.CheckViewerReceiptInfoPanel1.Donor IsNot Nothing Then
             ctrlr.UpdateDonorInfo(Me.CheckViewerReceiptInfoPanel1.Donor)
         End If
         Me.DialogResult = Windows.Forms.DialogResult.OK

@@ -44,21 +44,26 @@ Partial Class FormMain2012
         Me.tpEditQueue = New System.Windows.Forms.TabPage()
         Me.CheckViewEditPanel1 = New TellerAssistant2012.CheckViewerEditPanel()
         Me.tpConfirmQueue = New System.Windows.Forms.TabPage()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         Me.CheckViewerConfirmPanel1 = New TellerAssistant2012.CheckViewerConfirmPanel()
         Me.tpAddManualCheck = New System.Windows.Forms.TabPage()
         Me.CheckViewerAddPanel1 = New TellerAssistant2012.CheckViewerAddPanel()
+        Me.tpViewVerified = New System.Windows.Forms.TabPage()
+        Me.CheckViewerVerifiedPanel1 = New TellerAssistant2012.CheckViewerViewPanel()
+        Me.ImageListStates = New System.Windows.Forms.ImageList(Me.components)
+        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.ToolStripContainer1 = New System.Windows.Forms.ToolStripContainer()
-        Me.ToolStripStatus1 = New System.Windows.Forms.ToolStrip()
-        Me.toolLabelStatusText = New System.Windows.Forms.ToolStripLabel()
-        Me.toolBtnPortIcon = New System.Windows.Forms.ToolStripDropDownButton()
-        Me.toolMnuDelayInterval = New System.Windows.Forms.ToolStripMenuItem()
-        Me.toolMnuDelayText = New System.Windows.Forms.ToolStripTextBox()
         Me.toolStripBankInfo = New System.Windows.Forms.ToolStrip()
         Me.toolLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.toolTextBankInfo = New System.Windows.Forms.ToolStripTextBox()
         Me.toolStripDepositTotal = New System.Windows.Forms.ToolStrip()
         Me.ToolLabel4 = New System.Windows.Forms.ToolStripLabel()
         Me.toolTextDepositTotal = New System.Windows.Forms.ToolStripTextBox()
+        Me.ToolStripStatus1 = New System.Windows.Forms.ToolStrip()
+        Me.toolLabelStatusText = New System.Windows.Forms.ToolStripLabel()
+        Me.toolBtnPortIcon = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.toolMnuDelayInterval = New System.Windows.Forms.ToolStripMenuItem()
+        Me.toolMnuDelayText = New System.Windows.Forms.ToolStripTextBox()
         Me.TextPanelFlyout1 = New Flyout_Control.TextPanelFlyout()
         Me.Panel3 = New System.Windows.Forms.Panel()
         Me.pnlBottomBarExtension = New System.Windows.Forms.Panel()
@@ -85,12 +90,14 @@ Partial Class FormMain2012
         Me.colHdrDepositDate = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colHdrDescription = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.colhdrTotal = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.ckbxFilterYTD = New System.Windows.Forms.CheckBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.comboDateRange = New System.Windows.Forms.ComboBox()
         Me.tpViewDeposit = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.pnlCashRegister = New System.Windows.Forms.Panel()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.GroupBoxCurrency = New System.Windows.Forms.GroupBox()
         Me.txtOneCt = New CalculatorClasses.CalculatorTextbox()
         Me.txtFiveCt = New CalculatorClasses.CalculatorTextbox()
         Me.txtTenCt = New CalculatorClasses.CalculatorTextbox()
@@ -115,7 +122,7 @@ Partial Class FormMain2012
         Me.txtCurrencyTotal = New System.Windows.Forms.TextBox()
         Me.Label38 = New System.Windows.Forms.Label()
         Me.txtCashTotal = New System.Windows.Forms.TextBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.GroupBoxCoins = New System.Windows.Forms.GroupBox()
         Me.txtPennyCt = New CalculatorClasses.CalculatorTextbox()
         Me.txtNickelCt = New CalculatorClasses.CalculatorTextbox()
         Me.txtDimeCt = New CalculatorClasses.CalculatorTextbox()
@@ -149,7 +156,6 @@ Partial Class FormMain2012
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
         Me.lvChecklist = New System.Windows.Forms.ListView()
-        Me.ImageListStates = New System.Windows.Forms.ImageList(Me.components)
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -194,20 +200,21 @@ Partial Class FormMain2012
         Me.toolbtnDeleteCheck = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.toolBtnExit = New System.Windows.Forms.ToolStripButton()
-        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.ContextMenuLVChecks.SuspendLayout()
         Me.TabControl2.SuspendLayout()
         Me.tpEntryQueue.SuspendLayout()
         Me.tpEditQueue.SuspendLayout()
         Me.tpConfirmQueue.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.tpAddManualCheck.SuspendLayout()
+        Me.tpViewVerified.SuspendLayout()
         Me.ToolStripContainer1.BottomToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.ContentPanel.SuspendLayout()
         Me.ToolStripContainer1.TopToolStripPanel.SuspendLayout()
         Me.ToolStripContainer1.SuspendLayout()
-        Me.ToolStripStatus1.SuspendLayout()
         Me.toolStripBankInfo.SuspendLayout()
         Me.toolStripDepositTotal.SuspendLayout()
+        Me.ToolStripStatus1.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
@@ -216,11 +223,12 @@ Partial Class FormMain2012
         Me.TableLayoutPanel2.SuspendLayout()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
+        Me.Panel5.SuspendLayout()
         Me.tpViewDeposit.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.pnlCashRegister.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.GroupBoxCurrency.SuspendLayout()
+        Me.GroupBoxCoins.SuspendLayout()
         Me.pnlDepositInfo.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.ToolStripTop.SuspendLayout()
@@ -246,24 +254,24 @@ Partial Class FormMain2012
         Me.ContextMenuLVChecks.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ContextMenuLVChecks.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ctxmnuLVChecksRefresh, Me.ctxmnuLVChecksView, Me.ctxmnuLVChecksEdit})
         Me.ContextMenuLVChecks.Name = "ContextMenuLVChecks"
-        Me.ContextMenuLVChecks.Size = New System.Drawing.Size(190, 94)
+        Me.ContextMenuLVChecks.Size = New System.Drawing.Size(177, 94)
         '
         'ctxmnuLVChecksRefresh
         '
         Me.ctxmnuLVChecksRefresh.Name = "ctxmnuLVChecksRefresh"
-        Me.ctxmnuLVChecksRefresh.Size = New System.Drawing.Size(189, 30)
+        Me.ctxmnuLVChecksRefresh.Size = New System.Drawing.Size(176, 30)
         Me.ctxmnuLVChecksRefresh.Text = "Refresh"
         '
         'ctxmnuLVChecksView
         '
         Me.ctxmnuLVChecksView.Name = "ctxmnuLVChecksView"
-        Me.ctxmnuLVChecksView.Size = New System.Drawing.Size(189, 30)
+        Me.ctxmnuLVChecksView.Size = New System.Drawing.Size(176, 30)
         Me.ctxmnuLVChecksView.Text = "View Image"
         '
         'ctxmnuLVChecksEdit
         '
         Me.ctxmnuLVChecksEdit.Name = "ctxmnuLVChecksEdit"
-        Me.ctxmnuLVChecksEdit.Size = New System.Drawing.Size(189, 30)
+        Me.ctxmnuLVChecksEdit.Size = New System.Drawing.Size(176, 30)
         Me.ctxmnuLVChecksEdit.Text = "Edit"
         '
         'txtDepDescript
@@ -276,7 +284,7 @@ Partial Class FormMain2012
         Me.txtDepDescript.Location = New System.Drawing.Point(16, 125)
         Me.txtDepDescript.Name = "txtDepDescript"
         Me.HelpProvider1.SetShowHelp(Me.txtDepDescript, True)
-        Me.txtDepDescript.Size = New System.Drawing.Size(703, 26)
+        Me.txtDepDescript.Size = New System.Drawing.Size(540, 26)
         Me.txtDepDescript.TabIndex = 13
         '
         'TabControl2
@@ -286,6 +294,7 @@ Partial Class FormMain2012
         Me.TabControl2.Controls.Add(Me.tpEditQueue)
         Me.TabControl2.Controls.Add(Me.tpConfirmQueue)
         Me.TabControl2.Controls.Add(Me.tpAddManualCheck)
+        Me.TabControl2.Controls.Add(Me.tpViewVerified)
         Me.TabControl2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TabControl2.Location = New System.Drawing.Point(4, 359)
         Me.TabControl2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -293,7 +302,7 @@ Partial Class FormMain2012
         Me.TabControl2.RightToLeftLayout = True
         Me.TabControl2.SelectedIndex = 0
         Me.HelpProvider1.SetShowHelp(Me.TabControl2, True)
-        Me.TabControl2.Size = New System.Drawing.Size(1518, 459)
+        Me.TabControl2.Size = New System.Drawing.Size(1518, 460)
         Me.TabControl2.TabIndex = 11
         '
         'tpEntryQueue
@@ -303,7 +312,7 @@ Partial Class FormMain2012
         Me.tpEntryQueue.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpEntryQueue.Name = "tpEntryQueue"
         Me.tpEntryQueue.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpEntryQueue.Size = New System.Drawing.Size(1510, 426)
+        Me.tpEntryQueue.Size = New System.Drawing.Size(1510, 427)
         Me.tpEntryQueue.TabIndex = 0
         Me.tpEntryQueue.Text = "Entry Queue (0)"
         Me.tpEntryQueue.UseVisualStyleBackColor = True
@@ -316,8 +325,8 @@ Partial Class FormMain2012
         Me.CheckviewerEntryPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.CheckviewerEntryPanel1.Name = "CheckviewerEntryPanel1"
         Me.CheckviewerEntryPanel1.OkButtonLabel = "&Apply"
-        Me.CheckviewerEntryPanel1.Size = New System.Drawing.Size(1502, 416)
-        Me.CheckviewerEntryPanel1.SpliterDistance = 1041
+        Me.CheckviewerEntryPanel1.Size = New System.Drawing.Size(1502, 417)
+        Me.CheckviewerEntryPanel1.SpliterDistance = 1040
         Me.CheckviewerEntryPanel1.TabIndex = 0
         '
         'tpEditQueue
@@ -327,7 +336,7 @@ Partial Class FormMain2012
         Me.tpEditQueue.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpEditQueue.Name = "tpEditQueue"
         Me.tpEditQueue.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpEditQueue.Size = New System.Drawing.Size(1506, 407)
+        Me.tpEditQueue.Size = New System.Drawing.Size(1510, 427)
         Me.tpEditQueue.TabIndex = 1
         Me.tpEditQueue.Text = "Edit Queue (0)"
         Me.tpEditQueue.UseVisualStyleBackColor = True
@@ -340,30 +349,39 @@ Partial Class FormMain2012
         Me.CheckViewEditPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.CheckViewEditPanel1.Name = "CheckViewEditPanel1"
         Me.CheckViewEditPanel1.OkButtonLabel = "&Apply"
-        Me.CheckViewEditPanel1.Size = New System.Drawing.Size(1498, 397)
-        Me.CheckViewEditPanel1.SpliterDistance = 1038
+        Me.CheckViewEditPanel1.Size = New System.Drawing.Size(1502, 417)
+        Me.CheckViewEditPanel1.SpliterDistance = 1040
         Me.CheckViewEditPanel1.TabIndex = 0
         '
         'tpConfirmQueue
         '
-        Me.tpConfirmQueue.Controls.Add(Me.CheckViewerConfirmPanel1)
+        Me.tpConfirmQueue.Controls.Add(Me.Panel6)
         Me.tpConfirmQueue.Location = New System.Drawing.Point(4, 29)
         Me.tpConfirmQueue.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpConfirmQueue.Name = "tpConfirmQueue"
         Me.tpConfirmQueue.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpConfirmQueue.Size = New System.Drawing.Size(1506, 407)
+        Me.tpConfirmQueue.Size = New System.Drawing.Size(1510, 427)
         Me.tpConfirmQueue.TabIndex = 2
         Me.tpConfirmQueue.Text = "Confirm Queue (0)"
         Me.tpConfirmQueue.UseVisualStyleBackColor = True
         '
+        'Panel6
+        '
+        Me.Panel6.Controls.Add(Me.CheckViewerConfirmPanel1)
+        Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel6.Location = New System.Drawing.Point(4, 5)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(1502, 417)
+        Me.Panel6.TabIndex = 0
+        '
         'CheckViewerConfirmPanel1
         '
         Me.CheckViewerConfirmPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.CheckViewerConfirmPanel1.Location = New System.Drawing.Point(4, 5)
+        Me.CheckViewerConfirmPanel1.Location = New System.Drawing.Point(0, 0)
         Me.CheckViewerConfirmPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.CheckViewerConfirmPanel1.Name = "CheckViewerConfirmPanel1"
-        Me.CheckViewerConfirmPanel1.Size = New System.Drawing.Size(1498, 397)
-        Me.CheckViewerConfirmPanel1.SpliterDistance = 1090
+        Me.CheckViewerConfirmPanel1.Size = New System.Drawing.Size(1502, 417)
+        Me.CheckViewerConfirmPanel1.SpliterDistance = 1063
         Me.CheckViewerConfirmPanel1.TabIndex = 0
         '
         'tpAddManualCheck
@@ -373,7 +391,7 @@ Partial Class FormMain2012
         Me.tpAddManualCheck.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpAddManualCheck.Name = "tpAddManualCheck"
         Me.tpAddManualCheck.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpAddManualCheck.Size = New System.Drawing.Size(1506, 407)
+        Me.tpAddManualCheck.Size = New System.Drawing.Size(1510, 427)
         Me.tpAddManualCheck.TabIndex = 3
         Me.tpAddManualCheck.Text = "Add Check"
         Me.tpAddManualCheck.UseVisualStyleBackColor = True
@@ -387,18 +405,55 @@ Partial Class FormMain2012
         Me.CheckViewerAddPanel1.Name = "CheckViewerAddPanel1"
         Me.CheckViewerAddPanel1.NavButtonsVisible = False
         Me.CheckViewerAddPanel1.OkButtonLabel = "&Apply"
-        Me.CheckViewerAddPanel1.Size = New System.Drawing.Size(1498, 397)
-        Me.CheckViewerAddPanel1.SpliterDistance = 1082
+        Me.CheckViewerAddPanel1.Size = New System.Drawing.Size(1502, 417)
+        Me.CheckViewerAddPanel1.SpliterDistance = 1084
         Me.CheckViewerAddPanel1.TabIndex = 0
+        '
+        'tpViewVerified
+        '
+        Me.tpViewVerified.Controls.Add(Me.CheckViewerVerifiedPanel1)
+        Me.tpViewVerified.Location = New System.Drawing.Point(4, 29)
+        Me.tpViewVerified.Name = "tpViewVerified"
+        Me.tpViewVerified.Padding = New System.Windows.Forms.Padding(3)
+        Me.tpViewVerified.Size = New System.Drawing.Size(1510, 427)
+        Me.tpViewVerified.TabIndex = 4
+        Me.tpViewVerified.Text = "View Verified"
+        Me.tpViewVerified.UseVisualStyleBackColor = True
+        '
+        'CheckViewerVerifiedPanel1
+        '
+        Me.CheckViewerVerifiedPanel1.ApplyonEntryKey = False
+        Me.CheckViewerVerifiedPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.CheckViewerVerifiedPanel1.Location = New System.Drawing.Point(3, 3)
+        Me.CheckViewerVerifiedPanel1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
+        Me.CheckViewerVerifiedPanel1.Name = "CheckViewerVerifiedPanel1"
+        Me.CheckViewerVerifiedPanel1.NavButtonsVisible = False
+        Me.CheckViewerVerifiedPanel1.OkButtonLabel = "&Apply"
+        Me.CheckViewerVerifiedPanel1.Size = New System.Drawing.Size(1504, 421)
+        Me.CheckViewerVerifiedPanel1.SpliterDistance = 1040
+        Me.CheckViewerVerifiedPanel1.TabIndex = 0
+        '
+        'ImageListStates
+        '
+        Me.ImageListStates.ImageStream = CType(resources.GetObject("ImageListStates.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.ImageListStates.TransparentColor = System.Drawing.Color.Transparent
+        Me.ImageListStates.Images.SetKeyName(0, "tick.png")
+        Me.ImageListStates.Images.SetKeyName(1, "80 yellow flag.png")
+        Me.ImageListStates.Images.SetKeyName(2, "flag-yellow.png")
+        Me.ImageListStates.Images.SetKeyName(3, "flag-blue.png")
+        Me.ImageListStates.Images.SetKeyName(4, "81 blue flag.png")
+        Me.ImageListStates.Images.SetKeyName(5, "flag--pencil.png")
+        Me.ImageListStates.Images.SetKeyName(6, "tick-small.png")
+        Me.ImageListStates.Images.SetKeyName(7, "flag-small.png")
         '
         'ToolStripContainer1
         '
         '
         'ToolStripContainer1.BottomToolStripPanel
         '
-        Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.ToolStripStatus1)
         Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.toolStripBankInfo)
         Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.toolStripDepositTotal)
+        Me.ToolStripContainer1.BottomToolStripPanel.Controls.Add(Me.ToolStripStatus1)
         '
         'ToolStripContainer1.ContentPanel
         '
@@ -408,12 +463,12 @@ Partial Class FormMain2012
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.Panel2)
         Me.ToolStripContainer1.ContentPanel.Controls.Add(Me.TableLayoutPanel1)
         Me.ToolStripContainer1.ContentPanel.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1554, 943)
+        Me.ToolStripContainer1.ContentPanel.Size = New System.Drawing.Size(1554, 912)
         Me.ToolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ToolStripContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStripContainer1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ToolStripContainer1.Name = "ToolStripContainer1"
-        Me.ToolStripContainer1.Size = New System.Drawing.Size(1554, 1069)
+        Me.ToolStripContainer1.Size = New System.Drawing.Size(1554, 1038)
         Me.ToolStripContainer1.TabIndex = 0
         Me.ToolStripContainer1.Text = "ToolStripContainer1"
         '
@@ -422,12 +477,63 @@ Partial Class FormMain2012
         Me.ToolStripContainer1.TopToolStripPanel.Controls.Add(Me.MenuStrip1)
         Me.ToolStripContainer1.TopToolStripPanel.Controls.Add(Me.ToolStripTop)
         '
+        'toolStripBankInfo
+        '
+        Me.toolStripBankInfo.Dock = System.Windows.Forms.DockStyle.None
+        Me.toolStripBankInfo.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.toolStripBankInfo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolLabel1, Me.toolTextBankInfo})
+        Me.toolStripBankInfo.Location = New System.Drawing.Point(528, 0)
+        Me.toolStripBankInfo.Name = "toolStripBankInfo"
+        Me.toolStripBankInfo.Size = New System.Drawing.Size(307, 28)
+        Me.toolStripBankInfo.TabIndex = 2
+        '
+        'toolLabel1
+        '
+        Me.toolLabel1.Name = "toolLabel1"
+        Me.toolLabel1.Size = New System.Drawing.Size(91, 25)
+        Me.toolLabel1.Text = "Bank Info:"
+        '
+        'toolTextBankInfo
+        '
+        Me.toolTextBankInfo.AutoSize = False
+        Me.toolTextBankInfo.BackColor = System.Drawing.SystemColors.Info
+        Me.toolTextBankInfo.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.toolTextBankInfo.Name = "toolTextBankInfo"
+        Me.toolTextBankInfo.ReadOnly = True
+        Me.toolTextBankInfo.Size = New System.Drawing.Size(202, 25)
+        '
+        'toolStripDepositTotal
+        '
+        Me.toolStripDepositTotal.Dock = System.Windows.Forms.DockStyle.None
+        Me.toolStripDepositTotal.ImageScalingSize = New System.Drawing.Size(24, 24)
+        Me.toolStripDepositTotal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolLabel4, Me.toolTextDepositTotal})
+        Me.toolStripDepositTotal.Location = New System.Drawing.Point(835, 0)
+        Me.toolStripDepositTotal.Name = "toolStripDepositTotal"
+        Me.toolStripDepositTotal.Size = New System.Drawing.Size(296, 37)
+        Me.toolStripDepositTotal.TabIndex = 3
+        '
+        'ToolLabel4
+        '
+        Me.ToolLabel4.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolLabel4.Name = "ToolLabel4"
+        Me.ToolLabel4.Size = New System.Drawing.Size(162, 34)
+        Me.ToolLabel4.Text = "Deposit Total:"
+        '
+        'toolTextDepositTotal
+        '
+        Me.toolTextDepositTotal.BackColor = System.Drawing.SystemColors.Info
+        Me.toolTextDepositTotal.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.toolTextDepositTotal.Name = "toolTextDepositTotal"
+        Me.toolTextDepositTotal.ReadOnly = True
+        Me.toolTextDepositTotal.Size = New System.Drawing.Size(120, 37)
+        Me.toolTextDepositTotal.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'ToolStripStatus1
         '
         Me.ToolStripStatus1.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStripStatus1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ToolStripStatus1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolLabelStatusText, Me.toolBtnPortIcon})
-        Me.ToolStripStatus1.Location = New System.Drawing.Point(797, 0)
+        Me.ToolStripStatus1.Location = New System.Drawing.Point(1131, 0)
         Me.ToolStripStatus1.Name = "ToolStripStatus1"
         Me.ToolStripStatus1.Size = New System.Drawing.Size(239, 31)
         Me.ToolStripStatus1.TabIndex = 4
@@ -456,7 +562,7 @@ Partial Class FormMain2012
         '
         Me.toolMnuDelayInterval.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolMnuDelayText})
         Me.toolMnuDelayInterval.Name = "toolMnuDelayInterval"
-        Me.toolMnuDelayInterval.Size = New System.Drawing.Size(204, 30)
+        Me.toolMnuDelayInterval.Size = New System.Drawing.Size(191, 30)
         Me.toolMnuDelayInterval.Text = "Delay Interval"
         '
         'toolMnuDelayText
@@ -465,57 +571,6 @@ Partial Class FormMain2012
         Me.toolMnuDelayText.Name = "toolMnuDelayText"
         Me.toolMnuDelayText.Size = New System.Drawing.Size(100, 27)
         '
-        'toolStripBankInfo
-        '
-        Me.toolStripBankInfo.Dock = System.Windows.Forms.DockStyle.None
-        Me.toolStripBankInfo.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.toolStripBankInfo.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolLabel1, Me.toolTextBankInfo})
-        Me.toolStripBankInfo.Location = New System.Drawing.Point(490, 0)
-        Me.toolStripBankInfo.Name = "toolStripBankInfo"
-        Me.toolStripBankInfo.Size = New System.Drawing.Size(307, 28)
-        Me.toolStripBankInfo.TabIndex = 2
-        '
-        'toolLabel1
-        '
-        Me.toolLabel1.Name = "toolLabel1"
-        Me.toolLabel1.Size = New System.Drawing.Size(91, 25)
-        Me.toolLabel1.Text = "Bank Info:"
-        '
-        'toolTextBankInfo
-        '
-        Me.toolTextBankInfo.AutoSize = False
-        Me.toolTextBankInfo.BackColor = System.Drawing.SystemColors.Info
-        Me.toolTextBankInfo.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.toolTextBankInfo.Name = "toolTextBankInfo"
-        Me.toolTextBankInfo.ReadOnly = True
-        Me.toolTextBankInfo.Size = New System.Drawing.Size(202, 25)
-        '
-        'toolStripDepositTotal
-        '
-        Me.toolStripDepositTotal.Dock = System.Windows.Forms.DockStyle.None
-        Me.toolStripDepositTotal.ImageScalingSize = New System.Drawing.Size(24, 24)
-        Me.toolStripDepositTotal.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolLabel4, Me.toolTextDepositTotal})
-        Me.toolStripDepositTotal.Location = New System.Drawing.Point(194, 0)
-        Me.toolStripDepositTotal.Name = "toolStripDepositTotal"
-        Me.toolStripDepositTotal.Size = New System.Drawing.Size(296, 37)
-        Me.toolStripDepositTotal.TabIndex = 3
-        '
-        'ToolLabel4
-        '
-        Me.ToolLabel4.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolLabel4.Name = "ToolLabel4"
-        Me.ToolLabel4.Size = New System.Drawing.Size(162, 34)
-        Me.ToolLabel4.Text = "Deposit Total:"
-        '
-        'toolTextDepositTotal
-        '
-        Me.toolTextDepositTotal.BackColor = System.Drawing.SystemColors.Info
-        Me.toolTextDepositTotal.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.toolTextDepositTotal.Name = "toolTextDepositTotal"
-        Me.toolTextDepositTotal.ReadOnly = True
-        Me.toolTextDepositTotal.Size = New System.Drawing.Size(120, 37)
-        Me.toolTextDepositTotal.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'TextPanelFlyout1
         '
         Me.TextPanelFlyout1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -523,7 +578,7 @@ Partial Class FormMain2012
         Me.TextPanelFlyout1.AutoSize = True
         Me.TextPanelFlyout1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.TextPanelFlyout1.BackColor = System.Drawing.SystemColors.Control
-        Me.TextPanelFlyout1.Location = New System.Drawing.Point(1082, 900)
+        Me.TextPanelFlyout1.Location = New System.Drawing.Point(1082, 868)
         Me.TextPanelFlyout1.Margin = New System.Windows.Forms.Padding(6, 8, 6, 8)
         Me.TextPanelFlyout1.Name = "TextPanelFlyout1"
         Me.TextPanelFlyout1.OpenedLength = 100
@@ -539,7 +594,7 @@ Partial Class FormMain2012
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel3.BackColor = System.Drawing.SystemColors.Control
         Me.Panel3.Controls.Add(Me.pnlBottomBarExtension)
-        Me.Panel3.Location = New System.Drawing.Point(4, 897)
+        Me.Panel3.Location = New System.Drawing.Point(4, 866)
         Me.Panel3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(854, 18)
@@ -600,17 +655,16 @@ Partial Class FormMain2012
         Me.TableLayoutPanel1.ColumnCount = 3
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.39394!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.60606!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 669.0!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 745.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.TabControl1, 0, 1)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 3
+        Me.TableLayoutPanel1.RowCount = 2
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 3.106796!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96.8932!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1554, 943)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1554, 912)
         Me.TableLayoutPanel1.TabIndex = 32
         '
         'TabControl1
@@ -624,7 +678,7 @@ Partial Class FormMain2012
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(1546, 873)
+        Me.TabControl1.Size = New System.Drawing.Size(1546, 874)
         Me.TabControl1.TabIndex = 0
         Me.TabControl1.TabStop = False
         '
@@ -637,22 +691,22 @@ Partial Class FormMain2012
         Me.tpSelectDeposit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpSelectDeposit.Name = "tpSelectDeposit"
         Me.tpSelectDeposit.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpSelectDeposit.Size = New System.Drawing.Size(1538, 837)
+        Me.tpSelectDeposit.Size = New System.Drawing.Size(1538, 838)
         Me.tpSelectDeposit.TabIndex = 0
         Me.tpSelectDeposit.Text = "Select Deposit"
         '
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.ColumnCount = 3
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 434.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.83926!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.16074!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 299.0!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.56306!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.43694!))
         Me.TableLayoutPanel2.Controls.Add(Me.Panel1, 2, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.lvBankAccounts, 0, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.Panel4, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.lvDepositsList, 0, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.ckbxFilterYTD, 1, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.Label1, 0, 1)
+        Me.TableLayoutPanel2.Controls.Add(Me.Panel5, 1, 1)
         Me.TableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(4, 5)
         Me.TableLayoutPanel2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -662,7 +716,7 @@ Partial Class FormMain2012
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 192.0!))
         Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(1528, 825)
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(1528, 826)
         Me.TableLayoutPanel2.TabIndex = 19
         '
         'Panel1
@@ -674,10 +728,10 @@ Partial Class FormMain2012
         Me.Panel1.Controls.Add(Me.ckbxNewDep)
         Me.Panel1.Controls.Add(Me.dateDepositDate)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel1.Location = New System.Drawing.Point(786, 128)
+        Me.Panel1.Location = New System.Drawing.Point(949, 128)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(738, 182)
+        Me.Panel1.Size = New System.Drawing.Size(575, 182)
         Me.Panel1.TabIndex = 22
         '
         'Label3
@@ -728,11 +782,11 @@ Partial Class FormMain2012
         Me.lvBankAccounts.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.lvBankAccounts.HideSelection = False
         Me.lvBankAccounts.HoverSelection = True
-        Me.lvBankAccounts.Location = New System.Drawing.Point(786, 320)
+        Me.lvBankAccounts.Location = New System.Drawing.Point(949, 320)
         Me.lvBankAccounts.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.lvBankAccounts.MultiSelect = False
         Me.lvBankAccounts.Name = "lvBankAccounts"
-        Me.lvBankAccounts.Size = New System.Drawing.Size(738, 500)
+        Me.lvBankAccounts.Size = New System.Drawing.Size(575, 501)
         Me.lvBankAccounts.Sorting = System.Windows.Forms.SortOrder.Ascending
         Me.lvBankAccounts.StateImageList = Me.ImageList1
         Me.lvBankAccounts.TabIndex = 21
@@ -796,7 +850,7 @@ Partial Class FormMain2012
         Me.lvDepositsList.MultiSelect = False
         Me.lvDepositsList.Name = "lvDepositsList"
         Me.TableLayoutPanel2.SetRowSpan(Me.lvDepositsList, 2)
-        Me.lvDepositsList.Size = New System.Drawing.Size(774, 692)
+        Me.lvDepositsList.Size = New System.Drawing.Size(937, 693)
         Me.lvDepositsList.StateImageList = Me.ImageList1
         Me.lvDepositsList.TabIndex = 15
         Me.lvDepositsList.UseCompatibleStateImageBehavior = False
@@ -805,17 +859,17 @@ Partial Class FormMain2012
         'colHdrDepositNo
         '
         Me.colHdrDepositNo.Text = "Dep. No."
-        Me.colHdrDepositNo.Width = 80
+        Me.colHdrDepositNo.Width = 120
         '
         'colHdrDepositDate
         '
         Me.colHdrDepositDate.Text = "Dep. Date"
-        Me.colHdrDepositDate.Width = 75
+        Me.colHdrDepositDate.Width = 125
         '
         'colHdrDescription
         '
         Me.colHdrDescription.Text = "Description"
-        Me.colHdrDescription.Width = 225
+        Me.colHdrDescription.Width = 220
         '
         'colhdrTotal
         '
@@ -823,29 +877,47 @@ Partial Class FormMain2012
         Me.colhdrTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         Me.colhdrTotal.Width = 100
         '
-        'ckbxFilterYTD
-        '
-        Me.ckbxFilterYTD.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ckbxFilterYTD.AutoSize = True
-        Me.ckbxFilterYTD.Checked = True
-        Me.ckbxFilterYTD.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.ckbxFilterYTD.Location = New System.Drawing.Point(566, 86)
-        Me.ckbxFilterYTD.Margin = New System.Windows.Forms.Padding(9, 9, 9, 9)
-        Me.ckbxFilterYTD.Name = "ckbxFilterYTD"
-        Me.ckbxFilterYTD.Size = New System.Drawing.Size(207, 24)
-        Me.ckbxFilterYTD.TabIndex = 15
-        Me.ckbxFilterYTD.Text = "Show Only Year-to-Date"
-        Me.ckbxFilterYTD.UseVisualStyleBackColor = True
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(9, 86)
-        Me.Label1.Margin = New System.Windows.Forms.Padding(9, 9, 9, 9)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(172, 20)
+        Me.Label1.Size = New System.Drawing.Size(180, 20)
         Me.Label1.TabIndex = 16
-        Me.Label1.Text = "Select Existing Deposit"
+        Me.Label1.Text = "Select Existing Deposit: "
+        '
+        'Panel5
+        '
+        Me.Panel5.Controls.Add(Me.Label16)
+        Me.Panel5.Controls.Add(Me.comboDateRange)
+        Me.Panel5.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Panel5.Location = New System.Drawing.Point(302, 80)
+        Me.Panel5.Name = "Panel5"
+        Me.Panel5.Size = New System.Drawing.Size(640, 40)
+        Me.Panel5.TabIndex = 24
+        '
+        'Label16
+        '
+        Me.Label16.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(161, 6)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(9)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(163, 20)
+        Me.Label16.TabIndex = 25
+        Me.Label16.Text = "Filter by Date Range: "
+        Me.Label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'comboDateRange
+        '
+        Me.comboDateRange.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.comboDateRange.FormattingEnabled = True
+        Me.comboDateRange.Items.AddRange(New Object() {"This Year", "Last Year", "Last and This Year", "This Quarter", "All"})
+        Me.comboDateRange.Location = New System.Drawing.Point(357, 3)
+        Me.comboDateRange.Name = "comboDateRange"
+        Me.comboDateRange.Size = New System.Drawing.Size(234, 28)
+        Me.comboDateRange.TabIndex = 23
         '
         'tpViewDeposit
         '
@@ -855,7 +927,7 @@ Partial Class FormMain2012
         Me.tpViewDeposit.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.tpViewDeposit.Name = "tpViewDeposit"
         Me.tpViewDeposit.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.tpViewDeposit.Size = New System.Drawing.Size(1538, 837)
+        Me.tpViewDeposit.Size = New System.Drawing.Size(1538, 838)
         Me.tpViewDeposit.TabIndex = 1
         Me.tpViewDeposit.Text = "Edit Deposit"
         Me.tpViewDeposit.UseVisualStyleBackColor = True
@@ -877,15 +949,15 @@ Partial Class FormMain2012
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 254.0!))
         Me.TableLayoutPanel3.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1526, 823)
+        Me.TableLayoutPanel3.Size = New System.Drawing.Size(1526, 824)
         Me.TableLayoutPanel3.TabIndex = 13
         '
         'pnlCashRegister
         '
-        Me.pnlCashRegister.Controls.Add(Me.GroupBox3)
+        Me.pnlCashRegister.Controls.Add(Me.GroupBoxCurrency)
         Me.pnlCashRegister.Controls.Add(Me.Label38)
         Me.pnlCashRegister.Controls.Add(Me.txtCashTotal)
-        Me.pnlCashRegister.Controls.Add(Me.GroupBox2)
+        Me.pnlCashRegister.Controls.Add(Me.GroupBoxCoins)
         Me.pnlCashRegister.Dock = System.Windows.Forms.DockStyle.Fill
         Me.pnlCashRegister.Location = New System.Drawing.Point(4, 5)
         Me.pnlCashRegister.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -894,40 +966,40 @@ Partial Class FormMain2012
         Me.pnlCashRegister.Size = New System.Drawing.Size(450, 344)
         Me.pnlCashRegister.TabIndex = 7
         '
-        'GroupBox3
+        'GroupBoxCurrency
         '
-        Me.GroupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.GroupBoxCurrency.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox3.Controls.Add(Me.txtOneCt)
-        Me.GroupBox3.Controls.Add(Me.txtFiveCt)
-        Me.GroupBox3.Controls.Add(Me.txtTenCt)
-        Me.GroupBox3.Controls.Add(Me.txtTwentyCt)
-        Me.GroupBox3.Controls.Add(Me.txtFiftyCt)
-        Me.GroupBox3.Controls.Add(Me.txtHundredCt)
-        Me.GroupBox3.Controls.Add(Me.Label5)
-        Me.GroupBox3.Controls.Add(Me.Label8)
-        Me.GroupBox3.Controls.Add(Me.txtOne)
-        Me.GroupBox3.Controls.Add(Me.txtFive)
-        Me.GroupBox3.Controls.Add(Me.txtTen)
-        Me.GroupBox3.Controls.Add(Me.txtTwenty)
-        Me.GroupBox3.Controls.Add(Me.txtFifty)
-        Me.GroupBox3.Controls.Add(Me.txtHundred)
-        Me.GroupBox3.Controls.Add(Me.Label9)
-        Me.GroupBox3.Controls.Add(Me.Label10)
-        Me.GroupBox3.Controls.Add(Me.Label11)
-        Me.GroupBox3.Controls.Add(Me.Label12)
-        Me.GroupBox3.Controls.Add(Me.Label13)
-        Me.GroupBox3.Controls.Add(Me.Label14)
-        Me.GroupBox3.Controls.Add(Me.Label15)
-        Me.GroupBox3.Controls.Add(Me.txtCurrencyTotal)
-        Me.GroupBox3.Location = New System.Drawing.Point(225, 49)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox3.Size = New System.Drawing.Size(218, 278)
-        Me.GroupBox3.TabIndex = 8
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Currency Denominations"
+        Me.GroupBoxCurrency.Controls.Add(Me.txtOneCt)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtFiveCt)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtTenCt)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtTwentyCt)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtFiftyCt)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtHundredCt)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label5)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label8)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtOne)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtFive)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtTen)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtTwenty)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtFifty)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtHundred)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label9)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label10)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label11)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label12)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label13)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label14)
+        Me.GroupBoxCurrency.Controls.Add(Me.Label15)
+        Me.GroupBoxCurrency.Controls.Add(Me.txtCurrencyTotal)
+        Me.GroupBoxCurrency.Location = New System.Drawing.Point(225, 49)
+        Me.GroupBoxCurrency.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBoxCurrency.Name = "GroupBoxCurrency"
+        Me.GroupBoxCurrency.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBoxCurrency.Size = New System.Drawing.Size(218, 278)
+        Me.GroupBoxCurrency.TabIndex = 8
+        Me.GroupBoxCurrency.TabStop = False
+        Me.GroupBoxCurrency.Text = "Currency Denominations"
         '
         'txtOneCt
         '
@@ -1190,38 +1262,38 @@ Partial Class FormMain2012
         Me.txtCashTotal.TabIndex = 6
         Me.txtCashTotal.TabStop = False
         '
-        'GroupBox2
+        'GroupBoxCoins
         '
-        Me.GroupBox2.Controls.Add(Me.txtPennyCt)
-        Me.GroupBox2.Controls.Add(Me.txtNickelCt)
-        Me.GroupBox2.Controls.Add(Me.txtDimeCt)
-        Me.GroupBox2.Controls.Add(Me.txtQuarterCt)
-        Me.GroupBox2.Controls.Add(Me.txtHalfDollarCt)
-        Me.GroupBox2.Controls.Add(Me.txtDollarCoinCt)
-        Me.GroupBox2.Controls.Add(Me.Label35)
-        Me.GroupBox2.Controls.Add(Me.Label34)
-        Me.GroupBox2.Controls.Add(Me.txtPenny)
-        Me.GroupBox2.Controls.Add(Me.txtNickel)
-        Me.GroupBox2.Controls.Add(Me.txtDime)
-        Me.GroupBox2.Controls.Add(Me.txtQuarter)
-        Me.GroupBox2.Controls.Add(Me.txtHalfDollar)
-        Me.GroupBox2.Controls.Add(Me.txtDollarCoin)
-        Me.GroupBox2.Controls.Add(Me.Label25)
-        Me.GroupBox2.Controls.Add(Me.Label24)
-        Me.GroupBox2.Controls.Add(Me.Label23)
-        Me.GroupBox2.Controls.Add(Me.Label22)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.txtCoinTotal)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 49)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.GroupBox2.Size = New System.Drawing.Size(207, 278)
-        Me.GroupBox2.TabIndex = 1
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Coin Denominations"
+        Me.GroupBoxCoins.Controls.Add(Me.txtPennyCt)
+        Me.GroupBoxCoins.Controls.Add(Me.txtNickelCt)
+        Me.GroupBoxCoins.Controls.Add(Me.txtDimeCt)
+        Me.GroupBoxCoins.Controls.Add(Me.txtQuarterCt)
+        Me.GroupBoxCoins.Controls.Add(Me.txtHalfDollarCt)
+        Me.GroupBoxCoins.Controls.Add(Me.txtDollarCoinCt)
+        Me.GroupBoxCoins.Controls.Add(Me.Label35)
+        Me.GroupBoxCoins.Controls.Add(Me.Label34)
+        Me.GroupBoxCoins.Controls.Add(Me.txtPenny)
+        Me.GroupBoxCoins.Controls.Add(Me.txtNickel)
+        Me.GroupBoxCoins.Controls.Add(Me.txtDime)
+        Me.GroupBoxCoins.Controls.Add(Me.txtQuarter)
+        Me.GroupBoxCoins.Controls.Add(Me.txtHalfDollar)
+        Me.GroupBoxCoins.Controls.Add(Me.txtDollarCoin)
+        Me.GroupBoxCoins.Controls.Add(Me.Label25)
+        Me.GroupBoxCoins.Controls.Add(Me.Label24)
+        Me.GroupBoxCoins.Controls.Add(Me.Label23)
+        Me.GroupBoxCoins.Controls.Add(Me.Label22)
+        Me.GroupBoxCoins.Controls.Add(Me.Label7)
+        Me.GroupBoxCoins.Controls.Add(Me.Label6)
+        Me.GroupBoxCoins.Controls.Add(Me.Label2)
+        Me.GroupBoxCoins.Controls.Add(Me.txtCoinTotal)
+        Me.GroupBoxCoins.Location = New System.Drawing.Point(12, 49)
+        Me.GroupBoxCoins.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBoxCoins.Name = "GroupBoxCoins"
+        Me.GroupBoxCoins.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBoxCoins.Size = New System.Drawing.Size(207, 278)
+        Me.GroupBoxCoins.TabIndex = 1
+        Me.GroupBoxCoins.TabStop = False
+        Me.GroupBoxCoins.Text = "Coin Denominations"
         '
         'txtPennyCt
         '
@@ -1584,25 +1656,12 @@ Partial Class FormMain2012
         Me.lvChecklist.UseCompatibleStateImageBehavior = False
         Me.lvChecklist.View = System.Windows.Forms.View.Tile
         '
-        'ImageListStates
-        '
-        Me.ImageListStates.ImageStream = CType(resources.GetObject("ImageListStates.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.ImageListStates.TransparentColor = System.Drawing.Color.Transparent
-        Me.ImageListStates.Images.SetKeyName(0, "tick.png")
-        Me.ImageListStates.Images.SetKeyName(1, "80 yellow flag.png")
-        Me.ImageListStates.Images.SetKeyName(2, "flag-yellow.png")
-        Me.ImageListStates.Images.SetKeyName(3, "flag-blue.png")
-        Me.ImageListStates.Images.SetKeyName(4, "81 blue flag.png")
-        Me.ImageListStates.Images.SetKeyName(5, "flag--pencil.png")
-        Me.ImageListStates.Images.SetKeyName(6, "tick-small.png")
-        Me.ImageListStates.Images.SetKeyName(7, "flag-small.png")
-        '
         'MenuStrip1
         '
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ToolStripMenuItem1, Me.OptionsToolStripMenuItem, Me.HelpsToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 56)
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
         Me.MenuStrip1.Size = New System.Drawing.Size(1554, 33)
@@ -1619,13 +1678,13 @@ Partial Class FormMain2012
         'ToolSeparator1
         '
         Me.ToolSeparator1.Name = "ToolSeparator1"
-        Me.ToolSeparator1.Size = New System.Drawing.Size(121, 6)
+        Me.ToolSeparator1.Size = New System.Drawing.Size(116, 6)
         '
         'mnuExit
         '
         Me.mnuExit.Image = Global.TellerAssistant2012.My.Resources.Resources.Cancel_Red_24
         Me.mnuExit.Name = "mnuExit"
-        Me.mnuExit.Size = New System.Drawing.Size(124, 30)
+        Me.mnuExit.Size = New System.Drawing.Size(119, 30)
         Me.mnuExit.Text = "E&xit"
         '
         'EditToolStripMenuItem
@@ -1639,66 +1698,66 @@ Partial Class FormMain2012
         '
         Me.mnuAddManualCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.NewCardHS
         Me.mnuAddManualCheck.Name = "mnuAddManualCheck"
-        Me.mnuAddManualCheck.Size = New System.Drawing.Size(223, 30)
+        Me.mnuAddManualCheck.Size = New System.Drawing.Size(218, 30)
         Me.mnuAddManualCheck.Text = "Add New Check"
         '
         'mnuEditSelectedCheck
         '
         Me.mnuEditSelectedCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.EditInformationHS
         Me.mnuEditSelectedCheck.Name = "mnuEditSelectedCheck"
-        Me.mnuEditSelectedCheck.Size = New System.Drawing.Size(223, 30)
+        Me.mnuEditSelectedCheck.Size = New System.Drawing.Size(218, 30)
         Me.mnuEditSelectedCheck.Text = "Edit Check"
         '
         'mnuDeleteSelectedCheck
         '
         Me.mnuDeleteSelectedCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.Trash
         Me.mnuDeleteSelectedCheck.Name = "mnuDeleteSelectedCheck"
-        Me.mnuDeleteSelectedCheck.Size = New System.Drawing.Size(223, 30)
+        Me.mnuDeleteSelectedCheck.Size = New System.Drawing.Size(218, 30)
         Me.mnuDeleteSelectedCheck.Text = "Delete ChecK"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuPrintTicket, Me.mnuPrintReport, Me.mnuPageSetup, Me.ToolStripSeparator5, Me.mnuCheckSearch, Me.mnuPrintReceipts})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(85, 29)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(86, 29)
         Me.ToolStripMenuItem1.Text = "&Reports"
         '
         'mnuPrintTicket
         '
         Me.mnuPrintTicket.Image = Global.TellerAssistant2012.My.Resources.Resources.PrintHS
         Me.mnuPrintTicket.Name = "mnuPrintTicket"
-        Me.mnuPrintTicket.Size = New System.Drawing.Size(244, 30)
+        Me.mnuPrintTicket.Size = New System.Drawing.Size(240, 30)
         Me.mnuPrintTicket.Text = "Print Ticket"
         '
         'mnuPrintReport
         '
         Me.mnuPrintReport.Image = Global.TellerAssistant2012.My.Resources.Resources.PrintHSReport
         Me.mnuPrintReport.Name = "mnuPrintReport"
-        Me.mnuPrintReport.Size = New System.Drawing.Size(244, 30)
+        Me.mnuPrintReport.Size = New System.Drawing.Size(240, 30)
         Me.mnuPrintReport.Text = "Print Report"
         '
         'mnuPageSetup
         '
         Me.mnuPageSetup.Name = "mnuPageSetup"
-        Me.mnuPageSetup.Size = New System.Drawing.Size(244, 30)
+        Me.mnuPageSetup.Size = New System.Drawing.Size(240, 30)
         Me.mnuPageSetup.Text = "Page/Printer Setup"
         '
         'ToolStripSeparator5
         '
         Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(241, 6)
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(237, 6)
         '
         'mnuCheckSearch
         '
         Me.mnuCheckSearch.Image = Global.TellerAssistant2012.My.Resources.Resources.Folder_Doc_Search_16
         Me.mnuCheckSearch.Name = "mnuCheckSearch"
-        Me.mnuCheckSearch.Size = New System.Drawing.Size(244, 30)
+        Me.mnuCheckSearch.Size = New System.Drawing.Size(240, 30)
         Me.mnuCheckSearch.Text = "Search for Checks"
         '
         'mnuPrintReceipts
         '
         Me.mnuPrintReceipts.Name = "mnuPrintReceipts"
-        Me.mnuPrintReceipts.Size = New System.Drawing.Size(244, 30)
+        Me.mnuPrintReceipts.Size = New System.Drawing.Size(240, 30)
         Me.mnuPrintReceipts.Text = "Print Receipts"
         '
         'OptionsToolStripMenuItem
@@ -1712,44 +1771,44 @@ Partial Class FormMain2012
         '
         Me.mnuAddEditBanks.Image = Global.TellerAssistant2012.My.Resources.Resources.Bank_List
         Me.mnuAddEditBanks.Name = "mnuAddEditBanks"
-        Me.mnuAddEditBanks.Size = New System.Drawing.Size(342, 30)
+        Me.mnuAddEditBanks.Size = New System.Drawing.Size(337, 30)
         Me.mnuAddEditBanks.Text = "&Add/Edit Banks"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(339, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(334, 6)
         '
         'mnuPrintFormSetup
         '
         Me.mnuPrintFormSetup.Name = "mnuPrintFormSetup"
-        Me.mnuPrintFormSetup.Size = New System.Drawing.Size(342, 30)
+        Me.mnuPrintFormSetup.Size = New System.Drawing.Size(337, 30)
         Me.mnuPrintFormSetup.Text = "Print Form Setup"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(339, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(334, 6)
         '
         'mnuInitScanner
         '
         Me.mnuInitScanner.Image = Global.TellerAssistant2012.My.Resources.Resources.MICRImageInitialize
         Me.mnuInitScanner.Name = "mnuInitScanner"
-        Me.mnuInitScanner.Size = New System.Drawing.Size(342, 30)
+        Me.mnuInitScanner.Size = New System.Drawing.Size(337, 30)
         Me.mnuInitScanner.Text = "Initialize Scanner"
         '
         'mnuResetScanner
         '
         Me.mnuResetScanner.Image = Global.TellerAssistant2012.My.Resources.Resources.MICRImageReset3
         Me.mnuResetScanner.Name = "mnuResetScanner"
-        Me.mnuResetScanner.Size = New System.Drawing.Size(342, 30)
+        Me.mnuResetScanner.Size = New System.Drawing.Size(337, 30)
         Me.mnuResetScanner.Text = "Reset Scanner"
         '
         'mnuCommunicationMode
         '
         Me.mnuCommunicationMode.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuFTP, Me.mnuRS232})
         Me.mnuCommunicationMode.Name = "mnuCommunicationMode"
-        Me.mnuCommunicationMode.Size = New System.Drawing.Size(342, 30)
+        Me.mnuCommunicationMode.Size = New System.Drawing.Size(337, 30)
         Me.mnuCommunicationMode.Text = "Scanner &Communication Mode"
         '
         'mnuFTP
@@ -1757,7 +1816,7 @@ Partial Class FormMain2012
         Me.mnuFTP.CheckOnClick = True
         Me.mnuFTP.Image = Global.TellerAssistant2012.My.Resources.Resources.NetworkConn
         Me.mnuFTP.Name = "mnuFTP"
-        Me.mnuFTP.Size = New System.Drawing.Size(419, 30)
+        Me.mnuFTP.Size = New System.Drawing.Size(415, 30)
         Me.mnuFTP.Text = "FTP (Connect to Network)"
         '
         'mnuRS232
@@ -1765,48 +1824,48 @@ Partial Class FormMain2012
         Me.mnuRS232.CheckOnClick = True
         Me.mnuRS232.Image = CType(resources.GetObject("mnuRS232.Image"), System.Drawing.Image)
         Me.mnuRS232.Name = "mnuRS232"
-        Me.mnuRS232.Size = New System.Drawing.Size(419, 30)
+        Me.mnuRS232.Size = New System.Drawing.Size(415, 30)
         Me.mnuRS232.Text = "RS232 (Connect to Computer Serial Port)"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(339, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(334, 6)
         '
         'mnuEditAppSettings
         '
         Me.mnuEditAppSettings.Name = "mnuEditAppSettings"
-        Me.mnuEditAppSettings.Size = New System.Drawing.Size(342, 30)
+        Me.mnuEditAppSettings.Size = New System.Drawing.Size(337, 30)
         Me.mnuEditAppSettings.Text = "Edit Application Settings"
         '
         'ToolStripSeparator4
         '
         Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(339, 6)
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(334, 6)
         '
         'EventLoggingToolStripMenuItem
         '
         Me.EventLoggingToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.mnuViewExceptionLog, Me.mnuLoggingOn})
         Me.EventLoggingToolStripMenuItem.Name = "EventLoggingToolStripMenuItem"
-        Me.EventLoggingToolStripMenuItem.Size = New System.Drawing.Size(342, 30)
+        Me.EventLoggingToolStripMenuItem.Size = New System.Drawing.Size(337, 30)
         Me.EventLoggingToolStripMenuItem.Text = "Event Logging"
         '
         'mnuViewExceptionLog
         '
         Me.mnuViewExceptionLog.Name = "mnuViewExceptionLog"
-        Me.mnuViewExceptionLog.Size = New System.Drawing.Size(250, 30)
+        Me.mnuViewExceptionLog.Size = New System.Drawing.Size(237, 30)
         Me.mnuViewExceptionLog.Text = "View Exception Log"
         '
         'mnuLoggingOn
         '
         Me.mnuLoggingOn.Name = "mnuLoggingOn"
-        Me.mnuLoggingOn.Size = New System.Drawing.Size(250, 30)
+        Me.mnuLoggingOn.Size = New System.Drawing.Size(237, 30)
         Me.mnuLoggingOn.Text = "Turn logging on"
         '
         'mnuManageImageFiles
         '
         Me.mnuManageImageFiles.Name = "mnuManageImageFiles"
-        Me.mnuManageImageFiles.Size = New System.Drawing.Size(342, 30)
+        Me.mnuManageImageFiles.Size = New System.Drawing.Size(337, 30)
         Me.mnuManageImageFiles.Text = "Manage Image Files"
         '
         'HelpsToolStripMenuItem
@@ -1819,7 +1878,7 @@ Partial Class FormMain2012
         'mnuAbout
         '
         Me.mnuAbout.Name = "mnuAbout"
-        Me.mnuAbout.Size = New System.Drawing.Size(147, 30)
+        Me.mnuAbout.Size = New System.Drawing.Size(134, 30)
         Me.mnuAbout.Text = "About"
         '
         'ToolStripTop
@@ -1827,7 +1886,7 @@ Partial Class FormMain2012
         Me.ToolStripTop.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStripTop.ImageScalingSize = New System.Drawing.Size(24, 24)
         Me.ToolStripTop.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.toolbtnPrintTicket, Me.ToolSeparator2, Me.toolBtnCheckSearch, Me.ToolStripSeparator7, Me.toolbtnAddCheck, Me.toolbtnEditCheck, Me.toolbtnDeleteCheck, Me.ToolStripSeparator6, Me.toolBtnExit})
-        Me.ToolStripTop.Location = New System.Drawing.Point(3, 0)
+        Me.ToolStripTop.Location = New System.Drawing.Point(3, 33)
         Me.ToolStripTop.Name = "ToolStripTop"
         Me.ToolStripTop.Size = New System.Drawing.Size(613, 56)
         Me.ToolStripTop.TabIndex = 0
@@ -1919,7 +1978,7 @@ Partial Class FormMain2012
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
-        Me.ClientSize = New System.Drawing.Size(1554, 1069)
+        Me.ClientSize = New System.Drawing.Size(1554, 1038)
         Me.Controls.Add(Me.ToolStripContainer1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
@@ -1933,7 +1992,9 @@ Partial Class FormMain2012
         Me.tpEntryQueue.ResumeLayout(False)
         Me.tpEditQueue.ResumeLayout(False)
         Me.tpConfirmQueue.ResumeLayout(False)
+        Me.Panel6.ResumeLayout(False)
         Me.tpAddManualCheck.ResumeLayout(False)
+        Me.tpViewVerified.ResumeLayout(False)
         Me.ToolStripContainer1.BottomToolStripPanel.ResumeLayout(False)
         Me.ToolStripContainer1.BottomToolStripPanel.PerformLayout()
         Me.ToolStripContainer1.ContentPanel.ResumeLayout(False)
@@ -1942,12 +2003,12 @@ Partial Class FormMain2012
         Me.ToolStripContainer1.TopToolStripPanel.PerformLayout()
         Me.ToolStripContainer1.ResumeLayout(False)
         Me.ToolStripContainer1.PerformLayout()
-        Me.ToolStripStatus1.ResumeLayout(False)
-        Me.ToolStripStatus1.PerformLayout()
         Me.toolStripBankInfo.ResumeLayout(False)
         Me.toolStripBankInfo.PerformLayout()
         Me.toolStripDepositTotal.ResumeLayout(False)
         Me.toolStripDepositTotal.PerformLayout()
+        Me.ToolStripStatus1.ResumeLayout(False)
+        Me.ToolStripStatus1.PerformLayout()
         Me.Panel3.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -1958,14 +2019,16 @@ Partial Class FormMain2012
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.Panel4.ResumeLayout(False)
+        Me.Panel5.ResumeLayout(False)
+        Me.Panel5.PerformLayout()
         Me.tpViewDeposit.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.pnlCashRegister.ResumeLayout(False)
         Me.pnlCashRegister.PerformLayout()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
+        Me.GroupBoxCurrency.ResumeLayout(False)
+        Me.GroupBoxCurrency.PerformLayout()
+        Me.GroupBoxCoins.ResumeLayout(False)
+        Me.GroupBoxCoins.PerformLayout()
         Me.pnlDepositInfo.ResumeLayout(False)
         Me.pnlDepositInfo.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
@@ -2017,7 +2080,6 @@ Partial Class FormMain2012
     Friend WithEvents TabControl1 As System.Windows.Forms.TabControl
     Friend WithEvents tpSelectDeposit As System.Windows.Forms.TabPage
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents ckbxFilterYTD As System.Windows.Forms.CheckBox
     Friend WithEvents tpViewDeposit As System.Windows.Forms.TabPage
     Friend WithEvents lvChecklist As System.Windows.Forms.ListView
     Friend WithEvents TabControl2 As System.Windows.Forms.TabControl
@@ -2026,7 +2088,7 @@ Partial Class FormMain2012
     Friend WithEvents tpConfirmQueue As System.Windows.Forms.TabPage
     Friend WithEvents tpAddManualCheck As System.Windows.Forms.TabPage
     Friend WithEvents pnlCashRegister As System.Windows.Forms.Panel
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBoxCurrency As System.Windows.Forms.GroupBox
     Friend WithEvents txtOneCt As CalculatorClasses.CalculatorTextbox
     Friend WithEvents txtFiveCt As CalculatorClasses.CalculatorTextbox
     Friend WithEvents txtTenCt As CalculatorClasses.CalculatorTextbox
@@ -2051,7 +2113,7 @@ Partial Class FormMain2012
     Friend WithEvents txtCurrencyTotal As System.Windows.Forms.TextBox
     Friend WithEvents Label38 As System.Windows.Forms.Label
     Friend WithEvents txtCashTotal As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBoxCoins As System.Windows.Forms.GroupBox
     Friend WithEvents txtPennyCt As CalculatorClasses.CalculatorTextbox
     Friend WithEvents txtNickelCt As CalculatorClasses.CalculatorTextbox
     Friend WithEvents txtDimeCt As CalculatorClasses.CalculatorTextbox
@@ -2108,7 +2170,6 @@ Partial Class FormMain2012
     Friend WithEvents CheckviewerEntryPanel1 As TellerAssistant2012.CheckViewerEditPanel
     Friend WithEvents CheckViewEditPanel1 As TellerAssistant2012.CheckViewerEditPanel
     Friend WithEvents CheckViewerAddPanel1 As TellerAssistant2012.CheckViewerAddPanel
-    Friend WithEvents CheckViewerConfirmPanel1 As TellerAssistant2012.CheckViewerConfirmPanel
     Friend WithEvents mnuManageImageFiles As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
     Friend WithEvents TextPanelFlyout1 As Flyout_Control.TextPanelFlyout
@@ -2140,4 +2201,11 @@ Partial Class FormMain2012
     Friend WithEvents ImageListStates As System.Windows.Forms.ImageList
     Friend WithEvents mnuPrintReceipts As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PageSetupDialog1 As System.Windows.Forms.PageSetupDialog
+    Friend WithEvents comboDateRange As System.Windows.Forms.ComboBox
+    Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents tpViewVerified As System.Windows.Forms.TabPage
+    Friend WithEvents CheckViewerVerifiedPanel1 As TellerAssistant2012.CheckViewerViewPanel
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents CheckViewerConfirmPanel1 As TellerAssistant2012.CheckViewerConfirmPanel
 End Class
