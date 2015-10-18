@@ -36,4 +36,3 @@ C:\Users\Galen\Documents\GitHub\TellerAssistant\SimpAccess\SimpAccess\obj\Debug\
 C:\Users\Galen\Documents\GitHub\TellerAssistant\SimpAccess\SimpAccess\obj\Debug\SimpAccess.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\SimpAccess\SimpAccess\obj\Debug\SimpAccess.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\SimpAccess\SimpAccess\obj\Debug\SimpAccess.pdb
-C:\Users\Galen\Documents\GitHub\TellerAssistant\SimpAccess\SimpAccess\obj\Debug\SimpAccess.vbprojResolveAssemblyReference.cache

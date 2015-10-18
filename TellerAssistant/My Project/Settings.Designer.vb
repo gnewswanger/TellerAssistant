@@ -136,7 +136,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("COM1")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("COM3")>  _
         Public Property PortSettingPortName() As String
             Get
                 Return CType(Me("PortSettingPortName"),String)

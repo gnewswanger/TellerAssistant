@@ -22,45 +22,31 @@ Partial Class CheckViewerViewPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Label33 = New System.Windows.Forms.Label
-        Me.txtCheckNo = New System.Windows.Forms.TextBox
-        Me.Label36 = New System.Windows.Forms.Label
-        Me.txtCheckAcct = New System.Windows.Forms.TextBox
-        Me.Label37 = New System.Windows.Forms.Label
-        Me.txtCheckBank = New System.Windows.Forms.TextBox
-        Me.chkbxSendReceipt = New System.Windows.Forms.CheckBox
-        Me.comboDonor = New System.Windows.Forms.ComboBox
-        Me.btnEditDonor = New System.Windows.Forms.Button
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
+        Me.txtCheckNo = New System.Windows.Forms.TextBox()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.txtCheckAcct = New System.Windows.Forms.TextBox()
+        Me.Label37 = New System.Windows.Forms.Label()
+        Me.txtCheckBank = New System.Windows.Forms.TextBox()
+        Me.chkbxSendReceipt = New System.Windows.Forms.CheckBox()
+        Me.comboDonor = New System.Windows.Forms.ComboBox()
+        Me.btnEditDonor = New System.Windows.Forms.Button()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.SuspendLayout()
         '
-        'txtCheckAmt
-        '
-        Me.txtCheckAmt.Location = New System.Drawing.Point(173, 38)
-        '
-        'Label18
-        '
-        Me.Label18.Location = New System.Drawing.Point(87, 18)
-        '
         'dtpCheckDate
         '
-        Me.dtpCheckDate.Location = New System.Drawing.Point(173, 12)
         Me.dtpCheckDate.TabIndex = 14
-        '
-        'Label19
-        '
-        Me.Label19.Location = New System.Drawing.Point(87, 41)
         '
         'btnCheckReset
         '
-        Me.btnCheckReset.Location = New System.Drawing.Point(199, 218)
         Me.btnCheckReset.TabIndex = 13
         '
         'btnCheckApply
         '
-        Me.btnCheckApply.Location = New System.Drawing.Point(122, 218)
         Me.btnCheckApply.TabIndex = 8
         '
         'SplitContainer1
@@ -84,7 +70,7 @@ Partial Class CheckViewerViewPanel
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(92, 136)
+        Me.Label1.Location = New System.Drawing.Point(78, 137)
         Me.Label1.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(45, 13)
@@ -96,7 +82,7 @@ Partial Class CheckViewerViewPanel
         '
         Me.Label33.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(79, 115)
+        Me.Label33.Location = New System.Drawing.Point(65, 116)
         Me.Label33.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(58, 13)
@@ -107,7 +93,7 @@ Partial Class CheckViewerViewPanel
         'txtCheckNo
         '
         Me.txtCheckNo.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtCheckNo.Location = New System.Drawing.Point(136, 112)
+        Me.txtCheckNo.Location = New System.Drawing.Point(122, 113)
         Me.txtCheckNo.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCheckNo.Name = "txtCheckNo"
         Me.txtCheckNo.Size = New System.Drawing.Size(137, 20)
@@ -117,7 +103,7 @@ Partial Class CheckViewerViewPanel
         '
         Me.Label36.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label36.AutoSize = True
-        Me.Label36.Location = New System.Drawing.Point(87, 95)
+        Me.Label36.Location = New System.Drawing.Point(73, 96)
         Me.Label36.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label36.Name = "Label36"
         Me.Label36.Size = New System.Drawing.Size(50, 13)
@@ -128,7 +114,7 @@ Partial Class CheckViewerViewPanel
         'txtCheckAcct
         '
         Me.txtCheckAcct.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtCheckAcct.Location = New System.Drawing.Point(136, 92)
+        Me.txtCheckAcct.Location = New System.Drawing.Point(122, 93)
         Me.txtCheckAcct.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCheckAcct.Name = "txtCheckAcct"
         Me.txtCheckAcct.Size = New System.Drawing.Size(137, 20)
@@ -138,7 +124,7 @@ Partial Class CheckViewerViewPanel
         '
         Me.Label37.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label37.AutoSize = True
-        Me.Label37.Location = New System.Drawing.Point(102, 75)
+        Me.Label37.Location = New System.Drawing.Point(88, 76)
         Me.Label37.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label37.Name = "Label37"
         Me.Label37.Size = New System.Drawing.Size(35, 13)
@@ -149,7 +135,7 @@ Partial Class CheckViewerViewPanel
         'txtCheckBank
         '
         Me.txtCheckBank.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.txtCheckBank.Location = New System.Drawing.Point(136, 72)
+        Me.txtCheckBank.Location = New System.Drawing.Point(122, 73)
         Me.txtCheckBank.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCheckBank.Name = "txtCheckBank"
         Me.txtCheckBank.Size = New System.Drawing.Size(137, 20)
@@ -172,7 +158,7 @@ Partial Class CheckViewerViewPanel
         Me.comboDonor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
         Me.comboDonor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.comboDonor.FormattingEnabled = True
-        Me.comboDonor.Location = New System.Drawing.Point(136, 132)
+        Me.comboDonor.Location = New System.Drawing.Point(122, 133)
         Me.comboDonor.Name = "comboDonor"
         Me.comboDonor.Size = New System.Drawing.Size(137, 21)
         Me.comboDonor.TabIndex = 5
@@ -180,7 +166,7 @@ Partial Class CheckViewerViewPanel
         'btnEditDonor
         '
         Me.btnEditDonor.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.btnEditDonor.Location = New System.Drawing.Point(136, 153)
+        Me.btnEditDonor.Location = New System.Drawing.Point(122, 154)
         Me.btnEditDonor.Margin = New System.Windows.Forms.Padding(2)
         Me.btnEditDonor.Name = "btnEditDonor"
         Me.btnEditDonor.Size = New System.Drawing.Size(137, 23)
@@ -196,6 +182,7 @@ Partial Class CheckViewerViewPanel
         Me.SpliterDistance = 500
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

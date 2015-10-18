@@ -22,6 +22,7 @@ Partial Class CheckViewerEditPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.SuspendLayout()
@@ -46,30 +47,6 @@ Partial Class CheckViewerEditPanel
         '
         Me.chkbxSendReceipt.Location = New System.Drawing.Point(126, 182)
         '
-        'txtCheckAmt
-        '
-        Me.txtCheckAmt.Location = New System.Drawing.Point(171, 41)
-        '
-        'Label18
-        '
-        Me.Label18.Location = New System.Drawing.Point(98, 20)
-        '
-        'dtpCheckDate
-        '
-        Me.dtpCheckDate.Location = New System.Drawing.Point(171, 14)
-        '
-        'Label19
-        '
-        Me.Label19.Location = New System.Drawing.Point(85, 44)
-        '
-        'btnCheckReset
-        '
-        Me.btnCheckReset.Location = New System.Drawing.Point(196, 218)
-        '
-        'btnCheckApply
-        '
-        Me.btnCheckApply.Location = New System.Drawing.Point(115, 218)
-        '
         'SplitContainer1
         '
         Me.SplitContainer1.SplitterDistance = 513
@@ -83,6 +60,7 @@ Partial Class CheckViewerEditPanel
         Me.SpliterDistance = 513
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

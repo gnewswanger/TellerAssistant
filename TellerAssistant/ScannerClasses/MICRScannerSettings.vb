@@ -38,7 +38,7 @@ Public Class MICRScannerSettings
                     Case "HW"
                         Me.SendSettingToScanner("HW=" & node.InnerText)
                     Case "FC"
-                        Me.SendSettingToScanner("FC" & node.InnerText)
+                        Me.SendSettingToScanner("FC" + node.InnerText.Trim)
                 End Select
             Next
         Catch ex As Exception

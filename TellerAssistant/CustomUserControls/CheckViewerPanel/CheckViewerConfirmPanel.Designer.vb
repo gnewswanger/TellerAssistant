@@ -22,12 +22,13 @@ Partial Class CheckViewerConfirmPanel
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtConfirmCheckAmt = New System.Windows.Forms.Label
-        Me.Label21 = New System.Windows.Forms.Label
-        Me.picReceiptFlag = New System.Windows.Forms.PictureBox
-        Me.btnEditCheck = New System.Windows.Forms.Button
-        Me.btnSkipConfirm = New System.Windows.Forms.Button
-        Me.btnConfirmCheck = New System.Windows.Forms.Button
+        Me.txtConfirmCheckAmt = New System.Windows.Forms.Label()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.picReceiptFlag = New System.Windows.Forms.PictureBox()
+        Me.btnEditCheck = New System.Windows.Forms.Button()
+        Me.btnSkipConfirm = New System.Windows.Forms.Button()
+        Me.btnConfirmCheck = New System.Windows.Forms.Button()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         CType(Me.picReceiptFlag, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,7 +55,7 @@ Partial Class CheckViewerConfirmPanel
         Me.txtConfirmCheckAmt.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtConfirmCheckAmt.Location = New System.Drawing.Point(50, 45)
         Me.txtConfirmCheckAmt.Name = "txtConfirmCheckAmt"
-        Me.txtConfirmCheckAmt.Size = New System.Drawing.Size(183, 33)
+        Me.txtConfirmCheckAmt.Size = New System.Drawing.Size(175, 33)
         Me.txtConfirmCheckAmt.TabIndex = 18
         Me.txtConfirmCheckAmt.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
@@ -95,7 +96,7 @@ Partial Class CheckViewerConfirmPanel
         '
         Me.btnSkipConfirm.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnSkipConfirm.Image = Global.TellerAssistant2012.My.Resources.Resources.GreenRightArrow
-        Me.btnSkipConfirm.Location = New System.Drawing.Point(166, 144)
+        Me.btnSkipConfirm.Location = New System.Drawing.Point(154, 144)
         Me.btnSkipConfirm.Name = "btnSkipConfirm"
         Me.btnSkipConfirm.Size = New System.Drawing.Size(66, 49)
         Me.btnSkipConfirm.TabIndex = 15
@@ -107,7 +108,7 @@ Partial Class CheckViewerConfirmPanel
         '
         Me.btnConfirmCheck.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnConfirmCheck.Image = Global.TellerAssistant2012.My.Resources.Resources.Check_OK
-        Me.btnConfirmCheck.Location = New System.Drawing.Point(49, 144)
+        Me.btnConfirmCheck.Location = New System.Drawing.Point(47, 144)
         Me.btnConfirmCheck.Name = "btnConfirmCheck"
         Me.btnConfirmCheck.Size = New System.Drawing.Size(99, 49)
         Me.btnConfirmCheck.TabIndex = 14
@@ -123,6 +124,7 @@ Partial Class CheckViewerConfirmPanel
         Me.SpliterDistance = 550
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         Me.SplitContainer1.Panel2.PerformLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
         CType(Me.picReceiptFlag, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

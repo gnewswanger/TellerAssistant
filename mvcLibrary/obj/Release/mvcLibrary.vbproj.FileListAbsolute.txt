@@ -36,6 +36,7 @@ C:\Users\Galen\Documents\Visual Studio 2012\Projects\mvcLibrary\obj\Release\mvcL
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\bin\Release\mvcLibrary.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\bin\Release\mvcLibrary.pdb
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\bin\Release\mvcLibrary.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.vbprojResolveAssemblyReference.cache
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.Resources.resources
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.vbproj.GenerateResource.Cache
 C:\Users\Galen\Documents\GitHub\TellerAssistant\mvcLibrary\obj\Release\mvcLibrary.dll

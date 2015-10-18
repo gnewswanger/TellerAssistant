@@ -24,7 +24,7 @@
       <Value Profile="(Default)">CheckImages</Value>
     </Setting>
     <Setting Name="PortSettingPortName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">COM1</Value>
+      <Value Profile="(Default)">COM3</Value>
     </Setting>
     <Setting Name="PortSettingBaudRate" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">115200</Value>

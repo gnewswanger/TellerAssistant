@@ -11,7 +11,7 @@
     <LoggingTurnedOn>True</LoggingTurnedOn>
   </MiscSettings>-->
   <ComportSettings>
-    <PortSetting name="PortName">COM1</PortSetting>
+    <PortSetting name="PortName">COM3</PortSetting>
     <PortSetting name="BaudRate">115200</PortSetting>
     <PortSetting name="Parity">None</PortSetting>
     <PortSetting name="DataBits">8</PortSetting>

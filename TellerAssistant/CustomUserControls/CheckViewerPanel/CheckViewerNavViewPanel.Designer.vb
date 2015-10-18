@@ -66,7 +66,7 @@ Partial Class CheckViewerNavViewPanel
         Me.txtCheckAmt.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtCheckAmt.DecimalPlaces = 0
         Me.txtCheckAmt.FormatString = "$#,###,##0.00;($#,###,##0.00)"
-        Me.txtCheckAmt.Location = New System.Drawing.Point(149, 38)
+        Me.txtCheckAmt.Location = New System.Drawing.Point(139, 42)
         Me.txtCheckAmt.Name = "txtCheckAmt"
         Me.txtCheckAmt.Size = New System.Drawing.Size(100, 20)
         Me.txtCheckAmt.TabIndex = 1
@@ -76,7 +76,7 @@ Partial Class CheckViewerNavViewPanel
         '
         Me.Label18.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(63, 18)
+        Me.Label18.Location = New System.Drawing.Point(53, 22)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(67, 13)
         Me.Label18.TabIndex = 41
@@ -86,7 +86,7 @@ Partial Class CheckViewerNavViewPanel
         '
         Me.dtpCheckDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpCheckDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpCheckDate.Location = New System.Drawing.Point(149, 12)
+        Me.dtpCheckDate.Location = New System.Drawing.Point(139, 16)
         Me.dtpCheckDate.Name = "dtpCheckDate"
         Me.dtpCheckDate.Size = New System.Drawing.Size(100, 20)
         Me.dtpCheckDate.TabIndex = 8
@@ -95,7 +95,7 @@ Partial Class CheckViewerNavViewPanel
         '
         Me.Label19.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(63, 41)
+        Me.Label19.Location = New System.Drawing.Point(53, 45)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(80, 13)
         Me.Label19.TabIndex = 38
@@ -108,7 +108,7 @@ Partial Class CheckViewerNavViewPanel
         Me.btnNavLast.DialogResult = System.Windows.Forms.DialogResult.Yes
         Me.btnNavLast.Enabled = False
         Me.btnNavLast.Image = Global.TellerAssistant2012.My.Resources.Resources.DataContainer_MoveLastHS
-        Me.btnNavLast.Location = New System.Drawing.Point(25, 204)
+        Me.btnNavLast.Location = New System.Drawing.Point(34, 196)
         Me.btnNavLast.Name = "btnNavLast"
         Me.btnNavLast.Size = New System.Drawing.Size(22, 37)
         Me.btnNavLast.TabIndex = 12
@@ -122,7 +122,7 @@ Partial Class CheckViewerNavViewPanel
         Me.btnNavFirst.AutoEllipsis = True
         Me.btnNavFirst.Enabled = False
         Me.btnNavFirst.Image = Global.TellerAssistant2012.My.Resources.Resources.DataContainer_MoveFirstHS
-        Me.btnNavFirst.Location = New System.Drawing.Point(3, 204)
+        Me.btnNavFirst.Location = New System.Drawing.Point(12, 196)
         Me.btnNavFirst.Name = "btnNavFirst"
         Me.btnNavFirst.Size = New System.Drawing.Size(22, 37)
         Me.btnNavFirst.TabIndex = 11
@@ -135,7 +135,7 @@ Partial Class CheckViewerNavViewPanel
         Me.btnCheckNext.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnCheckNext.Enabled = False
         Me.btnCheckNext.Image = Global.TellerAssistant2012.My.Resources.Resources.DataContainer_MoveNextHS
-        Me.btnCheckNext.Location = New System.Drawing.Point(3, 122)
+        Me.btnCheckNext.Location = New System.Drawing.Point(12, 114)
         Me.btnCheckNext.Name = "btnCheckNext"
         Me.btnCheckNext.Size = New System.Drawing.Size(44, 37)
         Me.btnCheckNext.TabIndex = 9
@@ -149,7 +149,7 @@ Partial Class CheckViewerNavViewPanel
         Me.btnCheckPrev.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnCheckPrev.Enabled = False
         Me.btnCheckPrev.Image = Global.TellerAssistant2012.My.Resources.Resources.DataContainer_MovePreviousHS
-        Me.btnCheckPrev.Location = New System.Drawing.Point(3, 162)
+        Me.btnCheckPrev.Location = New System.Drawing.Point(12, 154)
         Me.btnCheckPrev.Name = "btnCheckPrev"
         Me.btnCheckPrev.Size = New System.Drawing.Size(44, 37)
         Me.btnCheckPrev.TabIndex = 10
@@ -163,7 +163,7 @@ Partial Class CheckViewerNavViewPanel
         Me.btnCheckReset.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCheckReset.Enabled = False
         Me.btnCheckReset.Image = Global.TellerAssistant2012.My.Resources.Resources.RestartHS
-        Me.btnCheckReset.Location = New System.Drawing.Point(174, 219)
+        Me.btnCheckReset.Location = New System.Drawing.Point(173, 211)
         Me.btnCheckReset.Name = "btnCheckReset"
         Me.btnCheckReset.Size = New System.Drawing.Size(75, 23)
         Me.btnCheckReset.TabIndex = 7
@@ -176,7 +176,7 @@ Partial Class CheckViewerNavViewPanel
         Me.btnCheckApply.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnCheckApply.Enabled = False
         Me.btnCheckApply.Image = Global.TellerAssistant2012.My.Resources.Resources.Check_OK
-        Me.btnCheckApply.Location = New System.Drawing.Point(97, 219)
+        Me.btnCheckApply.Location = New System.Drawing.Point(96, 211)
         Me.btnCheckApply.Name = "btnCheckApply"
         Me.btnCheckApply.Size = New System.Drawing.Size(75, 23)
         Me.btnCheckApply.TabIndex = 6

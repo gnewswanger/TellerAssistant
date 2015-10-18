@@ -32,6 +32,7 @@ C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrar
 C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\ClassLibrary1\obj\Release\FileManagerUtility.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\bin\Release\FileManagerUtility.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\bin\Release\FileManagerUtility.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Release\FileManagerUtility.vbprojResolveAssemblyReference.cache
 C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Release\FileManagerUtility.FormFileManager.resources
 C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Release\FileManagerUtility.Resources.resources
 C:\Users\Galen\Documents\GitHub\TellerAssistant\FileManagerUtility\obj\Release\FileManagerUtility.vbproj.GenerateResource.Cache

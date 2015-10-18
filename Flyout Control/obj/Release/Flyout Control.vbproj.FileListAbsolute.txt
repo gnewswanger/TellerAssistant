@@ -60,10 +60,13 @@ C:\Users\Galen\Documents\Visual Studio 2012\Projects\TellerAssistant\Flyout Cont
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\Flyout Control.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\Flyout Control.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\ImageViewerPanel.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\Microsoft.VisualBasic.PowerPacks.Design.dll
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\Microsoft.VisualBasic.PowerPacks.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\mvcLibrary.dll
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\mvcLibrary.pdb
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\mvcLibrary.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\ImageViewerPanel.xml
+C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\bin\Release\Microsoft.VisualBasic.PowerPacks.xml
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Release\Flyout Control.vbprojResolveAssemblyReference.cache
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Release\Flyout_Control.ImagePanelFlyout.resources
 C:\Users\Galen\Documents\GitHub\TellerAssistant\Flyout Control\obj\Release\Flyout_Control.Resources.resources
