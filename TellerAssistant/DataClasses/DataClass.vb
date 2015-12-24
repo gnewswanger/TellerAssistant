@@ -1798,41 +1798,42 @@ Public Class DataClass
             Me.conn.Open()
         End If
         Try
+
             sqlCmd.Parameters.Add("@DonorID", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@DonorID").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@DonorID").Value = Trim(chk.Donor)
+            sqlCmd.Parameters.Item("@DonorID").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.Donor))
 
             sqlCmd.Parameters.Add("@Donor", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Donor").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Donor").Value = Trim(chk.Donor)
+            sqlCmd.Parameters.Item("@Donor").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.Donor))
 
             sqlCmd.Parameters.Add("@Address", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Address").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Address").Value = Trim(chk.DonorAddress)
+            sqlCmd.Parameters.Item("@Address").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.DonorAddress))
 
             sqlCmd.Parameters.Add("@City", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@City").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@City").Value = Trim(chk.DonorCity)
+            sqlCmd.Parameters.Item("@City").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.DonorCity))
 
             sqlCmd.Parameters.Add("@State", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@State").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@State").Value = Trim(chk.DonorState)
+            sqlCmd.Parameters.Item("@State").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.DonorState))
 
             sqlCmd.Parameters.Add("@Zip", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Zip").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Zip").Value = Trim(chk.DonorZip)
+            sqlCmd.Parameters.Item("@Zip").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.DonorZip))
 
             sqlCmd.Parameters.Add("@Envelope", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Envelope").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Envelope").Value = Trim(chk.DonorInfo.EnvelopeNo)
+            sqlCmd.Parameters.Item("@Envelope").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.DonorInfo.EnvelopeNo))
 
             sqlCmd.Parameters.Add("@Bank", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Bank").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Bank").Value = Trim(chk.RoutingNo)
+            sqlCmd.Parameters.Item("@Bank").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.RoutingNo))
 
             sqlCmd.Parameters.Add("@Account", SqlDbType.NVarChar)
             sqlCmd.Parameters.Item("@Account").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Account").Value = Trim(chk.AccountNo)
+            sqlCmd.Parameters.Item("@Account").Value = IIf(chk.Donor Is Nothing, "", Trim(chk.AccountNo))
 
             sqlCmd.Parameters.Add("@RetStatus", SqlDbType.Int)
             sqlCmd.Parameters.Item("@RetStatus").Direction = ParameterDirection.ReturnValue
@@ -1873,83 +1874,85 @@ Public Class DataClass
     End Function
 
     Public Function SetDonorInformation(ByVal donor As DonorClass) As Integer
-        Dim sqlCmd As New SqlCommand
-        sqlCmd.CommandType = CommandType.StoredProcedure
-        sqlCmd.CommandText = "[spSetDonorInfo2]"
-        sqlCmd.Connection = Me.conn
-        If Not Me.conn.State = ConnectionState.Open Then
-            Me.conn.Open()
-        End If
-        Try
-            sqlCmd.Parameters.Add("@DonorID", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@DonorID").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@DonorID").Value = Trim(donor.Donor)
-
-            sqlCmd.Parameters.Add("@Donor", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@Donor").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Donor").Value = Trim(donor.Donor)
-
-            sqlCmd.Parameters.Add("@Address", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@Address").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Address").Value = Trim(donor.Address)
-
-            sqlCmd.Parameters.Add("@City", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@City").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@City").Value = Trim(donor.City)
-
-            sqlCmd.Parameters.Add("@State", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@State").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@State").Value = Trim(donor.State)
-
-            sqlCmd.Parameters.Add("@Zip", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@Zip").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Zip").Value = Trim(donor.Zip)
-
-            sqlCmd.Parameters.Add("@Envelope", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@Envelope").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Envelope").Value = Trim(donor.EnvelopeNo)
-
-            sqlCmd.Parameters.Add("@Bank", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@Bank").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Bank").Value = Trim(donor.Bank)
-
-            sqlCmd.Parameters.Add("@Account", SqlDbType.NVarChar)
-            sqlCmd.Parameters.Item("@Account").Direction = ParameterDirection.Input
-            sqlCmd.Parameters.Item("@Account").Value = Trim(donor.Account)
-
-            sqlCmd.Parameters.Add("@RetStatus", SqlDbType.Int)
-            sqlCmd.Parameters.Item("@RetStatus").Direction = ParameterDirection.ReturnValue
-
-            sqlCmd.Prepare()
-            sqlCmd.ExecuteNonQuery()
-            Dim retVal As Integer = CInt(sqlCmd.Parameters("@RetStatus").Value)
-            If retVal = 1 Then
-                NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, donor))
-                Return DataTransactionTypes.dbUpdated
-            ElseIf retVal = 2 Then
-                NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorInserted, donor))
-                Return DataTransactionTypes.dbInserted
-            Else
-                NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDataTransactionFailed, donor))
-                Return DataTransactionTypes.dbFailed
+        If donor.Donor IsNot Nothing Then
+            Dim sqlCmd As New SqlCommand
+            sqlCmd.CommandType = CommandType.StoredProcedure
+            sqlCmd.CommandText = "[spSetDonorInfo2]"
+            sqlCmd.Connection = Me.conn
+            If Not Me.conn.State = ConnectionState.Open Then
+                Me.conn.Open()
             End If
-        Catch ex As SqlException
-            'MsgBox("SqlException: " & ex.Message)
-            Dim errorMessages As New StringBuilder()
-            Dim i As Integer
-            For i = 0 To ex.Errors.Count - 1
-                errorMessages.Append("Index #" & i.ToString() & ControlChars.NewLine _
+            Try
+                sqlCmd.Parameters.Add("@DonorID", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@DonorID").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@DonorID").Value = Trim(donor.Donor)
+
+                sqlCmd.Parameters.Add("@Donor", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@Donor").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@Donor").Value = Trim(donor.Donor)
+
+                sqlCmd.Parameters.Add("@Address", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@Address").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@Address").Value = Trim(donor.Address)
+
+                sqlCmd.Parameters.Add("@City", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@City").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@City").Value = Trim(donor.City)
+
+                sqlCmd.Parameters.Add("@State", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@State").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@State").Value = Trim(donor.State)
+
+                sqlCmd.Parameters.Add("@Zip", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@Zip").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@Zip").Value = Trim(donor.Zip)
+
+                sqlCmd.Parameters.Add("@Envelope", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@Envelope").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@Envelope").Value = Trim(donor.EnvelopeNo)
+
+                sqlCmd.Parameters.Add("@Bank", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@Bank").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@Bank").Value = Trim(donor.Bank)
+
+                sqlCmd.Parameters.Add("@Account", SqlDbType.NVarChar)
+                sqlCmd.Parameters.Item("@Account").Direction = ParameterDirection.Input
+                sqlCmd.Parameters.Item("@Account").Value = Trim(donor.Account)
+
+                sqlCmd.Parameters.Add("@RetStatus", SqlDbType.Int)
+                sqlCmd.Parameters.Item("@RetStatus").Direction = ParameterDirection.ReturnValue
+
+                sqlCmd.Prepare()
+                sqlCmd.ExecuteNonQuery()
+                Dim retVal As Integer = CInt(sqlCmd.Parameters("@RetStatus").Value)
+                If retVal = 1 Then
+                    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorUpdated, donor))
+                    Return DataTransactionTypes.dbUpdated
+                ElseIf retVal = 2 Then
+                    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDbCheckDonorInserted, donor))
+                    Return DataTransactionTypes.dbInserted
+                Else
+                    NotifyObservers(Me, New DonorInfoEventArgs(EventName.evnmDataTransactionFailed, donor))
+                    Return DataTransactionTypes.dbFailed
+                End If
+            Catch ex As SqlException
+                'MsgBox("SqlException: " & ex.Message)
+                Dim errorMessages As New StringBuilder()
+                Dim i As Integer
+                For i = 0 To ex.Errors.Count - 1
+                    errorMessages.Append("Index #" & i.ToString() & ControlChars.NewLine _
                     & "Message: " & ex.Errors(i).Message & ControlChars.NewLine _
                     & "LineNumber: " & ex.Errors(i).LineNumber & ControlChars.NewLine _
                     & "Source: " & ex.Errors(i).Source & ControlChars.NewLine _
                     & "Procedure: " & ex.Errors(i).Procedure & ControlChars.NewLine)
-            Next i
-            MsgBox(errorMessages.ToString)
-        Catch ex As Exception
-            MsgBox("[spSetDonorInfo2] ExecuteNonQuery in SetDonorInformation failed. " + ex.Message)
-        Finally
-            Me.conn.Close()
-        End Try
+                Next i
+                MsgBox(errorMessages.ToString)
+            Catch ex As Exception
+                MsgBox("[spSetDonorInfo2] ExecuteNonQuery in SetDonorInformation failed. " + ex.Message)
+            Finally
+                Me.conn.Close()
+            End Try
+        End If
         Return 0
     End Function
 
