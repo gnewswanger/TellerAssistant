@@ -315,7 +315,9 @@ Public Class DepositManagerModel
     End Sub
 
     Public Sub UpdateDonorInfo(ByVal donor As DonorClass)
-        Me._db.SetDonorInformation(donor)
+        If donor IsNot Nothing Then
+            Me._db.SetDonorInformation(donor)
+        End If
     End Sub
 
     Public Sub ResetScanner()

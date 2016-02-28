@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSetAccess1" targetNamespace="http://tempuri.org/DataSetAccess1.xsd" xmlns:mstns="http://tempuri.org/DataSetAccess1.xsd" xmlns="http://tempuri.org/DataSetAccess1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="TellersAssistant_beConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TellersAssistant_beConnectionString (MySettings)" PropertyReference="ApplicationSettings.TellerAssistant2012.My.MySettings.GlobalReference.Default.TellersAssistant_beConnectionString" Provider="System.Data.OleDb" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="TellersAssistant1ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="TellersAssistant1ConnectionString (MySettings)" PropertyReference="ApplicationSettings.TellerAssistant2012.My.MySettings.GlobalReference.Default.TellersAssistant1ConnectionString" Provider="System.Data.OleDb" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DonationDepositsTableAdapter" GeneratorDataComponentClassName="DonationDepositsTableAdapter" Name="DonationDeposits" UserDataComponentName="DonationDepositsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="TellersAssistant_beConnectionString (MySettings)" DbObjectName="DonationDeposits" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        DepositID, [Number], DepositNo, DepDate, DepDescription, BankID, AccountID, ImagePath
+FROM            DonationDeposits</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="DepositID" DataSetColumn="DepositID" />
+              <Mapping SourceColumn="Number" DataSetColumn="Number" />
+              <Mapping SourceColumn="DepositNo" DataSetColumn="DepositNo" />
+              <Mapping SourceColumn="DepDate" DataSetColumn="DepDate" />
+              <Mapping SourceColumn="DepDescription" DataSetColumn="DepDescription" />
+              <Mapping SourceColumn="BankID" DataSetColumn="BankID" />
+              <Mapping SourceColumn="AccountID" DataSetColumn="AccountID" />
+              <Mapping SourceColumn="ImagePath" DataSetColumn="ImagePath" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSetAccess1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSetAccess1" msprop:Generator_UserDSName="DataSetAccess1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DonationDeposits" msprop:Generator_TableClassName="DonationDepositsDataTable" msprop:Generator_TableVarName="tableDonationDeposits" msprop:Generator_TablePropName="DonationDeposits" msprop:Generator_RowDeletingName="DonationDepositsRowDeleting" msprop:Generator_RowChangingName="DonationDepositsRowChanging" msprop:Generator_RowEvHandlerName="DonationDepositsRowChangeEventHandler" msprop:Generator_RowDeletedName="DonationDepositsRowDeleted" msprop:Generator_UserTableName="DonationDeposits" msprop:Generator_RowChangedName="DonationDepositsRowChanged" msprop:Generator_RowEvArgName="DonationDepositsRowChangeEvent" msprop:Generator_RowClassName="DonationDepositsRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DepositID" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnDepositID" msprop:Generator_ColumnPropNameInRow="DepositID" msprop:Generator_ColumnPropNameInTable="DepositIDColumn" msprop:Generator_UserColumnName="DepositID" type="xs:int" />
+              <xs:element name="Number" msprop:Generator_ColumnVarNameInTable="columnNumber" msprop:Generator_ColumnPropNameInRow="Number" msprop:Generator_ColumnPropNameInTable="NumberColumn" msprop:Generator_UserColumnName="Number" type="xs:int" minOccurs="0" />
+              <xs:element name="DepositNo" msprop:Generator_ColumnVarNameInTable="columnDepositNo" msprop:Generator_ColumnPropNameInRow="DepositNo" msprop:Generator_ColumnPropNameInTable="DepositNoColumn" msprop:Generator_UserColumnName="DepositNo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DepDate" msprop:Generator_ColumnVarNameInTable="columnDepDate" msprop:Generator_ColumnPropNameInRow="DepDate" msprop:Generator_ColumnPropNameInTable="DepDateColumn" msprop:Generator_UserColumnName="DepDate" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DepDescription" msprop:Generator_ColumnVarNameInTable="columnDepDescription" msprop:Generator_ColumnPropNameInRow="DepDescription" msprop:Generator_ColumnPropNameInTable="DepDescriptionColumn" msprop:Generator_UserColumnName="DepDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BankID" msprop:Generator_ColumnVarNameInTable="columnBankID" msprop:Generator_ColumnPropNameInRow="BankID" msprop:Generator_ColumnPropNameInTable="BankIDColumn" msprop:Generator_UserColumnName="BankID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="AccountID" msprop:Generator_ColumnVarNameInTable="columnAccountID" msprop:Generator_ColumnPropNameInRow="AccountID" msprop:Generator_ColumnPropNameInTable="AccountIDColumn" msprop:Generator_UserColumnName="AccountID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ImagePath" msprop:Generator_ColumnVarNameInTable="columnImagePath" msprop:Generator_ColumnPropNameInRow="ImagePath" msprop:Generator_ColumnPropNameInTable="ImagePathColumn" msprop:Generator_UserColumnName="ImagePath" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DonationDeposits" />
+      <xs:field xpath="mstns:DepositID" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

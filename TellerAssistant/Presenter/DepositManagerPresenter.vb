@@ -103,7 +103,9 @@ Public Class DepositManagerPresenter
     End Sub
 
     Public Sub UpdateDonorInfo(ByVal donor As DonorClass)
-        Me._myModel.UpdateDonorInfo(donor)
+        If donor IsNot Nothing Then
+            Me._myModel.UpdateDonorInfo(donor)
+        End If
     End Sub
 
     Public Sub UpdateCheckData(ByVal chkArgs As CheckDataEventArgs)

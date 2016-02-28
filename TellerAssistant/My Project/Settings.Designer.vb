@@ -274,6 +274,28 @@ Namespace My
                 Return CType(Me("TellersAssistant2008ConnectionString1"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\TellersAssistant_be"& _ 
+            ".accdb")>  _
+        Public ReadOnly Property TellersAssistant_beConnectionString() As String
+            Get
+                Return CType(Me("TellersAssistant_beConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\DataClasses\Tellers"& _ 
+            "Assistant1.accdb")>  _
+        Public ReadOnly Property TellersAssistant1ConnectionString() As String
+            Get
+                Return CType(Me("TellersAssistant1ConnectionString"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
