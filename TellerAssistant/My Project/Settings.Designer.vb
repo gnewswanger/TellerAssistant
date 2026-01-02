@@ -15,7 +15,7 @@ Option Explicit On
 Namespace My
     
     <Global.System.Runtime.CompilerServices.CompilerGeneratedAttribute(),  _
-     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0"),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.14.0.0"),  _
      Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)>  _
     Partial Friend NotInheritable Class MySettings
         Inherits Global.System.Configuration.ApplicationSettingsBase
@@ -29,7 +29,7 @@ Namespace My
     Private Shared addedHandlerLockObject As New Object
 
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), Global.System.ComponentModel.EditorBrowsableAttribute(Global.System.ComponentModel.EditorBrowsableState.Advanced)> _
-    Private Shared Sub AutoSaveSettings(ByVal sender As Global.System.Object, ByVal e As Global.System.EventArgs)
+    Private Shared Sub AutoSaveSettings(sender As Global.System.Object, e As Global.System.EventArgs)
         If My.Application.SaveMySettingsOnExit Then
             My.Settings.Save()
         End If
@@ -51,26 +51,6 @@ Namespace My
                 End If
 #End If
                 Return defaultInstance
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=GRNSDNOFFICE-PC\SQLEXPRESS;Initial Catalog=RetrieveSecurity;Integrate"& _ 
-            "d Security=True")>  _
-        Public ReadOnly Property SecurityConnectionStr() As String
-            Get
-                Return CType(Me("SecurityConnectionStr"),String)
-            End Get
-        End Property
-        
-        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=GRNSDNOFFICE-PC\SQLEXPRESS;Initial Catalog=TellersAssistant2008;Integ"& _ 
-            "rated Security=True")>  _
-        Public ReadOnly Property TellersAssistant2008ConnectionString() As String
-            Get
-                Return CType(Me("TellersAssistant2008ConnectionString"),String)
             End Get
         End Property
         
@@ -256,22 +236,49 @@ Namespace My
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=GRNSDNOFFICE-PC\SQLEXPRESS;Initial Catalog=TellersAssistant2008;Integ"& _ 
-            "rated Security=True")>  _
-        Public ReadOnly Property ConnectionString() As String
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=NEWSWANGER_PC1\newsw;Initial Catalog=TellersAssistant2008;Integrated "& _ 
+            "Security=True")>  _
+        Public ReadOnly Property TellersAssistant2008ConnectionString1() As String
             Get
-                Return CType(Me("ConnectionString"),String)
+                Return CType(Me("TellersAssistant2008ConnectionString1"),String)
             End Get
         End Property
         
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=GRNSDNOFFICE-PC\SQLEXPRESS;Initial Catalog=TellersAssistant2008;Integ"& _ 
-            "rated Security=True")>  _
-        Public ReadOnly Property TellersAssistant2008ConnectionString1() As String
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=NEWSWANGER_PC1\newsw;Initial Catalog=TellersAssistant2008;Integrated "& _ 
+            "Security=True")>  _
+        Public ReadOnly Property SecurityConnectionStr() As String
             Get
-                Return CType(Me("TellersAssistant2008ConnectionString1"),String)
+                Return CType(Me("SecurityConnectionStr"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<SerializableConnectionString xmlns:xsd="& _ 
+            """http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-i"& _ 
+            "nstance"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <ConnectionString>Data Source=NEWSWANGER_PC1\newsw;Initial Catalog="& _ 
+            "TellersAssistant2008;Integrated Security=True</ConnectionString>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <ProviderNam"& _ 
+            "e />"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</SerializableConnectionString>")>  _
+        Public ReadOnly Property TellersAssistant2008ConnectionString() As String
+            Get
+                Return CType(Me("TellersAssistant2008ConnectionString"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<SerializableConnectionString xmlns:xsd="& _ 
+            """http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-i"& _ 
+            "nstance"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <ConnectionString>Data Source=NEWSWANGER_PC1\newsw;Initial Catalog="& _ 
+            "TellersAssistant2008;Integrated Security=True</ConnectionString>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <ProviderNam"& _ 
+            "e />"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</SerializableConnectionString>")>  _
+        Public ReadOnly Property ConnectionString() As String
+            Get
+                Return CType(Me("ConnectionString"),String)
             End Get
         End Property
     End Class
